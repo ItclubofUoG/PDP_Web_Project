@@ -1,4 +1,4 @@
-<?php include_once('../Model/connectDB.php');
+<?php include_once('./connectDB.php');
 session_start();
 if ($_SESSION["id"] != null) {
     $id = $_SESSION["id"];

@@ -20,7 +20,7 @@
   
             <?php
             session_start();
-            include('./Layout/header_login.html');
+            include('./header_login.html');
 
             if (!isset($_SESSION["us"]) && isset($_GET['page'])) {
                 echo "<script> location.href='index.php'</script>";
@@ -32,8 +32,8 @@
                     include_once("user.php");
                 }
             } else {
-                include("./View/Login.html");
+                include("./Login.html");
             }
-            include('./Layout/footer.html');
+            include('./footer.html');
             ?>
 </div>

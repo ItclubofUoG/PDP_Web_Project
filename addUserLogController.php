@@ -1,5 +1,5 @@
 <?php
-include_once('../Model/connectDB.php');
+include_once('./connectDB.php');
 
 if (isset($_POST['btnSubmitAttendance'])) {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
