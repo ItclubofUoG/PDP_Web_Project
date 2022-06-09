@@ -1,0 +1,123 @@
+.Device-Container {
+  padding: 5%;
+}
+.device-container {
+  width: 100%;
+  margin-top: 15px;
+}
+.device-head {
+  background-color: #4169E1;
+  padding-left: 16px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.dv-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+.btn-add-device{
+  height: 80%;
+  width:  30% ;
+  background-color: #32CD32;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
+.btn-add-device:hover {
+  background-color: #d3e669;
+  cursor: pointer;
+  color: #000;
+}
+.device-body {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0px 0px 8px 8px;
+}
+.btn-table {
+  height: 100%;
+  display: flex;
+}
+.btn-reload {
+  height: 30px;
+  background-color: #32CD32;
+  border-radius: 4px;
+  width: 50%;
+  border: 1px solid #ccc;
+  color: #fff;
+}
+.btn-reload:hover {
+  background-color: #2eff2e;
+  cursor: pointer;
+}
+.btn-attendence {
+  background-color: #32CD32;
+  border-radius: 4px;
+  width: 40%;
+  border: 1px solid #ccc;
+  color: #fff;
+  height: 30px;
+  margin-left: 6%;
+}
+.btn-enroll {
+  background-color: #F0924E;
+  border-radius: 4px;
+  width: 40%;
+  border: 1px solid #ccc;
+  color: #fff;
+  height: 30px;
+  margin-left: 6%;
+}
+.btn-attendence:hover {
+  background-color: #2eff2e;
+  cursor: pointer;
+}
+.btn-enroll:hover {
+  background-color: #fccaa7;
+  cursor: pointer;
+}
+.btn-delete-device {
+  background-color: #FF0000;
+  border-radius: 4px;
+  width: 100%;
+  border: 1px solid #ccc;
+  color: #fff;
+  height: 30px;
+  margin-left: 6%;
+}
+.btn-delete-device:hover {
+  background-color: #e60000;
+  cursor: pointer;
+}
+@media screen and (max-width: 900px) {
+  .btn-reload {
+    height: 15px;
+    font-size: 5px;
+    width: 25px;
+  }
+  .btn-attendence {
+    height: 15px;
+    font-size: 5px;
+    width: 50%;
+  }
+  .btn-enroll {
+    height: 15px;
+    font-size: 5px;
+    width: 50%;
+  }
+  .btn-delete-device {
+    height: 15px;
+    font-size: 5px;
+    width: 100;
+  }
+  .btn-add-device{
+    height: 25px;
+    width:  70px ;
+    font-size: 7px;
+  }
+}

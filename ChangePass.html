@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Change Password</title>
+</head>
+<body>
+    <div class="changepw-wrapper">
+        <form class="changepw-form">
+            <div class="changepw-title">CHANGE PASSWORD</div>
+            <div class="changepw-item">
+                <input type="password" id="oldpass" class="changepw-input" placeholder="Enter old password">
+                <span class="alert-error"></span>
+            </div>
+            <div class="changepw-item">
+                <input type="password" id="newpassword" class="changepw-input" placeholder="Enter new password">
+                <span class="alert-error"></span>
+            </div>
+            <div class="changepw-item">
+                <input type="password" id="confirmpassword" class="changepw-input" placeholder="Confirm new password">
+                <span class="alert-error"></span>
+            </div>
+            <div>
+                <input type="submit" value="Change Password" class="changepw-btn">
+            </div>
+        </form>
+    </div>
+
+    <script src="./assets/js/Validation.js"></script>
+    <script src="./assets/js/ValidationPass.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.attendence-container {
+    padding: 5%;
+}
+.choose-month-cover{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.choose-month-title {
+    font-size:17px
+}
+.search-month {
+    height: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.table-user{
+    border: 1px solid #ccc;
+    width: 100%;
+    border-collapse: collapse;
+}
+.total-score {
+    color:brown;
+    font-size: 17px;
+}
+.search-box {
+    height: 100%;
+}
+@media screen and (max-width: 900px) { 
+    .total-score {
+        font-size: 9px;
+    }
+}
+
+
+/* Monthly Event CSS */
+
+:root{
+    --grayTitle: #909090;
+    --orangeBorder: #ff9c59;
+    --bluePiece: #0a489b;
+    --evDetail: #fff;
+    --shadow: rgba(100,100,100,0.5);
+    --transBlack: rgba(12,12,12,0.5);
+    --litghtBlack: rgba(30,30,30,0.9);
+}
+
+.et-container{
+    margin-left: 200px;
+    margin-right: 200px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.et-title{
+    color: var(--grayTitle);
+    font-size: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 150px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--orangeBorder);
+}
+
+.et-block{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.et-piece{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    background-color: var(--bluePiece);
+    height: 300px;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 3px 5px 10px 0.5px var(--shadow);
+
+    display: grid;
+    grid-template-columns: 450px 450px;
+    grid-template-rows: 300px;
+}
+
+.et-piece:hover{
+    box-shadow: 3px 7px 10px 0.5px var(--shadow);
+    opacity: 0.95;
+    transition: 0.3s;
+}
+
+.p3{
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.p4{
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.et-piece-info{
+    height: 170px;
+    font-size: 18px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    margin-top: calc(150px - 100px);
+}
+
+.et-detail{
+    color: var(--evDetail);
+    height: 30px;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.et-figure{
+    width: 450px;
+    height: 300px;
+}
+
+.et-more-info{
+    position: relative;
+    font-size: 15px;
+    color: var(--orangeBorder);
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    background-color: var(--evDetail);
+    width: fit-content;
+    border-radius: 20px;
+    font-weight: 400;
+    text-decoration: none;
+    outline: none;
+}
+
+.et-more-info:hover{
+    text-decoration: underline;
+}
+
+#et-des-container{
+    position: fixed;
+    background-color: var(--transBlack);
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+
+    opacity: 0;
+    pointer-events: none;
+}
+.et-des-show{
+    opacity: 1;
+    pointer-events: all;
+}
+
+#et-des-block{
+    background-color: var(--evDetail);
+    width: 800px;
+    height: fit-content;
+    position: relative;
+    margin-left: 50%;
+    /* margin-top: 150px; */
+    transform: translateX(-50%);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px 15px 30px;
+    top: 0px;
+
+}
+
+.et-des-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-bottom: 2px solid var(--orangeBorder);
+    margin-bottom: 15px;
+}
+
+#et-close{
+    font-size: 20px;
+    color: var(--litghtBlack);
+    cursor: pointer;
+}
+
+
+/* The responsive event piece CSS */
+@media screen and (max-width: 900px) {
+    :root{
+        --grayTitle: #909090;
+        --orangeBorder: #ff9c59;
+        --bluePiece: #0a489b;
+        --evDetail: #fff;
+        --shadow: rgba(100,100,100,0.5);
+    }
+
+    .et-container{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .et-title{
+        width: 94%;
+        font-size: 20px;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-bottom: 50px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .et-block{
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    .et-piece{
+        margin-left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        height: 300px;
+        border-radius: 15px;
+    
+        display: grid;
+        grid-template-columns: 300px;
+        grid-template-rows: 150px 150px;
+    }
+
+    .p1{
+        grid-column: 1/2;
+        grid-row: 1.2;
+    }
+
+    .p2{
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .p3{
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .p4{
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .et-piece-info{
+        height: 130px;
+        font-size: 13px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        margin-top: 0px;
+    }
+    
+    .et-detail{
+        height: 15px;
+    }
+    
+    .et-figure{
+        width: 300px;
+        height: 150px;
+    }
+    .et-more-info{
+        position: relative;
+        font-size: 10px;
+        color: var(--orangeBorder);
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 5px;
+        padding-right: 5px;
+        cursor: pointer;
+        background-color: var(--evDetail);
+        border-radius: 20px;
+        font-weight: 400;
+        text-decoration: none;
+        height: 50px;
+    }
+
+    #et-des-block{
+        width: 500px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #et-des-block{
+        width: 250px;
+    }
+}
+
