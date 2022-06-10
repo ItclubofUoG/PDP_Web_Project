@@ -1,5 +1,5 @@
 <?php
-include_once("../Model/connectDB.php");
+include_once("./connectDB.php");
 //add  function
 if (isset($_POST['btn_add']) && $_POST['btn_add'] = 'add') {
     $title = $_POST['event_title'];

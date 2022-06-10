@@ -1,5 +1,5 @@
 <?php
-include_once("../Model/connectDB.php");
+include_once("./connectDB.php");
 session_start();
 if (isset($_POST['btnCancel'])) {
     echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';

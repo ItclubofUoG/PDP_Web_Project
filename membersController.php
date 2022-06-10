@@ -1,6 +1,6 @@
 
 <?php 
-include_once("../Model/connectDB.php");
+include_once(".connectDB.php");
 include("../Libs/index.php");
 // FIllter with Month to Month, Major and Course 
 if(isset($_POST['btn_fillter'])){

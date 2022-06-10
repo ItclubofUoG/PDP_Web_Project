@@ -1,6 +1,6 @@
 <!-- // Input Data  --> 
 <div>
-    <form  action="../Controller/membersController.php"  method="POST">
+    <form  action="./membersController.php"  method="POST">
         <div class = "form-row">
             <div class="form-group col-md-7">
             <label for="inputName">Month Begin</label>
@@ -28,7 +28,7 @@
     </form>
 </div>
 <div>
-    <form  action="../Controller/membersController.php"  method="POST">
+    <form  action="./membersController.php"  method="POST">
         <div class = "form-row">
             <div class="form-group col-md-7">
             <label for="inputName">Month</label>
