@@ -17,23 +17,26 @@
 </head>
 
 <div class="warpper">
-  
-            <?php
-            session_start();
-            include('./header_login.html');
 
-            if (!isset($_SESSION["us"]) && isset($_GET['page'])) {
-                echo "<script> location.href='index.php'</script>";
-                exit;
-            }
-            if (isset($_GET['page'])) {
-                $page = $_GET['page'];
-                if ($page == 'user') {
-                    include_once("user.php");
-                }
-            } else {
-                include("./Login.html");
-            }
-            include('./footer.html');
-            ?>
+    <?php
+    session_start();
+    include('./header_login.html');
+
+    if (!isset($_SESSION["us"]) && isset($_GET['page'])) {
+        echo "<script> location.href='index.php'</script>";
+        exit;
+    }
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+        if ($page == 'user') {
+            include_once("user.php");
+        }
+        if ($page == 'ChangePass') {
+            include_once("ChangePass.html");
+        }
+    } else {
+        include("./Login.html");
+    }
+    include('./footer.html');
+    ?>
 </div>
