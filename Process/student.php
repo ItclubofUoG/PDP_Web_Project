@@ -1,6 +1,6 @@
 <?php
 
-include_once("../Model/connectDB.php");
+include_once("./connectDB.php");
 
 //Update function
 if (isset($_POST['btn_update']) && $_POST['btn_update'] = 'update') {

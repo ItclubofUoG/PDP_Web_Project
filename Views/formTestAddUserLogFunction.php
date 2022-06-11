@@ -1,6 +1,6 @@
 <?php
 include_once('../Libs/index.php'); 
-include_once('../Model/connectDB.php');
+include_once('./connectDB.php');
 ?>
 
 <form action="../Controller/addUserLogController.php" method="POST">

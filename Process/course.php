@@ -1,5 +1,5 @@
 <?php
-    include_once("../Model/connectDB.php");
+    include_once("./connectDB.php");
   $err ="";
 
   // add and check if the value is exist

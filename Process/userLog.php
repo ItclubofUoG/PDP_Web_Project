@@ -1,5 +1,5 @@
 <?php
-include_once("../Model/connectDB.php");
+include_once("./connectDB.php");
 $eventID = $_POST['EventList'];
 
 if (isset($_POST['btnExportExcel'])) {
@@ -45,7 +45,7 @@ if (isset($_POST['btnExportExcel'])) {
         echo $output;
         exit();
     } else {
-        echo "<script>alert('Empty data'); location.href='../Controller/showUserLog.php' </script>";
+        echo "<script>alert('Empty data'); location.href='./showUserLog.php' </script>";
         // header("location: admin.php?page=userlog");
         exit();
     }

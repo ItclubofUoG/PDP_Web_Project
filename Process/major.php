@@ -1,5 +1,5 @@
 <?php
-include_once("../Model/connectDB.php");
+include_once("./connectDB.php");
 //Add function
 
 if (isset($_POST['btn_add']) && $_POST['btn_add'] = 'add') {
