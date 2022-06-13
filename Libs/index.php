@@ -68,7 +68,7 @@ function Get_result_querry()
 //Show event list for ADD function
 function bind_Event_List($conn)
 {
-    include("../Model/connectDB.php");
+    include("../connectDB.php");
     $sqlString = "SELECT event_id, event_title from event";
     $result = mysqli_query($conn, $sqlString);
     echo "<SELECT name='EventList' class='form-control' required>

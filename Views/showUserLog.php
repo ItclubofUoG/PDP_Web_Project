@@ -1,9 +1,9 @@
-<a href="./formTestAddUserLogFunction.php">Add new</a><br><br>
+<a href="../Views/formTestAddUserLogFunction.php">Add new</a><br><br>
 <?php 
 include_once('../Libs/index.php'); 
-include_once('./connectDB.php');
+include_once('../connectDB.php');
 ?>
-<form action="./userLogController.php" method="POST">
+<form action="../Process/userLog.php" method="POST">
     <label for="">Export Excel file</label>
     <?php bind_Event_List($conn); ?><br><br>
     <input type="submit" name="btnExportExcel" id="btnExportExcel" value="Export excel file">
@@ -28,7 +28,7 @@ include_once('./connectDB.php');
         </thead>
         <tbody>
             <?php
-            include_once("./connectDB.php");
+            include_once("../connectDB.php");
             $No = 1;
             $sql = "SELECT * FROM user_log a, user b where a.student_id = b.student_id";
             if(isset($_GET['func']) && $_GET['func'] == 'filter'){

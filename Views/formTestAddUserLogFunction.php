@@ -1,9 +1,9 @@
 <?php
 include_once('../Libs/index.php'); 
-include_once('./connectDB.php');
+include_once('../connectDB.php');
 ?>
 
-<form action="../Controller/addUserLogController.php" method="POST">
+<form action="../Process/userLog.php" method="POST">
     <label for="">Student ID </label>
     <input type="text" name="txtStudentID" id="txtStudentID" required><br><br>
 
