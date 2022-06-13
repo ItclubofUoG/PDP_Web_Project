@@ -21,8 +21,8 @@
 
     <?php
     session_start();
-
-    if ($page != 'login' && isset($_GET['page'])) {
+    $_GET['page'] = "";
+    if ( $_GET['page'] != 'login' && isset($_GET['page'])&& $_GET['page'] !="") {
         $page = $_GET['page'];
         include_once("./Views/headerUser.html");
     }else {
@@ -45,6 +45,9 @@
         }
         if ($page == 'attendence') {
             include_once("./Views/EventsAttendence.html");
+        }
+        else {
+            include("./Views/Login.html");
         }
     } else {
         include("./Views/Login.html");
