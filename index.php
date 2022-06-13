@@ -14,6 +14,25 @@
     <link rel="stylesheet" href="./Assets/css/User.css">
     <link rel="stylesheet" href="./Assets/css/Admin.css">
     <link rel="stylesheet" href="./Assets/css/ChangePass.css">
+    
+    <!-- Custom scrollbar -->
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 8px gray;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: blue;
+        }
+    </style>
+    
     <script src="./Assets/js/index.js"></script>
 </head>
 
@@ -51,10 +70,10 @@
             include_once("./Views/EventsAttendence.html");
         }
         else {
-            include("./Views/Login.html");
+            include("./Views/Login.php");
         }
     } else {
-        include("./Views/Login.html");
+        include("./Views/Login.php");
     }
     include('./Views/footer.html');
     ?>
