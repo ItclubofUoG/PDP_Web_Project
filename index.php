@@ -26,9 +26,10 @@
         if ( $_GET['page'] != 'login' && $_GET['page'] !="") {
             $page = $_GET['page'];
             include_once("./Views/headerUser.html");
-        }else {
-            include('./Views/headerLogin.html');
         }
+    }
+    else {
+        include('./Views/headerLogin.html');
     }
    
     // if (!isset($_SESSION["us"]) && isset($_GET['page'])) {
