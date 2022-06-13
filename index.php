@@ -22,12 +22,15 @@
     <?php
     session_start();
     $_GET['page'] = "";
-    if ( $_GET['page'] != 'login' && isset($_GET['page'])&& $_GET['page'] !="") {
-        $page = $_GET['page'];
-        include_once("./Views/headerUser.html");
-    }else {
-        include('./Views/headerLogin.html');
+    if(isset($_GET['page'])){
+        if ( $_GET['page'] != 'login' && $_GET['page'] !="") {
+            $page = $_GET['page'];
+            include_once("./Views/headerUser.html");
+        }else {
+            include('./Views/headerLogin.html');
+        }
     }
+   
     // if (!isset($_SESSION["us"]) && isset($_GET['page'])) {
     //     echo "<script> location.href='index.php'</script>";
     //     exit;
