@@ -1,5 +1,6 @@
 .Device-Container {
   padding: 5%;
+  min-height:600px;
 }
 .device-container {
   width: 100%;

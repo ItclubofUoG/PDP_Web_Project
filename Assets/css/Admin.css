@@ -3,10 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-#container {
-    width: 100%;
-    height: 100%;
-}
+
 
 :root{
     --blue: #2B3494;
@@ -29,7 +26,7 @@ html {
 /* Manage Course */
 .course-container {
     padding: 5%;
-    min-height: 480px;
+    min-height: 650px;
 }
 .modal-add-course-container {
     display: none;
@@ -65,8 +62,9 @@ html {
     border: 1px solid var(--border);
     border-radius: 4px;
     background-color: var(--btnAdd);
-    margin-top: 10%;
+    margin-top: 3%;
     color: var(--white);
+    cursor: pointer;
 }
 .btn-add-modal:hover{
     background-color: #F0AD4E;
@@ -76,7 +74,7 @@ html {
 /* Manage Major */
 .major-container {
     padding: 5%;
-    min-height: 480px;
+    min-height: 650px;
 
 }
 .modal-add-admin-container {
@@ -104,7 +102,7 @@ html {
 /* Manage event  */
 .event-container{
     padding: 5%;
-    min-height: 480px;
+    min-height: 650px;
 
 }
 .btn-add {
@@ -137,8 +135,7 @@ html {
 /* List of Members */
 .list-container {
     padding: 5%;
-    min-height: 480px;
-
+    min-height: 650px;
 }
 .filter-label {
     padding-left: 16px;
@@ -189,23 +186,73 @@ html {
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color:var(--btnAdd);
-    margin-top:4%;
     color: #fff;
+    cursor: pointer;
 }
 .btn-export {
     width: 80%;
-    height: 30px;
+    height: 27px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color:#b39353;
-    margin-top:5%;
     color: #fff;
+    cursor: pointer;
 }
+
+.btn-export:hover, .btn-filter:hover {
+    color: #000;
+}
+
+/* User Log */
+.log {
+    display: flex;
+    height: 80%;
+    align-items: center;
+    width: 100%;
+}
+.btn-log {
+    height:100%;
+    width: 120px;
+    background-color: #1177D1;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+.btn-log:hover {
+    background-color: #4f90c9;
+    color: #000;
+    cursor: pointer;
+}
+.btn-delete-log {
+    height:100%;
+    width: 120px;
+    background-color: #FF0000;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.btn-delete-log:hover {
+    background-color:#9a3a3a;
+    color: #000;
+    cursor: pointer;
+}
+.select-event {
+    display: flex;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0 0 10px 0;
+    height: 30px;
+    width: 100%;
+    position: relative;    
+}
+
+
 
 /* Admin */
 .user-container {
     padding: 5%;
-    min-height: 480px;
+    min-height: 650px;
 
 }
 
@@ -236,7 +283,6 @@ html {
     width: 30%; 
     display: flex;
     align-items: center;
-
 } 
 .search-box {
     height:100%;
@@ -388,7 +434,7 @@ html {
     /* border-bottom: 1px solid #ccc; */
 }
 .modal-footer {
-    height: 90px;
+    height: 100px;
     width: 100%;
     background-color:var(--blue);
     margin-top:10px;
@@ -398,10 +444,10 @@ html {
 .btn-footer {
     display: flex;
     justify-content: center;
-    height: 30px;
+    height: fit-content;
     width: 100%;
     align-items: center;
-
+    margin-top: 10px;
 }
 .btn-update {
     width: 80%;
@@ -409,8 +455,9 @@ html {
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color:#5CB85C;
-    margin-top:10px;
+    /* margin-top:10px; */
     color: #fff;
+    cursor: pointer;
 }
 .btn-delete {
     width: 80%;
@@ -419,7 +466,7 @@ html {
     border-radius: 4px;
     background-color:#FF0000;
     color: #fff;
-    margin-top:17px;
+    cursor: pointer;
 }
 .btn-delete:hover {
     background-color:#9a3a3a;
@@ -460,6 +507,9 @@ html {
 
 @media screen and (max-width: 900px) { 
 
+    .list-container {
+        min-height: 600px;
+    }
     .main-table {
         font-size:7px;
     }
@@ -498,10 +548,18 @@ html {
         height: 20px;
         width: 100%;
     }
+
+    .btn-log {
+    font-size:8px;
+    }
+
+    .btn-delete-log {
+       font-size:8px;
+    }
+
 }
 
 @media screen and (max-width: 500px) { 
-
     .main-table {
         font-size:5px;
     }
@@ -516,4 +574,7 @@ html {
         font-size: 7px;
         height: 20px;
     }
+
 }
+
+
