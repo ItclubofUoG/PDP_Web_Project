@@ -21,7 +21,7 @@
 
     <?php
     session_start();
-    $_GET['page'] = "";
+    
     if(isset($_GET['page'])){
         if ( $_GET['page'] != 'login' && $_GET['page'] !="") {
             $page = $_GET['page'];
