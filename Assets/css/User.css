@@ -6,6 +6,7 @@
 
 .attendence-container {
     padding: 5%;
+    min-height: 450px;
 }
 .choose-month-cover{
     height: 100%;

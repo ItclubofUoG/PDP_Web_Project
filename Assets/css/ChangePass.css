@@ -94,7 +94,7 @@
         margin: 30px 48px 15px 8%;
     }
     .changepw-wrapper {
-        margin-top: calc(23% - 2%);
+        min-height: 570px;
     }
     .changepw-title{
         font-size: 30px;
@@ -108,13 +108,20 @@
     .changepw-input{
         height: 30px;
         margin: 7px 0px 7px 0px;
+        width: 100%;
     }
     .major-infor {
         width: 70%;
-        font-size: 8px;
+        font-size: 15px;
     }
     .type-gender-user {
         font-size: 8px;
+    }
+    .changepw-form{ 
+        width: 80%;
+    }
+    .changeinfor-wrapper {
+        min-height:560px;
     }
 }
 
