@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./Assets/css/User.css">
     <link rel="stylesheet" href="./Assets/css/Admin.css">
     <link rel="stylesheet" href="./Assets/css/ChangePass.css">
-
+    <link rel ="stylesheet" href="./Assets/css/ManageDevice.css">
     <!-- Custom scrollbar -->
     <style>
         /* width */
@@ -60,13 +60,16 @@ if (isset($_GET['page'])) {
     if ($page == 'home') {
         include_once("./Views/EventMonth.html");
     }
-    if ($page == 'changepass') {
+    else if ($page == 'changepass') {
         include_once("./Views/ChangePass.html");
     }
-    if ($page == 'changeinfo') {
+    else if ($page == 'changeinfo') {
         include_once("./Views/UpdateUserInfo.html");
     }
-    if ($page == 'attendence') {
+    else if ($page == 'managedevice') {
+        include_once("./Views/ManageDevice.html");
+    }
+    else if ($page == 'attendence') {
         include_once("./Views/EventsAttendence.html");
     } else {
         include("./Views/Login.html");
