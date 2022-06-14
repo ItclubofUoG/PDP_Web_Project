@@ -123,11 +123,6 @@ Validator({
     formGroupSelector: '.modal-input',
     errorSelector: '.alert-error-modal',
     rules: [
-        Validator.isRequired('#logid', 'This field can not empty'),
-        Validator.isRequired('#logname', 'This field can not empty'),
-        Validator.isRequired('#logdate', 'This field can not empty'),
-        Validator.isRequired('#logtimein', 'This field can not empty'),
-        Validator.isRequired('#logtimeout', 'This field can not empty'),
-        Validator.isRequired('#logscore', 'This field can not empty'),
+        Validator.isRequired('#logid', 'This field can not empty')
     ],
 });

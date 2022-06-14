@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>UoG Event Portal</title>
 
     <!-- The link below has needed to the site work    
         
@@ -17,8 +17,11 @@
     <link rel="stylesheet" href="./Assets/css/Index.css"/>
     <link rel="stylesheet" href="./Assets/css/ChangePass.css"/>
     <link rel="stylesheet" href="./Assets/css/ManageDevice.css"/>
+    <link rel="shortcut icon" href="./Assets/img/tablogo.jpg">
+    
 
-    <!-- <style>
+    <!-- Customize scrollbar -->
+    <style>
         /* width */
         ::-webkit-scrollbar {
             width: 8px;
@@ -33,12 +36,12 @@
         ::-webkit-scrollbar-thumb {
             background: blue;
         }
-    </style> -->
+    </style>
 </head>
 
 <?php
 session_start();
-include('./Views/headerAdmin.html');
+include('./Views/headerAdmin.php');
     // if (!isset($_SESSION["admin"])) {
     //     header("location: index.php?page=login");
     // }
@@ -48,7 +51,7 @@ include('./Views/headerAdmin.html');
             include_once("./Views/ListofMembers.html");
         }
         if ($page == 'eventlog') {
-            include_once("./Views/UserLogs.html");
+            include_once("./Views/UserLogs.php");
         }
         if ($page == 'changepass') {
             include_once("./Views/ChangePass.html");

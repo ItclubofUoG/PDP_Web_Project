@@ -68,13 +68,31 @@ function Get_result_querry()
 //Show event list for ADD function
 function bind_Event_List($conn)
 {
-    include("../connectDB.php");
+    include("./connectDB.php");
     $sqlString = "SELECT event_id, event_title from event";
     $result = mysqli_query($conn, $sqlString);
-    echo "<SELECT name='EventList' class='form-control' required>
+    echo "<SELECT name='EventList' class='select-event' required>
         <option value='0'>Choose event</option>";
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         echo "<option value='" . $row['event_id'] . "'>" . $row['event_title'] . "</option>";
+    }
+    echo "</select>";
+}
+
+//Show current major's student list
+function bind_Major_List($conn, $major)
+{
+    include("./connectDB.php");
+    $sqlString = "SELECT * from major";
+    $result = mysqli_query($conn, $sqlString);
+
+    echo "<SELECT name='stuMajor' id='stuMajor' class='major-infor'>";
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        if ($row['major_id'] == $major) {
+            echo "<option value='" . $row['major_id'] . "'selected>" . $row['major_name'] . "</option>";
+        } else {
+            echo "<option value='" . $row['major_id'] . "'>" . $row['major_name'] . "</option>";
+        }
     }
     echo "</select>";
 }

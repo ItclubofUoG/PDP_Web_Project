@@ -11,7 +11,7 @@ Validator({
         Validator.isPassword('#confirmpassword', 6, 20, 'Password must be 6 to 20 characters'),
         Validator.isConfirmed('#confirmpassword', function (){
                     return document.querySelector('.changepw-form #newpassword').value;
-        },'Password not math')
+        },'New password and confirm password do not match')
     ],
     // onSubmit: function(data) {
     //     console.log(data)

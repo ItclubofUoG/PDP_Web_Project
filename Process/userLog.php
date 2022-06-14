@@ -1,17 +1,16 @@
 <?php
 include_once("../connectDB.php");
-$eventID = $_POST['EventList'];
 
-if (isset($_POST['btnExportExcel'])) {
+
+if (isset($_GET['function']) && $_GET['function'] == 'exportExcel') {
     $eventID = $_POST['EventList'];  //get value from filter interface in user_log
-    $Start_date = date("Y-m-d");
     $output = " ";
 
     $sql = "SELECT a.student_id, fullname, checkin_date, time_in, time_out, scores FROM user_log a, user b 
                 WHERE a.event_id = $eventID and a.student_id = b.student_id";
 
     //get event_title for file excel name in line 40
-    $sqlEvent = "SELECT event_title FROM event where event_id = $eventID";
+    $sqlEvent = "SELECT * FROM event where event_id = $eventID";
     $resultEvent = mysqli_query($conn, $sqlEvent);
     $rowEvent = mysqli_fetch_array($resultEvent);
 
@@ -40,7 +39,7 @@ if (isset($_POST['btnExportExcel'])) {
         }
         $output .= '</table>';
         header('Content-Type: application/xls');
-        header('Content-Disposition: attachment; filename=User_Log - ' . $rowEvent['event_title'] . ' - ' . $Start_date . '.xls');
+        header('Content-Disposition: attachment; filename=' . $rowEvent['event_title'] . ' - ' . $rowEvent['date'] . '.xls');
 
         echo $output;
         exit();
@@ -53,15 +52,16 @@ if (isset($_POST['btnExportExcel'])) {
 
 
 //filter function
-if (isset($_POST['btnFilterUserLog'])) {
+if (isset($_GET['function']) && $_GET['function'] == 'filterUserLog') {
+    $eventID = $_POST['EventList'];
     if($eventID!=0){
-        $sqlFilter = "SELECT * FROM user_log a, user b WHERE a.event_id = $eventID and a.student_id = b.student_id";
+        $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE a.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
     }
     else{
-        $sqlFilter = "SELECT * FROM user_log a, user b WHERE a.student_id = b.student_id";
+        $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE a.student_id = b.student_id and a.event_id = c.event_id";
     }   
 
-    $url="../Views/showUserLog.php?func=filter&&sql=$sqlFilter";
+    $url="../admin.php?page=eventlog&&func=filter&&sql=$sqlFilter";
     $url=str_replace(PHP_EOL, '',$url);
 
     header("location: $url");    
@@ -69,20 +69,20 @@ if (isset($_POST['btnFilterUserLog'])) {
 
 
 //delete user log    
-if (isset($_POST['btnDeleteUserLog'])) { //button 'Delete' in User-log interface
-
+if (isset($_GET['function']) && $_GET['function'] == 'deleteUserLog') { //button 'Delete' in User-log interface
+    $eventID = $_POST['EventList'];
     $sql = "DELETE FROM `user_log` WHERE event_id = $eventID";
 
     mysqli_query($conn, $sql);
-    echo "<script>alert('Delete successfully'); location.href='../Views/showUserLog.php' </script>";
+    echo "<script>alert('Delete successfully'); location.href='../admin.php?page=eventlog' </script>";
     exit();
 }
 
 
 //add user log function
-if (isset($_POST['btnSubmitAttendance'])) {
+if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
-    $id = $_POST['txtStudentID'];
+    $id = $_POST['logid'];
     $eventName = $_POST['EventList'];
     $checkinDate = date("Y-m-d");    
 
@@ -102,13 +102,13 @@ if (isset($_POST['btnSubmitAttendance'])) {
         if (mysqli_num_rows($resUserLog) == 0) {
             mysqli_query($conn, "INSERT INTO user_log (student_id,checkin_date,time_in,time_out,event_id,scores) 
                                     VALUES ('$id','$checkinDate','$timeIn','$timeOut','$eventName',$score)");
-            echo "<script>alert('Add successfully'); location.href='../Views/showUserLog.php' </script>";
+            echo "<script>alert('Add successfully'); location.href='../admin.php?page=eventlog' </script>";
         } else {
-            echo "<script>alert('Student have already check-in'); location.href='../Views/showUserLog.php' </script>";
+            echo "<script>alert('Student have already check-in'); location.href='../admin.php?page=eventlog' </script>";
         }
     }
     else{
-        echo "<script>alert('Please complete all information'); location.href='../Views/formTestAddUserLogFunction.php' </script>";
+        echo "<script>alert('Please complete all information'); </script>";
     }
 
 }
