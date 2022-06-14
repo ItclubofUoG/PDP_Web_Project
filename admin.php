@@ -18,7 +18,22 @@
     <link rel="stylesheet" href="./Assets/css/ChangePass.css"/>
     <link rel="stylesheet" href="./Assets/css/ManageDevice.css"/>
 
+    <!-- <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 8px gray;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: blue;
+        }
+    </style> -->
 </head>
 
 <?php

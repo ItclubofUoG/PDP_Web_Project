@@ -37,23 +37,23 @@ if (isset($_POST['btn_login'])) {
 
 
 
-    <div class="login-wrapper">
-        <form class="login-form" action="../Process/login.php" method="post">
-            <div class="login-title">LOGIN</div>
-            <div class="login-item">
-                <input type="email" id="email-login" name="email-login" class="login-input email" placeholder="✉️ Email">
-                <span class="alert-error"></span>
-                <span class="alert"></span>
-            </div>
-            <div class="login-item">
-                <input type="password" id="password" name="password" class="login-input" placeholder="🔑 Password">
-                <span class="alert-error"></span>
-            </div>
-            <div>
-                <input type="submit" value="Login" class="login-btn" id="btn_login" name="btn_login">
-            </div>
-        </form>
-    </div>
+<div class="login-wrapper">
+    <form class="login-form" action="../Process/login.php" method="post">
+        <div class="login-title">LOGIN</div>
+        <div class="login-item">
+            <input type="email" id="email-login" name="email-login" class="login-input email" placeholder="✉️ Email">
+            <span class="alert-error"></span>
+            <span class="alert"></span>
+        </div>
+        <div class="login-item">
+            <input type="password" id="password" name="password" class="login-input" placeholder="🔑 Password">
+            <span class="alert-error"></span>
+        </div>
+        <div>
+            <input type="submit" value="Login" class="login-btn" id="btn_login" name="btn_login">
+        </div>
+    </form>
+</div>
 
 
 <script src="./Assets/js/ValidationLogin.js"></script>

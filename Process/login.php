@@ -4,7 +4,7 @@ session_start();
 if (isset($_POST['btnCancel'])) {
     echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
 }
-if (true) {
+if (isset($_GET['function']) && $_GET['function'] == 'login') {
     $email = $_POST['email-login'];
     $email = mysqli_real_escape_string($conn, $email);
     $pa = $_POST['password'];
