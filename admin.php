@@ -41,7 +41,7 @@
 
 <?php
 session_start();
-include('./Views/headerAdmin.php');
+include('./Views/headerAdmin.html');
     // if (!isset($_SESSION["admin"])) {
     //     header("location: index.php?page=login");
     // }
