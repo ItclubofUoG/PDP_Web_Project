@@ -1,6 +1,6 @@
 
 <?php 
-include_once(".connectDB.php");
+include_once("../connectDB.php");
 include("../Libs/index.php");
 // FIllter with Month to Month, Major and Course 
 if(isset($_POST['btn_fillter'])){
@@ -109,66 +109,15 @@ if(isset($_POST['btn_fillter'])){
     }
     
 ?>
+<!-- Process for EnventAttendence - Search Function -->
 <?php
-    if(isset($_POST['btn_search'])){
-        $month = isset($_POST['date']) ? date("m",strtotime($_POST['date'])) : "1";
-        echo $month;
- ?>
-
-         <div>
-            <table class = "table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Event Name</th>
-                        <th>Time in</th>
-                        <th>Time Out</th>
-                        <th>Scores</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                        $sum = 0;
-                        $res = mysqli_query($conn,"SELECT * FROM user_log WHERE Month(checkin_date) >='$month' && student_id ='GCC200002'");
-                        
-                        while($row = mysqli_fetch_array($res,MYSQLI_ASSOC)){
-
-                              $event_id =$row['event_id'];
-                              $sum += $row['scores'];
-                              $res_name = mysqli_query($conn,"SELECT fullname FROM user WHERE student_id = 'GCC200002' ");
-                              $res_eventname = mysqli_query($conn,"SELECT event_title FROM event WHERE event_id = '$event_id'");
-                              echo $row['checkin_date'];
-                    ?>  
-                        <tr>
-                                <?php
-                                    $rowStudent = mysqli_fetch_array($res_name,MYSQLI_ASSOC)
-                                ?>
-                                    <td><?php echo $rowStudent['fullname'] ?></td>
-                                <?php        
-                                    
-                                ?>
-                                
-                                
-                                    <td><?php echo $row['checkin_date'] ?></td>
-                               
-                                <?php
-                                    $rowEvent = mysqli_fetch_array($res_eventname,MYSQLI_ASSOC)
-                                ?>
-                                    <td><?php echo $rowEvent['event_title'] ?></td>
-                               
-                                    <td><?php echo $row['time_in'] ?></td>
-                                    <td><?php echo $row['time_out'] ?></td>
-                                    <td><?php echo $row['scores'] ?></td>
-            
-                            </tr>
-                        <?php } ?>
-                                <td><?php echo $sum ?></td>
-                        
-                </tbody>
-            </table>
-        </div>
- <?php
+    if(isset($_GET['btn_search']) && $_GET['btn_search'] == "Search" ){
+       
+        $month = $_GET['month'] ;
+       
+        $sqlquery = "SELECT * FROM user_log WHERE Month(checkin_date) >='$month'";
+        $url ="../index.php?page=attendence&&sqlquery=$sqlquery";
+        $url=str_replace(PHP_EOL, '',$url);
+        header("location: $url");  
     }
-?>
+ ?>

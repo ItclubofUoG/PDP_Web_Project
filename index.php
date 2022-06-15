@@ -70,10 +70,10 @@ if (isset($_GET['page'])) {
         include_once("./Views/UpdateUserInfo.php");
     }
     else if ($page == 'attendence') {
-        include_once("./Views/EventsAttendence.html");
+        include_once("./Views/EventsAttendence.php");
     }
     else if ($page == 'attendence') {
-        include_once("./Views/EventsAttendence.html");
+        include_once("./Views/EventsAttendence.php");
     }
     else if ($page == 'login') {
         include_once("./Views/Login.html");
