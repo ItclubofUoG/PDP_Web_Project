@@ -113,7 +113,7 @@ Validator({
     formGroupSelector: '.modal-input',
     errorSelector: '.alert-error-modal',
     rules: [
-        Validator.isRequired('#addmajorname', 'This field can not empty'),
+        Validator.isRequired('#updatemajorname', 'This field can not empty'),
     ],
 }); 
 
