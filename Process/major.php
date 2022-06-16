@@ -11,7 +11,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'addMajor') {
         exit;
     } else {
         mysqli_query($conn, "INSERT INTO `major`(`major_name`) VALUES ('$major')") or die(mysqli_error($conn));
-        echo "<script type='text/javascript'>alert('Add successfully');</script>";
         echo "<script> location.href='../admin.php?page=major'</script>";
         exit;
     }
@@ -30,7 +29,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateMajor') {
         exit;
     } else {
         mysqli_query($conn, "UPDATE `major` SET `major_name`='$major' WHERE major_id='$id'") or die(mysqli_error($conn));
-        echo "<script type='text/javascript'>alert('Update successfully');</script>";
         echo "<script> location.href='../admin.php?page=major'</script>";
         exit;
     }

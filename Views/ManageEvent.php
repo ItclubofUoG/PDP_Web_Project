@@ -50,7 +50,7 @@ include_once('./connectDB.php');
                         <td class="body-row"><?php echo $row["time_start"]; ?></td>
                         <td class="body-row"><?php echo $row["time_end"]; ?></td>
                         <td class="body-row"><?php echo $row["location"]; ?></td>
-                        <td class="body-row"><?php echo $row["description"]; ?></td>
+                        <td class="body-row" style="width: 300px"><?php echo $row["description"]; ?></td>
                         <td class="body-row"><img class="imgevent" src="./Assets/Image/<?php echo $row["image"]; ?>" alt="event image"></td>
                         <td class="body-row"><?php echo $row["score"]; ?></td>
                     </tr>
@@ -179,7 +179,7 @@ include_once('./connectDB.php');
                         <input type="text" id="updatescore" name="updatescore" class="modal-input-box" placeholder="Score" value="<?php echo $row['score'] ?>">
                         <span class="alert-error-modal"></span>
                     </div>
-                    
+
                     <div class="modal-input">
                         <!-- <input type="text" class="modal-input-box" placeholder="Figure">
                         <input type="button" class="btn-choose-file" value="Choose File"> -->

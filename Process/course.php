@@ -34,7 +34,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'addCourse') {
     exit;
   } else {
     mysqli_query($conn, "INSERT INTO `course`(`course_name`) VALUES ('$course')") or die(mysqli_error($conn));
-    echo "<script type='text/javascript'>alert('Add successfully');</script>";
     echo "<script> location.href='../admin.php?page=course'</script>";
     exit;
   }
@@ -98,7 +97,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateCourse') {
     exit;
   } else {
     mysqli_query($conn, "UPDATE `course` SET `course_name`='$course' WHERE course_id='$id'") or die(mysqli_error($conn));
-    echo "<script type='text/javascript'>alert('Update successfully');</script>";
     echo "<script> location.href='../admin.php?page=course'</script>";
     exit;
   }

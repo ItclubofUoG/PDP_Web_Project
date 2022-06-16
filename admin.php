@@ -72,7 +72,7 @@ include('./Views/headerAdmin.html');
             include_once("./Views/ManageEvent.php");
         }
         if ($page == 'device') {
-            include_once("./Views/ManageDevice.html");
+            include_once("./Views/ManageDevice.php");
         }
     } else {
         include("./Views/ListofMembers.html");
