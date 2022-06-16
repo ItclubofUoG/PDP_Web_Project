@@ -69,7 +69,7 @@ include('./Views/headerAdmin.html');
             include_once("./Views/ManageCourse.php");
         }
         if ($page == 'event') {
-            include_once("./Views/ManageEvent.html");
+            include_once("./Views/ManageEvent.php");
         }
         if ($page == 'device') {
             include_once("./Views/ManageDevice.html");

@@ -51,7 +51,7 @@ include_once('./connectDB.php');
 
                     <!-- The event piece has picture left -->
                     <div class="et-piece">
-                        <img src="./Assets/img/<?php echo $row['image'] ?>" alt="450x300" class="et-figure p1">
+                        <img src="./Assets/Image/<?php echo $row['image'] ?>" alt="450x300" class="et-figure p1">
                         <div class="et-piece-info p2">
                             <div class="et-detail">Title: <b><?php echo $row['event_title'] ?></b></div>
                             <div class="et-detail">Time: <b><?php echo $row['time_start'] ?></b></div>
@@ -67,7 +67,7 @@ include_once('./connectDB.php');
 
                     <!-- The event piece has picture right -->
                     <div class="et-piece">
-                        <img src="./Assets/img/<?php echo $row['image'] ?>" alt="450x300" class="et-figure p3">
+                        <img src="./Assets/Image/<?php echo $row['image'] ?>" alt="450x300" class="et-figure p3">
                         <div class="et-piece-info p4">
                             <div class="et-detail">Title: <b><?php echo $row['event_title'] ?></b></div>
                             <div class="et-detail">Time: <b><?php echo $row['time_start'] ?></b></div>
