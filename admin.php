@@ -57,7 +57,7 @@ include('./Views/headerAdmin.html');
             include_once("./Views/ChangePass.html");
         }
         if ($page == 'student') {
-            include_once("./Views/ManageStudent.html");
+            include_once("./Views/ManageStudent.php");
         }
         if ($page == 'admin') {
             include_once("./Views/ManageAdmin.html");
