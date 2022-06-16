@@ -38,7 +38,7 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                         if ($row['add_card'] == 1) {
                             if (true) {
                                 $Uname = $row['fullname'];
-                                $event_id = GetCurrentEvent();
+                                $event_id = Get_Current_Event();
                                 $sql = "SELECT * FROM user_log WHERE student_id=? AND event_id='$event_id' AND checkin_date='$d' AND card_out=0";
                                 $result = mysqli_stmt_init($conn);
                                 if (!mysqli_stmt_prepare($result, $sql)) {
@@ -57,7 +57,7 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                                         $timeStart = $rowevent['time_start'];
                                         echo $timeStart;
                                         if ($timeStart >= $t) {
-                                            $event_id = GetCurrentEvent();
+                                            $event_id = Get_Current_Event();
                                             $timeout = "00:00:00";
                                             $stid = $row['student_id'];
                                             $sql = "INSERT INTO user_log (student_id,checkin_date,time_in, time_out,event_id,card_out,scores) VALUES ('$stid', '$d', '$t', '$timeout', '$event_id', 0, 0)";
