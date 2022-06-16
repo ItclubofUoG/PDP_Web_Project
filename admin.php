@@ -63,10 +63,10 @@ include('./Views/headerAdmin.html');
             include_once("./Views/ManageAdmin.html");
         }
         if ($page == 'major') {
-            include_once("./Views/ManageMajor.html");
+            include_once("./Views/ManageMajor.php");
         }
         if ($page == 'course') {
-            include_once("./Views/ManageCourse.html");
+            include_once("./Views/ManageCourse.php");
         }
         if ($page == 'event') {
             include_once("./Views/ManageEvent.html");
