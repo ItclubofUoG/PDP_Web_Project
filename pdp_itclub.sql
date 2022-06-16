@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2022 at 02:05 PM
+-- Generation Time: Jun 16, 2022 at 05:10 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `admin_name`, `admin_email`, `admin_pwd`) VALUES
-(1, 'itclub', 'itclubofgwu@gmail.com', 'daebc91ab34ce81c69967c0617e90823');
+(1, 'itclub', 'admin@gmail.com', '25d55ad283aa400af464c76d713c07ad');
 
 -- --------------------------------------------------------
 
@@ -57,12 +57,10 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_name`) VALUES
-(0, 'None'),
-(1, 'K7'),
-(2, 'K8'),
-(3, 'K9'),
-(4, 'K10'),
-(6, 'None');
+(3, 'K7'),
+(6, 'K8'),
+(9, 'K9'),
+(10, 'K10');
 
 -- --------------------------------------------------------
 
@@ -75,17 +73,16 @@ CREATE TABLE `device` (
   `device_name` varchar(200) NOT NULL,
   `device_uid` varchar(200) NOT NULL,
   `device_date` date NOT NULL,
-  `device_mode` int(11) NOT NULL DEFAULT 1
+  `device_dep` varchar(20) DEFAULT NULL,
+  `device_mode` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `device`
 --
 
-INSERT INTO `device` (`id`, `device_name`, `device_uid`, `device_date`, `device_mode`) VALUES
-(1, 'Floor 1', '34234234234fsd', '0000-00-00', 1),
-(2, 'Floor 2', '[value-3]', '0000-00-00', 1),
-(3, 'Floor 3', '[value-3]', '0000-00-00', 1);
+INSERT INTO `device` (`id`, `device_name`, `device_uid`, `device_date`, `device_dep`, `device_mode`) VALUES
+(2, 'Floor 2', '86f1220c98c758a6', '0000-00-00', 'IT Department', 0);
 
 -- --------------------------------------------------------
 
@@ -110,12 +107,8 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`event_id`, `event_title`, `description`, `date`, `location`, `score`, `time_start`, `time_end`, `image`) VALUES
-(1, 'Workshop IT', 'How to...', '2022-06-05', 'Hall', 2, '05:00:00', '07:00:00', 'Workshopit.jpg'),
-(2, 'Workshop Design', 'How to...', '2022-06-05', 'Hall', 3, '05:00:00', '07:00:00', 'workshopit.jpg'),
-(3, 'Workshop Books ', 'How to...', '2022-06-05', 'Hall', 4, '05:00:00', '07:00:00', 'workshopit.jpg'),
-(4, 'Workshop Bussiness', 'How to...', '2022-05-05', 'Hall', 2, '05:00:00', '07:00:00', 'workshopit.jpg'),
-(5, 'Workshop Vovinam', 'How to...', '2022-12-05', 'Hall', 1, '05:00:00', '07:00:00', 'workshopit.jpg'),
-(6, 'Workshop Music', 'How to...', '2022-06-04', 'Hall', 2, '05:00:00', '07:00:00', 'workshopit.jpg');
+(2, 'Workshop Design', 'This MD5 hash generator is useful for encoding passwords, credit cards numbers and other sensitive date into MySQL, Postgress or other databases. PHP programmers, ASP programmers and anyone developing on MySQL, SQL, Postgress or similar should find this online tool an especially handy resource.', '2022-06-05', 'Hall', 3, '05:00:00', '07:00:00', 'event2.jpg'),
+(3, 'Workshop Books ', 'MD5 hashes are also used to ensure the data integrity of files. Because the MD5 hash algorithm always produces the same output for the same given input, users can compare a hash of the source file with a newly created hash of the destination file to check that it is intact and unmodified.', '2022-06-05', 'Hall', 4, '05:00:00', '07:00:00', 'event3.jpg');
 
 -- --------------------------------------------------------
 
@@ -133,11 +126,8 @@ CREATE TABLE `major` (
 --
 
 INSERT INTO `major` (`major_id`, `major_name`) VALUES
-(0, 'None'),
-(1, 'Information Technology'),
-(2, 'Graphic Design'),
-(3, 'Business'),
-(6, 'None');
+(3, 'Marketing'),
+(13, 'Information Technology');
 
 -- --------------------------------------------------------
 
@@ -146,30 +136,25 @@ INSERT INTO `major` (`major_id`, `major_name`) VALUES
 --
 
 CREATE TABLE `user` (
-  `student_id` varchar(100) NOT NULL,
-  `fullname` varchar(100) DEFAULT NULL,
-  `phone` varchar(100) DEFAULT NULL,
-  `gender` varchar(10) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `student_id` varchar(20) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `dob` date NOT NULL,
   `card_uid` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `major_id` int(11) NOT NULL,
-  `course_id` int(11) NOT NULL,
-  `card_select` int(11) NOT NULL DEFAULT 0,
-  `add_card` int(11) NOT NULL DEFAULT 1
+  `course_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`student_id`, `fullname`, `phone`, `gender`, `email`, `dob`, `card_uid`, `password`, `major_id`, `course_id`, `card_select`, `add_card`) VALUES
-('2022-06-0711:17:13am0.4', NULL, NULL, NULL, NULL, '2022-06-07', '57859686', '25d55ad283aa400af464c76d713c07ad', 0, 0, 1, 1),
-('GCC200001', 'Nguyen Van A', '0704775482', 'male', 'vana@gmail.com', '2002-10-13', '000', '25d55ad283aa400af464c76d713c07ad', 1, 2, 0, 1),
-('GCC200002', 'Nguyen Van B', '0704775482', 'male', 'vanb@gmail.com', '2002-10-14', '000', '25d55ad283aa400af464c76d713c07ad', 1, 3, 0, 1),
-('GCC200003', 'Nguyen Van C', '0704775482', 'male', 'vanc@gmail.com', '2002-10-22', '000', '25d55ad283aa400af464c76d713c07ad', 3, 2, 0, 1),
-('GCC200004', 'Nguyen Van D', '0704775482', 'male', 'vand@gmail.com', '2002-10-30', '000', '25d55ad283aa400af464c76d713c07ad', 2, 2, 0, 1);
+INSERT INTO `user` (`student_id`, `fullname`, `phone`, `gender`, `email`, `dob`, `card_uid`, `password`, `major_id`, `course_id`) VALUES
+('GCCTest', 'Test function', '2131213213213', 'male', 'test@gmail.com', '2022-06-09', 'aaaaaaaaaaaaaaaaaaaa', '25d55ad283aa400af464c76d713c07ad', 3, 3),
+('TestStudent', 'Luu Hoai Phong', '0398371050', 'male', 'luuhoaiphong@gmail.com', '2012-06-01', 'fhgadjsfhgkjfhgjjvbxlbvh', '25d55ad283aa400af464c76d713c07ad', 3, 6);
 
 -- --------------------------------------------------------
 
@@ -184,20 +169,17 @@ CREATE TABLE `user_log` (
   `time_in` time NOT NULL DEFAULT current_timestamp(),
   `time_out` time NOT NULL DEFAULT current_timestamp(),
   `event_id` int(11) NOT NULL,
-  `scores` int(11) NOT NULL DEFAULT 0,
-  `card_out` int(11) NOT NULL DEFAULT 0
+  `scores` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_log`
 --
 
-INSERT INTO `user_log` (`id`, `student_id`, `checkin_date`, `time_in`, `time_out`, `event_id`, `scores`, `card_out`) VALUES
-(1, 'GCC200002', '0000-00-00', '00:00:00', '00:00:00', 6, 0, 0),
-(2, 'GCC200003', '0000-00-00', '00:00:00', '00:00:00', 4, 0, 0),
-(3, 'GCC200001', '0000-00-00', '00:00:00', '00:00:00', 4, 0, 0),
-(4, 'GCC200004', '0000-00-00', '00:00:00', '00:00:00', 1, 0, 0),
-(6, 'GCC200002', '0000-00-00', '00:00:00', '00:00:00', 2, 0, 0);
+INSERT INTO `user_log` (`id`, `student_id`, `checkin_date`, `time_in`, `time_out`, `event_id`, `scores`) VALUES
+(42, 'GCCTest', '2022-06-14', '05:00:00', '07:00:00', 2, 3),
+(55, 'TestStudent', '2022-06-16', '05:00:00', '07:00:00', 2, 3),
+(56, 'TestStudent', '2022-06-16', '05:00:00', '07:00:00', 3, 4);
 
 --
 -- Indexes for dumped tables
@@ -263,31 +245,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `device`
 --
 ALTER TABLE `device`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `major`
 --
 ALTER TABLE `major`
-  MODIFY `major_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `major_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- Constraints for dumped tables
