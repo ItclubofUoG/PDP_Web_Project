@@ -61,7 +61,7 @@ if (isset($_GET['page'])) {
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
     if ($page == 'home') {
-        include_once("./Views/EventMonth.html");
+        include_once("./Views/EventMonth.php");
     }
     else if ($page == 'changepass') {
         include_once("./Views/ChangePass.html");
@@ -72,9 +72,9 @@ if (isset($_GET['page'])) {
     else if ($page == 'attendence') {
         include_once("./Views/EventsAttendence.php");
     }
-    else if ($page == 'attendence') {
-        include_once("./Views/EventsAttendence.php");
-    }
+    // else if ($page == 'attendence') {
+    //     include_once("./Views/EventsAttendence.php");
+    // }
     else if ($page == 'login') {
         include_once("./Views/Login.html");
     }
