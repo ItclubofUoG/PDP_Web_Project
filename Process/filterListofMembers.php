@@ -22,4 +22,5 @@ if (isset($_GET['function']) && $_GET['function'] == 'modalFilterStudent' && iss
 
     header("location: $url");
 }
+
 ?>
