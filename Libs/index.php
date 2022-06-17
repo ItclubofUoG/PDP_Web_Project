@@ -105,7 +105,7 @@ function Major_List($conn)
     $sqlString = "SELECT * from major";
     $result = mysqli_query($conn, $sqlString);
 
-    echo "<SELECT name='major' id='major' class='select-mg-cr'>
+    echo "<SELECT name='majorFilter' id='majorFilter' class='select-mg-cr'>
     <option value='0'>Choose major</option>";
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         echo "<option value='" . $row['major_id'] . "'>" . $row['major_name'] . "</option>";
@@ -120,7 +120,7 @@ function Course_List($conn)
     $sqlString = "SELECT * from course";
     $result = mysqli_query($conn, $sqlString);
 
-    echo "<SELECT name='course' id='course' class='select-mg-cr'>
+    echo "<SELECT name='courseFilter' id='courseFilter' class='select-mg-cr'>
     <option value='0'>Choose course</option>";
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         echo "<option value='" . $row['course_id'] . "'>" . $row['course_name'] . "</option>";

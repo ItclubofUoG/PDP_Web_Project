@@ -21,7 +21,8 @@
                     <th class="head-row">Gender</th>
                     <th class="head-row">Date of Birth</th>
                     <th class="head-row">Phone</th>
-                    <th class="head-row">Card Number</th>
+                    <th class="head-row">Major</th>
+                    <th class="head-row">Course</th>
                     <th class="head-row">Score</th>
                 </tr>
                 <?php
@@ -29,9 +30,11 @@
                 include('./Libs/index.php');
                 if (isset($_POST['btn-search'])) {
                     $search = $_POST['search'];
-                    $sql = "SELECT * FROM user WHERE student_id LIKE '%$search%' OR fullname LIKE '%$search%'";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
+                } elseif (isset($_GET['func']) && $_GET['func'] == 'filter') {
+                    $sql = $_GET['sql'];
                 } else {
-                    $sql = "SELECT * FROM user";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id=b.major_id and a.course_id=c.course_id";
                 }
                 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -46,7 +49,8 @@
                         <td class="body-row"><?php echo $row['gender'] ?></td>
                         <td class="body-row"><?php echo $row['dob'] ?></td>
                         <td class="body-row"><?php echo $row['phone'] ?></td>
-                        <td class="body-row"><?php echo $row['card_uid'] ?></td>
+                        <td class="body-row"><?php echo $row['major_name'] ?></td>
+                        <td class="body-row"><?php echo $row['course_name'] ?></td>
                         <td class="body-row"><?php echo $rowscores['scores'] ?></td>
                     </tr>
                 <?php } ?>
@@ -61,15 +65,15 @@
                     <h2 class="modal-label"> Filter Student</h2>
                     <a class="modal-close js-modal-close-filter">X</a>
                 </div>
-                <form action="" class="modal-body" method="POST">
+                <form action="./Process/filterListofMembers.php?function=modalFilterStudent" class="modal-body" method="POST">
                     <span class="filter-label"> Filter By Month:</span>
                     <div class="filter-bymonth">
                         <div class="modal-input-month">
-                            <input type="date" class="modal-input-box" placeholder="Start Month">
+                            <input type="date" class="modal-input-box" name="startMonth" id="startMonth" placeholder="Start Month" title="Start month">
                         </div>
                         <p class="filter-label">to</p>
                         <div class="modal-input-month">
-                            <input type="date" class="modal-input-box" placeholder="End Month">
+                            <input type="date" class="modal-input-box" name="endMonth" id="endMonth" placeholder="End Month" title="End month">
                         </div>
                     </div>
                     <span class="filter-label" for="course">Filter By Course and Major: </span>
@@ -83,7 +87,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="btn-footer">
-                            <input class="btn-filter" type="submit" value="Filter">
+                            <input class="btn-filter" type="submit" value="Filter" name="btn_filter" id="btn_filter">
                         </div>
                         <div class="btn-footer">
                             <input class="btn-export" type="submit" value="Export">

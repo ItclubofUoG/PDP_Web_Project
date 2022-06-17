@@ -24,6 +24,8 @@
                     <th class="head-row">Gender</th>
                     <th class="head-row">Date of Birth</th>
                     <th class="head-row">Phone</th>
+                    <th class="head-row">Major</th>
+                    <th class="head-row">Course</th>
                     <th class="head-row">Card Number</th>
                     <th class="head-row">Score</th>
                 </tr>
@@ -31,9 +33,9 @@
                 include("./connectDB.php");
                 if (isset($_POST['btn-search'])) {
                     $search = $_POST['search'];
-                    $sql = "SELECT * FROM user WHERE student_id LIKE '%$search%' OR fullname LIKE '%$search%'";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
                 } else {
-                    $sql = "SELECT * FROM user";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id=b.major_id and a.course_id=c.course_id";
                 }
                 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -50,6 +52,8 @@
                         <td class="body-row"><?php echo $row['gender'] ?></td>
                         <td class="body-row"><?php echo $row['dob'] ?></td>
                         <td class="body-row"><?php echo $row['phone'] ?></td>
+                        <td class="body-row"><?php echo $row['major_name'] ?></td>
+                        <td class="body-row"><?php echo $row['course_name'] ?></td>
                         <td class="body-row"><?php echo $row['card_uid'] ?></td>
                         <td class="body-row"><?php echo $rowscores['scores'] ?></td>
                     </tr>
