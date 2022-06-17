@@ -1,7 +1,7 @@
 <?php
 function Get_Current_Event()
 {
-    include("../Model/connectDB.php");
+    include("./connectDB.php");
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     $currentDay = date("Y-m-d");
     //minus time
@@ -21,7 +21,7 @@ function Get_Current_Event()
 }
 function Get_result_querry()
 {
-    include("../Model/connectDB.php");
+    include("./connectDB.php");
     // Check Input isset or not 
     $major = isset($_POST['major']) ? $_POST['major'] : "";
     $course = isset($_POST['course']) ? $_POST['course'] : "";
@@ -93,6 +93,37 @@ function bind_Major_List($conn, $major)
         } else {
             echo "<option value='" . $row['major_id'] . "'>" . $row['major_name'] . "</option>";
         }
+    }
+    echo "</select>";
+}
+
+
+//Show major list for filter - Home admin page
+function Major_List($conn)
+{
+    include("./connectDB.php");
+    $sqlString = "SELECT * from major";
+    $result = mysqli_query($conn, $sqlString);
+
+    echo "<SELECT name='major' id='major' class='select-mg-cr'>
+    <option value='0'>Choose major</option>";
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        echo "<option value='" . $row['major_id'] . "'>" . $row['major_name'] . "</option>";
+    }
+    echo "</select>";
+}
+
+//Show course list for filter - Home admin page
+function Course_List($conn)
+{
+    include("./connectDB.php");
+    $sqlString = "SELECT * from course";
+    $result = mysqli_query($conn, $sqlString);
+
+    echo "<SELECT name='course' id='course' class='select-mg-cr'>
+    <option value='0'>Choose course</option>";
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        echo "<option value='" . $row['course_id'] . "'>" . $row['course_name'] . "</option>";
     }
     echo "</select>";
 }

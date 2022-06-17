@@ -48,7 +48,7 @@ include('./Views/headerAdmin.html');
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
         if ($page == 'home') {
-            include_once("./Views/ListofMembers.html");
+            include_once("./Views/ListofMembers.php");
         }
         if ($page == 'eventlog') {
             include_once("./Views/UserLogs.php");
@@ -75,7 +75,7 @@ include('./Views/headerAdmin.html');
             include_once("./Views/ManageDevice.php");
         }
     } else {
-        include("./Views/ListofMembers.html");
+        include("./Views/ListofMembers.php");
     }
 include('./Views/Pagination.html');
 include('./Views/footer.html');

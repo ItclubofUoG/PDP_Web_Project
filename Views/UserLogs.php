@@ -22,8 +22,8 @@ include_once('./connectDB.php');
             <div class="main-table">
                 <table class="table-admin">
                     <tr class="table-head">
-                        <th class="head-row">ID</th>
-                        <th class="head-row">Name</th>
+                        <th class="head-row">Student ID</th>
+                        <th class="head-row">Student Name</th>
                         <th class="head-row">Event Name</th>
                         <th class="head-row">Date</th>
                         <th class="head-row">Time In</th>

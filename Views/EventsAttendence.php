@@ -57,7 +57,7 @@ include_once("./connectDB.php");
                     while($row = mysqli_fetch_array($res,MYSQLI_ASSOC)){
                             $event_id =$row['event_id'];
                             $sum += $row['scores'];
-                            $res_name = mysqli_query($conn,"SELECT fullname FROM user WHERE student_id = 'GCC123456' ");
+                            $res_name = mysqli_query($conn,"SELECT fullname FROM user WHERE student_id = '$id' ");
                             $res_eventname = mysqli_query($conn,"SELECT event_title FROM event WHERE event_id = '$event_id'");
                             
                         
