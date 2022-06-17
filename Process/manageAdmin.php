@@ -20,7 +20,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'addAdmin') {
 }
 
 
-
+//update admin function
 if (isset($_GET['function']) && $_GET['function'] == 'updateAdmin') {
     $id = $_POST['adIDupdate'];
     $name = $_POST['adnameupdate'];
@@ -35,4 +35,14 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateAdmin') {
         echo "<script> location.href='../admin.php?page=admin'</script>";
         exit;
     }
+}
+
+
+//Delete admin function
+if (isset($_GET['function']) && $_GET['function'] == 'deleteAdmin') {
+    $id=$_GET['id'];
+    mysqli_query($conn,"DELETE from admin where id='$id'");
+    echo "<script>alert('Delete admin successfully')</script>";
+    echo "<script> location.href='../admin.php?page=admin'</script>";
+
 }
