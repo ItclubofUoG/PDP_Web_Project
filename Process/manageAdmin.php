@@ -40,9 +40,16 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateAdmin') {
 
 //Delete admin function
 if (isset($_GET['function']) && $_GET['function'] == 'deleteAdmin') {
-    $id=$_GET['id'];
-    mysqli_query($conn,"DELETE from admin where id='$id'");
-    echo "<script>alert('Delete admin successfully')</script>";
-    echo "<script> location.href='../admin.php?page=admin'</script>";
+    $id = $_GET['id'];
 
+    $res = mysqli_query($conn, "SELECT * FROM admin where id!='$id'");
+    if (mysqli_num_rows($res) != 0) {
+        mysqli_query($conn, "DELETE from admin where id='$id'");
+        echo "<script>alert('Delete admin successfully')</script>";
+        echo "<script> location.href='../admin.php?page=admin'</script>";
+    }
+    else{
+        echo "<script>alert('There needs to be at least 1 admin account for the system, so you cannot delete all.')</script>";
+        echo "<script> location.href='../admin.php?page=admin'</script>";
+    }
 }
