@@ -19,11 +19,9 @@ if (isset($_GET['function']) && $_GET['function'] == 'addMajor') {
 if (isset($_GET['function']) && $_GET['function'] == 'updateMajor') {
     $id = $_POST['updatemajorid'];
     $major = $_POST['updatemajorname'];
-    $res = mysqli_query($conn, "SELECT * FROM major WHERE major_id='$id'") or die(mysqli_error($conn));
-    while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
-        $major1 = $row['major_name'];
-    }
-    if ($major == $major1) {
+
+    $res = mysqli_query($conn, "SELECT * FROM major WHERE major_name='$major'") or die(mysqli_error($conn));
+    if (mysqli_num_rows($res) >= 1) {
         echo "<script type='text/javascript'>alert('Major name already exists');</script>";
         echo "<script> location.href='../admin.php?page=major'</script>";
         exit;

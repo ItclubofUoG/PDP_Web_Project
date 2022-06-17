@@ -87,11 +87,8 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateCourse') {
   $id = $_POST['updatecourseid'];
   $course = $_POST['updatecoursename'];
 
-  $res = mysqli_query($conn, "SELECT * FROM course") or die(mysqli_error($conn));
-  while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
-    $course1 = $row['course_name'];
-  }
-  if ($course == $course1) {
+  $res = mysqli_query($conn, "SELECT * FROM course WHERE course_name='$course'") or die(mysqli_error($conn));
+    if (mysqli_num_rows($res) >= 1) {
     echo "<script type='text/javascript'>alert('Course name already exists');</script>";
     echo "<script> location.href='../admin.php?page=course'</script>";
     exit;

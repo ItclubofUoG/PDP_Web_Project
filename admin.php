@@ -60,7 +60,7 @@ include('./Views/headerAdmin.html');
             include_once("./Views/ManageStudent.php");
         }
         if ($page == 'admin') {
-            include_once("./Views/ManageAdmin.html");
+            include_once("./Views/ManageAdmin.php");
         }
         if ($page == 'major') {
             include_once("./Views/ManageMajor.php");
