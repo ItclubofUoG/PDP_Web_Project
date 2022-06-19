@@ -16,8 +16,13 @@ function Get_Current_Event()
     $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
     $currentTimeStart = $time->format('Y-m-d H:i');
     $result = mysqli_query($conn, "SELECT * FROM event WHERE `date` ='$currentDay' AND time_start < '$currentTimeStart' AND time_end > '$currentTime'") or die(mysqli_error($conn));
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    return $row['event_id'];
+
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return $row['event_id'];
+    } else {
+        return 0;
+    }
 }
 function Get_result_querry()
 {
