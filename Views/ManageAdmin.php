@@ -42,7 +42,7 @@
                 const modalclose = document.querySelector('.js-modal-close-update-admin')
                 const ModalContent = document.querySelector('.js-modal-content-update-admin')
                 const modalad = document.querySelector('.js-modal-update-admin')
-                modal.classList.add('open')
+                modalad.classList.add('open')
             }
         </script>
         <!-- Start modal add admin -->
