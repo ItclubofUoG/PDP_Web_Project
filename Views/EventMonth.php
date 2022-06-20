@@ -69,6 +69,7 @@ include_once('./connectDB.php');
                             <div class="et-detail">Title: <b><?php echo $row['event_title'] ?></b></div>
                             <div class="et-detail">Time: <b><?php echo $row['time_start'] ?></b></div>
                             <div class="et-detail">Location: <b><?php echo $row['location'] ?></b></div>
+                            <div class="et-detail">Score: <b><?php echo $row['score'] ?></b></div>
                             <div class="et-detail">Description: <b><?php echo $row['description'] ?></b></div>
 
                             <!-- The Button GET $id on the link href to show description in the popup description of each event -->
@@ -85,6 +86,7 @@ include_once('./connectDB.php');
                             <div class="et-detail">Title: <b><?php echo $row['event_title'] ?></b></div>
                             <div class="et-detail">Time: <b><?php echo $row['time_start'] ?></b></div>
                             <div class="et-detail">Location: <b><?php echo $row['location'] ?></b></div>
+                            <div class="et-detail">Score: <b><?php echo $row['score'] ?></b></div>
                             <div class="et-detail">Description: <b><?php echo $row['description'] ?></b></div>
 
                             <!-- The Button GET $id on the link href to show description in the popup description of each event -->
