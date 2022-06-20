@@ -59,8 +59,8 @@ if ($_SESSION["id"] != null) {
     </div>
 
 
-    <script src="./assets/js/Validation.js"></script>
+    <script src="./Assets/js/Validation.js"></script>
 
-    <script src="./assets/js/ValidationInfo.js"></script>
+    <script src="./Assets/js/ValidationInfo.js"></script>
 
 </body>
