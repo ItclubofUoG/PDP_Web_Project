@@ -32,9 +32,22 @@ include_once('./connectDB.php');
                     </div>
                 </div>
             <?php } ?>
-
+            <script>
+                function open_modal() {
+                    $("#et-des-container").css("opacity", "1");
+                    $("#et-des-container").css("pointer-events", "all");
+                    $("#et-des-container").css("transition", "0.3s");
+                    $("#et-des-block").css("top", "150px");
+                    $("#et-des-block").css("transition", "all 0.3s ease-in-out");
+                }
+            </script>
             <?php
-            $sql = "SELECT * FROM event";
+            if (isset($_GET['id'])) {
+                echo '<script type="text/javascript">',
+                'open_modal();',
+                '</script>';
+            }
+            $sql = "SELECT * FROM `event` WHERE event_id>0";
             $result = mysqli_query($conn, $sql);
             $no = 1;
             while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
