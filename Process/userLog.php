@@ -110,6 +110,14 @@ if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
     else{
         echo "<script>alert('Please complete all information'); </script>";
     }
+}
+// delete s.o log 
+if (isset($_GET['function']) && $_GET['function'] == 'deleteUser') { 
+    $id = $_GET['id'];
+    $sql = "DELETE FROM `user_log` WHERE id = $id";
 
+    mysqli_query($conn, $sql);
+    echo "<script>location.href='../admin.php?page=eventlog'</script>";
+    exit();
 }
 
