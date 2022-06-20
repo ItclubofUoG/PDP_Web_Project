@@ -91,7 +91,7 @@ function bind_Major_List($conn, $major)
     $sqlString = "SELECT * from major";
     $result = mysqli_query($conn, $sqlString);
 
-    echo "<SELECT name='stuMajor' id='stuMajor' class='major-infor'>";
+    echo "<SELECT  name='stuMajor' id='stuMajor' class='major-infor'>";
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         if ($row['major_id'] == $major) {
             echo "<option value='" . $row['major_id'] . "'selected>" . $row['major_name'] . "</option>";
