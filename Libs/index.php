@@ -24,6 +24,15 @@ function Get_Current_Event()
         return 0;
     }
 }
+//get list year to search
+function Get_List_Year($year)
+{
+    $arr = array();
+    for ($i = 0; $i < 4; $i++) {
+        array_push($arr, $year - $i);
+    }
+    return $arr;
+}
 function Get_result_querry()
 {
     include("./connectDB.php");
