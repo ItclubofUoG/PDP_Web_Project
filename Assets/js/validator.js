@@ -123,21 +123,20 @@ CheckSizeImage=function(selector,form,error,formGroupSelector,message,errorclass
     fileInput=document.querySelector(selector);
     let realWidth = fileInput.clientWidth;
     let realHeight = fileInput.clientHeight;
-    if (realHeight< 10 || realWidth <10) {
-        console.log(message)
-    }
-             
-    var filePath = fileInput.value;
-         
-    // Allowing file type
-    var allowedExtensions =/(\.jpg|\.jpeg|\.png|\.gif)$/i;
-             
-    if (!allowedExtensions.exec(filePath)) {
+    if ((realHeight= 300) && (realWidth=450)) {
         AddError(fileInput,form,formGroupSelector,error,message,errorclass);
-    }
-    else
-    {    
-        RemoveError(fileInput,form,formGroupSelector,error,message,errorclass)
+    }else{
+        var filePath = fileInput.value;
+        // Allowing file type
+        var allowedExtensions =/(\.jpg|\.jpeg|\.png|\.gif)$/i;
+                 
+        if (!allowedExtensions.exec(filePath)) {
+            AddError(fileInput,form,formGroupSelector,error,message,errorclass);
+        }
+        else
+        {    
+            RemoveError(fileInput,form,formGroupSelector,error,message,errorclass)
+        }
     }
 }
 function getParent(element,selector){
