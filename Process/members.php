@@ -115,7 +115,7 @@ if(isset($_POST['btn_fillter'])){
        
         $month = $_GET['month'] ;
        
-        $sqlquery = "SELECT * FROM user_log WHERE Month(checkin_date) >='$month'";
+        $sqlquery = "SELECT * FROM user_log WHERE Month(checkin_date) ='$month'";
         $url ="../index.php?page=attendence&&sqlquery=$sqlquery";
         $url=str_replace(PHP_EOL, '',$url);
         header("location: $url");  
