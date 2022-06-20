@@ -37,7 +37,7 @@ include_once('./connectDB.php');
 
                 <?php
 
-                $sql = "SELECT * FROM event order by event_id desc";
+                $sql = "SELECT * FROM event WHERE event_id>0 order by event_id desc";
                 if (isset($_GET['func']) && $_GET['func'] == 'filter') {
                     $sql = $_GET['sql'];
                 }
