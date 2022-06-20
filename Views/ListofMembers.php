@@ -30,11 +30,11 @@
                 include('./Libs/index.php');
                 if (isset($_POST['btn-search'])) {
                     $search = $_POST['search'];
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
                 } elseif (isset($_GET['func']) && $_GET['func'] == 'filter') {
                     $sql = $_GET['sql'];
                 } else {
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id=b.major_id and a.course_id=c.course_id";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id = b.major_id and a.course_id = c.course_id";
                 }
                 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {

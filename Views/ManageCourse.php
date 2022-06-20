@@ -24,7 +24,7 @@ include_once('./connectDB.php');
                 </tr>
                 <?php
 
-                $sql = "SELECT * FROM course";
+                $sql = "SELECT * FROM course order by course_id desc";
                 $result = mysqli_query($conn, $sql);
                 $no = 1;
                 while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {

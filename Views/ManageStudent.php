@@ -33,7 +33,7 @@
                 include("./connectDB.php");
                 if (isset($_POST['btn-search'])) {
                     $search = $_POST['search'];
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
                 } else {
                     $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id=b.major_id and a.course_id=c.course_id";
                 }

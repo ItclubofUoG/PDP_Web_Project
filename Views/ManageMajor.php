@@ -26,7 +26,7 @@ include_once('./connectDB.php');
 
                 <?php
 
-                $sql = "SELECT * FROM major";
+                $sql = "SELECT * FROM major order by major_id desc";
                 $result = mysqli_query($conn, $sql);
                 $no = 1;
                 while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
