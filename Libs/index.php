@@ -1,4 +1,5 @@
 <?php
+//Get current event by realtime
 function Get_Current_Event()
 {
     include("./connectDB.php");
