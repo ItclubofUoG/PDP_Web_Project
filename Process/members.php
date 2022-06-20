@@ -114,6 +114,7 @@ if(isset($_POST['btn_fillter'])){
     if(isset($_GET['btn_search']) && $_GET['btn_search'] == "Search" ){
        
         $month = $_GET['month'] ;
+        $year = $_GET['year'];
        
         $sqlquery = "SELECT * FROM user_log WHERE Month(checkin_date) ='$month'AND Year(checkin_date)='$year'";
         $url ="../index.php?page=attendence&&sqlquery=$sqlquery";
