@@ -111,7 +111,7 @@ include_once('./connectDB.php');
                         <!-- <input type="text" id="eventimage" class="modal-input-box" placeholder="Figure">
                         <span class="alert-error-modal-image"></span>
                         <input type="button" class="btn-choose-file" value="Choose File"> -->
-                        <input type="file" name="eventimage" id="eventimage" class="btn-choose-file" accept="image/*" required>
+                        <input type="file" name="eventimage" onchange="CheckSizeImage('#eventimage', '#eventadd','.alert-error-modal', '.modal-input', 'Invalid Image', '.alert-error-modal')" id="eventimage" class="btn-choose-file" accept="image/*" required>
                     </div>
                     <div class="modal-footer">
                         <div class="btn-footer">
@@ -183,7 +183,7 @@ include_once('./connectDB.php');
                     <div class="modal-input">
                         <!-- <input type="text" class="modal-input-box" placeholder="Figure">
                         <input type="button" class="btn-choose-file" value="Choose File"> -->
-                        <input type="file" name="updateimage" id="updateimage" class="btn-choose-file" accept="image/*" title="Choose an event image">
+                        <input type="file" name="updateimage" onchange="CheckSizeImage('#updateimage', '#eventupdate','.alert-error-modal', '.modal-input', 'Invalid Image', '.alert-error-modal')" id="updateimage" class="btn-choose-file" accept="image/*" title="Choose an event image">
                     </div>
                     <div class="modal-footer">
                         <div class="btn-footer">
@@ -205,6 +205,7 @@ include_once('./connectDB.php');
     <script src="./Assets/js/Validation.js"></script>
     <script src="./Assets/js/ModalManageEvent.js"></script>
     <script src="./Assets/js/ManageAdmin.js"></script>
+    <script src="./Assets/js/validator.js"></script>
     <!-- End Script modal update -->
 
 </body>
