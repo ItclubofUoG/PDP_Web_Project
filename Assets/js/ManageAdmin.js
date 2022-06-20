@@ -65,7 +65,6 @@ Validator({
         Validator.isRequired('#eventtimestart', 'This field can not empty'),
         Validator.isRequired('#eventtimeend', 'This field can not empty'),
         Validator.isRequired('#eventlocation', 'This field can not empty'),
-        Validator.isRequired('#eventdescription', 'This field can not empty'),
         Validator.isRequired('#eventscore', 'This field can not empty'),
     ],
 }); 
