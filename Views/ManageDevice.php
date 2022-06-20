@@ -38,7 +38,7 @@
                     <div class="btn-table">
                       <!-- <input type="button" value="Reload" class="btn-reload"> -->
                       <a class="btn-reload" style="text-decoration: none" onclick="return confirm('Are you sure to reload?');" href="./Process/manageDeviceController.php?function=reload&&deviceid=<?php echo $row["id"] ?>">Reload</a>
-                      <p style="color: black;">&nbsp;&nbsp;&nbsp;<?php echo $row["device_uid"] ?></p>
+                      <p style="color: black; display:flex; align-items:center;">&nbsp;&nbsp;&nbsp;<?php echo $row["device_uid"] ?></p>
                     </div>
 
                   </td>
@@ -60,7 +60,7 @@
                   <td class="body-row">
                     <div class="btn-table">
                       <!-- <input type="button" value="Delete" class="btn-delete-device"> -->
-                      <a class="btn-delete-device" style="text-decoration: none; color:black;" onclick="return confirm('Are you sure to delete?');" href="./Process/manageDeviceController.php?function=delete&&deviceid=<?php echo $row["id"] ?>">Delete</a>
+                      <a class="btn-delete-device" style="text-decoration: none;" onclick="return confirm('Are you sure to delete?');" href="./Process/manageDeviceController.php?function=delete&&deviceid=<?php echo $row["id"] ?>">Delete</a>
                     </div>
                   </td>
                 </tr>
