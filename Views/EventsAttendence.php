@@ -26,6 +26,17 @@ include_once("./connectDB.php");
                             <option value="11"> 11 </option>
                             <option value="12"> 12 </option>
                     </select>
+                    <?php
+                    include('./Libs/index.php');
+                    $year = date("Y");
+                    $listYear = Get_List_Year($year);
+                    ?>
+                    <select class="search-box" name="year">
+                        <?php
+                        foreach ($listYear as $value) { ?>
+                            <option value="<?php echo $value; ?>"> <?php echo $value; ?> </option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <input class="btn-search" type="submit" value="Search" name ="btn_search">
             </form>
