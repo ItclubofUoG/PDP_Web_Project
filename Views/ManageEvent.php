@@ -99,8 +99,8 @@ include_once('./connectDB.php');
                         <input type="text" id="eventlocation" name="eventlocation" class="modal-input-box" placeholder="Location">
                         <span class="alert-error-modal"></span>
                     </div>
-                    <div class="modal-input">
-                        <input type="text" id="eventdescription" name="eventdescription" class="modal-input-box" placeholder="Description">
+                    <div class="modal-input-des">
+                        <textarea  required cols="30" rows="10" type="text" id="eventdescription" name="eventdescription" class="modal-input-box-des" placeholder="Description"></textarea>
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
@@ -171,8 +171,8 @@ include_once('./connectDB.php');
                         <input type="text" id="updatelocation" name="updatelocation" class="modal-input-box" placeholder="Location" value="<?php echo $row['location'] ?>">
                         <span class="alert-error-modal"></span>
                     </div>
-                    <div class="modal-input">
-                        <input type="text" id="updatedescription" name="updatedescription" class="modal-input-box" placeholder="Description" value="<?php echo $row['description'] ?>">
+                    <div class="modal-input-des">
+                    <textarea  required cols="30" rows="10"  type="text" id="updatedescription" name="updatedescription" class="modal-input-box-des" placeholder="Description"> <?php echo $row['description'] ?></textarea>
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
