@@ -60,7 +60,8 @@ include_once('./connectDB.php');
                     $start = ($current_page - 1) * $limit;
                     $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' LIMIT $start, $limit";
                     if (isset($_GET['func']) && $_GET['func'] == 'filter') {
-                        $sql = $_GET['sql'];
+                        $sql = $_GET['sql'] . " LIMIT $start, $limit";
+                        echo $sql;
                     }
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {

@@ -54,8 +54,8 @@ if (isset($_GET['function']) && $_GET['function'] == 'exportExcel') {
 //filter function
 if (isset($_GET['function']) && $_GET['function'] == 'filterUserLog') {
     $eventID = $_POST['EventList'];
-    if ($eventID != 0) {
-        $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE a.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
+    if (empty($eventID) == false) {
+        $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE c.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
     } else {
         $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE a.student_id = b.student_id and a.event_id = c.event_id";
     }
