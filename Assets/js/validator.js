@@ -123,7 +123,7 @@ CheckSizeImage=function(selector,form,error,formGroupSelector,message,errorclass
     fileInput=document.querySelector(selector);
     let realWidth = fileInput.clientWidth;
     let realHeight = fileInput.clientHeight;
-    if ((realHeight= 300) && (realWidth=450)) {
+    if ((realHeight!= 300) && (realWidth!=450)) {
         AddError(fileInput,form,formGroupSelector,error,message,errorclass);
     }else{
         var filePath = fileInput.value;

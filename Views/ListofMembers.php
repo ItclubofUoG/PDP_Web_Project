@@ -40,6 +40,8 @@
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     $student_id = $row['student_id'];
                     $res = mysqli_query($conn, "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id'");
+                    $resCourseAndMajor = mysqli_query($conn, "SELECT * FROM `user` INNER JOIN `major` ON user.major_id=major.major_id INNER JOIN `course` ON user.course_id=course.course_id WHERE student_id='$student_id'");
+                    $cowCourseAndMajor = mysqli_fetch_array($resCourseAndMajor, MYSQLI_ASSOC);
                     $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
                     <tr class="table-body">
@@ -49,8 +51,8 @@
                         <td class="body-row"><?php echo $row['gender'] ?></td>
                         <td class="body-row"><?php echo $row['dob'] ?></td>
                         <td class="body-row"><?php echo $row['phone'] ?></td>
-                        <td class="body-row"><?php echo $row['major_name'] ?></td>
-                        <td class="body-row"><?php echo $row['course_name'] ?></td>
+                        <td class="body-row"><?php echo $cowCourseAndMajor['major_name'] ?></td>
+                        <td class="body-row"><?php echo $cowCourseAndMajor['course_name'] ?></td>
                         <td class="body-row"><?php echo $rowscores['scores'] ?></td>
                     </tr>
                 <?php } ?>
@@ -69,11 +71,11 @@
                     <span class="filter-label"> Filter By Month:</span>
                     <div class="filter-bymonth">
                         <div class="modal-input-month">
-                            <input type="date" class="modal-input-box" name="startMonth" id="startMonth" placeholder="Start Month" title="Start month">
+                            <input type="month" class="modal-input-box" name="startMonth" id="startMonth" placeholder="Start Month" title="Start month">
                         </div>
                         <p class="filter-label">to</p>
                         <div class="modal-input-month">
-                            <input type="date" class="modal-input-box" name="endMonth" id="endMonth" placeholder="End Month" title="End month">
+                            <input type="month" class="modal-input-box" name="endMonth" id="endMonth" placeholder="End Month" title="End month">
                         </div>
                     </div>
                     <span class="filter-label" for="course">Filter By Course and Major: </span>

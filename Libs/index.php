@@ -34,47 +34,49 @@ function Get_List_Year($year)
     }
     return $arr;
 }
-function Get_result_querry()
+function Get_result_querry($major, $course, $startMonth, $endMonth)
 {
-    include("./connectDB.php");
+    include("../connectDB.php");
     // Check Input isset or not 
-    $major = isset($_POST['major']) ? $_POST['major'] : "";
-    $course = isset($_POST['course']) ? $_POST['course'] : "";
-    $month_begin = isset($_POST['month_begin']) ? $_POST['month_begin'] : "";
-    $month_end = isset($_POST['month_end']) ? $_POST['month_end'] : "";
-
-    if ($major != "" && $course != "" && $month_begin == "" && $month_end == "") {
+    $major = isset($major) ? $major : "";
+    $course = isset($course) ? $course : "";
+    $month_begin = isset($startMonth) ? $startMonth : "";
+    $month_end = isset($endMonth) ? $endMonth : "";
+    echo gettype($month_begin);
+    echo gettype($major);
+    echo gettype($course);
+    if (empty($major) != true && empty($course) != true && empty($month_begin) == true && empty($month_end) == true) {
         //Query with Major and Course input
-        $res = mysqli_query($conn, "SELECT * FROM user where major_id ='$major' && course_id ='$course'");
-    } elseif ($major != "" && $course == "" && $month_begin == "" && $month_end == "") {
+        $res = "SELECT * FROM user where major_id ='$major' && course_id ='$course'";
+    } elseif (empty($major) != true && empty($course) == true && empty($month_begin) == true && empty($month_end) == true) {
         //Query with Major input
-        $res = mysqli_query($conn, "SELECT * FROM user where major_id ='$major'");
-    } elseif ($major == "" && $course != "" && $month_begin == "" && $month_end == "") {
+        $res = "SELECT * FROM user where major_id ='$major'";
+    } elseif (empty($major) == true && empty($course) != true && empty($month_begin) == true && empty($month_end) == true) {
         //Query with Course input
-        $res = mysqli_query($conn, "SELECT * FROM user where course_id ='$course'");
-    } elseif ($major == "" && $course == "" && $month_begin != "" && $month_end == "") {
+        $res = "SELECT * FROM user where course_id ='$course'";
+    } elseif (empty($major) == true && empty($course) == true && empty($month_begin) != true && empty($month_end) == true) {
         //Query with Month_Begin input
-        $res = mysqli_query($conn, "SELECT * FROM user WHERE student_id IN 
+        $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
-        WHERE MONTH(date) >= '$month_begin'))");
-    } elseif ($major == "" && $course == "" && $month_begin == "" && $month_end != "") {
+        WHERE MONTH(date) >= '$month_begin'))";
+    } elseif (empty($major) == true && empty($course) == true && empty($month_begin) == true && empty($month_end) != true) {
         //Query with Month_End input
-        $res = mysqli_query($conn, "SELECT * FROM user WHERE student_id IN 
+        $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
-        WHERE MONTH(date) <= '$month_end'))");
-    } elseif ($major == "" && $course == "" && $month_begin != "" && $month_end != "") {
+        WHERE MONTH(date) <= '$month_end'))";
+    } elseif (empty($major) == true && empty($course) == true && empty($month_begin) != true && empty($month_end) != true) {
         // Query with Month_Begin and Month_End input
-        $res = mysqli_query($conn, "SELECT * FROM user WHERE student_id IN 
+        $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
-        WHERE MONTH(date) >= '$month_begin' && <= '$month_end'))");
-    } elseif ($major != "" && $course != "" && $month_begin != "" && $month_end != "") {
+        WHERE MONTH(date) >= '$month_begin' && MONTH(date) <= '$month_end'))";
+    } elseif (empty($major) != true && empty($course) != true && empty($month_begin) != true && empty($month_end) != true) {
         // Query with all input
-        $res = mysqli_query($conn, "SELECT * FROM user WHERE student_id IN 
+        $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
-        WHERE MONTH(date) >= '$month_begin' && MONTH(date)  <= '$month_end')) && course_id ='$course' && major_id ='$major'");
+        WHERE MONTH(date) >= '$month_begin' && MONTH(date)  <= '$month_end')) && course_id ='$course' && major_id ='$major'";
     } else {
         //Query without input data
-        $res = mysqli_query($conn, "SELECT * FROM user");
+        $res = "SELECT * FROM user";
     }
     $resArray = array($res, $month_begin, $month_end);
     return $resArray;
@@ -84,7 +86,7 @@ function Get_result_querry()
 function bind_Event_List($conn)
 {
     include("./connectDB.php");
-    $sqlString = "SELECT event_id, event_title from event";
+    $sqlString = "SELECT event_id, event_title from event WHERE event_id>0";
     $result = mysqli_query($conn, $sqlString);
     echo "<SELECT name='EventList' class='select-event' required>
         <option value='0'>Choose event</option>";
@@ -98,7 +100,7 @@ function bind_Event_List($conn)
 function bind_Major_List($conn, $major)
 {
     include("./connectDB.php");
-    $sqlString = "SELECT * from major";
+    $sqlString = "SELECT * from major where major_id>0";
     $result = mysqli_query($conn, $sqlString);
 
     echo "<SELECT  name='stuMajor' id='stuMajor' class='major-infor'>";
@@ -117,7 +119,7 @@ function bind_Major_List($conn, $major)
 function Major_List($conn)
 {
     include("./connectDB.php");
-    $sqlString = "SELECT * from major";
+    $sqlString = "SELECT * from major  where major_id>0";
     $result = mysqli_query($conn, $sqlString);
 
     echo "<SELECT name='majorFilter' id='majorFilter' class='select-mg-cr'>
@@ -132,7 +134,7 @@ function Major_List($conn)
 function Course_List($conn)
 {
     include("./connectDB.php");
-    $sqlString = "SELECT * from course";
+    $sqlString = "SELECT * from course where course_id>0";
     $result = mysqli_query($conn, $sqlString);
 
     echo "<SELECT name='courseFilter' id='courseFilter' class='select-mg-cr'>
