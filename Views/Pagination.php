@@ -7,7 +7,7 @@
         $row = mysqli_fetch_assoc($result);
         $total_records = $row['total'];
         //find limit and curent page
-        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
         $limit = 1;// set the limit of line
         //calculate total page and start page
         $total_page = ceil($total_records / $limit);
@@ -60,7 +60,7 @@
            
                 <!-- display prev when not stay in page 1 -->
                 <?php if ($current_page > 1 && $total_page > 1){
-                    echo '   <a href="admin.php?page='.($current_page-1).'">Prev</a> |';
+                    echo '   <a href="admin.php?page=page&&pages='.($current_page-1).'">Prev</a> |';
                 }?>
                 <div class="pag-item">
                 <?php 
@@ -70,7 +70,7 @@
                         echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">'.$i.'</span> | ';
                     }
                     else{
-                        echo '<a class="pag-hplink" href="admin.php?page='.$i.'"><div class="pag-number">'.$i.'</div></a> |';
+                        echo '<a class="pag-hplink" href="admin.php?page=page&&pages='.$i.'"><div class="pag-number">'.$i.'</div></a> |';
                     }
                 }
                 ?>
@@ -78,7 +78,7 @@
                 <?php 
                 //display btn next when it not be the end page
                 if ($current_page < $total_page && $total_page > 1){
-                    echo '<a href="admin.php?page='.($current_page+1).'">Next</a> |';
+                    echo '<a href="admin.php?page=page&&pages='.($current_page+1).'">Next</a> |';
                 }?>
             </div>
         </div>

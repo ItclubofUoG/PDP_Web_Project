@@ -31,11 +31,28 @@
                 </tr>
                 <?php
                 include("./connectDB.php");
+                //find the total records
+                $result = mysqli_query($conn, 'select count(student_id) as total from user');
+                $row = mysqli_fetch_assoc($result);
+                $total_records = $row['total'];
+                //find limit and current page
+                $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
+                $limit = 15;  // set the limit of line in page
+                //calculate total page and start page
+                $total_page = ceil($total_records / $limit);
+                //limit the page from 1 to end
+                if ($current_page > $total_page) {
+                    $current_page = $total_page;
+                } else if ($current_page < 1) {
+                    $current_page = 1;
+                }
+                //find start page
+                $start = ($current_page - 1) * $limit;
                 if (isset($_POST['btn-search'])) {
                     $search = $_POST['search'];
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id  LIMIT $start, $limit";
                 } else {
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id=b.major_id and a.course_id=c.course_id";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id=b.major_id and a.course_id=c.course_id LIMIT $start, $limit";
                 }
                 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -152,5 +169,33 @@
     <script src="./Assets/js/Validation.js"></script>
     <script src="./Assets/js/ManageAdmin.js"></script>
     <!-- End Script modal update -->
+
+
+    <!-- pagination page started here -->
+    <div class="pag-outline">
+        <div class="pag-block">
+            <!-- display prev when not stay in page 1 -->
+            <?php if ($current_page > 1 && $total_page > 1) {
+                echo '   <a href="admin.php?page=student&&pages=' . ($current_page - 1) . '">Prev |</a>';
+            } ?>
+            <div class="pag-item">
+                <?php
+                //loop the between 
+                for ($i = 1; $i <= $total_page; $i++) {
+                    if ($i == $current_page) {
+                        echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">' . $i . '</span> | ';
+                    } else {
+                        echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a> |';
+                    }
+                }
+                ?>
+            </div>
+            <?php
+            //display btn next when it not be the end page
+            if ($current_page < $total_page && $total_page > 1) {
+                echo '<a href="admin.php?page=student&&pages=' . ($current_page + 1) . '">Next</a>';
+            } ?>
+        </div>
+    </div>
 
 </body>

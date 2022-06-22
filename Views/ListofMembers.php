@@ -35,7 +35,7 @@
                 $total_records = $row['total'];
                 //find limit and current page
                 $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
-                $limit = 15;             // set the limit of line in page
+                $limit = 15;  // set the limit of line in page
                 //calculate total page and start page
                 $total_page = ceil($total_records / $limit);
                 //limit the page from 1 to end
@@ -46,15 +46,15 @@
                 }
                 //find start page
                 $start = ($current_page - 1) * $limit;
-                //query and display
                 if (isset($_POST['btn-search'])) {
                     $search = $_POST['search'];
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id LIMIT $start, $limit";
                 } elseif (isset($_GET['func']) && $_GET['func'] == 'filter') {
                     $sql = $_GET['sql'] . " LIMIT $start, $limit";
                 } else {
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id = b.major_id and a.course_id = c.course_id";
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id = b.major_id and a.course_id = c.course_id LIMIT $start, $limit";
                 }
+                //query and display
                 $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     $student_id = $row['student_id'];
@@ -148,10 +148,9 @@
     <!-- pagination page started here -->
     <div class="pag-outline">
         <div class="pag-block">
-
             <!-- display prev when not stay in page 1 -->
             <?php if ($current_page > 1 && $total_page > 1) {
-                echo '   <a href="admin.php?pages=' . ($current_page - 1) . '">Prev</a> |';
+                echo '   <a href="admin.php?pages=' . ($current_page - 1) . '">Prev |</a>';
             } ?>
             <div class="pag-item">
                 <?php
@@ -168,7 +167,7 @@
             <?php
             //display btn next when it not be the end page
             if ($current_page < $total_page && $total_page > 1) {
-                echo '<a href="admin.php?page=' . ($current_page + 1) . '">Next</a> |';
+                echo '<a href="admin.php?pages=' . ($current_page + 1) . '">Next</a>';
             } ?>
         </div>
     </div>

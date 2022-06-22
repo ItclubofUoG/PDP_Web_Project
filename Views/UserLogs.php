@@ -33,10 +33,28 @@ include_once('./connectDB.php');
                     </tr>
 
                     <?php
-
-                    $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id";
+                    include('./Libs/index.php');
+                    $currentEventId=Get_Current_Event();
+                    //find the total records
+                    $result = mysqli_query($conn, "select count(id) as total from user_log where event_id = '$currentEventId'");
+                    $row = mysqli_fetch_assoc($result);
+                    $total_records = $row['total'];
+                    //find limit and current page
+                    $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
+                    $limit = 1;  // set the limit of line in page
+                    //calculate total page and start page
+                    $total_page = ceil($total_records / $limit);
+                    //limit the page from 1 to end
+                    if ($current_page > $total_page) {
+                        $current_page = $total_page;
+                    } else if ($current_page < 1) {
+                        $current_page = 1;
+                    }
+                    //find start page
+                    $start = ($current_page - 1) * $limit;
+                    $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and a.event_id = '$currentEventId' LIMIT $start, $limit";
                     if (isset($_GET['func']) && $_GET['func'] == 'filter') {
-                        $sql = $_GET['sql'];
+                        $sql = $_GET['sql'] . " and event_id = '$currentEventId' LIMIT $start, $limit";
                     }
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
@@ -156,4 +174,31 @@ include_once('./connectDB.php');
         <script src="./Assets/js/ModalLogAdd.js"></script>
         <script src="./Assets/js/ModalLogDelete.js"></script>
         <!-- End Script modal update -->
+
+        <!-- pagination page started here -->
+        <div class="pag-outline">
+            <div class="pag-block">
+                <!-- display prev when not stay in page 1 -->
+                <?php if ($current_page > 1 && $total_page > 1) {
+                    echo '   <a href="admin.php?page=eventlog&&pages=' . ($current_page - 1) . '">Prev |</a>';
+                } ?>
+                <div class="pag-item">
+                    <?php
+                    //loop the between 
+                    for ($i = 1; $i <= $total_page; $i++) {
+                        if ($i == $current_page) {
+                            echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">' . $i . '</span> | ';
+                        } else {
+                            echo '<a class="pag-hplink" href="admin.php?page=eventlog&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a> |';
+                        }
+                    }
+                    ?>
+                </div>
+                <?php
+                //display btn next when it not be the end page
+                if ($current_page < $total_page && $total_page > 1) {
+                    echo '<a href="admin.php?page=eventlog&&pages=' . ($current_page + 1) . '">Next</a>';
+                } ?>
+            </div>
+        </div>
 </body>
