@@ -34,51 +34,48 @@ function Get_List_Year($year)
     }
     return $arr;
 }
-function Get_result_querry($major, $course, $startMonth, $endMonth)
+function Get_result_querry($major, $course, $startDate, $endDate)
 {
     include("../connectDB.php");
     // Check Input isset or not 
     $major = isset($major) ? $major : "";
     $course = isset($course) ? $course : "";
-    $month_begin = isset($startMonth) ? $startMonth : "";
-    $month_end = isset($endMonth) ? $endMonth : "";
-    echo gettype($month_begin);
-    echo gettype($major);
-    echo gettype($course);
-    if (empty($major) != true && empty($course) != true && empty($month_begin) == true && empty($month_end) == true) {
+    $date_begin = isset($startDate) ? $startDate : "";
+    $date_end = isset($endDate) ? $endDate : "";
+    if (empty($major) != true && empty($course) != true && empty($date_begin) == true && empty($date_end) == true) {
         //Query with Major and Course input
         $res = "SELECT * FROM user where major_id ='$major' && course_id ='$course'";
-    } elseif (empty($major) != true && empty($course) == true && empty($month_begin) == true && empty($month_end) == true) {
+    } elseif (empty($major) != true && empty($course) == true && empty($date_begin) == true && empty($date_end) == true) {
         //Query with Major input
         $res = "SELECT * FROM user where major_id ='$major'";
-    } elseif (empty($major) == true && empty($course) != true && empty($month_begin) == true && empty($month_end) == true) {
+    } elseif (empty($major) == true && empty($course) != true && empty($date_begin) == true && empty($date_end) == true) {
         //Query with Course input
         $res = "SELECT * FROM user where course_id ='$course'";
-    } elseif (empty($major) == true && empty($course) == true && empty($month_begin) != true && empty($month_end) == true) {
-        //Query with Month_Begin input
+    } elseif (empty($major) == true && empty($course) == true && empty($date_begin) != true && empty($date_end) == true) {
+        //Query with date_begin input
         $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
-        WHERE MONTH(date) >= '$month_begin'))";
-    } elseif (empty($major) == true && empty($course) == true && empty($month_begin) == true && empty($month_end) != true) {
-        //Query with Month_End input
+        WHERE date >= '$date_begin'))";
+    } elseif (empty($major) == true && empty($course) == true && empty($date_begin) == true && empty($date_end) != true) {
+        //Query with date_end input
         $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
-        WHERE MONTH(date) <= '$month_end'))";
-    } elseif (empty($major) == true && empty($course) == true && empty($month_begin) != true && empty($month_end) != true) {
-        // Query with Month_Begin and Month_End input
+        WHERE date <= '$date_end'))";
+    } elseif (empty($major) == true && empty($course) == true && empty($date_begin) != true && empty($date_end) != true) {
+        // Query with date_begin and date_end input
         $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
-        WHERE MONTH(date) >= '$month_begin' && MONTH(date) <= '$month_end'))";
-    } elseif (empty($major) != true && empty($course) != true && empty($month_begin) != true && empty($month_end) != true) {
+        WHERE date >= '$date_begin' AND date <= '$date_end'))";
+    } elseif (empty($major) != true && empty($course) != true && empty($date_begin) != true && empty($date_end) != true) {
         // Query with all input
         $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
-        WHERE MONTH(date) >= '$month_begin' && MONTH(date)  <= '$month_end')) && course_id ='$course' && major_id ='$major'";
+        WHERE date >= '$date_begin' AND date  <= '$date_end')) && course_id ='$course' && major_id ='$major'";
     } else {
         //Query without input data
         $res = "SELECT * FROM user";
     }
-    $resArray = array($res, $month_begin, $month_end);
+    $resArray = array($res, $date_begin, $date_end);
     return $resArray;
 }
 

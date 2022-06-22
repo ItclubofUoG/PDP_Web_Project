@@ -2,62 +2,27 @@
 include_once("../connectDB.php");
 include("../Libs/index.php");
 // FIllter with Month to Month, Major and Course 
-if (isset($_POST['btn_fillter'])) {
+if (isset($_POST['btn_filter'])) {
+    $major = $_POST['majorFilter'];
+    $course = $_POST['courseFilter'];
+    $startDate = $_POST['startMonth'];
+    $endDate = $_POST['endMonth'];
+    $result = Get_result_querry($major, $course, $startDate, $endDate);
+    $sqlFilter = $result[0];
+    $url = "../admin.php?page=home&&func=filter&&sql=$sqlFilter";
+    $url = str_replace(PHP_EOL, '', $url);
 
-?>
-    <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Gender</th>
-                    <th>Email</th>
-                    <th>Day of birth</th>
-                    <th>Major</th>
-                    <th>Course</th>
-                    <th>Scores</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // $resArray = Get_result_querry();
-                $res = mysqli_query($conn, (string)$resArray[0]);
-                $month_begin = $resArray[1];
-                $month_end = $resArray[2];
-                while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
-                    $student_id = $row['student_id'];
-                    $res_sum = mysqli_query($conn, "SELECT SUM(scores) FROM user_log Where student_id = '$student_id' 
-                            && MONTH(checkin_date) >='$month_begin'  && MONTH(checkin_date) <= '$month_end'");
-                ?>
-                    <tr>
-                        <td><?php echo $row['student_id'] ?></td>
-                        <td><?php echo $row['fullname'] ?></td>
-                        <td><?php echo $row['phone'] ?></td>
-                        <td><?php echo $row['gender'] ?></td>
-                        <td><?php echo $row['email'] ?></td>
-                        <td><?php echo $row['dob'] ?></td>
-                        <td><?php echo $row['major_id'] ?></td>
-                        <td><?php echo $row['course_id'] ?></td>
-                        <!-- Show Total Scores -->
-                        <?php while ($row = mysqli_fetch_array($res_sum, MYSQLI_ASSOC)) { ?>
-                            <td><?php echo $row['SUM(scores)'] ?></td>
-                        <?php } ?>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
-
-
-<?php }
+    header("location: $url");
+}
 $out = "";
-if (isset($_POST['btn_ToExel'])) {
-    // $resArray = Get_result_querry();
-    $res = mysqli_query($conn, (string)$resArray[0]);
-    $month_begin = $resArray[1];
-    $month_end = $resArray[2];
+if (isset($_POST['btn_export'])) {
+    $major = $_POST['majorFilter'];
+    $course = $_POST['courseFilter'];
+    $startDate = $_POST['startMonth'];
+    $endDate = $_POST['endMonth'];
+    $result = Get_result_querry($major, $course, $startDate, $endDate);
+    $sqlExport = $result[0];
+    $res = mysqli_query($conn, $sqlExport);
     if ((mysqli_num_rows($res)) > 0) {
         $out .= ' <table class="table" border="1">
             <thead>
@@ -77,7 +42,7 @@ if (isset($_POST['btn_ToExel'])) {
         while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
             $student_id = $row['student_id'];
             $res_sum = mysqli_query($conn, "SELECT SUM(scores) FROM user_log Where student_id = '$student_id' 
-                && MONTH(checkin_date) >='$month_begin'  && MONTH(checkin_date) <= '$month_end'");
+                AND checkin_date >='$startDate'  && checkin_date <= '$endDate'");
             $out .= ' 
                         <tbody>
                             <tr>

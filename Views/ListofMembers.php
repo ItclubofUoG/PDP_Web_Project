@@ -67,15 +67,15 @@
                     <h2 class="modal-label"> Filter Student</h2>
                     <a class="modal-close js-modal-close-filter">X</a>
                 </div>
-                <form action="./Process/filterListofMembers.php?function=modalFilterStudent" class="modal-body" method="POST">
+                <form action="./Process/members.php" class="modal-body" method="POST">
                     <span class="filter-label"> Filter By Month:</span>
                     <div class="filter-bymonth">
                         <div class="modal-input-month">
-                            <input type="month" class="modal-input-box" name="startMonth" id="startMonth" placeholder="Start Month" title="Start month">
+                            <input type="date" class="modal-input-box" name="startMonth" id="startMonth" placeholder="Start Month" title="Start month">
                         </div>
                         <p class="filter-label">to</p>
                         <div class="modal-input-month">
-                            <input type="month" class="modal-input-box" name="endMonth" id="endMonth" placeholder="End Month" title="End month">
+                            <input type="date" class="modal-input-box" name="endMonth" id="endMonth" placeholder="End Month" title="End month">
                         </div>
                     </div>
                     <span class="filter-label" for="course">Filter By Course and Major: </span>
@@ -92,7 +92,7 @@
                             <input class="btn-filter" type="submit" value="Filter" name="btn_filter" id="btn_filter">
                         </div>
                         <div class="btn-footer">
-                            <input class="btn-export" type="submit" value="Export">
+                            <input class="btn-export" name="btn_export" id="btn_export" type="submit" value="Export">
                         </div>
                     </div>
                 </form>
