@@ -125,7 +125,7 @@ CheckSizeImage=function(selector,form,error,formGroupSelector,message,errorclass
     var fileUpload = document.querySelector(selector);
     //Check whether the file is valid Image.
     var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif)$");
-    if (regex.test(fileUpload.value.toLowerCase())) {
+    if (true) {
  
         //Check whether HTML5 is supported.
         if (typeof (fileUpload.files) != "undefined") {

@@ -290,6 +290,7 @@ html {
     border-radius:4px;
     border: 1px solid #ccc;
     padding-left: 10px;
+    margin-right: 5px;
 }
 .btn-search {
     height:100%;
@@ -554,7 +555,7 @@ html {
     }
     .btn-search {
         font-size:8px;
-        width:10%;
+        width:20%;
     }
     .table-function {
         height: 20px;
