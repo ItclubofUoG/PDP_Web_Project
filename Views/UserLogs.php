@@ -35,12 +35,16 @@ include_once('./connectDB.php');
                     <?php
                     $currentEventId=Get_Current_Event();
                     //find the total records
-                    $result = mysqli_query($conn, "select count(id) as total from user_log where event_id = '$currentEventId'");
+                    $result = mysqli_query($conn, "select count(id) as total from user_log where event_id ='$currentEventId'");
                     $row = mysqli_fetch_assoc($result);
-                    $total_records = $row['total'];
+                    if ($row['total'] >0){
+                        $total_records = $row['total'];
+                    } else {
+                        $total_records = 1;
+                    }
                     //find limit and current page
                     $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
-                    $limit = 20;  // set the limit of line in page
+                    $limit = 2;  // set the limit of line in page
                     //calculate total page and start page
                     $total_page = ceil($total_records / $limit);
                     //limit the page from 1 to end
@@ -51,9 +55,9 @@ include_once('./connectDB.php');
                     }
                     //find start page
                     $start = ($current_page - 1) * $limit;
-                    $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and c.event_id = '$currentEventId'  LIMIT $start, $limit";
+                    $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' LIMIT $start, $limit";
                     if (isset($_GET['func']) && $_GET['func'] == 'filter') {
-                        $sql = $_GET['sql'] . "LIMIT $start, $limit";
+                        $sql = $_GET['sql'];
                     }
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
