@@ -33,11 +33,15 @@ include_once('./connectDB.php');
                     </tr>
 
                     <?php
-                    $currentEventId=Get_Current_Event();
+                    $currentEventId = Get_Current_Event();
                     //find the total records
                     $result = mysqli_query($conn, "select count(id) as total from user_log where event_id = '$currentEventId'");
                     $row = mysqli_fetch_assoc($result);
-                    $total_records = $row['total'];
+                    if ($row['total'] > 0) {
+                        $total_records = $row['total'];
+                    } else {
+                        $total_records = 1;
+                    }
                     //find limit and current page
                     $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
                     $limit = 20;  // set the limit of line in page
@@ -66,7 +70,7 @@ include_once('./connectDB.php');
                             <td class="body-row"><?php echo $row["time_in"]; ?></td>
                             <td class="body-row"><?php echo $row["time_out"]; ?></td>
                             <td class="body-row"><?php echo $row["scores"]; ?></td>
-                            <td class="body-row" ><a href="./Process/userLog.php?function=deleteUser&&id=<?php echo $row['id'] ?>" style="text-decoration:none;" onclick="return confirm('Are you sure to delete')">⛔️</a></td>
+                            <td class="body-row"><a href="./Process/userLog.php?function=deleteUser&&id=<?php echo $row['id'] ?>" style="text-decoration:none;" onclick="return confirm('Are you sure to delete')">⛔️</a></td>
                         </tr>
                     <?php
                     }
@@ -105,7 +109,7 @@ include_once('./connectDB.php');
                     </div>
                     <form action="./Process/userLog.php?function=exportExcel" class="modal-body" method="POST">
                         <div class="modal-input">
-                        <?php bind_Event_List($conn); ?>
+                            <?php bind_Event_List($conn); ?>
                         </div>
                         <div class="modal-footer">
                             <div class="btn-footer">

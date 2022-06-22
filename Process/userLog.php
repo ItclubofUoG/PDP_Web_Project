@@ -54,17 +54,16 @@ if (isset($_GET['function']) && $_GET['function'] == 'exportExcel') {
 //filter function
 if (isset($_GET['function']) && $_GET['function'] == 'filterUserLog') {
     $eventID = $_POST['EventList'];
-    if($eventID!=0){
+    if ($eventID != 0) {
         $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE a.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
-    }
-    else{
+    } else {
         $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE a.student_id = b.student_id and a.event_id = c.event_id";
-    }   
+    }
 
-    $url="../admin.php?page=eventlog&&func=filter&&sql=$sqlFilter";
-    $url=str_replace(PHP_EOL, '',$url);
+    $url = "../admin.php?page=eventlog&&func=filter&&sql=$sqlFilter&&event=$eventID";
+    $url = str_replace(PHP_EOL, '', $url);
 
-    header("location: $url");    
+    header("location: $url");
 }
 
 
@@ -84,7 +83,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     $id = $_POST['logid'];
     $eventName = $_POST['EventList'];
-    $checkinDate = date("Y-m-d");    
+    $checkinDate = date("Y-m-d");
 
     if ($id != "" && $eventName != 0) {
         $sqlUserLog = "SELECT * FROM user_log where student_id = '$id' and event_id = '$eventName'";
@@ -92,7 +91,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
 
         $resUserLog = mysqli_query($conn, $sqlUserLog);
 
-        $resEvent = mysqli_query($conn,$sqlEvent);
+        $resEvent = mysqli_query($conn, $sqlEvent);
         $row = mysqli_fetch_array($resEvent);
 
         $timeIn = $row['time_start'];
@@ -106,13 +105,12 @@ if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
         } else {
             echo "<script>alert('Student have already check-in'); location.href='../admin.php?page=eventlog' </script>";
         }
-    }
-    else{
+    } else {
         echo "<script>alert('Please complete all information'); </script>";
     }
 }
 // delete s.o log 
-if (isset($_GET['function']) && $_GET['function'] == 'deleteUser') { 
+if (isset($_GET['function']) && $_GET['function'] == 'deleteUser') {
     $id = $_GET['id'];
     $sql = "DELETE FROM `user_log` WHERE id = $id";
 
@@ -120,4 +118,3 @@ if (isset($_GET['function']) && $_GET['function'] == 'deleteUser') {
     echo "<script>location.href='../admin.php?page=eventlog'</script>";
     exit();
 }
-
