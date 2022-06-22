@@ -96,7 +96,7 @@
                     <h2 class="modal-label">Update User</h2>
                     <a class="modal-close js-modal-close-update-user">X</a>
                 </div>
-                <form method= "POST" action="./Process/student.php" class="modal-body" id="updateuser">
+                <form method="POST" action="./Process/student.php?btn_update=''" class="modal-body" id="updateuser">
                     <?php if (isset($_GET['stuid'])) {
                         echo '<script type="text/javascript">',
                         'open_modal();',
@@ -155,7 +155,7 @@
                             <input type="submit" value="Update" name="btn_update" id="btn_update" class="btn-update">
                         </div>
                         <div class="btn-footer">
-                            <input type="reset" value="Delete" class="btn-delete">
+                            <a style="text-align: center; text-decoration: none" href="./Process/student.php?stid=<?php echo $row_update['student_id'] ?>" class="btn-delete" id="btn_detele" class="btn-delete">Delete</a>
                         </div>
                     </div>
                 </form>
