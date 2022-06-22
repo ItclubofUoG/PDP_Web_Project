@@ -96,7 +96,7 @@
                     <h2 class="modal-label">Update User</h2>
                     <a class="modal-close js-modal-close-update-user">X</a>
                 </div>
-                <form action="./Process/student.php" class="modal-body" id="updateuser">
+                <form method= "POST" action="./Process/student.php" class="modal-body" id="updateuser">
                     <?php if (isset($_GET['stuid'])) {
                         echo '<script type="text/javascript">',
                         'open_modal();',

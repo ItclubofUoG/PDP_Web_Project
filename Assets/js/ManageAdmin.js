@@ -90,9 +90,14 @@ Validator({
     formGroupSelector: '.modal-input',
     errorSelector: '.alert-error-modal',
     rules: [
-        Validator.isRequired('#userdob', 'This field can not empty'),
-        Validator.isRequired('#userphone', 'This field can not empty'),
-        Validator.isRequired('#cardnumber', 'This field can not empty'),
+        Validator.isRequired('#student_id', 'This field can not empty'),
+        Validator.isRequired('#fullname', 'This field can not empty'),
+        Validator.isRequired('#email', 'This field can not empty'),
+        Validator.isRequired('#dob', 'This field can not empty'),
+        Validator.isRequired('#phone', 'This field can not empty'),
+        Validator.isRequired('#card_uid', 'This field can not empty'),
+        Validator.isPhone('#phone', 'This is not a phone number'),
+        Validator.isValidPhone('#phone', 'Invalid phone number ')
     ],
 }); 
 

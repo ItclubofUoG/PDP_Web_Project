@@ -3,7 +3,7 @@
 include_once("./connectDB.php");
 
 //Update function
-if (isset($_POST['btn_update']) && $_POST['btn_update'] = 'update') {
+if (isset($_POST['btn_update']) && $_POST['btn_update'] = 'Update') {
     $username = $_POST['fullname'];
     $id = $_POST['student_id'];
     $res = mysqli_query($conn, "SELECT * FROM user WHERE student_id='$id'") or die(mysqli_error($conn));
@@ -15,7 +15,7 @@ if (isset($_POST['btn_update']) && $_POST['btn_update'] = 'update') {
         while ($row1 = mysqli_fetch_array($res1, MYSQLI_ASSOC)) {
             if ($username == $row1['fullname']) {
                 echo "<script type='text/javascript'>alert('Username already exists');</script>";
-                echo "<script> location.href='admin.php?page=manageuser'</script>";
+                echo "<script> location.href='admin.php?page=student'</script>";
                 exit;
             }
         }
@@ -30,7 +30,7 @@ if (isset($_POST['btn_update']) && $_POST['btn_update'] = 'update') {
         while ($row3 = mysqli_fetch_array($res2, MYSQLI_ASSOC)) {
             if ($stid == $row3['student_id']) {
                 echo "<script type='text/javascript'>alert('StudentID already exists');</script>";
-                echo "<script> location.href='admin.php?page=manageuser'</script>";
+                echo "<script> location.href='admin.php?page=student'</script>";
                 exit;
             }
         }
@@ -45,7 +45,7 @@ if (isset($_POST['btn_update']) && $_POST['btn_update'] = 'update') {
         while ($row5 = mysqli_fetch_array($res3, MYSQLI_ASSOC)) {
             if ($email == $row5['email']) {
                 echo "<script type='text/javascript'>alert('Email already exists');</script>";
-                echo "<script> location.href='admin.php?page=manageuser'</script>";
+                echo "<script> location.href='admin.php?page=student'</script>";
                 exit;
             }
         }
@@ -60,7 +60,7 @@ if (isset($_POST['btn_update']) && $_POST['btn_update'] = 'update') {
         while ($row5 = mysqli_fetch_array($res3, MYSQLI_ASSOC)) {
             if ($phone == $row5['phone']) {
                 echo "<script type='text/javascript'>alert('Phone already exists');</script>";
-                echo "<script> location.href='admin.php?page=manageuser'</script>";
+                echo "<script> location.href='admin.php?page=student'</script>";
                 exit;
             }
         }
@@ -68,20 +68,20 @@ if (isset($_POST['btn_update']) && $_POST['btn_update'] = 'update') {
     $major = $_POST['major'];
     if ($major == 1) {
         echo "<script type='text/javascript'>alert('Invalid Major');</script>";
-        echo "<script> location.href='admin.php?page=manageuser'</script>";
+        echo "<script> location.href='admin.php?page=student'</script>";
         exit;
     }
     $course = $_POST['course'];
     if ($major == 1) {
         echo "<script type='text/javascript'>alert('Invalid Course');</script>";
-        echo "<script> location.href='admin.php?page=manageuser'</script>";
+        echo "<script> location.href='admin.php?page=student'</script>";
         exit;
     } else {
         $dob = $_POST['dob'];
         $gender = $_POST['gender'];
         $cart_uid = $_POST['cart_uid'];
         mysqli_query($conn, "UPDATE `user` SET `student_id`='$stid',`fullname`='$username',`phone`='$phone',`gender`='$gender',`email`='$email',`dob`='$dob'`major_id`='$major',`course_id`='$course' WHERE student_id='$id'");
-        echo "<script> location.href='admin.php?page=manageuser'</script>";
+        echo "<script> location.href='admin.php?page=student'</script>";
         exit;
     }
 }
@@ -90,7 +90,7 @@ if (isset($_GET['stid'])) {
     $stuid = $_GET['stid'];
     mysqli_query($conn, "DELETE FROM `user_log` WHERE StudentID='$stuid'");
     mysqli_query($conn, "DELETE FROM `user` WHERE StudentID='$stuid'");
-    echo "<script> location.href='admin.php?page=manageuser'</script>";
+    echo "<script> location.href='admin.php?page=student'</script>";
     exit;
 }
 
@@ -98,20 +98,6 @@ if (isset($_GET['stid'])) {
 
 
 
-<!-- Search function -->
-<div>
-    <form action="" method="POST">
-        <div class="form-group">
-            <input type="text" name="id" placeholder="" class="form-label">
-        </div>
-        <div class="button">
-            <button type="submit" name="btn_search" id="btn_search">Search</button>
-        </div>
-
-    </form>
-</div>
-<table border="1">
-<tbody class="table-body">
     <?php
 
     if (isset($_POST['btn_search'])) {
@@ -149,5 +135,3 @@ if (isset($_GET['stid'])) {
     <?php }
     }
     ?>
-</tbody>
-</table>
