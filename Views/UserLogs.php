@@ -34,7 +34,7 @@ include_once('./connectDB.php');
 
                     <?php
                     $currentEventId = Get_Current_Event();
-                    if (isset($_GET['func']) && $_GET['func'] == 'filter') {
+                    if (isset($_GET['event'])) {
                         $currentEventId = $_GET['event'];
                     }
                     //find the total records
@@ -186,7 +186,7 @@ include_once('./connectDB.php');
             <div class="pag-block">
                 <!-- display prev when not stay in page 1 -->
                 <?php if ($current_page > 1 && $total_page > 1) {
-                    echo '   <a href="admin.php?page=eventlog&&pages=' . ($current_page - 1) . '&&event='.$currentEventId.'">Prev |</a>';
+                    echo '   <a href="admin.php?page=eventlog&&pages=' . ($current_page - 1) . '&&event=' . $currentEventId . '">Prev |</a>';
                 } ?>
                 <div class="pag-item">
                     <?php
@@ -195,7 +195,7 @@ include_once('./connectDB.php');
                         if ($i == $current_page) {
                             echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">' . $i . '</span> | ';
                         } else {
-                            echo '<a class="pag-hplink" href="admin.php?page=eventlog&&pages=' . $i . '&&event='.$currentEventId.'"><div class="pag-number">' . $i . '</div></a> |';
+                            echo '<a class="pag-hplink" href="admin.php?page=eventlog&&pages=' . $i . '&&event=' . $currentEventId . '"><div class="pag-number">' . $i . '</div></a> |';
                         }
                     }
                     ?>
@@ -203,7 +203,7 @@ include_once('./connectDB.php');
                 <?php
                 //display btn next when it not be the end page
                 if ($current_page < $total_page && $total_page > 1) {
-                    echo '<a href="admin.php?page=eventlog&&pages=' . ($current_page + 1) . '&&event='.$currentEventId.'">Next</a>';
+                    echo '<a href="admin.php?page=eventlog&&pages=' . ($current_page + 1) . '&&event=' . $currentEventId . '">Next</a>';
                 } ?>
             </div>
         </div>
