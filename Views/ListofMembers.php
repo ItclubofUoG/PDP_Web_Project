@@ -25,17 +25,9 @@
                     <th class="head-row">Course</th>
                     <th class="head-row">Score</th>
                 </tr>
-                 <?php
+                <?php
                 include("./connectDB.php");
                 include('./Libs/index.php');
-                if (isset($_POST['btn-search'])) {
-                    $search = $_POST['search'];
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
-                } elseif (isset($_GET['func']) && $_GET['func'] == 'filter') {
-                    $sql = $_GET['sql'];
-                } else {
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id = b.major_id and a.course_id = c.course_id";
-                }
                 // $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                 //find the total records
                 $result = mysqli_query($conn, 'select count(student_id) as total from user');
@@ -47,19 +39,28 @@
                 //calculate total page and start page
                 $total_page = ceil($total_records / $limit);
                 //limit the page from 1 to end
-                if ($current_page > $total_page){
+                if ($current_page > $total_page) {
                     $current_page = $total_page;
-                }
-                else if ($current_page < 1){
+                } else if ($current_page < 1) {
                     $current_page = 1;
                 }
                 //find start page
                 $start = ($current_page - 1) * $limit;
                 //query and display
-                $result = mysqli_query($conn, "SELECT * FROM  user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id LIMIT $start, $limit");
+                if (isset($_POST['btn-search'])) {
+                    $search = $_POST['search'];
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id";
+                } elseif (isset($_GET['func']) && $_GET['func'] == 'filter') {
+                    $sql = $_GET['sql'] . " LIMIT $start, $limit";
+                } else {
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id = b.major_id and a.course_id = c.course_id";
+                }
+                $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     $student_id = $row['student_id'];
                     $res = mysqli_query($conn, "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id'");
+                    $resCourseAndMajor = mysqli_query($conn, "SELECT * FROM `user` INNER JOIN `major` ON user.major_id=major.major_id INNER JOIN `course` ON user.course_id=course.course_id WHERE student_id='$student_id'");
+                    $cowCourseAndMajor = mysqli_fetch_array($resCourseAndMajor, MYSQLI_ASSOC);
                     $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
                     <tr class="table-body">
@@ -143,34 +144,33 @@
         })
     </script>
     <!-- End script -->
-    
+
     <!-- pagination page started here -->
     <div class="pag-outline">
-            <div class="pag-block">
-           
-                <!-- display prev when not stay in page 1 -->
-                <?php if ($current_page > 1 && $total_page > 1){
-                    echo '   <a href="admin.php?pages='.($current_page-1).'">Prev</a> |';
-                }?>
-                <div class="pag-item">
-                <?php 
+        <div class="pag-block">
+
+            <!-- display prev when not stay in page 1 -->
+            <?php if ($current_page > 1 && $total_page > 1) {
+                echo '   <a href="admin.php?pages=' . ($current_page - 1) . '">Prev</a> |';
+            } ?>
+            <div class="pag-item">
+                <?php
                 //loop the between 
-                for ($i = 1; $i <= $total_page; $i++){
-                    if ($i == $current_page){
-                        echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">'.$i.'</span> | ';
-                    }
-                    else{
-                        echo '<a class="pag-hplink" href="admin.php?pages='.$i.'"><div class="pag-number">'.$i.'</div></a> |';
+                for ($i = 1; $i <= $total_page; $i++) {
+                    if ($i == $current_page) {
+                        echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">' . $i . '</span> | ';
+                    } else {
+                        echo '<a class="pag-hplink" href="admin.php?pages=' . $i . '"><div class="pag-number">' . $i . '</div></a> |';
                     }
                 }
                 ?>
-                </div>
-                <?php 
-                //display btn next when it not be the end page
-                if ($current_page < $total_page && $total_page > 1){
-                    echo '<a href="admin.php?page='.($current_page+1).'">Next</a> |';
-                }?>
             </div>
+            <?php
+            //display btn next when it not be the end page
+            if ($current_page < $total_page && $total_page > 1) {
+                echo '<a href="admin.php?page=' . ($current_page + 1) . '">Next</a> |';
+            } ?>
+        </div>
     </div>
 
 
