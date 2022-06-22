@@ -148,7 +148,7 @@ CheckSizeImage=function(selector,form,error,formGroupSelector,message,errorclass
                         AddError(fileUpload,form,formGroupSelector,error,message,errorclass);
                     }
                     else{
-                        RemoveError(fileInput,form,formGroupSelector,error,message,errorclass)
+                        RemoveError(fileUpload,form,formGroupSelector,error,message,errorclass)
                     }
                 };
  
