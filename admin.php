@@ -74,9 +74,6 @@ include('./Views/headerAdmin.html');
         if ($page == 'device') {
             include_once("./Views/ManageDevice.php");
         }
-        if ($page == 'page') {
-            include_once("./Views/Pagination.php");
-        }
 
     } else {
         include("./Views/ListofMembers.php");
