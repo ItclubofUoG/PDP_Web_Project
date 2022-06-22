@@ -111,7 +111,7 @@ include_once('./connectDB.php');
                         <!-- <input type="text" id="eventimage" class="modal-input-box" placeholder="Figure">
                         <span class="alert-error-modal-image"></span>
                         <input type="button" class="btn-choose-file" value="Choose File"> -->
-                        <input type="file" name="eventimage" onchange="CheckSizeImage('#eventimage', '#eventadd','.alert-error-modal', '.modal-input', 'Invalid Image (Size 450*300)', '.alert-error-modal')" id="eventimage" class="btn-choose-file" accept="image/*" required>
+                        <input type="file" name="eventimage" onchange="CheckSizeImage('#eventimage', '#eventadd','.alert-error-modal', '.modal-input', 'Invalid Image (Size 940*400)', '.alert-error-modal')" id="eventimage" class="btn-choose-file" accept="image/*" required>
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-footer">
@@ -184,7 +184,7 @@ include_once('./connectDB.php');
                     <div class="modal-input">
                         <!-- <input type="text" class="modal-input-box" placeholder="Figure">
                         <input type="button" class="btn-choose-file" value="Choose File"> -->
-                        <input type="file" name="updateimage" onchange="CheckSizeImage('#updateimage', '#eventupdate','.alert-error-modal', '.modal-input', 'Invalid Image (Size 450*300)', '.alert-error-modal')" id="updateimage" class="btn-choose-file" accept="image/*" title="Choose an event image">
+                        <input type="file" name="updateimage" onchange="CheckSizeImage('#updateimage', '#eventupdate','.alert-error-modal', '.modal-input', 'Invalid Image (Size 940*400)', '.alert-error-modal')" id="updateimage" class="btn-choose-file" accept="image/*" title="Choose an event image">
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-footer">
