@@ -107,12 +107,12 @@
                         <?php if (strtolower($row_update['gender']) == 'male') { ?>
                             <div class="gender">
                                 <input type="radio" checked value="male" name="gender" id="gender"> <span class="type-gender">Male</span>
-                                <input type="radio" name="female" id="gender> <span class=" type-gender">Female</span>
+                                <input type="radio" name="female" id="gender> <span class=" type-gender>Female</span>
                             </div>
                         <?php } else { ?>
                             <div class="gender">
                                 <input type="radio" value="male" name="gender" id="gender"> <span class="type-gender">Male</span>
-                                <input type="radio" checked name="female" id="gender> <span class=" type-gender">Female</span>
+                                <input type="radio" checked name="female" id="gender> <span class=" type-gender>Female</span>
                             </div>
                         <?php } ?>
 
