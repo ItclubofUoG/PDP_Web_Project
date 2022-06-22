@@ -93,8 +93,6 @@ Validator({
         Validator.isRequired('#userdob', 'This field can not empty'),
         Validator.isRequired('#userphone', 'This field can not empty'),
         Validator.isRequired('#cardnumber', 'This field can not empty'),
-        Validator.isRequired('#userscore', 'This field can not empty'),
-
     ],
 }); 
 
