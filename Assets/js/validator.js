@@ -202,6 +202,9 @@ RemoveError=function(inputElement,form,formGroupSelector,error,message,errorclas
     errorElement.innerText="";
     errorElement.classList.remove(errorclass)
     var formElement=document.querySelector(form);
-    formElement.submit()
+    // formElement.submit()
+    formElement.onsubmit=function (e) {
+        return true;
+    }
 
 }
