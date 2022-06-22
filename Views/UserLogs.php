@@ -34,7 +34,7 @@ include_once('./connectDB.php');
 
                     <?php
                     $currentEventId = Get_Current_Event();
-                    if (isset($_GET['func']) && $_GET['func'] == 'filter') {
+                    if (isset($_GET['event'])) {
                         $currentEventId = $_GET['event'];
                     }
                     //find the total records
@@ -47,7 +47,7 @@ include_once('./connectDB.php');
                     }
                     //find limit and current page
                     $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
-                    $limit = 1;  // set the limit of line in page
+                    $limit = 20;  // set the limit of line in page
                     //calculate total page and start page
                     $total_page = ceil($total_records / $limit);
                     //limit the page from 1 to end
