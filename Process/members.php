@@ -41,25 +41,19 @@ if (isset($_POST['btn_export'])) {
             </thead>';
         while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
             $student_id = $row['student_id'];
-            if(empty($startDate) != true && empty($endDate) != true){
+            if (empty($startDate) != true && empty($endDate) != true) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
                 AND  checkin_date >='$startDate'  and checkin_date <= '$endDate'") or die(mysqli_error($conn));
-            } 
-            elseif(empty($startDate) != true && empty($endDate) == true){
-                
+            } elseif (empty($startDate) != true && empty($endDate) == true) {
+
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
                 and  checkin_date >='$startDate'") or die(mysqli_error($conn));
-
-            }
-            elseif(empty($startDate) == true && empty($endDate) != true){
+            } elseif (empty($startDate) == true && empty($endDate) != true) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
                 and checkin_date <= '$endDate'") or die(mysqli_error($conn));
-            }
-            else{
+            } else {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id'") or die(mysqli_error($conn));
-
             }
-            
             $rowScore = mysqli_fetch_array($res_sum, MYSQLI_ASSOC);
             $out .= ' 
                         <tbody>
@@ -75,7 +69,7 @@ if (isset($_POST['btn_export'])) {
                                     
                                     <td>' . $rowScore['score']  . '</td>
                     ';
-            
+
             $out .= '
                 </tr>
              </tbody>';
