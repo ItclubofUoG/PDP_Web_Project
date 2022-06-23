@@ -11,7 +11,6 @@ if (isset($_POST['btn_filter'])) {
     $sqlFilter = $result[0];
     $url = "../admin.php?page=home&&func=filter&&sql=$sqlFilter";
     $url = str_replace(PHP_EOL, '', $url);
-
     header("location: $url");
 }
 $out = "";
@@ -66,7 +65,6 @@ if (isset($_POST['btn_export'])) {
                                     <td>' . $row['dob'] . '</td>
                                     <td>' . $row['major_id'] . '</td>
                                     <td>' . $row['course_id'] . '</td>
-                                    
                                     <td>' . $rowScore['score']  . '</td>
                     ';
 
@@ -93,4 +91,7 @@ if (isset($_GET['btn_search']) && $_GET['btn_search'] == "Search") {
     $url = str_replace(PHP_EOL, '', $url);
     header("location: $url");
 }
+echo "<script type='text/javascript'>alert('None data');</script>";
+echo "<script> location.href='../admin.php?page=home'</script>";
+exit;
 ?>
