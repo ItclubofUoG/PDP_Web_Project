@@ -5,6 +5,7 @@ function Get_Current_Event()
     include("./connectDB.php");
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     $currentDay = date("Y-m-d");
+    $currentMinutes = date("H:i:s");
     //minus time
     $date = date("Y-m-d H:i:s");
     $time = strtotime($date);
@@ -16,8 +17,7 @@ function Get_Current_Event()
     $time = new DateTime($currentDateTime);
     $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
     $currentTimeStart = $time->format('Y-m-d H:i');
-    $result = mysqli_query($conn, "SELECT * FROM event WHERE `date` ='$currentDay' AND time_start < '$currentTimeStart' AND time_end > '$currentTime'") or die(mysqli_error($conn));
-
+    $result = mysqli_query($conn, "SELECT * FROM event WHERE `date` ='$currentDay' AND time_start <='$currentMinutes' AND time_end >='$currentMinutes'") or die(mysqli_error($conn));
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         return $row['event_id'];
@@ -74,7 +74,6 @@ function Get_result_querry($major, $course, $startDate, $endDate)
     } else {
         //Query without input data
         $res = "SELECT * FROM user";
-        
     }
     $resArray = array($res, $date_begin, $date_end);
     return $resArray;

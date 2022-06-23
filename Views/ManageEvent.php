@@ -36,22 +36,22 @@ include_once('./connectDB.php');
                 </tr>
 
                 <?php
-                 //find the total records
-                 $result = mysqli_query($conn, 'select count(event_id) as total from event where event_id>0');
-                 $row = mysqli_fetch_assoc($result);
-                 $total_records = $row['total'];
-                 //find limit and current page
-                 $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
-                 $limit = 2;  // set the limit of line in page
-                 //calculate total page and start page
-                 $total_page = ceil($total_records / $limit);
-                 //limit the page from 1 to end
-                 if ($current_page > $total_page) {
-                     $current_page = $total_page;
-                 } else if ($current_page < 1) {
-                     $current_page = 1;
-                 }
-                 //find start page
+                //find the total records
+                $result = mysqli_query($conn, 'select count(event_id) as total from event where event_id>0');
+                $row = mysqli_fetch_assoc($result);
+                $total_records = $row['total'];
+                //find limit and current page
+                $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
+                $limit = 2;  // set the limit of line in page
+                //calculate total page and start page
+                $total_page = ceil($total_records / $limit);
+                //limit the page from 1 to end
+                if ($current_page > $total_page) {
+                    $current_page = $total_page;
+                } else if ($current_page < 1) {
+                    $current_page = 1;
+                }
+                //find start page
                 $start = ($current_page - 1) * $limit;
                 $sql = "SELECT * FROM event WHERE event_id>0  LIMIT $start, $limit";
                 if (isset($_GET['func']) && $_GET['func'] == 'filter') {
@@ -200,7 +200,7 @@ include_once('./connectDB.php');
                     <div class="modal-input">
                         <!-- <input type="text" class="modal-input-box" placeholder="Figure">
                         <input type="button" class="btn-choose-file" value="Choose File"> -->
-                        <input type="file" name="updateimage" onchange="CheckSizeImage('#updateimage', '#eventupdate','.alert-error-modal', '.modal-input', 'Invalid Image (Size 940*400)', '.alert-error-modal')" id="updateimage" class="btn-choose-file" accept="image/*" title="Choose an event image">
+                        <input type="file" name="updateimage" value="<?php echo $row['image'] ?>" onchange="CheckSizeImage('#updateimage', '#eventupdate','.alert-error-modal', '.modal-input', 'Invalid Image (Size 940*400)', '.alert-error-modal')" id="updateimage" class="btn-choose-file" accept="image/*" title="Choose an event image">
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-footer">

@@ -2,7 +2,7 @@
 //Connect to database
 include_once("./connectDB.php");
 //Import function in Libs
-include("../Libs/index.php");
+include("./Libs/index.php");
 //date_default_timezone_set('Asia/Damascus');
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $d = date("Y-m-d");
