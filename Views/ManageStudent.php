@@ -31,6 +31,7 @@
                 </tr>
                 <?php
                 include("./connectDB.php");
+                include_once('./Libs/index.php');
                 //find the total records
                 $result = mysqli_query($conn, 'select count(student_id) as total from user');
                 $row = mysqli_fetch_assoc($result);
@@ -108,6 +109,7 @@
                         $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                     } ?>
                     <div class="modal-input">
+                        <input type="hidden" name="stdID_Update" value="<?php echo $row_update['student_id'] ?>">
                         <input type="text" value="<?php echo $row_update['student_id'] ?>" id="student_id" name="student_id" class="modal-input-box" placeholder="Student ID">
                         <span class="alert-error-modal"></span>
                     </div>
@@ -143,12 +145,19 @@
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
-                        <input type="text" id="card_uid" name="card_uid" value="<?php echo $row_update['card_uid'] ?>" class="modal-input-box" placeholder="Card Number">
+                        <input type="text" id="card_uid" name="card_uid" value="<?php echo $row_update['card_uid'] ?>" class="modal-input-box" placeholder="Card Number" readonly>
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
                         <input readonly type="text" value="<?php echo $rowscores['scores'] ?>" class="modal-input-box" placeholder="Score">
                         <span class="alert-error-modal"></span>
+                    </div>
+
+                    <div class="modal-input">
+                        <?php selected_Major($conn, $row_update['major_id']) ?>
+                    </div>
+                    <div class="modal-input">
+                        <?php selected_Course($conn, $row_update['course_id']) ?>
                     </div>
                     <div class="modal-footer">
                         <div class="btn-footer">

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2022 at 09:13 AM
+-- Generation Time: Jun 23, 2022 at 07:15 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -159,7 +159,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`student_id`, `fullname`, `phone`, `gender`, `email`, `dob`, `card_uid`, `password`, `major_id`, `course_id`, `card_select`, `add_card`) VALUES
-('2022-06-1712:47:29pm', '', '', '', '', '2022-06-17', '57859686', '25d55ad283aa400af464c76d713c07ad', 0, 0, 1, 1),
+('GCC19022', 'Luu Hoai Phong', '0918547658', 'female', 'phonglhgcc@gmail.com', '2022-06-17', '57859686', '25d55ad283aa400af464c76d713c07ad', 3, 3, 1, 1),
 ('GCCTest', 'Test function', '2131213213213', 'male', 'test@gmail.com', '2022-06-09', 'aaaaaaaaaaaaaaaaaaaa', '25d55ad283aa400af464c76d713c07ad', 3, 3, 0, 0),
 ('TestStudent', 'Luu Hoai Phong', '0398371050', 'male', 'luuhoaiphong@gmail.com', '2012-06-01', 'fhgadjsfhgkjfhgjjvbxlbvh', '25d55ad283aa400af464c76d713c07ad', 3, 6, 0, 0);
 
@@ -188,10 +188,10 @@ INSERT INTO `user_log` (`id`, `student_id`, `checkin_date`, `time_in`, `time_out
 (42, 'GCCTest', '2022-06-14', '05:00:00', '07:00:00', 2, 3, 0),
 (55, 'TestStudent', '2022-06-16', '05:00:00', '07:00:00', 2, 3, 0),
 (56, 'TestStudent', '2022-06-16', '05:00:00', '07:00:00', 3, 4, 0),
-(57, '2022-06-1712:47:29pm', '2022-06-19', '13:59:04', '14:00:25', 2, 3, 1),
-(58, '2022-06-1712:47:29pm', '2022-06-19', '14:05:55', '14:09:22', 2, 4, 1),
-(59, '2022-06-1712:47:29pm', '2022-06-19', '14:07:06', '00:00:00', 3, 0, 1),
-(60, '2022-06-1712:47:29pm', '2022-06-19', '14:08:20', '14:09:22', 3, 4, 1);
+(57, 'GCC19022', '2022-06-19', '13:59:04', '14:00:25', 2, 3, 1),
+(58, 'GCC19022', '2022-06-19', '14:05:55', '14:09:22', 2, 4, 1),
+(59, 'GCC19022', '2022-06-19', '14:07:06', '00:00:00', 3, 0, 1),
+(60, 'GCC19022', '2022-06-19', '14:08:20', '14:09:22', 3, 4, 1);
 
 --
 -- Indexes for dumped tables
@@ -298,8 +298,8 @@ ALTER TABLE `user`
 -- Constraints for table `user_log`
 --
 ALTER TABLE `user_log`
-  ADD CONSTRAINT `user_log_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `user` (`student_id`),
-  ADD CONSTRAINT `user_log_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`);
+  ADD CONSTRAINT `user_log_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`),
+  ADD CONSTRAINT `user_log_ibfk_3` FOREIGN KEY (`student_id`) REFERENCES `user` (`student_id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

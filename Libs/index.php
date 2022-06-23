@@ -141,3 +141,41 @@ function Course_List($conn)
     }
     echo "</select>";
 }
+
+
+
+//Show current major's Update Student admin page
+function selected_Major($conn, $major)
+{
+    include("./connectDB.php");
+    $sqlString = "SELECT * from major";
+    $result = mysqli_query($conn, $sqlString);
+
+    echo "<SELECT  name='major' id='major' class='modal-input-box'>";
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        if ($row['major_id'] == $major) {
+            echo "<option value='" . $row['major_id'] . "'selected>" . $row['major_name'] . "</option>";
+        } else {
+            echo "<option value='" . $row['major_id'] . "'>" . $row['major_name'] . "</option>";
+        }
+    }
+    echo "</select>";
+}
+
+//Show current course's Update Student admin page
+function selected_Course($conn, $major)
+{
+    include("./connectDB.php");
+    $sqlString = "SELECT * from course";
+    $result = mysqli_query($conn, $sqlString);
+
+    echo "<SELECT  name='course' id='course' class='modal-input-box'>";
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        if ($row['course_id'] == $major) {
+            echo "<option value='" . $row['course_id'] . "'selected>" . $row['course_name'] . "</option>";
+        } else {
+            echo "<option value='" . $row['course_id'] . "'>" . $row['course_name'] . "</option>";
+        }
+    }
+    echo "</select>";
+}
