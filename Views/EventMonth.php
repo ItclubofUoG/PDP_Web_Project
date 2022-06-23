@@ -67,7 +67,8 @@ include_once('./connectDB.php');
                         <img src="./Assets/Image/<?php echo $row['image'] ?>" alt="450x300" class="et-figure p1">
                         <div class="et-piece-info p2">
                             <div class="et-detail">Title: <b><?php echo $row['event_title'] ?></b></div>
-                            <div class="et-detail">Time: <b><?php echo $row['date'] ?> - <?php echo $row['time_start'] ?></b></div>
+                            <div class="et-detail">Date: <b><?php echo date('d-m-Y', strtotime($row['date'])) ?></b></div>
+                            <div class="et-detail">Time: <b><?php echo $row['time_start'] ?></b></div>
                             <div class="et-detail">Location: <b><?php echo $row['location'] ?></b></div>
                             <div class="et-detail">Score: <b><?php echo $row['score'] ?></b></div>
                             <div class="et-detail">Description: <b><?php echo $row['description'] ?></b></div>
@@ -84,7 +85,8 @@ include_once('./connectDB.php');
                         <img src="./Assets/Image/<?php echo $row['image'] ?>" alt="450x300" class="et-figure p3">
                         <div class="et-piece-info p4">
                             <div class="et-detail">Title: <b><?php echo $row['event_title'] ?></b></div>
-                            <div class="et-detail">Time: <b><?php echo $row['date'] ?> - <?php echo $row['time_start'] ?></b></div>
+                            <div class="et-detail">Date: <b><?php echo date('d-m-Y',strtotime($row['date'])) ?></b></div>
+                            <div class="et-detail">Time: <b><?php echo $row['time_start'] ?></b></div>
                             <div class="et-detail">Location: <b><?php echo $row['location'] ?></b></div>
                             <div class="et-detail">Score: <b><?php echo $row['score'] ?></b></div>
                             <div class="et-detail">Description: <b><?php echo $row['description'] ?></b></div>
