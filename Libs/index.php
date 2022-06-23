@@ -44,7 +44,7 @@ function Get_result_querry($major, $course, $startDate, $endDate)
     $date_end = isset($endDate) ? $endDate : "";
     if (empty($major) != true && empty($course) != true && empty($date_begin) == true && empty($date_end) == true) {
         //Query with Major and Course input
-        $res = "SELECT * FROM user where major_id ='$major' && course_id ='$course'";
+        $res = "SELECT * FROM user where major_id ='$major' and course_id ='$course'";
     } elseif (empty($major) != true && empty($course) == true && empty($date_begin) == true && empty($date_end) == true) {
         //Query with Major input
         $res = "SELECT * FROM user where major_id ='$major'";
