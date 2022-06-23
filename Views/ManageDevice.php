@@ -47,11 +47,13 @@
                       <div class="btn-table">
 
                         <?php if ($row["device_mode"] == 0) { ?>
-                          <input type="submit" name="btn_attendance" id="btn_attendance" value="Attendance" class="btn-attendence" style="background-color: blue; font-weight:bold; text-decoration:underline">
-                          <input type="submit" name="btn_enroll" id="btn_enroll" value="Enrollment" class="btn-enroll">
+                          <input type="submit" name="btn_enroll" id="btn_enroll" value="Enrollment" class="btn-enroll" style="background-color: blue; font-weight:bold; text-decoration:underline">
+                          <input type="submit" name="btn_attendance" id="btn_attendance" value="Attendance" class="btn-attendence" >
+                          
                         <?php } else { ?>
-                          <input type="submit" name="btn_attendance" id="btn_attendance" value="Attendance" class="btn-attendence">
-                          <input type="submit" name="btn_enroll" id="btn_enroll" value="Enrollment" class="btn-enroll" style="background-color: blue; font-weight:bold;text-decoration:underline">
+                          <input type="submit" name="btn_enroll" id="btn_enroll" value="Enrollment" class="btn-enroll" >
+                          <input type="submit" name="btn_attendance" id="btn_attendance" value="Attendance" class="btn-attendence" style="background-color: blue; font-weight:bold;text-decoration:underline">
+                          
                         <?php } ?>
 
                       </div>

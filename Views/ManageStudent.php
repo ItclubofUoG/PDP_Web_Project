@@ -118,7 +118,7 @@
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
-                        <input type="text" class="modal-input-box" value="<?php echo $row_update['email'] ?>" id="email" name="email" placeholder="Email">
+                        <input type="email" class="modal-input-box" value="<?php echo $row_update['email'] ?>" id="email" name="email" placeholder="Email">
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">

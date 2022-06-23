@@ -51,10 +51,10 @@ if (isset($_GET['function']) && $_GET['function'] == 'reload') {
 //Set dev_mode of device    
 if (isset($_GET['function']) && $_GET['function'] == 'updatemode') {
     if (isset($_POST['btn_enroll'])){
-        $dev_mode = 1;
+        $dev_mode = 0;
     }        
     else {
-        $dev_mode = 0;
+        $dev_mode = 1;
     }
     $dev_id = $_GET['deviceid'];
     $sql = "UPDATE `device` SET `device_mode`= '$dev_mode' WHERE id='$dev_id'";
