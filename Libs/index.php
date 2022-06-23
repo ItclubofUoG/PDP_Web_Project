@@ -40,8 +40,8 @@ function Get_result_querry($major, $course, $startDate, $endDate)
     // Check Input isset or not 
     $major = isset($major) ? $major : "";
     $course = isset($course) ? $course : "";
-    $date_begin = isset($startDate) ? $startDate : "";
-    $date_end = isset($endDate) ? $endDate : "";
+    $date_begin = isset($startDate) ? $startDate : "1";
+    $date_end = isset($endDate) ? $endDate : "12";
     if (empty($major) != true && empty($course) != true && empty($date_begin) == true && empty($date_end) == true) {
         //Query with Major and Course input
         $res = "SELECT * FROM user where major_id ='$major' and course_id ='$course'";

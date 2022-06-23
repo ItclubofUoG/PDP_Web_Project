@@ -41,8 +41,16 @@ if (isset($_POST['btn_export'])) {
             </thead>';
         while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
             $student_id = $row['student_id'];
-            $res_sum = mysqli_query($conn, "SELECT SUM(scores) FROM user_log Where student_id = '$student_id' 
-                AND checkin_date >='$startDate'  && checkin_date <= '$endDate'");
+            $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
+                AND  checkin_date >='$startDate'  and checkin_date <= '$endDate'") or die(mysqli_error($conn));
+            $rowScore = mysqli_fetch_array($res_sum, MYSQLI_ASSOC);
+                echo $startDate;
+                echo $endDate;
+                echo $rowScore['score'];
+                echo 34;
+                echo "<script type='text/javascript'>alert('Login Fail');</script>";
+               
+                exit;
             $out .= ' 
                         <tbody>
                             <tr>
@@ -54,13 +62,10 @@ if (isset($_POST['btn_export'])) {
                                     <td>' . $row['dob'] . '</td>
                                     <td>' . $row['major_id'] . '</td>
                                     <td>' . $row['course_id'] . '</td>
+                                    
+                                    <td>' . $rowScore['score'] . '</td>
                     ';
-            while ($row = mysqli_fetch_array($res_sum, MYSQLI_ASSOC)) {
-                $out .= '
-                                <td>' . $row['SUM(scores)'] . '</td>
-                               
-                    ';
-            }
+            
             $out .= '
                 </tr>
              </tbody>';
