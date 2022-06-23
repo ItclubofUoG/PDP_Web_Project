@@ -46,6 +46,11 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                                     exit();
                                 } else {
                                     $studentID = $row['student_id'];
+                                    $checkStudent = mysqli_query($conn, "SELECT * FROM user_log WHERE student_id='$studentID' and event_id='$event_id'");
+                                    if (mysqli_num_rows($checkStudent) > 0) {
+                                        echo "Login exits";
+                                        exit();
+                                    }
                                     mysqli_stmt_bind_param($result, "s", $studentID);
                                     mysqli_stmt_execute($result) or die(mysqli_error($conn));
                                     $resultl = mysqli_stmt_get_result($result);
@@ -56,7 +61,7 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                                         $rowevent = mysqli_fetch_array($res, MYSQLI_ASSOC);
                                         $timeStart = $rowevent['time_start'];
                                         echo $timeStart;
-                                        if ($timeStart >= $t) {
+                                        if ($timeStart <= $t) {
                                             $event_id = Get_Current_Event();
                                             $timeout = "00:00:00";
                                             $stid = $row['student_id'];
