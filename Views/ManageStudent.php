@@ -1,7 +1,7 @@
 <body>
     <!-- body -->
     <div class="user-container">
-        <h1 class="mn-title">Manage User</h1>
+        <h1 class="mn-title">Manage Students</h1>
         <hr class="orange-line">
         <!-- search box -->
         <div class="table-function">

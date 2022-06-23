@@ -193,7 +193,7 @@ include_once('./connectDB.php');
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
-                        <input type="text" id="updatescore" name="updatescore" class="modal-input-box" placeholder="Score" value="<?php echo $row['score'] ?>">
+                        <input type="text" id="updatescore" min="0" max="1000" name="updatescore" class="modal-input-box" placeholder="Score" value="<?php echo $row['score'] ?>">
                         <span class="alert-error-modal"></span>
                     </div>
 
