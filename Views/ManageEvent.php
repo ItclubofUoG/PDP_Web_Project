@@ -53,7 +53,7 @@ include_once('./connectDB.php');
                 }
                 //find start page
                 $start = ($current_page - 1) * $limit;
-                $sql = "SELECT * FROM event WHERE event_id>0  LIMIT $start, $limit";
+                $sql = "SELECT * FROM event WHERE event_id>0 order by event_id desc LIMIT $start, $limit";
                 if (isset($_GET['func']) && $_GET['func'] == 'filter') {
                     $sql = $_GET['sql'] . " LIMIT $start, $limit";
                 }
