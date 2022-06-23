@@ -46,7 +46,7 @@
 }
 .btn-reload {
   height: 30px;
-  background-color: #32CD32;
+  background-color: red;
   border-radius: 4px;
   width: 50%;
   border: 1px solid #ccc;

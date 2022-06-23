@@ -209,7 +209,7 @@ include_once('./connectDB.php');
                         </div>
                         <div class="btn-footer">
                             <!-- <input type="submit" class="btn-delete" value="Delete"> -->
-                            <a style="text-align: center; text-decoration: none" class="btn-delete" href="./Process/event.php?function=deleteEvent&&id=<?php echo $row['event_id'] ?>" onclick="return confirm('Information related to this event will also be deleted. Are you sure to delete?')">Delete</a>
+                            <a style="text-align: center; text-decoration: none; font-size: 14px;" class="btn-delete" href="./Process/event.php?function=deleteEvent&&id=<?php echo $row['event_id'] ?>" onclick="return confirm('Information related to this event will also be deleted. Are you sure to delete?')">Delete</a>
                         </div>
                     </div>
                 </form>

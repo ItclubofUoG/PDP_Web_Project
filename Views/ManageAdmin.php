@@ -104,7 +104,7 @@
                         </div>
                         <div class="btn-footer">
                             <!-- <input type="submit" class="btn-delete" value="Delete"> -->
-                            <a class="btn-delete" style="text-align: center; text-decoration: none" href="./Process/manageAdmin.php?function=deleteAdmin&&id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure to delete')">Delete admin</a>
+                            <a class="btn-delete" style="text-align: center; text-decoration: none; font-size: 14px;" href="./Process/manageAdmin.php?function=deleteAdmin&&id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure to delete')">Delete admin</a>
                         </div>
                         
                     </div>
