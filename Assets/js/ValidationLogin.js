@@ -17,12 +17,14 @@ const alert = document.querySelector('.alert')
                 alert.textContent= 'Email valid'
                 alert.style.color = '#14f0ba'
                 alert.style.padding='0px 15px'
+                alert.style.opacity = '0.5'
             }
             else{
                 //do not right email pattern
                 alert.style.padding='0px 45px'
                 alert.textContent = 'Invalid email'
                 alert.style.color = '#f0144B'
+                alert.style.opacity = '0.5'
             }
         }
     }
