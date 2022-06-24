@@ -13,6 +13,10 @@ if (isset($_GET['btn_update'])) {
     $course = $_POST['course'];
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
+    if (isset($_POST['score'])) {
+        $score = $_POST['score'];
+        mysqli_query($conn, "INSERT INTO `user_log`(`student_id`, `event_id`, `scores`, `card_out`) VALUES ('$id',0,'$score',0)");
+    }
     // $cart_uid = $_POST['cart_uid'];
 
     $checkstid = mysqli_query($conn, "SELECT * FROM user WHERE student_id != '$idUpdate' and student_id = '$id'") or die(mysqli_error($conn));

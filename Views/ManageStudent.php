@@ -149,8 +149,15 @@
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
-                        <input readonly type="text" value="<?php echo $rowscores['scores'] ?>" class="modal-input-box" placeholder="Score">
-                        <span class="alert-error-modal"></span>
+                        <?php
+                        $res = mysqli_query($conn, "SELECT * FROM user_log WHERE student_id='$student_id' and event_id=0");
+                        if (mysqli_num_rows($res) > 0) { ?>
+                            <input name="score" id="score" readonly type="text" value="<?php echo $rowscores['scores'] ?>" class="modal-input-box" placeholder="Score">
+                            <span class="alert-error-modal"></span>
+                        <?php } else { ?>
+                            <input name="score" id="score" type="text" value="<?php echo $rowscores['scores'] ?>" class="modal-input-box" placeholder="Score">
+                            <span class="alert-error-modal"></span>
+                        <?php } ?>
                     </div>
 
                     <div class="modal-input">
@@ -164,7 +171,7 @@
                             <input type="submit" value="Update" name="btn_update" id="btn_update" class="btn-update">
                         </div>
                         <div class="btn-footer">
-                            <a style="text-align: center; text-decoration: none; font-size: 14px" href="./Process/student.php?stid=<?php echo $row_update['student_id'] ?>" class="btn-delete" id="btn_detele" class="btn-delete" onclick="return confirm('Are you sure to delete?')" >Delete</a>
+                            <a style="text-align: center; text-decoration: none; font-size: 14px" href="./Process/student.php?stid=<?php echo $row_update['student_id'] ?>" class="btn-delete" id="btn_detele" class="btn-delete" onclick="return confirm('Are you sure to delete?')">Delete</a>
                         </div>
                     </div>
                 </form>
