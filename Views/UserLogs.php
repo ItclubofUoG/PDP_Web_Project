@@ -2,6 +2,7 @@
 include_once('./Libs/index.php');
 include_once('./connectDB.php');
 ?>
+<meta http-equiv="refresh" content="5">
 
 <body>
     <div id="container">
