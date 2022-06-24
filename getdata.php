@@ -39,6 +39,10 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                             if (true) {
                                 $Uname = $row['fullname'];
                                 $event_id = Get_Current_Event();
+                                if ($event_id == 0) {
+                                    echo 'None event';
+                                    exit();
+                                }
                                 $sql = "SELECT * FROM user_log WHERE student_id=? AND event_id='$event_id' AND checkin_date='$d' AND card_out=0";
                                 $result = mysqli_stmt_init($conn);
                                 if (!mysqli_stmt_prepare($result, $sql)) {
@@ -46,11 +50,6 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                                     exit();
                                 } else {
                                     $studentID = $row['student_id'];
-                                    $checkStudent = mysqli_query($conn, "SELECT * FROM user_log WHERE student_id='$studentID' and event_id='$event_id'");
-                                    if (mysqli_num_rows($checkStudent) > 0) {
-                                        echo "Login exits";
-                                        exit();
-                                    }
                                     mysqli_stmt_bind_param($result, "s", $studentID);
                                     mysqli_stmt_execute($result) or die(mysqli_error($conn));
                                     $resultl = mysqli_stmt_get_result($result);
@@ -60,8 +59,18 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                                         $res = mysqli_query($conn, "SELECT * FROM `event` WHERE event_id='$event_id'");
                                         $rowevent = mysqli_fetch_array($res, MYSQLI_ASSOC);
                                         $timeStart = $rowevent['time_start'];
-                                        echo $timeStart;
-                                        if ($timeStart <= $t) {
+                                        //plus time
+                                        $minutes_to_add = 30;
+                                        $currentDateTime = date('Y-m-d H:i:s');
+                                        $time = new DateTime($currentDateTime);
+                                        $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+                                        $currentTimeStart = $time->format('Y-m-d H:i');
+                                        if ($timeStart <= $currentTimeStart) {
+                                            $checkStudent = mysqli_query($conn, "SELECT * FROM user_log WHERE student_id='$studentID' and event_id='$event_id'");
+                                            if (mysqli_num_rows($checkStudent) > 0) {
+                                                echo "Login exits";
+                                                exit();
+                                            }
                                             $event_id = Get_Current_Event();
                                             $timeout = "00:00:00";
                                             $stid = $row['student_id'];
@@ -204,4 +213,4 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
     }
 }
 //http://10.26.5.19:4343//PDPAttendance//Model//getdata.php?card_uid="57859686"&device_token="34234234234fsd"
-//http://10.26.8.126:4343//PDPAttendance//Model//getdata.php?card_uid=57859686&device_token=34234234234fsd
+//http://192.168.1.135:4343//PDPAttendance//Model//getdata.php?card_uid=57859686&device_token=34234234234fsd
