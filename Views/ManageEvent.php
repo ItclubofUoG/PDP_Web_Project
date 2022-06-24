@@ -42,7 +42,7 @@ include_once('./connectDB.php');
                 $total_records = $row['total'];
                 //find limit and current page
                 $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
-                $limit = 2;  // set the limit of line in page
+                $limit = 4;  // set the limit of line in page
                 //calculate total page and start page
                 $total_page = ceil($total_records / $limit);
                 //limit the page from 1 to end
