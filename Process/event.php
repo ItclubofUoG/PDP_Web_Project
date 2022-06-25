@@ -11,8 +11,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'addEvent') {
     $score = $_POST['eventscore'];
     $pic = $_FILES['eventimage'];
 
-
-
     if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
         $image = $pic['name'];
 
@@ -53,8 +51,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateEvent') {
                 mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`description`='$description',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd',`image`='$image' WHERE event_id='$event_id'") or die(mysqli_error($conn));
                 echo "<script> location.href='../admin.php?page=event'</script>";
                 exit;
-            }
-            else {
+            } else {
                 echo "<script>alert('Image name already exist, please change file name before upload!')</script>";
                 echo "<script> location.href='../admin.php?page=event'</script>";
             }
@@ -80,18 +77,16 @@ if (isset($_GET['function']) && $_GET['function'] == 'deleteEvent') {
 //search function
 if (isset($_GET['function']) && $_GET['function'] == 'searchEvent') {
     $eventID = $_POST['eventSearch'];
-    if($eventID!=NULL){
+    if ($eventID != NULL) {
         $sqlFilter = "SELECT * FROM event WHERE event_title like '%$eventID%'  or location like '%$eventID%' ";
-    }
-    else{
+    } else {
         $sqlFilter = "SELECT * FROM event order by event_id desc";
-    }   
+    }
 
-    $url="../admin.php?page=event&&func=filter&&sql=$sqlFilter";
-    $url=str_replace(PHP_EOL, '',$url);
+    $url = "../admin.php?page=event&&func=filter&&sql=$sqlFilter";
+    $url = str_replace(PHP_EOL, '', $url);
 
-    header("location: $url");    
-
+    header("location: $url");
 }
 ?>
 

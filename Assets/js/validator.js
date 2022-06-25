@@ -112,12 +112,6 @@ Validator.isConfirmed = function(selector,getConfirmValue,message){
         }
     }
 }
-// Validator.isSizeImage = function(selector,getConfirmValue,message){
- 
-//     let realWidth = value.naturalWidth;
-//     let realHeight = value.naturalHeight;
-//     console.log(realWidth)
-// }
 
 CheckSizeImage=function(selector,form,error,formGroupSelector,message,errorclass){
     // fileInput=document.querySelector(selector);
@@ -207,4 +201,17 @@ RemoveError=function(inputElement,form,formGroupSelector,error,message,errorclas
         return true;
     }
 
+}
+
+CheckRequired=function(selector,form,error,formGroupSelector,message,errorclass){
+    var inputElement=document.querySelector(selector);
+    var value=inputElement.value;
+    if(value.trim()==''){
+        AddError(inputElement,form,formGroupSelector,error,message,errorclass);
+    }else{
+        RemoveError(inputElement,form,formGroupSelector,error,message,errorclass)
+    }
+}
+checkEmail=function(selector,form,error,formGroupSelector,message,errorclass){
+    
 }

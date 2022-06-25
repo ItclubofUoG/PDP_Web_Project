@@ -29,7 +29,6 @@ if (isset($_GET['btn_update'])) {
             if (mysqli_num_rows($checkphone) == 0) {
                 if ($major != 0 && $course != 0) {
                     mysqli_query($conn, "UPDATE `user` SET `student_id`='$id',`fullname`='$name',`phone`='$phone',`gender`='$gender',`email`='$email',`dob`='$dob',`major_id`='$major',`course_id`='$course' WHERE student_id='$idUpdate'");
-                    echo "<script type='text/javascript'>alert('Update successfully');</script>";
                     echo "<script> location.href='../admin.php?page=student'</script>";
                 } else {
                     echo "<script type='text/javascript'>alert('Major name or Course name is invalid');</script>";

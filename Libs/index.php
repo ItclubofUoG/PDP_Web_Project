@@ -2,7 +2,7 @@
 //Get current event by realtime
 function Get_Current_Event()
 {
-    include("./connectDB.php");
+    include("../connectDB.php");
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     $currentDay = date("Y-m-d");
     $currentMinutes = date("H:i:s");

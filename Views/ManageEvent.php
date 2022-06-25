@@ -189,18 +189,16 @@ include_once('./connectDB.php');
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input-des">
-                        <textarea required cols="30" rows="10" type="text" id="updatedescription" name="updatedescription" class="modal-input-box-des" placeholder="Description"> <?php echo $row['description'] ?></textarea>
+                        <textarea required cols="30" onblur="CheckRequired('#updatedescription', '#eventupdate','.alert-error-modal', '.modal-input-des', 'This feild can not be empty', '.alert-error-modal')" rows="10" type="text" id="updatedescription" name="updatedescription" class="modal-input-box-des" placeholder="Description"> <?php echo $row['description'] ?></textarea>
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
                         <input type="number" min="0" max="100" id="updatescore" min="0" max="1000" name="updatescore" class="modal-input-box" placeholder="Score" value="<?php echo $row['score'] ?>">
                         <span class="alert-error-modal"></span>
                     </div>
-
                     <div class="modal-input">
-                        <!-- <input type="text" class="modal-input-box" placeholder="Figure">
-                        <input type="button" class="btn-choose-file" value="Choose File"> -->
-                        <input type="file" name="updateimage" value="<?php echo $row['image'] ?>" onchange="CheckSizeImage('#updateimage', '#eventupdate','.alert-error-modal', '.modal-input', 'Invalid Image (Size 940*400)', '.alert-error-modal')" id="updateimage" class="btn-choose-file" accept="image/*" title="Choose an event image">
+
+                        <input src="./Assets/image/<?php echo $row['image'] ?>" width="500" height="600" type="file" name="updateimage" value="<?php echo $row['image'] ?>" onchange="CheckSizeImage('#updateimage', '#eventupdate','.alert-error-modal', '.modal-input', 'Invalid Image (Size 940*400)', '.alert-error-modal')" id="updateimage" class="btn-choose-file" accept="image/*" title="Choose an event image">
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-footer">
