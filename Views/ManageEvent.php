@@ -158,7 +158,7 @@ include_once('./connectDB.php');
                     <h2 class="modal-label">Update Event</h2>
                     <a class="modal-close js-modal-close-update-event">X</a>
                 </div>
-                <form action="./Process/event.php?function=updateEvent" class="modal-body" id="eventupdate" enctype="multipart/form-data" method="POST">
+                <form action="./Process/event.php?function=updateEvent" class="modal-body" id="eventupdate" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
                     <?php if (isset($_GET['eventId'])) {
                         echo '<script type="text/javascript">',
                         'open_eventUpdate_modal();',
