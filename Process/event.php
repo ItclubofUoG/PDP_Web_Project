@@ -44,17 +44,10 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateEvent') {
 
     if ($pic['name'] != "") {
         if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
-            $sq = "SELECT * from event where image = '$image'";
-            $re = mysqli_query($conn, $sq);
-            if (mysqli_num_rows($re) == 0) {
-                copy($pic['tmp_name'], "../Assets/Image/" . $pic['name']);
-                mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`description`='$description',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd',`image`='$image' WHERE event_id='$event_id'") or die(mysqli_error($conn));
-                echo "<script> location.href='../admin.php?page=event'</script>";
-                exit;
-            } else {
-                echo "<script>alert('Image name already exist, please change file name before upload!')</script>";
-                echo "<script> location.href='../admin.php?page=event'</script>";
-            }
+            copy($pic['tmp_name'], "../Assets/Image/" . $pic['name']);
+            mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`description`='$description',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd',`image`='$image' WHERE event_id='$event_id'") or die(mysqli_error($conn));
+            echo "<script> location.href='../admin.php?page=event'</script>";
+            exit;
         }
     } else {
         mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`description`='$description',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd' WHERE event_id='$event_id'") or die(mysqli_error($conn));

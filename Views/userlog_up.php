@@ -46,7 +46,9 @@ include('../connectDB.php');
         if (isset($_GET['func']) && $_GET['func'] == 'filter') {
             $sql = $_GET['sql'] . " LIMIT $start, $limit";
         }
-        $result = mysqli_query($conn, $sql);
+        if ($currentEventId != 0 && isset($_GET['func']) == false) {
+            $result = mysqli_query($conn, $sql);
+        }
         while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
         ?>
             <tr class="table-body">
