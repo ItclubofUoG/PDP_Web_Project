@@ -1,6 +1,6 @@
 <body>
     <div class="list-container">
-        <h1 class="mn-title">List Of Members</h1>
+        <h1 class="mn-title">List Of Students</h1>
         <hr class="orange-line">
         <div class="table-function">
             <form action="" class="search" method="POST">
