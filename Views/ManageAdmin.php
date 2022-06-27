@@ -111,7 +111,6 @@
         </div>
         <!-- End modal -->
     </div>
-
     <!-- Start script -->
     <script src="./Assets/js/ModalAdmin.js"></script>
     <script src="./Assets/js/Validation.js"></script>
