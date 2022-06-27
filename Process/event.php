@@ -78,11 +78,10 @@ if (isset($_GET['function']) && $_GET['function'] == 'deleteEvent') {
 if (isset($_GET['function']) && $_GET['function'] == 'searchEvent') {
     $eventID = $_POST['eventSearch'];
     if ($eventID != NULL) {
-        $sqlFilter = "SELECT * FROM event WHERE event_title like '%$eventID%'  or location like '%$eventID%' ";
+        $sqlFilter = "SELECT * FROM event WHERE event_title like '%$eventID%' and event_id>0 or location like '%$eventID%' and event_id>0";
     } else {
-        $sqlFilter = "SELECT * FROM event order by event_id desc";
+        $sqlFilter = "SELECT * FROM event WHERE event_id>0 order by event_id desc>0";
     }
-
     $url = "../admin.php?page=event&&func=filter&&sql=$sqlFilter";
     $url = str_replace(PHP_EOL, '', $url);
 
