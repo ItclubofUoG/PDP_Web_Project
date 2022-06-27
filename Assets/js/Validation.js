@@ -139,3 +139,11 @@ Validator.isConfirmed = function(selector,getConfirmValue,message){
         }
     }
 }
+Validator.isScore=function(selector,min,max,message){
+    return {
+        selector: selector,
+        test: function(value){
+            return value>=0 ? undefined : message||'Score must be greater than 0'
+        }
+    }
+}

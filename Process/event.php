@@ -77,6 +77,5 @@ if (isset($_GET['function']) && $_GET['function'] == 'searchEvent') {
     }
     $url = "../admin.php?page=event&&func=filter&&sql=$sqlFilter";
     $url = str_replace(PHP_EOL, '', $url);
-
     header("location: $url");
 }

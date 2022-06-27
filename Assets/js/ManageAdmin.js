@@ -80,6 +80,7 @@ Validator({
         Validator.isRequired('#updatetimeend', 'This field can not empty'),
         Validator.isRequired('#updatelocation', 'This field can not empty'),
         Validator.isRequired('#updatescore', 'This field can not empty'),
+        Validator.isScore('#updatescore', 'Score must be greater than 0')
     ],
 }); 
 
