@@ -7,7 +7,6 @@
             <input type="submit" class="btn-add-right js-add-admin" value="Add New Admin">
         </div>
         <!-- End Search box -->
-
         <!-- Begin Table -->
         <div class="main-table">
             <table class="table-admin">
