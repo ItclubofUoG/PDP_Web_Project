@@ -54,27 +54,33 @@
                 } else {
                     $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id = b.major_id and a.course_id = c.course_id LIMIT $start, $limit";
                 }
+                //check condition
+                $res_student = mysqli_query($conn, "SELECT * FROM user");
                 //query and display
-                $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    $student_id = $row['student_id'];
-                    $res = mysqli_query($conn, "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id'");
-                    $resCourseAndMajor = mysqli_query($conn, "SELECT * FROM `user` INNER JOIN `major` ON user.major_id=major.major_id INNER JOIN `course` ON user.course_id=course.course_id WHERE student_id='$student_id'");
-                    $cowCourseAndMajor = mysqli_fetch_array($resCourseAndMajor, MYSQLI_ASSOC);
-                    $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
+                if (mysqli_num_rows($res_student) > 0) {
+                    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                        $student_id = $row['student_id'];
+                        $res = mysqli_query($conn, "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id'");
+                        $resCourseAndMajor = mysqli_query($conn, "SELECT * FROM `user` INNER JOIN `major` ON user.major_id=major.major_id INNER JOIN `course` ON user.course_id=course.course_id WHERE student_id='$student_id'");
+                        $cowCourseAndMajor = mysqli_fetch_array($resCourseAndMajor, MYSQLI_ASSOC);
+                        $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
-                    <tr class="table-body">
-                        <td class="body-row"><?php echo $row['student_id'] ?></td>
-                        <td class="body-row"><?php echo $row['fullname'] ?></td>
-                        <td class="body-row"><?php echo $row['email'] ?></td>
-                        <td class="body-row"><?php echo $row['gender'] ?></td>
-                        <td class="body-row"><?php echo $row['dob'] ?></td>
-                        <td class="body-row"><?php echo $row['phone'] ?></td>
-                        <td class="body-row"><?php echo $cowCourseAndMajor['major_name'] ?></td>
-                        <td class="body-row"><?php echo $cowCourseAndMajor['course_name'] ?></td>
-                        <td class="body-row"><?php echo $rowscores['scores'] ?></td>
-                    </tr>
+                        <tr class="table-body">
+                            <td class="body-row"><?php echo $row['student_id'] ?></td>
+                            <td class="body-row"><?php echo $row['fullname'] ?></td>
+                            <td class="body-row"><?php echo $row['email'] ?></td>
+                            <td class="body-row"><?php echo $row['gender'] ?></td>
+                            <td class="body-row"><?php echo $row['dob'] ?></td>
+                            <td class="body-row"><?php echo $row['phone'] ?></td>
+                            <td class="body-row"><?php echo $cowCourseAndMajor['major_name'] ?></td>
+                            <td class="body-row"><?php echo $cowCourseAndMajor['course_name'] ?></td>
+                            <td class="body-row"><?php echo $rowscores['scores'] ?></td>
+                        </tr>
+                    <?php } ?>
+                <?php } else { ?>
                 <?php } ?>
+
             </table>
         </div>
         <!--End Table-->
@@ -171,8 +177,6 @@
             } ?>
         </div>
     </div>
-
-
 </body>
 
 </html>

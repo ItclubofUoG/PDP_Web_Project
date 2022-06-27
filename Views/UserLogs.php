@@ -29,7 +29,7 @@ include_once('./connectDB.php');
                 }, 1000)
             </script>
             <!--Start Table User log -->
-            <div class="main-table" id="load_userlog">
+            <div id="load_userlog">
 
             </div>
             <!-- End table -->

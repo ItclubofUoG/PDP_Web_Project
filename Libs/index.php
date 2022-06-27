@@ -2,6 +2,31 @@
 //Get current event by realtime
 function Get_Current_Event()
 {
+    include("./connectDB.php");
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $currentDay = date("Y-m-d");
+    $currentMinutes = date("H:i:s");
+    //minus time
+    $date = date("Y-m-d H:i:s");
+    $time = strtotime($date);
+    $time = $time - (30 * 60);
+    $currentTime = date("H:i:s", $time);
+    //plus time
+    $minutes_to_add = 30;
+    $currentDateTime = date('Y-m-d H:i:s');
+    $time = new DateTime($currentDateTime);
+    $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+    $currentTimeStart = $time->format('Y-m-d H:i');
+    $result = mysqli_query($conn, "SELECT * FROM event WHERE `date` ='$currentDay' AND time_start <='$currentTimeStart' AND time_end >='$currentTime'") or die(mysqli_error($conn));
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return $row['event_id'];
+    } else {
+        return 0;
+    }
+}
+function Get_Current_Event_UserLog()
+{
     include("../connectDB.php");
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     $currentDay = date("Y-m-d");

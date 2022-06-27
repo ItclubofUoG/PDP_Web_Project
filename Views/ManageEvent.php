@@ -57,32 +57,26 @@ include_once('./connectDB.php');
                 if (isset($_GET['func']) && $_GET['func'] == 'filter') {
                     $sql = $_GET['sql'] . " LIMIT $start, $limit";
                 }
-                $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
+                $res_event = mysqli_query($conn, "SELECT * FROM event WHERE event_id>0");
+                if (mysqli_num_rows($res_event) > 0) {
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
                 ?>
-                    <tr class="table-body">
-                        <td class="body-row"><a style="color: blue; font-weight: bold; text-decoration: none" href="?page=event&&eventId=<?php echo $row["event_id"]; ?>" class="choose-user js-update-event"><?php echo $row["event_title"]; ?></a></td>
-                        <td class="body-row"><?php echo $row["date"]; ?></td>
-                        <td class="body-row"><?php echo $row["time_start"]; ?></td>
-                        <td class="body-row"><?php echo $row["time_end"]; ?></td>
-                        <td class="body-row"><?php echo $row["location"]; ?></td>
-                        <td class="body-row" style="width: 300px"><?php echo $row["description"]; ?></td>
-                        <td class="body-row"><img class="imgevent" src="./Assets/Image/<?php echo $row["image"]; ?>" alt="event image"></td>
-                        <td class="body-row"><?php echo $row["score"]; ?></td>
-                    </tr>
-                <?php
-                }
-                ?>
-                <!-- <tr class="table-body">
-                    <td class="body-row">None</td>
-                    <td class="body-row">None</td>
-                    <td class="body-row">None</td>
-                    <td class="body-row">None</td>
-                    <td class="body-row">None</td>
-                    <td class="body-row">None</td>
-                    <td class="body-row">None</td>
-                    <td class="body-row">None</td>
-                </tr> -->
+                        <tr class="table-body">
+                            <td class="body-row"><a style="color: blue; font-weight: bold; text-decoration: none" href="?page=event&&eventId=<?php echo $row["event_id"]; ?>" class="choose-user js-update-event"><?php echo $row["event_title"]; ?></a></td>
+                            <td class="body-row"><?php echo $row["date"]; ?></td>
+                            <td class="body-row"><?php echo $row["time_start"]; ?></td>
+                            <td class="body-row"><?php echo $row["time_end"]; ?></td>
+                            <td class="body-row"><?php echo $row["location"]; ?></td>
+                            <td class="body-row" style="width: 300px"><?php echo $row["description"]; ?></td>
+                            <td class="body-row"><img class="imgevent" src="./Assets/Image/<?php echo $row["image"]; ?>" alt="event image"></td>
+                            <td class="body-row"><?php echo $row["score"]; ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                <?php } ?>
+
             </table>
         </div>
         <!-- End Table -->
