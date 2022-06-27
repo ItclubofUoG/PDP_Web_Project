@@ -213,4 +213,4 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
     }
 }
 //http://10.26.5.19:4343//PDPAttendance//Model//getdata.php?card_uid="57859686"&device_token="34234234234fsd"
-//http://192.168.1.135:4343//PDPAttendance//Model//getdata.php?card_uid=57859686&device_token=34234234234fsd
+//http://10.26.6.0:4343//PDPAttendance/getdata.php?card_uid=57859686&device_token=62e6de2ca19db258

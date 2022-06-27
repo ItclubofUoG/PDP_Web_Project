@@ -55,27 +55,31 @@
                 } else {
                     $sql = "SELECT * FROM user a, major b, course c WHERE a.major_id=b.major_id and a.course_id=c.course_id LIMIT $start, $limit";
                 }
-                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    $student_id = $row['student_id'];
-                    $res = mysqli_query($conn, "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id'");
-                    $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
+                $res_student = mysqli_query($conn, "SELECT * FROM user");
+                if (mysqli_num_rows($res_student) > 0) {
+                    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                        $student_id = $row['student_id'];
+                        $res = mysqli_query($conn, "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id'");
+                        $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
-                    <tr class="table-body">
-                        <td class="body-row">
-                            <a style="font-weight: bold; color: blue;" class="choose-user js-update-user" href="?page=student&&stuid=<?php echo $row['student_id'] ?>"><?php echo $row['student_id'] ?></a>
-                        </td>
-                        <td class="body-row"><?php echo $row['fullname'] ?></td>
-                        <td class="body-row"><?php echo $row['email'] ?></td>
-                        <td class="body-row"><?php echo $row['gender'] ?></td>
-                        <td class="body-row"><?php echo $row['dob'] ?></td>
-                        <td class="body-row"><?php echo $row['phone'] ?></td>
-                        <td class="body-row"><?php echo $row['major_name'] ?></td>
-                        <td class="body-row"><?php echo $row['course_name'] ?></td>
-                        <td class="body-row"><?php echo $row['card_uid'] ?></td>
-                        <td class="body-row"><?php echo $rowscores['scores'] ?></td>
-                    </tr>
+                        <tr class="table-body">
+                            <td class="body-row">
+                                <a style="font-weight: bold; color: blue;" class="choose-user js-update-user" href="?page=student&&stuid=<?php echo $row['student_id'] ?>"><?php echo $row['student_id'] ?></a>
+                            </td>
+                            <td class="body-row"><?php echo $row['fullname'] ?></td>
+                            <td class="body-row"><?php echo $row['email'] ?></td>
+                            <td class="body-row"><?php echo $row['gender'] ?></td>
+                            <td class="body-row"><?php echo $row['dob'] ?></td>
+                            <td class="body-row"><?php echo $row['phone'] ?></td>
+                            <td class="body-row"><?php echo $row['major_name'] ?></td>
+                            <td class="body-row"><?php echo $row['course_name'] ?></td>
+                            <td class="body-row"><?php echo $row['card_uid'] ?></td>
+                            <td class="body-row"><?php echo $rowscores['scores'] ?></td>
+                        </tr>
+                    <?php } ?>
                 <?php } ?>
+
             </table>
         </div>
         <!-- End table -->
