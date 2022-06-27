@@ -1,6 +1,4 @@
 <body>
-
-
     <div class="course-container">
         <h1 class="mn-title">Manage Admin</h1>
         <hr class="orange-line">
@@ -80,7 +78,7 @@
                 </div>
                 <form action="./Process/manageAdmin.php?function=updateAdmin" method="POST" class="modal-body" id="updateAd">
                     <div class="modal-input">
-                    <?php
+                        <?php
                         if (isset($_GET['id'])) {
                             echo '<script type="text/javascript">',
                             'open_admin();',
@@ -106,7 +104,7 @@
                             <!-- <input type="submit" class="btn-delete" value="Delete"> -->
                             <a class="btn-delete" style="text-align: center; text-decoration: none; font-size: 14px;" href="./Process/manageAdmin.php?function=deleteAdmin&&id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure to delete')">Delete admin</a>
                         </div>
-                        
+
                     </div>
                 </form>
             </div>
