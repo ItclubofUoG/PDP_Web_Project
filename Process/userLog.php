@@ -87,19 +87,19 @@ if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
 
     if ($id != "" && $eventName != 0) {
         $sqlCheckID = mysqli_query($conn, "SELECT * FROM user where student_id = '$id'");
-        if(mysqli_num_rows($sqlCheckID) != 0){
+        if (mysqli_num_rows($sqlCheckID) != 0) {
             $sqlUserLog = "SELECT * FROM user_log where student_id = '$id' and event_id = '$eventName'";
             $sqlEvent = "SELECT * from event where event_id=$eventName";
-    
+
             $resUserLog = mysqli_query($conn, $sqlUserLog);
-    
+
             $resEvent = mysqli_query($conn, $sqlEvent);
             $row = mysqli_fetch_array($resEvent);
-    
+
             $timeIn = $row['time_start'];
             $timeOut = $row['time_end'];
             $score = $row['score'];
-    
+
             if (mysqli_num_rows($resUserLog) == 0) {
                 mysqli_query($conn, "INSERT INTO user_log (student_id,checkin_date,time_in,time_out,event_id,scores) 
                                         VALUES ('$id','$checkinDate','$timeIn','$timeOut','$eventName',$score)");
@@ -107,11 +107,9 @@ if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
             } else {
                 echo "<script>alert('Student have already check-in'); location.href='../admin.php?page=eventlog' </script>";
             }
-        }
-        else{
+        } else {
             echo "<script>alert('Student ID does not exist'); location.href='../admin.php?page=eventlog' </script>";
         }
-        
     } else {
         echo "<script>alert('Please complete all information'); location.href='../admin.php?page=eventlog' </script>";
     }
