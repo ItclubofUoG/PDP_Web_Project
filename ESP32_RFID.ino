@@ -17,27 +17,26 @@
 #include <MFRC522.h>
 //OLED-----------------------------
 #include <Wire.h>
-#include <Adafruit_GFX.h>          //https://github.com/adafruit/Adafruit-GFX-Library
-#include <Adafruit_SSD1306.h>      //https://github.com/adafruit/Adafruit_SSD1306
+
 //************************************************************************
 #define SS_PIN  5
 #define RST_PIN 27
 // Declaration for SSD1306 display connected using software I2C pins are(22 SCL, 21 SDA)
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
-#define OLED_RESET     0 // Reset pin # (or -1 if sharing Arduino reset pin)
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+
 //************************************************************************
 #define coiPin 2
 #define redLed 12
 #define greenLed 14
+#define resetBtn 17
 //************************************************************************
 MFRC522 mfrc522(SS_PIN, RST_PIN); // Create MFRC522 instance.
 //************************************************************************
 /* Set these to your desired credentials. */
-const char *ssid = "Greenwich Vietnam - F5";
+const char *ssid = "Greenwich Vietnam - 1-3A";
 const char *password = "";
-const char* device_token  = "a6c23bd95b9832dd";
+const char* device_token  = "b8e1e3fb7bab8b35"; // Greenwich
+//const char* device_token  = "1e6cb94e4dc1adbe"; // clb
 //************************************************************************
 int timezone = 7 * 3600;   //Replace "x" your timezone.
 int time_dst = 0;
@@ -45,7 +44,8 @@ String getData, Link;
 String OldCardID = "";
 unsigned long previousMillis1 = 0;
 unsigned long previousMillis2 = 0;
-String URL = "http://10.26.8.185:8081//ItClubWeb-Ver1/getdata.php"; //computer IP or the server domain
+//String URL = "https://itclubofgwu.site/getdata.php"; //computer IP or the server domain
+String URL = "https://https://pdpgwu.site/.site/getdata.php"; //computer IP or the server domain
 //*************************Biometric Icons*********************************
 #define Wifi_start_width 54
 #define Wifi_start_height 49
@@ -160,17 +160,15 @@ void setup() {
   pinMode(coiPin, OUTPUT);
   pinMode(greenLed, OUTPUT);
   pinMode(redLed, OUTPUT);
+  pinMode(resetBtn, INPUT_PULLUP);
+  digitalWrite(redLed, HIGH);
   SPI.begin();  // Init SPI bus
   mfrc522.PCD_Init(); // Init MFRC522 card
   //-----------initiate OLED display-------------
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
-    Serial.println(F("SSD1306 allocation failed"));
-    for (;;); // Don't proceed, loop forever
-  }
   // you can delete these three lines if you don't want to get the Adfruit logo appear
-  display.display();
-  delay(2000); // Pause for 2 seconds
-  display.clearDisplay();
+
+
+
   //---------------------------------------------
   connectToWiFi();
   //---------------------------------------------
@@ -178,36 +176,24 @@ void setup() {
 }
 //************************************************************************
 void loop() {
+  if (digitalRead(resetBtn) == 0) {
+    Serial.println("Reseting...");
+    digitalWrite(greenLed, LOW);
+    coi(3, 0);
+    ESP.restart();
+  }
   //check if there's a connection to Wi-Fi or not
   if (!WiFi.isConnected()) {
     connectToWiFi();    //Retry to connect to Wi-Fi
-  }
+  } else digitalWrite(greenLed, HIGH);
   //---------------------------------------------
   if (millis() - previousMillis1 >= 1000) {
     previousMillis1 = millis();
-    display.clearDisplay();
+
 
     time_t now = time(nullptr);
     struct tm* p_tm = localtime(&now);
-    display.setTextSize(1);             // Normal 2:2 pixel scale
-    display.setTextColor(WHITE);        // Draw white text
-    display.setCursor(10, 0);
     Serial.println(p_tm);
-    display.setTextSize(4);             // Normal 2:2 pixel scale
-    display.setTextColor(WHITE);        // Draw white text
-    display.setCursor(0, 21);
-    if ((p_tm->tm_hour) < 10) {
-      display.print("0");
-      display.print(p_tm->tm_hour);
-    }
-    else display.print(p_tm->tm_hour);
-    display.print(":");
-    if ((p_tm->tm_min) < 10) {
-      display.print("0");
-      display.println(p_tm->tm_min);
-    }
-    else display.println(p_tm->tm_min);
-    display.display();
   }
   //---------------------------------------------
   if (millis() - previousMillis2 >= 15000) {
@@ -239,7 +225,7 @@ void loop() {
   //  Serial.println(CardID);
   SendCardID(CardID);
   delay(100);
-  display.clearDisplay();
+
 }
 //************send the Card UID to the website*************
 void SendCardID( String Card_uid ) {
@@ -258,53 +244,26 @@ void SendCardID( String Card_uid ) {
     Serial.println(httpCode);   //Print HTTP return code
     Serial.println(Card_uid);     //Print Card ID
     Serial.println(payload);     //Print request response payload
-
+    Serial.println(payload.substring(0, 5));
     if (httpCode == 200) {
       if (payload.substring(0, 5) == "login") {
         coi(2, 1);
-        
+        Serial.println("here");
         String user_name = payload.substring(5);
         Serial.println(user_name);
         //buzz
-        display.clearDisplay();
-        display.setTextSize(2);             // Normal 2:2 pixel scale
-        display.setTextColor(WHITE);        // Draw white text
-        display.setCursor(15, 0);            // Start at top-left corner
-        display.print(F("Welcome"));
-        display.setCursor(0, 20);
-        display.print(user_name);
-        display.display();
       }
       else if (payload.substring(0, 6) == "logout") {
+
         coi(1, 0);
         String user_name = payload.substring(6);
         //  Serial.println(user_name);
 
-        display.clearDisplay();
-        display.setTextSize(2);             // Normal 2:2 pixel scale
-        display.setTextColor(WHITE);        // Draw white text
-        display.setCursor(10, 0);            // Start at top-left corner
-        display.print(F("Good Bye"));
-        display.setCursor(0, 20);
-        display.print(user_name);
-        display.display();
       }
       else if (payload == "succesful") {
         coi(2, 1);
-        display.clearDisplay();
-        display.setTextSize(2);             // Normal 2:2 pixel scale
-        display.setTextColor(WHITE);        // Draw white text
-        display.setCursor(5, 0);            // Start at top-left corner
-        display.print(F("New Card"));
-        display.display();
       }
       else if (payload == "available") {
-        display.clearDisplay();
-        display.setTextSize(2);             // Normal 2:2 pixel scale
-        display.setTextColor(WHITE);        // Draw white text
-        display.setCursor(5, 0);            // Start at top-left corner
-        display.print(F("Free Card"));
-        display.display();
       }
       delay(100);
       http.end();  //Close connection
@@ -320,16 +279,6 @@ void connectToWiFi() {
   Serial.println(ssid);
   WiFi.begin(ssid, password);
 
-  display.clearDisplay();
-  display.setTextSize(1);             // Normal 1:1 pixel scale
-  display.setTextColor(WHITE);        // Draw white text
-  display.setCursor(0, 0);             // Start at top-left corner
-  display.print(F("Connecting to \n"));
-  display.setCursor(0, 50);
-  display.setTextSize(2);
-  display.print(ssid);
-  display.drawBitmap( 73, 10, Wifi_start_bits, Wifi_start_width, Wifi_start_height, WHITE);
-  display.display();
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -338,14 +287,9 @@ void connectToWiFi() {
   Serial.println("");
   Serial.println("Connected");
 
-  display.clearDisplay();
-  display.setTextSize(2);             // Normal 1:1 pixel scale
-  display.setTextColor(WHITE);        // Draw white text
-  display.setCursor(8, 0);             // Start at top-left corner
-  display.print(F("Connected \n"));
-  coi(1, 0);
-  display.drawBitmap( 33, 15, Wifi_connected_bits, Wifi_connected_width, Wifi_connected_height, WHITE);
-  display.display();
+  coi(1, 1);
+  digitalWrite(redLed, LOW);
+  digitalWrite(greenLed, HIGH);
 
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());  //IP address assigned to your ESP
@@ -359,11 +303,12 @@ void coi(int n, boolean in) { // in == 1 -> login (green); in == 0 -> logout(red
     if (in == 1) digitalWrite(greenLed, HIGH);
     else digitalWrite(redLed, HIGH);
     delay(100);
+    if (in == 1) digitalWrite(greenLed, LOW);
     digitalWrite(coiPin, LOW);
     delay(100);
   }
-  digitalWrite(greenLed, LOW);
   digitalWrite(redLed, LOW);
 }
+
 
 //=======================================================================
