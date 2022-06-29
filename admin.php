@@ -48,7 +48,7 @@ include('./Views/headerAdmin.html');
     // if (!isset($_SESSION["admin"])) {
     //     header("location: index.php?page=login");
     // }
-    if (isset($_GET['page'])) {
+    if (isset($_SESSION["us"]) && isset($_GET['page'])) {
         $page = $_GET['page'];
         if ($page == 'home') {
             include_once("./Views/ListofMembers.php");
