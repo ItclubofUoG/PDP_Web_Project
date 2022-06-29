@@ -69,7 +69,7 @@ include_once('./connectDB.php');
                             <td class="body-row"><?php echo $row["time_end"]; ?></td>
                             <td class="body-row"><?php echo $row["location"]; ?></td>
                             <td class="body-row" style="width: 300px"><?php echo substr($row["description"],0,90) . '...'; ?>
-                                <a style="text-align: center; text-decoration: none; font-size: 14px; padding:15px 15px; border:1px solid #ccc; background-color:#ccc; cursor: pointer;" class="btn-update-des" href="admin.php?page=description && id=<?php echo $row["event_id"];?>">Update</a>
+                                <a style="text-align: center; text-decoration: none; font-size: 14px; padding:15px 15px; border:1px solid #ccc; background-color:#ccc; cursor: pointer;" class="btn-update-des" href="admin.php?page=description&&id=<?php echo $row["event_id"];?>">Update</a>
                             </td>
                             <td class="body-row"><img class="imgevent" src="./Assets/Image/<?php echo $row["image"]; ?>" alt="event image"></td>
                             <td class="body-row"><?php echo $row["score"]; ?></td>
