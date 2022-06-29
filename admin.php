@@ -38,7 +38,7 @@
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: blue;
+            background: #2B3494;
         }
     </style>
 </head>
