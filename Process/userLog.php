@@ -4,6 +4,11 @@ include_once("../connectDB.php");
 
 if (isset($_GET['function']) && $_GET['function'] == 'exportExcel') {
     $eventID = $_POST['EventList'];  //get value from filter interface in user_log
+    if ($eventID == 0) {
+        echo "<script type='text/javascript'>alert('Please choose one event');</script>";
+        echo "<script> location.href='../admin.php?page=eventlog'</script>";
+        exit;
+    }
     $output = " ";
 
     $sql = "SELECT a.student_id, fullname, checkin_date, time_in, time_out, scores FROM user_log a, user b 
@@ -54,6 +59,11 @@ if (isset($_GET['function']) && $_GET['function'] == 'exportExcel') {
 //filter function
 if (isset($_GET['function']) && $_GET['function'] == 'filterUserLog') {
     $eventID = $_POST['EventList'];
+    if ($eventID == 0) {
+        echo "<script type='text/javascript'>alert('Please choose one event');</script>";
+        echo "<script> location.href='../admin.php?page=eventlog'</script>";
+        exit;
+    }
     if (empty($eventID) == false) {
         $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE c.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
     } else {
@@ -70,6 +80,16 @@ if (isset($_GET['function']) && $_GET['function'] == 'filterUserLog') {
 //delete user log    
 if (isset($_GET['function']) && $_GET['function'] == 'deleteUserLog') { //button 'Delete' in User-log interface
     $eventID = $_POST['EventList'];
+    if ($eventID == 0) {
+        echo "<script type='text/javascript'>alert('Please choose one event');</script>";
+        echo "<script> location.href='../admin.php?page=eventlog'</script>";
+        exit;
+    }
+    if ($eventID == 0) {
+        echo "<script type='text/javascript'>alert('Please choose one event');</script>";
+        echo "<script> location.href='../admin.php?page=eventlog'</script>";
+        exit;
+    }
     $sql = "DELETE FROM `user_log` WHERE event_id = $eventID";
 
     mysqli_query($conn, $sql);
@@ -83,6 +103,11 @@ if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     $id = $_POST['logid'];
     $eventName = $_POST['EventList'];
+    if ($eventName == 0) {
+        echo "<script type='text/javascript'>alert('Please choose one event');</script>";
+        echo "<script> location.href='../admin.php?page=eventlog'</script>";
+        exit;
+    }
     $checkinDate = date("Y-m-d");
 
     if ($id != "" && $eventName != 0) {
@@ -118,7 +143,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
 if (isset($_GET['function']) && $_GET['function'] == 'deleteUser') {
     $id = $_GET['id'];
     $sql = "DELETE FROM `user_log` WHERE id = $id";
-
     mysqli_query($conn, $sql);
     echo "<script>location.href='../admin.php?page=eventlog'</script>";
     exit();
