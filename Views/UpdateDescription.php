@@ -1,5 +1,5 @@
 <body>
-    <form method="post" action="submit.php">
+    <form method="post" action="./Process/event.php?func=updatedes">
         <textarea name="editor" id="editor" rows="10" cols="80">
             <input type="hidden" name="id" id="id"></input>
         </textarea>
