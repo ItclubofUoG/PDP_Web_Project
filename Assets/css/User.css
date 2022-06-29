@@ -216,8 +216,8 @@
     }
 
     .et-container{
-        margin-left: 0px;
-        margin-right: 0px;
+        margin-left: -50px;
+        margin-right: -50px;
     }
     .et-title{
         width: 94%;
@@ -237,16 +237,18 @@
     .et-piece{
         margin-left: 50%;
         transform: translateX(-50%);
-        width: 300px;
+        width: 360px;
         margin-top: 50px;
         margin-bottom: 50px;
         height: 300px;
         border-radius: 15px;
     
         display: grid;
-        grid-template-columns: 300px;
+        grid-template-columns: 360px;
         grid-template-rows: 150px 150px;
     }
+
+
 
     .p1{
         grid-column: 1/2;
@@ -282,7 +284,7 @@
     }
     
     .et-figure{
-        width: 300px;
+        width: 360px;
         height: 150px;
     }
     .et-more-info{
