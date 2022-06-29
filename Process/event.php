@@ -75,9 +75,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'searchEvent') {
     } else {
         $sqlFilter = "SELECT * FROM event WHERE event_id>0 order by event_id desc>0";
     }
-    $url = "../admin.php?page=event&&func=filter&&sql=$sqlFilter";
-    $url = str_replace(PHP_EOL, '', $url);
-    header("location: $url");
 }
 
 
