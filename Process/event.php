@@ -83,7 +83,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'searchEvent') {
 $editorContent = $statusMsg = '';
 
 // If the form is submitted
-if (isset($_GET['func'])&&$_GET['func']=='updatedes') {
+if (isset($_GET['func']) && $_GET['func'] == 'updatedes') {
     // Get editor content
     $editorContent = $_POST['editor'];
     $id = $_POST['id'];
@@ -99,12 +99,12 @@ if (isset($_GET['func'])&&$_GET['func']=='updatedes') {
             exit;
         } else {
             $statusMsg = "Some problem occurred, please try again.";
-            echo "<script> location.href='../admin.php?page=description'</script>";
+            echo "<script> location.href='../admin.php?page=description&&id='$id'</script>";
             exit;
         }
     } else {
         $statusMsg = 'Please add content in the editor.';
-        echo "<script> location.href='../admin.php?page=description'</script>";
+        echo "<script> location.href='../admin.php?page=description&&id='$id''</script>";
         exit;
     }
 }
