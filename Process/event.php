@@ -86,22 +86,28 @@ if (isset($_GET['function']) && $_GET['function'] == 'searchEvent') {
 $editorContent = $statusMsg = '';
 
 // If the form is submitted
-if (isset($_POST['submit'])) {
+if (isset($_GET['func'])&&$_GET['func']=='updatedes') {
     // Get editor content
     $editorContent = $_POST['editor'];
     $id = $_POST['id'];
     // Check whether the editor content is empty
     if (!empty($editorContent)) {
         // Insert editor content in the database
-        $insert = $db->query("INSERT INTO editor (content, created) VALUES ('" . $editorContent . "', NOW())");
+        $insert = $conn->query(" UPDATE `event` SET`description`='$editorContent' WHERE event_id = $id");
 
         // If database insertion is successful
         if ($insert) {
             $statusMsg = "The editor content has been inserted successfully.";
+            echo "<script> location.href='../admin.php?page=event'</script>";
+            exit;
         } else {
             $statusMsg = "Some problem occurred, please try again.";
+            echo "<script> location.href='../admin.php?page=description'</script>";
+            exit;
         }
     } else {
         $statusMsg = 'Please add content in the editor.';
+        echo "<script> location.href='../admin.php?page=description'</script>";
+        exit;
     }
 }

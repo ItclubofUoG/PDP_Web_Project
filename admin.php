@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./Assets/css/ManageDevice.css"/>
     <link rel="shortcut icon" href="./Assets/img/tablogo.jpg">
 
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/h8hv8ok996dheuo25v0bvdvr8xy5wi21ucqwsnwskpx54apo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
     
 
@@ -80,7 +80,6 @@ include('./Views/headerAdmin.html');
         if ($page == 'description') {
             include_once("./Views/UpdateDescription.php");
         }
-
     } else {
         include("./Views/ListofMembers.php");
     }
