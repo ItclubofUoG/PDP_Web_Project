@@ -12,7 +12,9 @@
         <?php echo $row['description'] ?>
         </textarea>
         <input type="hidden" name="id" id="id" value="<?php echo $row['event_id'] ?>"></input>
-        <input type="submit" name="submit" value="SUBMIT">
+        <div class="update-desc-hidden-input">
+            <input type="submit" name="submit" value="Submit" class="btn-update-desc">
+        </div>
     </form>
     <script>
         CKEDITOR.replace('editor');

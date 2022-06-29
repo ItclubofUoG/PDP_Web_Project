@@ -16,6 +16,7 @@
     --btnAdd: #5CB85C;
     --btnAddRight: #1177D1;;
     --border:#ccc;
+    --shadow: rgba(220,220,220,.5);
 }
 
 
@@ -538,7 +539,7 @@ html {
     bottom: 5px;
     right: 5px;
     color: var(--orange);
-    box-shadow: 0px 5px 5px 0.5px rgba(120, 120, 120, 0.3);
+    box-shadow: 0px 5px 5px 0.5px var(--shadow);
     font-size: 15px;
 }
 
@@ -548,11 +549,32 @@ html {
     transition: 0.3s;
 }
 
+.update-desc-hidden-input{
+    display: block;
+}
 
-/* .btn-update-des:hover {
- background-color:#2A1464;
- cursor: pointer
-} */
+.btn-update-desc{
+    border: 1px solid var(--orange);
+    position: relative;
+    width: 105px;
+    height: 35px;
+    background-color: var(--white);
+    font-size: 15px;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-left: 97%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    transform: translateX(-100%);
+    box-shadow: 0px 5px 5px 0.5px var(--shadow);
+}
+
+.btn-update-desc:hover{
+    background-color: var(--orange);
+    color: var(--white);
+    transition: 0.3s;
+}
+
 
 @media screen and (max-width: 900px) { 
 
@@ -606,6 +628,12 @@ html {
        font-size:8px;
     }
 
+    .btn-update-desc{
+        width: 150px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
 }
 
 @media screen and (max-width: 500px) { 
@@ -622,6 +650,12 @@ html {
         margin-left: 15px;
         font-size: 7px;
         height: 20px;
+    }
+
+    .btn-update-desc{
+        width: 98.7%;
+        margin-left: 50%;
+        transform: translateX(-50%);
     }
 
 }
