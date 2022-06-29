@@ -136,6 +136,7 @@ include_once('./connectDB.php');
         </div>
 
         <!--End modal add event  -->
+        <!-- trung commint  -->
 
         <script>
             function open_eventUpdate_modal() {
