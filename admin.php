@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="./Assets/css/ChangePass.css"/>
     <link rel="stylesheet" href="./Assets/css/ManageDevice.css"/>
     <link rel="shortcut icon" href="./Assets/img/tablogo.jpg">
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
     
 
     <!-- Customize scrollbar -->
@@ -73,6 +76,9 @@ include('./Views/headerAdmin.html');
         }
         if ($page == 'device') {
             include_once("./Views/ManageDevice.php");
+        }
+        if ($page == 'description') {
+            include_once("./Views/UpdateDescription.php");
         }
 
     } else {

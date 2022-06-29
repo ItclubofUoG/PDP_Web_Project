@@ -7,7 +7,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'addEvent') {
     $timeStart = $_POST['eventtimestart'];
     $timeEnd = $_POST['eventtimeend'];
     $location = $_POST['eventlocation'];
-    $description = $_POST['eventdescription'];
     $score = $_POST['eventscore'];
     $pic = $_FILES['eventimage'];
 
@@ -19,7 +18,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'addEvent') {
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) == 0) {
             copy($pic['tmp_name'], "../Assets/Image/" . $pic['name']);
-            mysqli_query($conn, "INSERT INTO `event`(`event_title`, `description`, `date`, `location`, `score`, `time_start`, `time_end`, `image`) VALUES ('$title','$description','$date','$location','$score','$timeStart','$timeEnd','$image')");
+            mysqli_query($conn, "INSERT INTO `event`(`event_title`, `date`, `location`, `score`, `time_start`, `time_end`, `image`) VALUES ('$title','$date','$location','$score','$timeStart','$timeEnd','$image')");
             echo "<script> location.href='../admin.php?page=event'</script>";
             exit;
         } else {
@@ -36,7 +35,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateEvent') {
     $timeStart = $_POST['updatetimestart'];
     $timeEnd = $_POST['updatetimeend'];
     $location = $_POST['updatelocation'];
-    $description = $_POST['updatedescription'];
     $score = $_POST['updatescore'];
     $pic = $_FILES['updateimage'];
     $image = $pic['name'];
@@ -45,12 +43,12 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateEvent') {
     if ($pic['name'] != "") {
         if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
             copy($pic['tmp_name'], "../Assets/Image/" . $pic['name']);
-            mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`description`='$description',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd',`image`='$image' WHERE event_id='$event_id'") or die(mysqli_error($conn));
+            mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd',`image`='$image' WHERE event_id='$event_id'") or die(mysqli_error($conn));
             echo "<script> location.href='../admin.php?page=event'</script>";
             exit;
         }
     } else {
-        mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`description`='$description',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd' WHERE event_id='$event_id'") or die(mysqli_error($conn));
+        mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd' WHERE event_id='$event_id'") or die(mysqli_error($conn));
         echo "<script> location.href='../admin.php?page=event'</script>";
     }
 }
@@ -80,4 +78,30 @@ if (isset($_GET['function']) && $_GET['function'] == 'searchEvent') {
     $url = "../admin.php?page=event&&func=filter&&sql=$sqlFilter";
     $url = str_replace(PHP_EOL, '', $url);
     header("location: $url");
+}
+
+
+//updateDes
+
+$editorContent = $statusMsg = '';
+
+// If the form is submitted
+if (isset($_POST['submit'])) {
+    // Get editor content
+    $editorContent = $_POST['editor'];
+    $id = $_POST['id'];
+    // Check whether the editor content is empty
+    if (!empty($editorContent)) {
+        // Insert editor content in the database
+        $insert = $db->query("INSERT INTO editor (content, created) VALUES ('" . $editorContent . "', NOW())");
+
+        // If database insertion is successful
+        if ($insert) {
+            $statusMsg = "The editor content has been inserted successfully.";
+        } else {
+            $statusMsg = "Some problem occurred, please try again.";
+        }
+    } else {
+        $statusMsg = 'Please add content in the editor.';
+    }
 }

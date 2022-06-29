@@ -68,7 +68,9 @@ include_once('./connectDB.php');
                             <td class="body-row"><?php echo $row["time_start"]; ?></td>
                             <td class="body-row"><?php echo $row["time_end"]; ?></td>
                             <td class="body-row"><?php echo $row["location"]; ?></td>
-                            <td class="body-row" style="width: 300px"><?php echo $row["description"]; ?></td>
+                            <td class="body-row" style="width: 300px"><?php echo substr($row["description"],0,90) . '...'; ?>
+                                <a style="text-align: center; text-decoration: none; font-size: 14px; padding:15px 15px; border:1px solid #ccc; background-color:#ccc; cursor: pointer;" class="btn-update-des" href="admin.php?page=description && id=<?php echo $row["event_id"];?>">Update</a>
+                            </td>
                             <td class="body-row"><img class="imgevent" src="./Assets/Image/<?php echo $row["image"]; ?>" alt="event image"></td>
                             <td class="body-row"><?php echo $row["score"]; ?></td>
                         </tr>
@@ -109,10 +111,10 @@ include_once('./connectDB.php');
                         <input type="text" id="eventlocation" name="eventlocation" class="modal-input-box" placeholder="Location">
                         <span class="alert-error-modal"></span>
                     </div>
-                    <div class="modal-input-des">
+                    <!-- <div class="modal-input-des">
                         <textarea required cols="30" rows="10" type="text" id="eventdescription" name="eventdescription" class="modal-input-box-des" placeholder="Description"></textarea>
                         <span class="alert-error-modal"></span>
-                    </div>
+                    </div> -->
                     <div class="modal-input">
                         <input type="number" min="0" max="100" id="eventscore" name="eventscore" class="modal-input-box" placeholder="Score">
                         <span class="alert-error-modal"></span>
@@ -134,6 +136,7 @@ include_once('./connectDB.php');
         </div>
 
         <!--End modal add event  -->
+        <!-- trung commint  -->
 
         <script>
             function open_eventUpdate_modal() {
@@ -182,10 +185,10 @@ include_once('./connectDB.php');
                         <input type="text" id="updatelocation" name="updatelocation" class="modal-input-box" placeholder="Location" value="<?php echo $row['location'] ?>">
                         <span class="alert-error-modal"></span>
                     </div>
-                    <div class="modal-input-des">
+                    <!-- <div class="modal-input-des">
                         <textarea required cols="30" onblur="CheckRequired('#updatedescription', '#eventupdate','.alert-error-modal', '.modal-input-des', 'This feild can not be empty', '.alert-error-modal')" rows="10" type="text" id="updatedescription" name="updatedescription" class="modal-input-box-des" placeholder="Description"> <?php echo $row['description'] ?></textarea>
                         <span class="alert-error-modal"></span>
-                    </div>
+                    </div> -->
                     <div class="modal-input">
                         <input type="number" min="0" max="100" id="updatescore" min="0" max="1000" name="updatescore" class="modal-input-box" placeholder="Score" value="<?php echo $row['score'] ?>">
                         <span class="alert-error-modal"></span>

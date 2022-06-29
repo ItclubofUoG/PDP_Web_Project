@@ -523,6 +523,11 @@ html {
     height: 270px;
 }
 
+.btn-update-des:hover {
+ background-color:#2A1464;
+ cursor: pointer
+}
+
 @media screen and (max-width: 900px) { 
 
     .list-container {

@@ -77,7 +77,7 @@ include('../connectDB.php');
             //loop the between 
             for ($i = 1; $i <= $total_page; $i++) {
                 if ($i == $current_page) {
-                    echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">' . $i . '</span> | ';
+                    echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">' . $i . '</span>  ';
                 } else {
                     echo '<a class="pag-hplink" href="admin.php?page=eventlog&&pages=' . $i . '&&event=' . $currentEventId . '"><div class="pag-number">' . $i . '</div></a> |';
                 }
