@@ -70,6 +70,8 @@ if (isset($_GET['function']) && $_GET['function'] == 'deleteEvent') {
 //search function
 if (isset($_GET['function']) && $_GET['function'] == 'searchEvent') {
     $eventID = $_POST['eventSearch'];
+    if ($eventID == 0) {
+    }
     if ($eventID != NULL) {
         $sqlFilter = "SELECT * FROM event WHERE event_title like '%$eventID%' and event_id>0 or location like '%$eventID%' and event_id>0";
     } else {

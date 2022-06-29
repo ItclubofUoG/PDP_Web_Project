@@ -173,7 +173,7 @@ function Course_List($conn)
 function selected_Major($conn, $major)
 {
     include("./connectDB.php");
-    $sqlString = "SELECT * from major";
+    $sqlString = "SELECT * from major WHERE major_id>0";
     $result = mysqli_query($conn, $sqlString);
 
     echo "<SELECT  name='major' id='major' class='modal-input-box'>";
@@ -191,7 +191,7 @@ function selected_Major($conn, $major)
 function selected_Course($conn, $major)
 {
     include("./connectDB.php");
-    $sqlString = "SELECT * from course";
+    $sqlString = "SELECT * from course WHERE course_id>0";
     $result = mysqli_query($conn, $sqlString);
 
     echo "<SELECT  name='course' id='course' class='modal-input-box'>";
