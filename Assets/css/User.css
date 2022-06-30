@@ -177,7 +177,7 @@
 #et-des-block{
     background-color: var(--evDetail);
     width: 90%;
-    height: fit-content;
+    min-height: 500px;
     position: relative;
     margin-left: 50%;
     margin-top: 150px;

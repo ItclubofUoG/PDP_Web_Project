@@ -23,11 +23,11 @@ include_once('./connectDB.php');
                             <i class="fa-solid fa-xmark" id="et-close"></i>
                         </div>
                         <div class="et-des-body">
-                            <p class="et-des-info" style="text-align: justify;">
+                            <textarea class="et-des-info" style="text-align: justify;">
                                 <?php echo $row['description'] ?>
 
                                 <!-- Event description by GET id from link data -->
-                            </p>
+                            </textarea>
                         </div>
                     </div>
                 </div>
