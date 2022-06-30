@@ -68,7 +68,7 @@ include_once('./connectDB.php');
                             <td class="body-row"><?php echo $row["time_start"]; ?></td>
                             <td class="body-row"><?php echo $row["time_end"]; ?></td>
                             <td class="body-row"><?php echo $row["location"]; ?></td>
-                            <td class="body-row row-lock-tb" style="width: 300px"><?php echo substr($row["description"], 0, 90) . '...'; ?>
+                            <td class="body-row row-lock-tb" style="width: 300px"><?php echo 'Event description there...'; ?>
                                 <a class="btn-update-des-ad" href="admin.php?page=description&&id=<?php echo $row["event_id"]; ?>">Update</a>
                             </td>
                             <td class="body-row"><img class="imgevent" src="./Assets/Image/<?php echo $row["image"]; ?>" alt="event image"></td>
