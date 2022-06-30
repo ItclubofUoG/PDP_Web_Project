@@ -45,11 +45,12 @@
 session_start();
 
 if (isset($_GET['page'])) {
-    if ($_GET['page'] != 'login' && $_GET['page'] != "") {
+    if ($_GET['page'] != 'login' && $_GET['page'] != 'logout' && $_GET['page'] != "") {
         $page = $_GET['page'];
         include_once("./Views/headerUser.html");
-    }else {
-        include('./Views/headerLogin.html');}
+    } else {
+        include('./Views/headerLogin.html');
+    }
 } else {
     include('./Views/headerLogin.html');
 }
@@ -62,14 +63,11 @@ if (isset($_SESSION["us"]) && isset($_GET['page'])) {
     $page = $_GET['page'];
     if ($page == 'home') {
         include_once("./Views/EventMonth.php");
-    }
-    else if ($page == 'changepass') {
+    } else if ($page == 'changepass') {
         include_once("./Views/ChangePass.html");
-    }
-    else if ($page == 'changeinfo') {
+    } else if ($page == 'changeinfo') {
         include_once("./Views/UpdateUserInfo.php");
-    }
-    else if ($page == 'attendence') {
+    } else if ($page == 'attendence') {
         include_once("./Views/EventsAttendence.php");
     }
     // else if ($page == 'attendence') {
@@ -77,11 +75,9 @@ if (isset($_SESSION["us"]) && isset($_GET['page'])) {
     // }
     else if ($page == 'login') {
         include_once("./Views/Login.html");
-    }
-    else if ($page == 'logout') {
+    } else if ($page == 'logout') {
         include_once("./Process/logout.php");
-    }
-    else {
+    } else {
         include("./Views/Login.html");
     }
 } else {
