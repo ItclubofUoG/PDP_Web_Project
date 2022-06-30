@@ -45,7 +45,7 @@
 session_start();
 
 if (isset($_GET['page'])) {
-    if ($_GET['page'] != 'login' && $_GET['page'] != 'logout' && $_GET['page'] != "") {
+    if (isset($_SESSION["us"]) && $_GET['page'] != 'login' && $_GET['page'] != 'logout' && $_GET['page'] != "") {
         $page = $_GET['page'];
         include_once("./Views/headerUser.html");
     } else {
