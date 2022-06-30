@@ -82,7 +82,8 @@ if (isset($_SESSION["admin"]) && isset($_GET['page'])) {
         include_once("./Views/UpdateDescription.php");
     }
 } else {
-    include("./Views/ListofMembers.php");
+    echo "<script> location.href='../index.php?page=login'</script>";
+    exit;
 }
 
 

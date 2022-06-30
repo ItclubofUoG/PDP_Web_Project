@@ -24,7 +24,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'login') {
         if (mysqli_num_rows($res) == 1) {
             session_start();
             $_SESSION['admin'] = $row["admin_email"];
-            echo "<script> location.href='../admin.php'</script>";
+            echo "<script> location.href='../admin.php?page=home'</script>";
             exit;
         } else {
             echo "<script type='text/javascript'>alert('Login Fail');</script>";
