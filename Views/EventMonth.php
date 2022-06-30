@@ -37,7 +37,7 @@ include_once('./connectDB.php');
                     $("#et-des-container").css("opacity", "1");
                     $("#et-des-container").css("pointer-events", "all");
                     $("#et-des-container").css("transition", "0.3s");
-                    $("#et-des-block").css("top", "150px");
+                    $("#et-des-block").css("top", "50px");
                     $("#et-des-block").css("transition", "all 0.3s ease-in-out");
                 }
             </script>
