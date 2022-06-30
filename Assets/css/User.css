@@ -56,8 +56,8 @@
 }
 
 .et-container{
-    margin-left: 200px;
-    margin-right: 200px;
+    /* margin-left: 200px;
+    margin-right: 200px; */
     padding-top: 30px;
     padding-bottom: 30px;
 }
@@ -215,10 +215,10 @@
         --shadow: rgba(100,100,100,0.5);
     }
 
-    .et-container{
+    /* .et-container{
         margin-left: -50px;
         margin-right: -50px;
-    }
+    } */
     .et-title{
         width: 94%;
         font-size: 20px;
