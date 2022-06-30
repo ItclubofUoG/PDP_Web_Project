@@ -142,7 +142,21 @@ CheckSizeImage=function(selector,form,error,formGroupSelector,message,errorclass
                         AddError(fileUpload,form,formGroupSelector,error,message,errorclass);
                     }
                     else{
-                        RemoveError(fileUpload,form,formGroupSelector,error,message,errorclass)
+                        Validator({
+                            form: '#eventupdate',
+                            formGroupSelector: '.modal-input',
+                            errorSelector: '.alert-error-modal',
+                            rules: [
+                                Validator.isRequired('#updatetitle', 'This field can not empty'),
+                                Validator.isRequired('#updatedate', 'This field can not empty'),
+                                Validator.isRequired('#updatetimestart', 'This field can not empty'),
+                                Validator.isRequired('#updatetimeend', 'This field can not empty'),
+                                Validator.isRequired('#updatelocation', 'This field can not empty'),
+                                Validator.isRequired('#updatescore', 'This field can not empty'),
+                                Validator.isScore('#updatescore', 'Score must be greater than 0')
+                            ],
+                        }); 
+                        // RemoveError(fileUpload,form,formGroupSelector,error,message,errorclass)
                     }
                 };
  
@@ -202,6 +216,17 @@ RemoveError=function(inputElement,form,formGroupSelector,error,message,errorclas
     }
 
 }
+RemoveErrorImage=function(inputElement,form,formGroupSelector,error,message,errorclass){
+    var errorElement=getParent(inputElement,formGroupSelector).querySelector(error)
+    errorElement.innerText="";
+    errorElement.classList.remove(errorclass)
+    var formElement=document.querySelector(form);
+    // formElement.submit()
+    formElement.onsubmit=function (e) {
+        return true;
+    }
+
+}
 
 CheckRequired=function(selector,form,error,formGroupSelector,message,errorclass){
     var inputElement=document.querySelector(selector);
@@ -211,7 +236,4 @@ CheckRequired=function(selector,form,error,formGroupSelector,message,errorclass)
     }else{
         RemoveError(inputElement,form,formGroupSelector,error,message,errorclass)
     }
-}
-checkEmail=function(selector,form,error,formGroupSelector,message,errorclass){
-    
 }
