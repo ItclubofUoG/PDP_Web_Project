@@ -144,7 +144,8 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                         } else {
                             mysqli_stmt_execute($result);
                             $resultl = mysqli_stmt_get_result($result);
-
+                            session_start();
+                            $_SESSION["card_exits"] = $card_uid;
                             if ($row = mysqli_fetch_assoc($resultl)) {
                                 $sql = "UPDATE user SET card_select=0";
                                 $result = mysqli_stmt_init($conn);
@@ -187,22 +188,29 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                     else {
                         $sql = "UPDATE user SET card_select=0";
                         $result = mysqli_stmt_init($conn);
-                        if (!mysqli_stmt_prepare($result, $sql)) {
-                            echo "SQL_Error_insert";
-                            exit();
-                        } else {
-                            mysqli_stmt_execute($result);
-                            $d = date("Y-m-d");
-                            $t = date("H:i:sa");
-                            $m = substr(microtime(), 0, 3);
-                            $studentID = $d . $t . $m;
-                            $pass = md5(12345678);
-
-                            $sql = "INSERT INTO user (student_id,card_uid, card_select, dob, add_card,`password`,major_id,course_id) VALUES ('$studentID', '$card_uid', 1,CURDATE(),1,'$pass',0,0)";
-                            mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            echo "succesful";
-                            exit();
+                        $res = mysqli_query($conn, "SELECT * FROM user WHERE card_uid='$card_uid'");
+                        if (mysqli_num_rows($res) <= 0) {
+                            session_start();
+                            $_SESSION["card_uid"] = $card_uid;
+                            echo  $_SESSION["card_uid"];
+                            echo ' add successful';
                         }
+                        // if (!mysqli_stmt_prepare($result, $sql)) {
+                        //     echo "SQL_Error_insert";
+                        //     exit();
+                        // } else {
+                        //     mysqli_stmt_execute($result);
+                        //     $d = date("Y-m-d");
+                        //     $t = date("H:i:sa");
+                        //     $m = substr(microtime(), 0, 3);
+                        //     $studentID = $d . $t . $m;
+                        //     $pass = md5(12345678);
+
+                        //     $sql = "INSERT INTO user (student_id,card_uid, card_select, dob, add_card,`password`,major_id,course_id) VALUES ('$studentID', '$card_uid', 1,CURDATE(),1,'$pass',0,0)";
+                        //     mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                        //     echo "succesful";
+                        //     exit();
+                        // }
                     }
                 }
             }
@@ -213,4 +221,4 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
     }
 }
 //http://10.26.5.19:4343//PDPAttendance//Model//getdata.php?card_uid="57859686"&device_token="34234234234fsd"
-//http://10.26.6.0:4343//PDPAttendance/getdata.php?card_uid=57859686&device_token=62e6de2ca19db258
+//http://172.168.39.189:4343//PDPAttendance/getdata.php?card_uid=57859686&device_token= b8e1e3fb7bab8b35

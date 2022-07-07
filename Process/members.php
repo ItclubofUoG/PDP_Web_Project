@@ -30,9 +30,9 @@ if (isset($_POST['btn_export'])) {
 
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Email</th>                    
-                    <th>Event detail</th>
                     <th>Scores</th>
+                    <th>Event detail</th>
+
                 </tr>
             </thead>';
         while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
@@ -59,10 +59,8 @@ if (isset($_POST['btn_export'])) {
                             <tr>
                                     <td>' . $row['student_id'] . '</td>
                                     <td>' . $row['fullname'] . '</td>
-                                    <td>' . $row['email'] . '</td>                                    
-                                    <td>' .  $rowEvent['event_title'] . '</td>
                                     <td>' . $rowScore['score']  . '</td>
-
+                                    <td>' . ''  . '</td>
                     ';
 
             $out .= '

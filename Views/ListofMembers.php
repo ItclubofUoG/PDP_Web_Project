@@ -17,10 +17,6 @@
                 <tr class="table-head">
                     <th class="head-row">Student ID</th>
                     <th class="head-row">Full name</th>
-                    <th class="head-row">Email</th>
-                    <th class="head-row">Gender</th>
-                    <th class="head-row">Date of Birth</th>
-                    <th class="head-row">Phone</th>
                     <th class="head-row">Major</th>
                     <th class="head-row">Course</th>
                     <th class="head-row">Score</th>
@@ -67,15 +63,11 @@
                         $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
                         <tr class="table-body">
-                            <td class="body-row"><?php echo $row['student_id'] ?></td>
+                            <td class="body-row" style="max-width:70px"><?php echo $row['student_id'] ?></td>
                             <td class="body-row"><?php echo $row['fullname'] ?></td>
-                            <td class="body-row"><?php echo $row['email'] ?></td>
-                            <td class="body-row"><?php echo $row['gender'] ?></td>
-                            <td class="body-row"><?php echo $row['dob'] ?></td>
-                            <td class="body-row"><?php echo $row['phone'] ?></td>
-                            <td class="body-row"><?php echo $cowCourseAndMajor['major_name'] ?></td>
-                            <td class="body-row"><?php echo $cowCourseAndMajor['course_name'] ?></td>
-                            <td class="body-row"><?php echo $rowscores['scores'] ?></td>
+                            <td class="body-row" style="max-width:50px"><?php echo $cowCourseAndMajor['major_name'] ?></td>
+                            <td class="body-row" style="max-width:50px"><?php echo $cowCourseAndMajor['course_name'] ?></td>
+                            <td class="body-row" style="max-width:50px"><?php echo $rowscores['scores'] ?></td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>
