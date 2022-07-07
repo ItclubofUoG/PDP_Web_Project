@@ -36,8 +36,8 @@ include_once('./connectDB.php');
                 </tr>
 
                 <?php
-                //search 
-                if (isset($_POST['test'])) {
+               
+                if (isset($_POST['searching'])) {
                     $search = $_POST['eventSearch'];
                     $result = mysqli_query($conn, "select count(event_id) as total from event where event_title LIKE '%$search%'");
                 } else {
