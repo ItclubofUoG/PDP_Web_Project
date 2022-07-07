@@ -11,11 +11,11 @@ include_once('./connectDB.php');
 
         <!-- Search box -->
         <div class="table-function">
-            <form action="./Process/event.php?function=searchEvent" class="search" method="POST">
+            <form action="" class="search" method="POST">
                 <div class="search-cover">
                     <input type="text" class="search-box" name="eventSearch" placeholder="Search Event" title="You can search by event title or location">
                 </div>
-                <input type="submit" class="btn-search" value="Search">
+                <input type="submit" class="btn-search" name="searching" value="Search">
             </form>
             <input type="submit" class="btn-add-right js-add-event" value="Add New Event">
         </div>
@@ -36,8 +36,14 @@ include_once('./connectDB.php');
                 </tr>
 
                 <?php
-                //find the total records
-                $result = mysqli_query($conn, 'select count(event_id) as total from event where event_id>0');
+                //search 
+                if (isset($_POST['test'])) {
+                    $search = $_POST['eventSearch'];
+                    $result = mysqli_query($conn, "select count(event_id) as total from event where event_title LIKE '%$search%'");
+                } else {
+                    //find the total records
+                    $result = mysqli_query($conn, 'select count(event_id) as total from event where event_id>0');
+                }
                 $row = mysqli_fetch_assoc($result);
                 $total_records = $row['total'];
                 //find limit and current page
@@ -51,12 +57,22 @@ include_once('./connectDB.php');
                 } else if ($current_page < 1) {
                     $current_page = 1;
                 }
+
                 //find start page
                 $start = ($current_page - 1) * $limit;
                 $sql = "SELECT * FROM event WHERE event_id>0 order by event_id desc LIMIT $start, $limit";
+
+                //search
+                if (isset($_POST['searching'])) {
+                    $search = $_POST['eventSearch'];
+                    $sql = "SELECT * FROM event WHERE event_title LIKE '%$search%' order by event_id desc LIMIT $start, $limit";
+                } 
+                // filter
                 if (isset($_GET['func']) && $_GET['func'] == 'filter') {
                     $sql = $_GET['sql'] . " LIMIT $start, $limit";
                 }
+
+
                 $res_event = mysqli_query($conn, "SELECT * FROM event WHERE event_id>0");
                 if (mysqli_num_rows($res_event) > 0) {
                     $result = mysqli_query($conn, $sql);
@@ -156,7 +172,8 @@ include_once('./connectDB.php');
                     <a class="modal-close js-modal-close-update-event">X</a>
                 </div>
                 <form action="./Process/event.php?function=updateEvent" class="modal-body" id="eventupdate" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
-                    <?php if (isset($_GET['eventId'])) {
+                    <?php
+                    if (isset($_GET['eventId'])) {
                         echo '<script type="text/javascript">',
                         'open_eventUpdate_modal();',
                         '</script>';

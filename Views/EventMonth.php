@@ -11,7 +11,7 @@ include_once('./connectDB.php');
 
             <?php if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $eventSQL = "SELECT * FROM event where event_id = $id";
+                $eventSQL = "SELECT * FROM event where even_title = $id";
                 $eventResult = mysqli_query($conn, $eventSQL);
                 $row = mysqli_fetch_array($eventResult, MYSQLI_ASSOC);
             ?>
