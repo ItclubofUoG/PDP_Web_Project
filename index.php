@@ -55,10 +55,7 @@ if (isset($_GET['page'])) {
     include('./Views/headerLogin.html');
 }
 
-// if (!isset($_SESSION["us"]) && isset($_GET['page'])) {
-//     echo "<script> location.href='index.php'</script>";
-//     exit;
-// }
+
 if (isset($_SESSION["us"]) && isset($_GET['page'])) {
     $page = $_GET['page'];
     if ($page == 'home') {
