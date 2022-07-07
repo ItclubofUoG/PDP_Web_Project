@@ -64,17 +64,17 @@
                         $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
                         <tr class="table-body">
-                            <td class="body-row">
+                            <td class="body-row" style="max-width:50px">
                                 <a style="font-weight: bold; color: blue;" class="choose-user js-update-user" href="?page=student&&stuid=<?php echo $row['student_id'] ?>"><?php echo $row['student_id'] ?></a>
                             </td>
-                            <td class="body-row"><?php echo $row['fullname'] ?></td>
-                            <td class="body-row"><?php echo $row['email'] ?></td>
-                            <td class="body-row"><?php echo $row['gender'] ?></td>
-                            <td class="body-row"><?php echo $row['dob'] ?></td>
-                            <td class="body-row"><?php echo $row['phone'] ?></td>
-                            <td class="body-row"><?php echo $row['major_name'] ?></td>
-                            <td class="body-row"><?php echo $row['course_name'] ?></td>
-                            <td class="body-row"><?php echo $row['card_uid'] ?></td>
+                            <td class="body-row" style="max-width:150px"><?php echo $row['fullname'] ?></td>
+                            <td class="body-row" style="max-width:100px"><?php echo $row['email'] ?></td>
+                            <td class="body-row" style="max-width:30px"><?php echo $row['gender'] ?></td>
+                            <td class="body-row" style="max-width:30px"><?php echo $row['dob'] ?></td>
+                            <td class="body-row" style="max-width:30px"><?php echo $row['phone'] ?></td>
+                            <td class="body-row" style="max-width:30px"><?php echo $row['major_name'] ?></td>
+                            <td class="body-row" style="max-width:40px"><?php echo $row['course_name'] ?></td>
+                            <td class="body-row" style="max-width:40px"><?php echo $row['card_uid'] ?></td>
                             <td class="body-row"><?php echo $rowscores['scores'] ?></td>
                         </tr>
                     <?php } ?>
