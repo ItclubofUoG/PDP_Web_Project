@@ -9,7 +9,7 @@ if (isset($_POST['btn_filter'])) {
     $endDate = $_POST['endMonth'];
     $result = Get_result_querry($major, $course, $startDate, $endDate);
     $sqlFilter = $result[0];
-    $url = "../admin.php?page=home&&func=filter&&sql=$sqlFilter";
+    $url = "../admin.php?page=home&&func=filter&&sql=$sqlFilter&&startDate=$startDate&&endDate=$endDate";
     $url = str_replace(PHP_EOL, '', $url);
     header("location: $url");
 }
