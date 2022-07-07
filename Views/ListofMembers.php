@@ -57,7 +57,23 @@
                     $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                         $student_id = $row['student_id'];
-                        $res = mysqli_query($conn, "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id'");
+                        if (!empty($_GET['startDate']) && empty($_GET['endDate'])) {
+                            $startDate = $_GET['startDate'];
+                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id' AND event_id IN (SELECT event_id FROM `event` 
+                            WHERE date >= '$startDate')";
+                        } elseif (empty($_GET['startDate']) && !empty($_GET['endDate'])) {
+                            $endDate = $_GET['endDate'];
+                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id' AND event_id IN (SELECT event_id FROM `event` 
+                            WHERE date <= '$endDate')";
+                        } elseif (!empty($_GET['startDate']) && !empty($_GET['endDate'])) {
+                            $endDate = $_GET['endDate'];
+                            $startDate = $_GET['startDate'];
+                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id' AND event_id IN (SELECT event_id FROM `event` 
+                            WHERE date >= '$startDate' AND date <= '$endDate')";
+                        } else {
+                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id'";
+                        }
+                        $res = mysqli_query($conn, $sql);
                         $resCourseAndMajor = mysqli_query($conn, "SELECT * FROM `user` INNER JOIN `major` ON user.major_id=major.major_id INNER JOIN `course` ON user.course_id=course.course_id WHERE student_id='$student_id'");
                         $cowCourseAndMajor = mysqli_fetch_array($resCourseAndMajor, MYSQLI_ASSOC);
                         $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);

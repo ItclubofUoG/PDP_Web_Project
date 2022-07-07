@@ -91,11 +91,21 @@ function Get_result_querry($major, $course, $startDate, $endDate)
         $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
         WHERE date >= '$date_begin' AND date <= '$date_end'))";
+    } elseif (empty($major) != true && empty($course) == true && empty($date_begin) != true && empty($date_end) != true) {
+        // Query with date_begin and date_end input
+        $res = "SELECT * FROM user WHERE student_id IN 
+        (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
+        WHERE date >= '$date_begin' AND date <= '$date_end')) AND major_id ='$major'";
+    } elseif (empty($major) == true && empty($course) != true && empty($date_begin) != true && empty($date_end) != true) {
+        // Query with date_begin and date_end input
+        $res = "SELECT * FROM user WHERE student_id IN 
+        (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
+        WHERE date >= '$date_begin' AND date <= '$date_end')) AND course_id ='$course'";
     } elseif (empty($major) != true && empty($course) != true && empty($date_begin) != true && empty($date_end) != true) {
         // Query with all input
         $res = "SELECT * FROM user WHERE student_id IN 
         (SELECT student_id FROM user_log WHERE event_id IN (SELECT event_id FROM `event` 
-        WHERE date >= '$date_begin' AND date  <= '$date_end')) && course_id ='$course' && major_id ='$major'";
+        WHERE date >= '$date_begin' AND date  <= '$date_end')) AND course_id ='$course' AND major_id ='$major'";
     } else {
         //Query without input data
         $res = "SELECT * FROM user";
