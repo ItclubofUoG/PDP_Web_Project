@@ -22,6 +22,7 @@ if (isset($_POST['btn_export'])) {
     $result = Get_result_querry($major, $course, $startDate, $endDate);
     $sqlExport = $result[0];
     $res = mysqli_query($conn, $sqlExport);
+
     if ((mysqli_num_rows($res)) > 0) {
         $out .= ' <table class="table" border="1">
             <thead>
@@ -29,7 +30,6 @@ if (isset($_POST['btn_export'])) {
 
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Email</th>
                     <th>Scores</th>
                     <th>Event detail</th>
 
@@ -37,6 +37,7 @@ if (isset($_POST['btn_export'])) {
             </thead>';
         while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
             $student_id = $row['student_id'];
+
             if (empty($startDate) != true && empty($endDate) != true) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
                 AND  checkin_date >='$startDate'  and checkin_date <= '$endDate'") or die(mysqli_error($conn));
@@ -51,15 +52,15 @@ if (isset($_POST['btn_export'])) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id'") or die(mysqli_error($conn));
             }
             $rowScore = mysqli_fetch_array($res_sum, MYSQLI_ASSOC);
+
+
             $out .= ' 
                         <tbody>
                             <tr>
                                     <td>' . $row['student_id'] . '</td>
                                     <td>' . $row['fullname'] . '</td>
-                                    <td>' . $row['email'] . '</td>
                                     <td>' . $rowScore['score']  . '</td>
                                     <td>' . ''  . '</td>
-
                     ';
 
             $out .= '
