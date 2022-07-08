@@ -15,11 +15,11 @@
         <div class="main-table">
             <table class="table-admin">
                 <tr class="table-head">
-                    <th class="head-row">Student ID</th>
+                    <th class="head-row" style="max-width:50px">Student ID</th>
                     <th class="head-row">Full name</th>
-                    <th class="head-row">Major</th>
-                    <th class="head-row">Course</th>
-                    <th class="head-row">Score</th>
+                    <th class="head-row" style="max-width:50px">Major</th>
+                    <th class="head-row" style="max-width:50px">Course</th>
+                    <th class="head-row" style="max-width:50px">Score</th>
                 </tr>
                 <?php
                 include("./connectDB.php");
@@ -79,7 +79,7 @@
                         $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
                         <tr class="table-body">
-                            <td class="body-row" style="max-width:70px"><?php echo $row['student_id'] ?></td>
+                            <td class="body-row" style="max-width:50px"><?php echo $row['student_id'] ?></td>
                             <td class="body-row"><?php echo $row['fullname'] ?></td>
                             <td class="body-row" style="max-width:50px"><?php echo $cowCourseAndMajor['major_name'] ?></td>
                             <td class="body-row" style="max-width:50px"><?php echo $cowCourseAndMajor['course_name'] ?></td>

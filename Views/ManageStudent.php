@@ -32,16 +32,16 @@
         <div class="main-table">
             <table class="table-admin">
                 <tr class="table-head">
-                    <th class="head-row">Student ID</th>
+                    <th class="head-row" style="max-width:55px">Student ID</th>
                     <th class="head-row">Full name</th>
-                    <th class="head-row">Email</th>
-                    <th class="head-row">Gender</th>
-                    <th class="head-row">Date of Birth</th>
-                    <th class="head-row">Phone</th>
-                    <th class="head-row">Major</th>
-                    <th class="head-row">Course</th>
-                    <th class="head-row">Card Number</th>
-                    <th class="head-row">Score</th>
+                    <th class="head-row" style="max-width:100px">Email</th>
+                    <th class="head-row" style="max-width:35px">Gender</th>
+                    <th class="head-row" style="max-width:60px">Date of Birth</th>
+                    <th class="head-row" style="max-width:50px">Phone</th>
+                    <th class="head-row" style="max-width:40px">Major</th>
+                    <th class="head-row" style="max-width:30px">Course</th>
+                    <th class="head-row" style="max-width:90px">Card Number</th>
+                    <th class="head-row" style="max-width:30px">Score</th>
                 </tr>
                 <?php
                 include("./connectDB.php");
@@ -78,18 +78,18 @@
                         $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
                         <tr class="table-body">
-                            <td class="body-row" style="max-width:50px">
+                            <td class="body-row" style="max-width:55px">
                                 <a style="font-weight: bold; color: blue;" class="choose-user js-update-user" href="?page=student&&stuid=<?php echo $row['student_id'] ?>"><?php echo $row['student_id'] ?></a>
                             </td>
                             <td class="body-row" style="max-width:150px"><?php echo $row['fullname'] ?></td>
                             <td class="body-row" style="max-width:100px"><?php echo $row['email'] ?></td>
                             <td class="body-row" style="max-width:30px"><?php echo $row['gender'] ?></td>
-                            <td class="body-row" style="max-width:30px"><?php echo $row['dob'] ?></td>
-                            <td class="body-row" style="max-width:30px"><?php echo $row['phone'] ?></td>
-                            <td class="body-row" style="max-width:30px"><?php echo $row['major_name'] ?></td>
-                            <td class="body-row" style="max-width:40px"><?php echo $row['course_name'] ?></td>
-                            <td class="body-row" style="max-width:40px"><?php echo $row['card_uid'] ?></td>
-                            <td class="body-row"><?php echo $rowscores['scores'] ?></td>
+                            <td class="body-row" style="max-width:60px"><?php echo $row['dob'] ?></td>
+                            <td class="body-row" style="max-width:50px"><?php echo $row['phone'] ?></td>
+                            <td class="body-row" style="max-width:40px"><?php echo $row['major_name'] ?></td>
+                            <td class="body-row" style="max-width:30px"><?php echo $row['course_name'] ?></td>
+                            <td class="body-row" style="max-width:90px"><?php echo $row['card_uid'] ?></td>
+                            <td class="body-row" style="max-width:30px"><?php echo $rowscores['scores'] ?></td>
                         </tr>
                     <?php } ?>
                 <?php } ?>
