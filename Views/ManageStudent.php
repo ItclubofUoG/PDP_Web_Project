@@ -1,5 +1,4 @@
 <body>
-    <!-- body -->
     <div class="user-container">
         <h1 class="mn-title">Manage Students</h1>
         <hr class="orange-line">
@@ -13,21 +12,36 @@
             </form>
         </div>
         <!-- End search box -->
-
+        <?php
+        if (isset($_SESSION["card_uid"]) && !empty($_SESSION["card_uid"])) {
+            $card_uid = $_SESSION["card_uid"];
+            echo $card_uid;
+            echo '<script language="javascript">alert("CardID: ' . $card_uid . '"); </script>';
+            unset($_SESSION["card_uid"]);
+            echo "<script> location.href='./admin.php?page=student'</script>";
+            exit;
+        } elseif (isset($_SESSION["card_exits"]) && !empty($_SESSION["card_exits"])) {
+            $card_uid = $_SESSION["card_exits"];
+            echo '<script language="javascript">alert("CardID: ' . $card_uid . ' exits"); </script>';
+            unset($_SESSION["card_exits"]);
+            echo "<script> location.href='./admin.php?page=student'</script>";
+            exit;
+        }
+        ?>
         <!--Start Table Manage User -->
         <div class="main-table">
             <table class="table-admin">
                 <tr class="table-head">
-                    <th class="head-row">Student ID</th>
+                    <th class="head-row" style="max-width:55px">Student ID</th>
                     <th class="head-row">Full name</th>
-                    <th class="head-row">Email</th>
-                    <th class="head-row">Gender</th>
-                    <th class="head-row">Date of Birth</th>
-                    <th class="head-row">Phone</th>
-                    <th class="head-row">Major</th>
-                    <th class="head-row">Course</th>
-                    <th class="head-row">Card Number</th>
-                    <th class="head-row">Score</th>
+                    <th class="head-row" style="max-width:100px">Email</th>
+                    <th class="head-row" style="max-width:35px">Gender</th>
+                    <th class="head-row" style="max-width:60px">Date of Birth</th>
+                    <th class="head-row" style="max-width:50px">Phone</th>
+                    <th class="head-row" style="max-width:40px">Major</th>
+                    <th class="head-row" style="max-width:30px">Course</th>
+                    <th class="head-row" style="max-width:90px">Card Number</th>
+                    <th class="head-row" style="max-width:30px">Score</th>
                 </tr>
                 <?php
                 include("./connectDB.php");
@@ -64,18 +78,18 @@
                         $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
                         <tr class="table-body">
-                            <td class="body-row">
+                            <td class="body-row" style="max-width:55px">
                                 <a style="font-weight: bold; color: blue;" class="choose-user js-update-user" href="?page=student&&stuid=<?php echo $row['student_id'] ?>"><?php echo $row['student_id'] ?></a>
                             </td>
-                            <td class="body-row"><?php echo $row['fullname'] ?></td>
-                            <td class="body-row"><?php echo $row['email'] ?></td>
-                            <td class="body-row"><?php echo $row['gender'] ?></td>
-                            <td class="body-row"><?php echo $row['dob'] ?></td>
-                            <td class="body-row"><?php echo $row['phone'] ?></td>
-                            <td class="body-row"><?php echo $row['major_name'] ?></td>
-                            <td class="body-row"><?php echo $row['course_name'] ?></td>
-                            <td class="body-row"><?php echo $row['card_uid'] ?></td>
-                            <td class="body-row"><?php echo $rowscores['scores'] ?></td>
+                            <td class="body-row" style="max-width:150px"><?php echo $row['fullname'] ?></td>
+                            <td class="body-row" style="max-width:100px"><?php echo $row['email'] ?></td>
+                            <td class="body-row" style="max-width:30px"><?php echo $row['gender'] ?></td>
+                            <td class="body-row" style="max-width:60px"><?php echo $row['dob'] ?></td>
+                            <td class="body-row" style="max-width:50px"><?php echo $row['phone'] ?></td>
+                            <td class="body-row" style="max-width:40px"><?php echo $row['major_name'] ?></td>
+                            <td class="body-row" style="max-width:30px"><?php echo $row['course_name'] ?></td>
+                            <td class="body-row" style="max-width:90px"><?php echo $row['card_uid'] ?></td>
+                            <td class="body-row" style="max-width:30px"><?php echo $rowscores['scores'] ?></td>
                         </tr>
                     <?php } ?>
                 <?php } ?>
