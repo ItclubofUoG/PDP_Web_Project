@@ -92,7 +92,15 @@ if (isset($_POST['btn_export'])) {
 </tbody>';
         }
         header('Content-Type: application/xls');
-        header('Content-Disposition: attachment; filename=User.xls');
+        if (empty($startDate) != true && empty($endDate) != true) {
+            header('Content-Disposition: attachment; filename=User\'s Score - from ' . date('d-m-Y', strtotime($startDate)) . ' to ' . date('d-m-Y', strtotime($endDate)) . '.xls');
+        } elseif (empty($startDate) != true && empty($endDate) == true) {
+            header('Content-Disposition: attachment; filename=User\'s Score - from ' . date('d-m-Y', strtotime($startDate)) . ' to ' . date('d-m-Y', strtotime($curDate)) . '.xls');
+        } elseif (empty($startDate) == true && empty($endDate) != true) {
+            header('Content-Disposition: attachment; filename=User\'s Score - to ' . date('d-m-Y', strtotime($curDate)) . '.xls');
+        } else {
+            header('Content-Disposition: attachment; filename=User\'s Score.xls');
+        }
         echo $out;
     }
 }
