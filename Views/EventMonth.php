@@ -11,9 +11,11 @@ include_once('./connectDB.php');
 
             <?php if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $eventSQL = "SELECT * FROM event where even_title = $id";
+                $eventSQL = "SELECT * FROM event where event_id = $id";
                 $eventResult = mysqli_query($conn, $eventSQL);
-                $row = mysqli_fetch_array($eventResult, MYSQLI_ASSOC);
+                if (mysqli_num_rows($eventResult) > 0) {
+                    $row = mysqli_fetch_array($eventResult, MYSQLI_ASSOC);
+                }
             ?>
                 <!-- Description detail popup information of the event -->
                 <div id="et-des-container">
@@ -24,7 +26,7 @@ include_once('./connectDB.php');
                         </div>
                         <div class="et-des-body">
                             <p class="et-des-info" style="text-align: justify;">
-                                <?php echo $row['description'] ?>
+                                <?php echo !empty($row['description']) ? $row['description'] : "None" ?>
 
                                 <!-- Event description by GET id from link data -->
                             </p>
@@ -47,7 +49,8 @@ include_once('./connectDB.php');
                 'open_modal();',
                 '</script>';
             }
-            $sql = "SELECT * FROM `event` WHERE event_id>0 order by event_id desc";
+            $currentMonth = date('m');
+            $sql = "SELECT * FROM `event` WHERE event_id>0 AND MONTH(date)=$currentMonth order by event_id desc";
             $result = mysqli_query($conn, $sql);
             $no = 1;
             while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
