@@ -15,10 +15,12 @@ if (isset($_POST['btn_filter'])) {
 }
 $out = "";
 if (isset($_POST['btn_export'])) {
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
     $major = $_POST['majorFilter'];
     $course = $_POST['courseFilter'];
     $startDate = $_POST['startMonth'];
     $endDate = $_POST['endMonth'];
+    $curDate = date('Y-m-d');
     $result = Get_result_querry($major, $course, $startDate, $endDate);
     $sqlExport = $result[0];
     $res = mysqli_query($conn, $sqlExport);
@@ -38,36 +40,37 @@ if (isset($_POST['btn_export'])) {
         while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
             $student_id = $row['student_id'];
 
-
             if (empty($startDate) != true && empty($endDate) != true) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
                 AND  checkin_date >='$startDate'  and checkin_date <= '$endDate'") or die(mysqli_error($conn));
 
-                $sqlEvent = mysqli_query($conn, "SELECT event_title from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
+                $sqlEvent = mysqli_query($conn, "SELECT event_title, score from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
                 AND  checkin_date >='$startDate'  and checkin_date <= '$endDate'") or die(mysqli_error($conn));
             } elseif (empty($startDate) != true && empty($endDate) == true) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
-                and  checkin_date >='$startDate'") or die(mysqli_error($conn));
+                and  checkin_date >='$startDate' ") or die(mysqli_error($conn));
 
-                $sqlEvent = mysqli_query($conn, "SELECT event_title from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
+                $sqlEvent = mysqli_query($conn, "SELECT event_title, score from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
                 and  checkin_date >='$startDate'") or die(mysqli_error($conn));
             } elseif (empty($startDate) == true && empty($endDate) != true) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
                 and checkin_date <= '$endDate'") or die(mysqli_error($conn));
 
-                $sqlEvent = mysqli_query($conn, "SELECT event_title from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
+                $sqlEvent = mysqli_query($conn, "SELECT event_title, score from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
                 and checkin_date <= '$endDate'") or die(mysqli_error($conn));
             } else {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id'") or die(mysqli_error($conn));
-                $sqlEvent = mysqli_query($conn, "SELECT event_title from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'");
+                $sqlEvent = mysqli_query($conn, "SELECT event_title, score from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'");
             }
             $rowScore = mysqli_fetch_array($res_sum, MYSQLI_ASSOC);
 
 
 
-            $array = array();
+            $arrayEvent = array();
+            $arrayScore = array();
             while ($rowEvent = mysqli_fetch_array($sqlEvent, MYSQLI_ASSOC)) {
-                array_push($array, $rowEvent['event_title']);
+                array_push($arrayEvent, $rowEvent['event_title']);
+                array_push($arrayScore, $rowEvent['score']);
             }
 
 
@@ -83,7 +86,7 @@ if (isset($_POST['btn_export'])) {
             }
 
             $out .= '</td>    
-                    <td>' . $rowScore['score']  . '</td>
+                    <td>' . $rowScore['score'] . '</td>
 
     ';
 
@@ -93,14 +96,15 @@ if (isset($_POST['btn_export'])) {
         }
         header('Content-Type: application/xls');
         if (empty($startDate) != true && empty($endDate) != true) {
-            header('Content-Disposition: attachment; filename=User\'s Score - from ' . date('d-m-Y', strtotime($startDate)) . ' to ' . date('d-m-Y', strtotime($endDate)) . '.xls');
+            header('Content-Disposition: attachment; filename=User - from ' . date('d-m-Y', strtotime($startDate)) . ' to ' . date('d-m-Y', strtotime($endDate)) . '.xls');
         } elseif (empty($startDate) != true && empty($endDate) == true) {
-            header('Content-Disposition: attachment; filename=User\'s Score - from ' . date('d-m-Y', strtotime($startDate)) . ' to ' . date('d-m-Y', strtotime($curDate)) . '.xls');
+            header('Content-Disposition: attachment; filename=User - from ' . date('d-m-Y', strtotime($startDate)) . ' to ' . date('d-m-Y', strtotime($curDate)) . '.xls');
         } elseif (empty($startDate) == true && empty($endDate) != true) {
-            header('Content-Disposition: attachment; filename=User\'s Score - to ' . date('d-m-Y', strtotime($curDate)) . '.xls');
+            header('Content-Disposition: attachment; filename=User - to ' . date('d-m-Y', strtotime($curDate)) . '.xls');
         } else {
-            header('Content-Disposition: attachment; filename=User\'s Score.xls');
+            header('Content-Disposition: attachment; filename=User.xls');
         }
+
         echo $out;
     }
 }
