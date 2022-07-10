@@ -26,9 +26,16 @@
                 include('./Libs/index.php');
                 // $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                 //find the total records
-                $result = mysqli_query($conn, 'select count(student_id) as total from user');
-                $row = mysqli_fetch_assoc($result);
-                $total_records = $row['total'];
+                //find the total records
+                if (isset($_GET['func']) && $_GET['func'] == 'filter') {
+                    $sql = $_GET['sql'];
+                    $result = mysqli_query($conn, $sql);
+                    $total_records = mysqli_num_rows($result);
+                } else {
+                    $result = mysqli_query($conn, 'select count(student_id) as total from user');
+                    $row = mysqli_fetch_assoc($result);
+                    $total_records = $row['total'];
+                }
                 //find limit and current page
                 $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
                 $limit = 15;  // set the limit of line in page
