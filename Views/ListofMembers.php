@@ -71,17 +71,14 @@
                         $student_id = $row['student_id'];
                         if (!empty($_GET['startDate']) && empty($_GET['endDate'])) {
                             $startDate = $_GET['startDate'];
-                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id' AND event_id IN (SELECT event_id FROM `event` 
-                            WHERE date >= '$startDate')";
+                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id' AND checkin_date >='$startDate'";
                         } elseif (empty($_GET['startDate']) && !empty($_GET['endDate'])) {
                             $endDate = $_GET['endDate'];
-                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id' AND event_id IN (SELECT event_id FROM `event` 
-                            WHERE date <= '$endDate')";
+                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id' AND checkin_date <='$endDate'";
                         } elseif (!empty($_GET['startDate']) && !empty($_GET['endDate'])) {
                             $endDate = $_GET['endDate'];
                             $startDate = $_GET['startDate'];
-                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id' AND event_id IN (SELECT event_id FROM `event` 
-                            WHERE date >= '$startDate' AND date <= '$endDate')";
+                            $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id' AND checkin_date >='$startDate' AND checkin_date <='$endDate'";
                         } else {
                             $sql = "SELECT SUM(scores) as scores FROM `user_log` WHERE student_id='$student_id'";
                         }
@@ -95,7 +92,7 @@
                             <td class="body-row"><?php echo $row['fullname'] ?></td>
                             <td class="body-row" style="max-width:50px"><?php echo $cowCourseAndMajor['major_name'] ?></td>
                             <td class="body-row" style="max-width:50px"><?php echo $cowCourseAndMajor['course_name'] ?></td>
-                            <td class="body-row" style="max-width:50px"><?php echo $rowscores['scores'] ?></td>
+                            <td class="body-row" style="max-width:50px"><?php echo !empty($rowscores['scores']) ? $rowscores['scores'] : 0 ?></td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>
