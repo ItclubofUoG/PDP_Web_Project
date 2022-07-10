@@ -78,8 +78,8 @@ if (isset($_POST['btn_export'])) {
                     <td>' . $row['fullname'] . '</td>
                     <td>' . $row['email'] . '</td>  
                     <td style=min-width: fit-content>';
-            foreach ($array as $value) {
-                $out .=  $value . ' | ';
+            foreach (array_combine($arrayEvent, $arrayScore) as $eventElement => $scoreElement) {
+                $out .=  $eventElement . ' (' . $scoreElement . ')' . ' | ';
             }
 
             $out .= '</td>    
