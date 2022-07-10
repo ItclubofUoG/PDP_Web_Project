@@ -47,9 +47,16 @@
                 include("./connectDB.php");
                 include_once('./Libs/index.php');
                 //find the total records
-                $result = mysqli_query($conn, 'select count(student_id) as total from user');
-                $row = mysqli_fetch_assoc($result);
-                $total_records = $row['total'];
+                if (isset($_POST['btn-search'])) {
+                    $search = $_POST['search'];
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id  ";
+                    $result = mysqli_query($conn, $sql);
+                    $total_records = mysqli_num_rows($result);
+                } else {
+                    $result = mysqli_query($conn, 'select count(student_id) as total from user');
+                    $row = mysqli_fetch_assoc($result);
+                    $total_records = $row['total'];
+                }
                 //find limit and current page
                 $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
                 $limit = 15;  // set the limit of line in page

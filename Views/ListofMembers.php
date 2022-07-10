@@ -26,8 +26,12 @@
                 include('./Libs/index.php');
                 // $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                 //find the total records
-                //find the total records
-                if (isset($_GET['func']) && $_GET['func'] == 'filter') {
+                if (isset($_POST['btn-search'])) {
+                    $search = $_POST['search'];
+                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id  ";
+                    $result = mysqli_query($conn, $sql);
+                    $total_records = mysqli_num_rows($result);
+                } else if (isset($_GET['func']) && $_GET['func'] == 'filter') {
                     $sql = $_GET['sql'];
                     $result = mysqli_query($conn, $sql);
                     $total_records = mysqli_num_rows($result);
@@ -36,6 +40,7 @@
                     $row = mysqli_fetch_assoc($result);
                     $total_records = $row['total'];
                 }
+                //find the total records
                 //find limit and current page
                 $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
                 $limit = 15;  // set the limit of line in page

@@ -36,10 +36,10 @@ include_once('./connectDB.php');
                 </tr>
 
                 <?php
-               
+
                 if (isset($_POST['searching'])) {
                     $search = $_POST['eventSearch'];
-                    $result = mysqli_query($conn, "select count(event_id) as total from event where event_title LIKE '%$search%'");
+                    $result = mysqli_query($conn, "select count(event_id) as total from event where event_title LIKE '%$search%' AND event_id>0");
                 } else {
                     //find the total records
                     $result = mysqli_query($conn, 'select count(event_id) as total from event where event_id>0');
@@ -66,7 +66,7 @@ include_once('./connectDB.php');
                 if (isset($_POST['searching'])) {
                     $search = $_POST['eventSearch'];
                     $sql = "SELECT * FROM event WHERE event_title LIKE '%$search%' order by event_id desc LIMIT $start, $limit";
-                } 
+                }
                 // filter
                 if (isset($_GET['func']) && $_GET['func'] == 'filter') {
                     $sql = $_GET['sql'] . " LIMIT $start, $limit";
