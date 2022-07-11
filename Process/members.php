@@ -29,7 +29,6 @@ if (isset($_POST['btn_export'])) {
         $out .= ' <table class="table" border="1">
             <thead>
                 <tr>
-
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>                    
@@ -82,9 +81,12 @@ if (isset($_POST['btn_export'])) {
                     <td>' . $row['email'] . '</td>  
                     <td style=min-width: fit-content>';
             foreach (array_combine($arrayEvent, $arrayScore) as $eventElement => $scoreElement) {
-                $out .=  $eventElement . ' (' . $scoreElement . ')' . ' | ';
+                if ($eventElement == 'First_Score') {
+                    $sql = mysqli_query($conn, "SELECT scores From user_log where event_id = '0' and student_id = '$student_id'");
+                    $rowScoreExcel = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+                    $scoreElement = $rowScoreExcel['scores'];
+                }
             }
-
             $out .= '</td>    
                     <td>' . $rowScore['score'] . '</td>
 
