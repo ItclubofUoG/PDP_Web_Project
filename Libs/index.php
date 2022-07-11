@@ -110,8 +110,15 @@ function Get_result_querry($major, $course, $startDate, $endDate)
         //Query without input data
         $res = "SELECT * FROM user";
     }
-    $resArray = array($res, $date_begin, $date_end);
-    return $resArray;
+    $result = mysqli_query($conn, $res);
+    // echo mysqli_num_rows($result);
+    // exit();
+    if (mysqli_num_rows($result) > 0) {
+        $resArray = array($res, $date_begin, $date_end);
+        return $resArray;
+    } else {
+        return  $resArray = array(0, $date_begin, $date_end);
+    }
 }
 
 //Show event list for ADD function
