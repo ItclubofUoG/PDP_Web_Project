@@ -90,6 +90,7 @@ include_once('./connectDB.php');
                             </td>
                             <td class="body-row"><img class="imgevent" src="./Assets/Image/<?php echo $row["image"]; ?>" alt="event image"></td>
                             <td class="body-row"><?php echo $row["score"]; ?></td>
+                            <td class="body-row"><?php echo $row["scorePlus"]; ?></td>
                         </tr>
                     <?php
                     }
@@ -216,7 +217,7 @@ include_once('./connectDB.php');
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
-                        <input type="number" min="0" max="100" id="updatescoreplus" min="0" max="1000" name="updatescoreplus" class="modal-input-box" placeholder="Score Plus" value="<?php echo $row['score'] ?>">
+                        <input type="number" min="0" max="100" id="updatescoreplus" min="0" max="1000" name="updatescoreplus" class="modal-input-box" placeholder="Score Plus" value="<?php echo $row['scorePlus'] ?>">
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">

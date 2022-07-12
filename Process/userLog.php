@@ -147,3 +147,29 @@ if (isset($_GET['function']) && $_GET['function'] == 'deleteUser') {
     echo "<script>location.href='../admin.php?page=eventlog'</script>";
     exit();
 }
+
+if (isset($_GET['function']) && $_GET['function'] == 'plusScore') {
+    $stdID = $_POST['stdID'];
+    $eventID = $_POST['eventID'];
+
+
+    $sqlCurrentScore = mysqli_query($conn, "SELECT * From user_log where student_id = '$stdID' and event_id = '$eventID'");
+    $rowCurrentScore = mysqli_fetch_array($sqlCurrentScore, MYSQLI_ASSOC);
+    $currentScore = $rowCurrentScore['scores'];
+
+    $sqlScore = mysqli_query($conn, "SELECT * From event where event_id = '$eventID'");    
+    $rowScore = mysqli_fetch_array($sqlScore, MYSQLI_ASSOC);    
+    $eventScorePlus = $rowScore['scorePlus'];
+
+
+    $plus = $currentScore + $eventScorePlus;
+
+
+    if($currentScore <= $rowScore['score']){
+        $sql = mysqli_query($conn, "UPDATE user_log set scores = '$plus' where student_id = '$stdID' and event_id = '$eventID'");    echo "<script>location.href='../admin.php?page=eventlog'</script>";
+    }
+    else{
+        echo "<script>alert('Students have already added score!');window.location='../admin.php?page=eventlog'</script>";
+    }
+
+}

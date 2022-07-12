@@ -88,7 +88,13 @@ include_once('./connectDB.php');
                                 <td class="body-row"><?php echo $row["time_in"]; ?></td>
                                 <td class="body-row"><?php echo $row["time_out"]; ?></td>
                                 <td class="body-row"><?php echo $row["scores"]; ?></td>
-                                <td class="body-row"><form><input type="submit" value="➕"></form></td>                            
+                                <td class="body-row">
+                                    <form method="POST" action="./Process/userLog.php?function=plusScore">
+                                        <input type="hidden" name="stdID" id="stdID" value="<?php echo $row["student_id"]; ?>">
+                                        <input type="hidden" name="eventID" id="eventID" value="<?php echo $currentEventId ?>">
+                                        <input type="submit" value="➕" onclick="return confirm('Are you sure you want to add scores for <?php echo $row['fullname']; ?> ?')">
+                                    </form>
+                                </td>
                                 <td class="body-row"><a href="./Process/userLog.php?function=deleteUser&&id=<?php echo $row['id'] ?>" style="text-decoration:none;" onclick="return confirm('Are you sure to delete')">⛔️</a></td>
                             </tr>
                         <?php

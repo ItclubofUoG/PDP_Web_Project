@@ -8,6 +8,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'addEvent') {
     $timeEnd = $_POST['eventtimeend'];
     $location = $_POST['eventlocation'];
     $score = $_POST['eventscore'];
+    $scorePlus = $_POST['eventscoreplus'];
     $pic = $_FILES['eventimage'];
 
     if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
@@ -18,7 +19,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'addEvent') {
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) == 0) {
             copy($pic['tmp_name'], "../Assets/Image/" . $pic['name']);
-            mysqli_query($conn, "INSERT INTO `event`(`event_title`, `date`, `location`, `score`, `time_start`, `time_end`, `image`) VALUES ('$title','$date','$location','$score','$timeStart','$timeEnd','$image')");
+            mysqli_query($conn, "INSERT INTO `event`(`event_title`, `date`, `location`, `score`, `scorePlus`, `time_start`, `time_end`, `image`) VALUES ('$title','$date','$location','$score', '$scorePlus','$timeStart','$timeEnd','$image')");
             echo "<script> location.href='../admin.php?page=event'</script>";
             exit;
         } else {
