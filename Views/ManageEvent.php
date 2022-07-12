@@ -33,6 +33,7 @@ include_once('./connectDB.php');
                     <th class="head-row">Description</th>
                     <th class="head-row">Figure Event</th>
                     <th class="head-row">Score</th>
+                    <th class="head-row">Score Plus</th>
                 </tr>
 
                 <?php
@@ -136,6 +137,10 @@ include_once('./connectDB.php');
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
+                        <input type="number" min="0" max="100" id="eventscoreplus" name="eventscoreplus" class="modal-input-box" placeholder="Score Plus">
+                        <span class="alert-error-modal"></span>
+                    </div>
+                    <div class="modal-input">
                         <!-- <input type="text" id="eventimage" class="modal-input-box" placeholder="Figure">
                         <span class="alert-error-modal-image"></span>
                         <input type="button" class="btn-choose-file" value="Choose File"> -->
@@ -208,6 +213,10 @@ include_once('./connectDB.php');
                     </div> -->
                     <div class="modal-input">
                         <input type="number" min="0" max="100" id="updatescore" min="0" max="1000" name="updatescore" class="modal-input-box" placeholder="Score" value="<?php echo $row['score'] ?>">
+                        <span class="alert-error-modal"></span>
+                    </div>
+                    <div class="modal-input">
+                        <input type="number" min="0" max="100" id="updatescoreplus" min="0" max="1000" name="updatescoreplus" class="modal-input-box" placeholder="Score Plus" value="<?php echo $row['score'] ?>">
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">

@@ -66,6 +66,7 @@ Validator({
         Validator.isRequired('#eventtimeend', 'This field can not empty'),
         Validator.isRequired('#eventlocation', 'This field can not empty'),
         Validator.isRequired('#eventscore', 'This field can not empty'),
+        Validator.isRequired('#eventscoreplus', 'This field can not empty'),
     ],
 }); 
 
@@ -80,7 +81,8 @@ Validator({
         Validator.isRequired('#updatetimeend', 'This field can not empty'),
         Validator.isRequired('#updatelocation', 'This field can not empty'),
         Validator.isRequired('#updatescore', 'This field can not empty'),
-        Validator.isScore('#updatescore', 'Score must be greater than 0')
+        Validator.isRequired('#updatescoreplus', 'This field can not empty'),
+        Validator.isScore('#updatescore', 'Score must be greater than 0'),
     ],
 }); 
 
