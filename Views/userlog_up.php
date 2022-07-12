@@ -13,6 +13,7 @@ include('../connectDB.php');
             <th class="head-row">Time In</th>
             <th class="head-row">Time Out</th>
             <th class="head-row">Score</th>
+            <th class="head-row">Plus</th>
             <th class="head-row">Delete</th>
         </tr>
 
@@ -59,6 +60,7 @@ include('../connectDB.php');
                 <td class="body-row"><?php echo $row["time_in"]; ?></td>
                 <td class="body-row"><?php echo $row["time_out"]; ?></td>
                 <td class="body-row"><?php echo $row["scores"]; ?></td>
+                <td class="body-row"><form><input type="submit" value="➕"></form></td>                            
                 <td class="body-row"><a href="./Process/userLog.php?function=deleteUser&&id=<?php echo $row['id'] ?>" style="text-decoration:none;" onclick="return confirm('Are you sure to delete')">⛔️</a></td>
             </tr>
         <?php
