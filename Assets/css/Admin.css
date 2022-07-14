@@ -17,6 +17,8 @@
     --btnAddRight: #1177D1;;
     --border:#ccc;
     --shadow: rgba(220,220,220,.5);
+    --hoverAdd:  rgb(16, 112, 16);
+    --hoverDelete: #b80000;
 }
 
 
@@ -58,17 +60,18 @@ html {
     color: var(--white);
 }
 .btn-add-modal {
-    width: 80%;
+    width: 30%;
     height: 30px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    background-color: var(--btnAdd);
-    margin-top: 3%;
-    color: var(--white);
+    border: 1.5px solid var(--btnAdd);
+    border-radius: 15px;
+    background-color: var(--white);
+    /* margin-top: 3%; */
+    color: var(--btnAdd);
     cursor: pointer;
 }
 .btn-add-modal:hover{
-    background-color: #F0AD4E;
+    background-color: var(--btnAdd);
+    color: var(--white);
     cursor: pointer;
 }
 
@@ -142,6 +145,7 @@ html {
     padding-left: 16px;
     margin-bottom:10px;
     margin-right: 15px;
+    margin-top: 20px;
 }
 .modal-container-list {
     display: none;
@@ -158,6 +162,7 @@ html {
     display: flex;
     align-items:center;
     padding-left: 16px;
+    padding-right: 16px;
     margin-top:10px;
     width: 100%;
     margin-bottom: 10px;
@@ -177,31 +182,40 @@ html {
     align-items: center;
 }
 .select-mg-cr {
-    width: 93%;
+    width: 90%;
     height: 30px;
     padding-left: 7px;
+    border: none;
+    border-bottom: 1px solid #ccc;
 }
 .btn-filter {
-    width: 80%;
+    width: 25%;
     height: 30px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color:var(--btnAdd);
-    color: #fff;
+    border: 1.5px solid var(--btnAdd);
+    border-radius: 15px;
+    background-color:var(--white);
+    color: var(--btnAdd);
     cursor: pointer;
 }
 .btn-export {
-    width: 80%;
-    height: 27px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color:#b39353;
-    color: #fff;
+    width: 25%;
+    height: 30px;
+    border: 1.5px solid var(--orange);
+    border-radius: 15px;
+    background-color:var(--white);
+    color: var(--orange);
     cursor: pointer;
 }
 
-.btn-export:hover, .btn-filter:hover {
-    color: #000;
+.btn-export:hover{
+    background-color: var(--orange);
+    color: var(--white);
+    transition:0.5s;
+}
+.btn-filter:hover {
+    background-color: var(--btnAdd);
+    color: #fff;
+    transition:0.5s;
 }
 
 /* User Log */
@@ -234,18 +248,16 @@ html {
     border-radius: 4px;
 }
 .btn-delete-log:hover {
-    background-color:#9a3a3a;
-    color: #000;
+    background-color: var(--hoverDelete);
     cursor: pointer;
 }
 .select-event {
-    display: flex;
     padding-left: 16px;
     padding-right: 16px;
-    margin: 0 0 10px 0;
     height: 30px;
     width: 100%;
-    position: relative;    
+    border: none;
+    border-bottom: 1px solid var(--border);  
 }
 
 
@@ -369,7 +381,7 @@ html {
 
 .modal-content {
     background-color:#fff;
-    width: 40%;
+    width: 50%;
     height: fit-content;
     animation: modalFadeIn ease 0.5s;
     border-radius:10px;
@@ -387,12 +399,13 @@ html {
   }
 
 .modal-head {
-    background-color:var(--blue);
+    /* background-color:var(--blue); */
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    /* color: #fff; */
+    border-bottom: 1px solid var(--orange);
     position: relative;
     border-radius:10px 10px 0 0;
 }
@@ -402,13 +415,13 @@ html {
     top:0;
     padding:10px;
     text-decoration: none;
-}
-.modal-close:hover {
-    background-color:#FF0000;
+    border-top-right-radius: 7px;
     cursor: pointer;
+
 }
+
 .modal-body {
-    padding-top: 16px;
+    padding-top: 20px;
     width: 100%;
 }
 .modal-input {
@@ -440,8 +453,8 @@ html {
     width: 100%;
     height: 30px;
     padding-left: 10px;
-    /* border: none; */
-    /* border-bottom: 1px solid #ccc; */
+    border: none;
+    border-bottom: 1px solid var(--border);
 }
 .modal-input-box-des {
     width: 100%;
@@ -452,48 +465,61 @@ html {
     /* border-bottom: 1px solid #ccc; */
 }
 .modal-footer {
-    height: 100px;
     width: 100%;
-    background-color:var(--blue);
-    margin-top:10px;
+    /* background-color:var(--blue); */
     border-radius: 0 0 10px 10px;
-    padding-top: 10px;
+    padding-bottom: 5%;
 }
 .btn-footer {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     height: fit-content;
     width: 100%;
     align-items: center;
     margin-top: 10px;
+    padding: 0 26px;
+    gap: 2%;
+    margin-top: 6%;
 }
 .btn-update {
-    width: 80%;
+    width: 30%;
     height: 30px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color:#5CB85C;
+    border: 1.5px solid var(--btnAdd);
+    border-radius: 15px;
+    background-color: var(--white);
     /* margin-top:10px; */
-    color: #fff;
+    color: var(--btnAdd);
     cursor: pointer;
 }
 .btn-delete {
-    width: 80%;
+    width: 30%;
     height: 30px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color:#FF0000;
-    color: #fff;
+    border: 1.5px solid #FF0000;
+    border-radius: 15px;
+    background-color: var(--white);
+    color: #FF0000;
     cursor: pointer;
-    
 }
-.btn-delete:hover {
-    background-color:#9a3a3a;
+.btn-delete-user {
+    width: 100%;
+    height: 30px;
+    border: 1.5px solid #FF0000;
+    border-radius: 15px;
+    background-color: var(--white);
+    color: #FF0000;
     cursor: pointer;
+}
+.btn-delete:hover, .btn-delete-user:hover {
+    background-color:#FF0000;
+    cursor: pointer;
+    color: var(--white);
+    transition: 0.5s;
 }
 .btn-update:hover {
-    background-color:#F0AD4E;
+    background-color: var(--btnAdd);
+    color: var(--white);
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .open {
@@ -626,6 +652,7 @@ html {
 
     .btn-delete-log {
        font-size:8px;
+
     }
 
     .btn-update-desc{

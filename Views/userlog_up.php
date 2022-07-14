@@ -77,16 +77,16 @@ include('../connectDB.php');
     <div class="pag-block">
         <!-- display prev when not stay in page 1 -->
         <?php if ($current_page > 1 && $total_page > 1) {
-            echo '   <a href="admin.php?page=eventlog&&pages=' . ($current_page - 1) . '&&event=' . $currentEventId . '">Prev |</a>';
+            echo '   <a href="admin.php?page=eventlog&&pages=' . ($current_page - 1) . '&&event=' . $currentEventId . '" class="pag-number"><i class="fa-solid fa-angles-left"></i></a>';
         } ?>
         <div class="pag-item">
             <?php
             //loop the between 
             for ($i = 1; $i <= $total_page; $i++) {
                 if ($i == $current_page) {
-                    echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">' . $i . '</span>  ';
+                    echo '<span class="pag-number" style="background-color:orange; color: white;">' . $i . '</span>';
                 } else {
-                    echo '<a class="pag-hplink" href="admin.php?page=eventlog&&pages=' . $i . '&&event=' . $currentEventId . '"><div class="pag-number">' . $i . '</div></a> |';
+                    echo '<a class="pag-hplink" href="admin.php?page=eventlog&&pages=' . $i . '&&event=' . $currentEventId . '"><div class="pag-number">' . $i . '</div></a>';
                 }
             }
             ?>
@@ -94,7 +94,7 @@ include('../connectDB.php');
         <?php
         //display btn next when it not be the end page
         if ($current_page < $total_page && $total_page > 1) {
-            echo '<a href="admin.php?page=eventlog&&pages=' . ($current_page + 1) . '&&event=' . $currentEventId . '">Next</a>';
+            echo '<a href="admin.php?page=eventlog&&pages=' . ($current_page + 1) . '&&event=' . $currentEventId . '" class="pag-number"><i class="fa-solid fa-angles-right"></i></a>';
         } ?>
     </div>
 </div>
