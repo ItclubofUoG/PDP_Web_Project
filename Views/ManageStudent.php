@@ -194,9 +194,9 @@
                     <div class="modal-footer">
                         <div class="btn-footer">
                             <input type="submit" value="Update" name="btn_update" id="btn_update" class="btn-update">
-                        </div>
-                        <div class="btn-footer">
-                            <a style="text-align: center; text-decoration: none; font-size: 14px" href="./Process/student.php?stid=<?php echo $row_update['student_id'] ?>" class="btn-delete" id="btn_detele" class="btn-delete" onclick="return confirm('Are you sure to delete?')">Delete</a>
+                            <a href="./Process/student.php?stid=<?php echo $row_update['student_id'] ?>" style="width:30%;" id="btn_detele" onclick="return confirm('Are you sure to delete?')">
+                                <input type="submit" value="Delete" class="btn-delete-user">
+                            </a>
                         </div>
                     </div>
                 </form>
@@ -217,16 +217,16 @@
         <div class="pag-block">
             <!-- display prev when not stay in page 1 -->
             <?php if ($current_page > 1 && $total_page > 1) {
-                echo '   <a href="admin.php?page=student&&pages=' . ($current_page - 1) . '">Prev |</a>';
+                echo '   <a href="admin.php?page=student&&pages=' . ($current_page - 1) . '" class="pag-number"><i class="fa-solid fa-angles-left"></i></a>';
             } ?>
             <div class="pag-item">
                 <?php
                 //loop the between 
                 for ($i = 1; $i <= $total_page; $i++) {
                     if ($i == $current_page) {
-                        echo '<span class="pag-number" style="border: 2px solid blue; background-color:#ccc;">' . $i . '</span> | ';
+                        echo '<span class="pag-number" style="background-color:orange; color: white;">' . $i . '</span>';
                     } else {
-                        echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a> |';
+                        echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a>';
                     }
                 }
                 ?>
@@ -234,7 +234,7 @@
             <?php
             //display btn next when it not be the end page
             if ($current_page < $total_page && $total_page > 1) {
-                echo '<a href="admin.php?page=student&&pages=' . ($current_page + 1) . '">Next</a>';
+                echo '<a href="admin.php?page=student&&pages=' . ($current_page + 1) . '" class="pag-number"><i class="fa-solid fa-angles-right"></i></a>';
             } ?>
         </div>
     </div>

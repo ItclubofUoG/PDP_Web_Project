@@ -98,10 +98,9 @@
                     <div class="modal-footer">
                         <div class="btn-footer">
                             <input type="submit" class="btn-update" value="Update">
-                        </div>
-                        <div class="btn-footer">
-                            <!-- <input type="submit" class="btn-delete" value="Delete"> -->
-                            <a class="btn-delete" style="text-align: center; text-decoration: none; font-size: 14px;" href="./Process/manageAdmin.php?function=deleteAdmin&&id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure to delete')">Delete admin</a>
+                            <a style="width:30%;" href="./Process/manageAdmin.php?function=deleteAdmin&&id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure to delete')">
+                                <input type="submit" value="Delete" class="btn-delete-user">
+                            </a>
                         </div>
 
                     </div>

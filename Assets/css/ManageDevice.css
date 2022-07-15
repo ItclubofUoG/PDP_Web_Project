@@ -55,7 +55,8 @@
   align-items: center;
 }
 .btn-reload:hover {
-  background-color: #2eff2e;
+  background-color: rgb(159, 16, 16) ;
+  transition:0.5s;
   cursor: pointer;
 }
 .btn-attendence {
