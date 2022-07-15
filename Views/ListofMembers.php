@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="../Assets/css/Admin.css">
 <body>
     <div class="list-container">
         <h1 class="mn-title">List Of Students</h1>
@@ -19,7 +21,7 @@
                     <th class="head-row">Full name</th>
                     <th class="head-row" style="max-width:50px">Major</th>
                     <th class="head-row" style="max-width:50px">Course</th>
-                    <th class="head-row" style="max-width:50px">Score</th>
+                    <th class="head-row" style="max-width:50px">Score</th>  
                 </tr>
                 <?php
                 include("./connectDB.php");

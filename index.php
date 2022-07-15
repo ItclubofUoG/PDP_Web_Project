@@ -27,12 +27,12 @@
 
         /* Track */
         ::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 8px gray;
+            box-shadow: inset 0 0 10px rgba(240, 240, 240, 0.8);
         }
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: blue;
+            background: rgba(63, 76, 255, 1);
         }
     </style>
 
