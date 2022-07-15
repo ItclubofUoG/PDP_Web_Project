@@ -5,18 +5,20 @@
   }
   
   :root{
-      --blue: #2B3494;
-      --orange: #FF7518;
-      --white: #fff;
-      --blueTrans: rgba(43,52,148,0.9);
-      --orangeTrans: rgba(255,117,24,0.9);
-      --whiteTrans: rgba(255,255,255,0.9);
-      --blueViolet: #2A1464;
-      --btnAdd: #5CB85C;
-      --btnAddRight: #1177D1;;
-      --border:#ccc;
-      --shadow: rgba(220,220,220,.5);
-      --hoverAdd:  rgb(16, 112, 16);
+        --blue: #2b3494;
+        --lightOrange: #ff7f2a;
+        --lightOrange2: #ffa66a;
+        --orange: #ff7518;
+        --white: #fff;
+        --blueTrans: rgba(43, 52, 148, 0.9);
+        --orangeTrans: rgba(255, 117, 24, 0.9);
+        --whiteTrans: rgba(255, 255, 255, 0.9);
+        --blueViolet: #2a1464;
+        --btnAdd: #5cb85c;
+        --btnAddRight: #1177d1;
+        --border: #ccc;
+        --shadow: rgba(220, 220, 220, 0.5);
+        --hoverAdd: rgb(16, 112, 16);
       --hoverDelete: #b80000;
   }
   
@@ -332,7 +334,6 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-left: 15px;
-    position: absolute;
     right: 0;
   }
   .main-table {
@@ -656,7 +657,7 @@
       width: 70px;
       margin-left: 15px;
       font-size: 15px;
-      height: 20px;
+      height: 80%;
     }
     .search-box {
       font-size: 15px;
@@ -748,7 +749,7 @@
           width: 70px;
           margin-left: 15px;
           font-size: 7px;
-          height: 20px;
+          height: 80%;
       }
   
       .btn-update-desc{
