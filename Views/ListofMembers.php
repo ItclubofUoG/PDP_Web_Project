@@ -12,14 +12,15 @@
             <input class="btn-add-right js-filter" type="button" value="Filter">
         </div>
 
-        <div class="main-table">
-            <table class="table-admin">
-                <tr class="table-head">
-                    <th class="head-row" style="max-width:50px">Student ID</th>
-                    <th class="head-row">Full name</th>
-                    <th class="head-row" style="max-width:50px">Major</th>
-                    <th class="head-row" style="max-width:50px">Course</th>
-                    <th class="head-row" style="max-width:50px">Score</th>
+        <div class="main-table-mn">
+            <table class="table-admin-mn">
+                <tr class="table-head-mn">
+                    <!-- <th class="head-row-mn">No.</th> -->
+                    <th class="head-row-mn">Student ID</th>
+                    <th class="head-row-mn">Full name</th>
+                    <th class="head-row-mn">Major</th>
+                    <th class="head-row-mn">Course</th>
+                    <th class="head-row-mn">Score</th>
                 </tr>
                 <?php
                 include("./connectDB.php");
@@ -99,17 +100,20 @@
                             $cowCourseAndMajor = mysqli_fetch_array($resCourseAndMajor, MYSQLI_ASSOC);
                             $rowscores = mysqli_fetch_array($res, MYSQLI_ASSOC);
                 ?>
-                            <tr class="table-body">
-                                <td class="body-row" style="max-width:50px"><?php echo $row['student_id'] ?></td>
-                                <td class="body-row"><?php echo $row['fullname'] ?></td>
-                                <td class="body-row" style="max-width:50px"><?php echo $cowCourseAndMajor['major_name'] ?></td>
-                                <td class="body-row" style="max-width:50px"><?php echo $cowCourseAndMajor['course_name'] ?></td>
-                                <td class="body-row" style="max-width:50px"><?php echo !empty($rowscores['scores']) ? $rowscores['scores'] : 0 ?></td>
+                            <tr class="table-body-mn">
+                                <td class="body-row-mn"><?php echo $row['student_id'] ?></td>
+                                <td class="body-row-mn"><?php echo $row['fullname'] ?></td>
+                                <td class="body-row-mn"><?php echo $cowCourseAndMajor['major_name'] ?></td>
+                                <td class="body-row-mn"><?php echo $cowCourseAndMajor['course_name'] ?></td>
+                                <td class="body-row-mn"><?php echo !empty($rowscores['scores']) ? $rowscores['scores'] : 0 ?></td>
                             </tr>
-                        <?php } ?>
+                        <?php
+                        } ?>
                     <?php } else { ?>
-                    <?php } ?>
-                <?php } ?>
+                    <?php
+                    } ?>
+                <?php
+                } ?>
 
 
             </table>

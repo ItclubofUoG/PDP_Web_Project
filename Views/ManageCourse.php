@@ -16,11 +16,11 @@ include_once('./connectDB.php');
         <!-- End Search box -->
 
         <!-- Begin Table -->
-        <div class="main-table">
-            <table class="table-admin">
-                <tr class="table-head">
-                    <th class="head-row">No. </th>
-                    <th class="head-row">Course Name</th>
+        <div class="main-table-mn">
+            <table class="table-admin-mn">
+                <tr class="table-head-mn">
+                    <th class="head-row-mn">No. </th>
+                    <th class="head-row-mn">Course Name</th>
                 </tr>
                 <?php
 
@@ -30,9 +30,9 @@ include_once('./connectDB.php');
                 while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
                     if ($row['course_id'] != 0) {
                 ?>
-                        <tr class="table-body">
-                            <td class="body-row"><?php echo $no ?></td>
-                            <td class="body-row"><a href="?page=course&&id=<?php echo $row["course_id"]; ?>" style="color: blue; font-weight: bold; text-decoration: none" class="choose-user js-update-course"><?php echo $row["course_name"]; ?></a></td>
+                        <tr class="table-body-mn">
+                            <td class="body-row-mn"><?php echo $no ?></td>
+                            <td class="body-row-mn"><a href="?page=course&&id=<?php echo $row["course_id"]; ?>" style="color: blue; font-weight: bold; text-decoration: none" class="choose-user js-update-course"><?php echo $row["course_name"]; ?></a></td>
 
                         </tr>
                 <?php
