@@ -10,14 +10,14 @@
       </div>
       <div class="device-body">
         <!--Start Table Manage User -->
-        <div class="main-table">
-          <table class="table-admin">
-            <tr class="table-head">
-              <th class="head-row">De.Name</th>
-              <th class="head-row">De.Department</th>
-              <th class="head-row">De.UID</th>
-              <th class="head-row">De.Mode</th>
-              <th class="head-row">Config</th>
+        <div class="main-table-mn">
+          <table class="table-admin-mn">
+            <tr class="table-head-mn">
+              <th class="head-row-mn">De.Name</th>
+              <th class="head-row-mn">De.Department</th>
+              <th class="head-row-mn">De.UID</th>
+              <th class="head-row-mn">De.Mode</th>
+              <th class="head-row-mn">Config</th>
             </tr>
 
             <?php
@@ -31,10 +31,10 @@
               $resultl = mysqli_stmt_get_result($result);
               while ($row = mysqli_fetch_assoc($resultl)) {
             ?>
-                <tr class="table-body">
-                  <td class="body-row"><?php echo $row["device_name"] ?></td>
-                  <td class="body-row"><?php echo $row["device_dep"] ?></td>
-                  <td class="body-row">
+                <tr class="table-body-mn">
+                  <td class="body-row-mn"><?php echo $row["device_name"] ?></td>
+                  <td class="body-row-mn"><?php echo $row["device_dep"] ?></td>
+                  <td class="body-row-mn">
                     <div class="btn-table">
                       <!-- <input type="button" value="Reload" class="btn-reload"> -->
                       <a class="btn-reload" style="text-decoration: none" onclick="return confirm('Are you sure to reload?');" href="./Process/manageDeviceController.php?function=reload&&deviceid=<?php echo $row["id"] ?>">Reload</a>
@@ -42,7 +42,7 @@
                     </div>
 
                   </td>
-                  <td class="body-row">
+                  <td class="body-row-mn">
                     <form action="./Process/manageDeviceController.php?function=updatemode&&deviceid=<?php echo $row['id'] ?>" class="de-mode text-input" method="POST">
                       <div class="btn-table">
 
@@ -59,7 +59,7 @@
                       </div>
                     </form>
                   </td>
-                  <td class="body-row">
+                  <td class="body-row-mn">
                     <div class="btn-table">
                       <!-- <input type="button" value="Delete" class="btn-delete-device"> -->
                       <a class="btn-delete-device" style="text-decoration: none;" onclick="return confirm('Are you sure to delete?');" href="./Process/manageDeviceController.php?function=delete&&deviceid=<?php echo $row["id"] ?>">Delete</a>

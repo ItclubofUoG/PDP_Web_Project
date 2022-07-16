@@ -8,12 +8,12 @@
         </div>
         <!-- End Search box -->
         <!-- Begin Table -->
-        <div class="main-table">
-            <table class="table-admin">
-                <tr class="table-head">
-                    <th class="head-row">No. </th>
-                    <th class="head-row">Admin Name</th>
-                    <th class="head-row">Admin Email</th>
+        <div class="main-table-mn">
+            <table class="table-admin-mn">
+                <tr class="table-head-mn">
+                    <th class="head-row-mn">No. </th>
+                    <th class="head-row-mn">Admin Name</th>
+                    <th class="head-row-mn">Admin Email</th>
                 </tr>
 
                 <?php
@@ -23,10 +23,10 @@
                 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 ?>
-                    <tr class="table-body">
-                        <td class="body-row"> <?php echo $no ?> </a> </td>
-                        <td class="body-row"><a href="?page=admin&&id=<?php echo $row['id'] ?>" style="font-weight: bold; color: blue; text-decoration: none" class="choose-user js-update-admin"><?php echo $row['admin_name'] ?></a></td>
-                        <td class="body-row"><?php echo $row['admin_email'] ?></td>
+                    <tr class="table-body-mn">
+                        <td class="body-row-mn"> <?php echo $no ?> </a> </td>
+                        <td class="body-row-mn"><a href="?page=admin&&id=<?php echo $row['id'] ?>" style="font-weight: bold; color: blue; text-decoration: none" class="choose-user js-update-admin"><?php echo $row['admin_name'] ?></a></td>
+                        <td class="body-row-mn"><?php echo $row['admin_email'] ?></td>
                     </tr>
                 <?php $no++;
                 } ?>

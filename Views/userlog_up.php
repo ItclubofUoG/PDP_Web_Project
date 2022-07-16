@@ -3,18 +3,18 @@ include_once('../Libs/index.php');
 include('../connectDB.php');
 ?>
 
-<div class="main-table">
-    <table class="table-admin">
-        <tr class="table-head">
-            <th class="head-row">Student ID</th>
-            <th class="head-row">Student Name</th>
-            <th class="head-row">Event Name</th>
-            <th class="head-row">Date</th>
-            <th class="head-row">Time In</th>
-            <th class="head-row">Time Out</th>
-            <th class="head-row">Score</th>
-            <th class="head-row">Plus</th>
-            <th class="head-row">Delete</th>
+<div class="main-table-mn">
+    <table class="table-admin-mn">
+        <tr class="table-head-mn">
+            <th class="head-row-mn">Student ID</th>
+            <th class="head-row-mn">Student Name</th>
+            <th class="head-row-mn">Event Name</th>
+            <th class="head-row-mn">Date</th>
+            <th class="head-row-mn">Time In</th>
+            <th class="head-row-mn">Time Out</th>
+            <th class="head-row-mn">Score</th>
+            <th class="head-row-mn">Plus</th>
+            <th class="head-row-mn">Delete</th>
         </tr>
 
         <?php
@@ -52,21 +52,21 @@ include('../connectDB.php');
         }
         while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
         ?>
-            <tr class="table-body">
-                <td class="body-row"><?php echo $row["student_id"]; ?></td>
-                <td class="body-row"><?php echo $row["fullname"]; ?></td>
-                <td class="body-row"><?php echo $row["event_title"]; ?></td>
-                <td class="body-row"><?php echo $row["checkin_date"]; ?></td>
-                <td class="body-row"><?php echo $row["time_in"]; ?></td>
-                <td class="body-row"><?php echo $row["time_out"]; ?></td>
-                <td class="body-row"><?php echo $row["scores"]; ?></td>
-                <td class="body-row">
+            <tr class="table-body-mn">
+                <td class="body-row-mn"><?php echo $row["student_id"]; ?></td>
+                <td class="body-row-mn"><?php echo $row["fullname"]; ?></td>
+                <td class="body-row-mn"><?php echo $row["event_title"]; ?></td>
+                <td class="body-row-mn"><?php echo $row["checkin_date"]; ?></td>
+                <td class="body-row-mn"><?php echo $row["time_in"]; ?></td>
+                <td class="body-row-mn"><?php echo $row["time_out"]; ?></td>
+                <td class="body-row-mn"><?php echo $row["scores"]; ?></td>
+                <td class="body-row-mn">
                     <form method="POST" action="./Process/userLog.php?function=plusScore">
                         <input type="hidden" name="stdID" id="stdID" value="<?php echo $row["student_id"]; ?>">
                         <input type="submit" value="➕" onclick="return confirm('Are you sure you want to add points for <?php echo $row['fullname']; ?> ?')">
                     </form>
                 </td>
-                <td class="body-row"><a href="./Process/userLog.php?function=deleteUser&&id=<?php echo $row['id'] ?>" style="text-decoration:none;" onclick="return confirm('Are you sure to delete')">⛔️</a></td>
+                <td class="body-row-mn"><a href="./Process/userLog.php?function=deleteUser&&id=<?php echo $row['id'] ?>" style="text-decoration:none;" onclick="return confirm('Are you sure to delete')">⛔️</a></td>
             </tr>
         <?php
         }

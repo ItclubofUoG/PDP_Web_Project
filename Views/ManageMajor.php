@@ -17,11 +17,11 @@ include_once('./connectDB.php');
         <!-- End Search box -->
 
         <!-- Begin Table -->
-        <div class="main-table">
-            <table class="table-admin">
-                <tr class="table-head">
-                    <th class="head-row">No.</th>
-                    <th class="head-row">Major Name</th>
+        <div class="main-table-mn">
+            <table class="table-admin-mn">
+                <tr class="table-head-mn">
+                    <th class="head-row-mn">No.</th>
+                    <th class="head-row-mn">Major Name</th>
                 </tr>
 
                 <?php
@@ -32,9 +32,9 @@ include_once('./connectDB.php');
                 while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
                     if ($row['major_id'] != 0) {
                 ?>
-                        <tr class="table-body">
-                            <td class="body-row"><?php echo $no ?></td>
-                            <td class="body-row"><a style="color: blue; font-weight: bold; text-decoration: none" class="choose-user js-update-major" href="?page=major&&id=<?php echo $row["major_id"]; ?>"><?php echo $row["major_name"]; ?></a></td>
+                        <tr class="table-body-mn">
+                            <td class="body-row-mn"><?php echo $no ?></td>
+                            <td class="body-row-mn"><a style="color: blue; font-weight: bold; text-decoration: none" class="choose-user js-update-major" href="?page=major&&id=<?php echo $row["major_id"]; ?>"><?php echo $row["major_name"]; ?></a></td>
                         </tr>
                 <?php
                     }
