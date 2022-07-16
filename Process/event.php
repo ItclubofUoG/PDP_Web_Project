@@ -39,17 +39,17 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateEvent') {
     $score = $_POST['updatescore'];
     $pic = $_FILES['updateimage'];
     $image = $pic['name'];
-
+    $scorePlus = $_POST['updatescoreplus'];
 
     if ($pic['name'] != "") {
         if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
             copy($pic['tmp_name'], "../Assets/Image/" . $pic['name']);
-            mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd',`image`='$image' WHERE event_id='$event_id'") or die(mysqli_error($conn));
+            mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd',`image`='$image', `scorePlus`='$scorePlus' WHERE event_id='$event_id'") or die(mysqli_error($conn));
             echo "<script> location.href='../admin.php?page=event'</script>";
             exit;
         }
     } else {
-        mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd' WHERE event_id='$event_id'") or die(mysqli_error($conn));
+        mysqli_query($conn, "UPDATE `event` SET`event_title`='$title',`date`='$date',`location`='$location',`score`='$score',`time_start`='$timeStart',`time_end`='$timeEnd',`scorePlus`='$scorePlus' WHERE event_id='$event_id'") or die(mysqli_error($conn));
         echo "<script> location.href='../admin.php?page=event'</script>";
     }
 }
