@@ -43,23 +43,23 @@ if (isset($_POST['btn_export'])) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
                 AND  checkin_date >='$startDate'  and checkin_date <= '$endDate'") or die(mysqli_error($conn));
 
-                $sqlEvent = mysqli_query($conn, "SELECT event_title, score from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
+                $sqlEvent = mysqli_query($conn, "SELECT event_title, scores from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
                 AND  checkin_date >='$startDate'  and checkin_date <= '$endDate'") or die(mysqli_error($conn));
             } elseif (empty($startDate) != true && empty($endDate) == true) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
                 and  checkin_date >='$startDate' ") or die(mysqli_error($conn));
 
-                $sqlEvent = mysqli_query($conn, "SELECT event_title, score from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
+                $sqlEvent = mysqli_query($conn, "SELECT event_title, scores from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
                 and  checkin_date >='$startDate'") or die(mysqli_error($conn));
             } elseif (empty($startDate) == true && empty($endDate) != true) {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id' 
                 and checkin_date <= '$endDate'") or die(mysqli_error($conn));
 
-                $sqlEvent = mysqli_query($conn, "SELECT event_title, score from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
+                $sqlEvent = mysqli_query($conn, "SELECT event_title, scores from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'
                 and checkin_date <= '$endDate'") or die(mysqli_error($conn));
             } else {
                 $res_sum = mysqli_query($conn, "SELECT SUM(scores) as score FROM user_log Where student_id = '$student_id'") or die(mysqli_error($conn));
-                $sqlEvent = mysqli_query($conn, "SELECT event_title, score from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'");
+                $sqlEvent = mysqli_query($conn, "SELECT event_title, scores from event a, user_log b WHERE a.event_id = b.event_id and b.student_id = '$student_id'");
             }
             $rowScore = mysqli_fetch_array($res_sum, MYSQLI_ASSOC);
 
@@ -69,7 +69,7 @@ if (isset($_POST['btn_export'])) {
             $arrayScore = array();
             while ($rowEvent = mysqli_fetch_array($sqlEvent, MYSQLI_ASSOC)) {
                 array_push($arrayEvent, $rowEvent['event_title']);
-                array_push($arrayScore, $rowEvent['score']);
+                array_push($arrayScore, $rowEvent['scores']);
             }
 
 
