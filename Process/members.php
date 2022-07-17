@@ -120,7 +120,9 @@ if (isset($_POST['btn_export'])) {
             $year = $_GET['year'];
 
             $sqlquery = "SELECT * FROM user_log WHERE Month(checkin_date) ='$month'AND Year(checkin_date)='$year'";
-            $url = "../index.php?page=attendence&&sqlquery=$sqlquery";
+            session_start();
+            $_SESSION['sql_filter']=$sqlquery;
+            $url = "../index.php?page=attendence";
             $url = str_replace(PHP_EOL, '', $url);
             header("location: $url");
         }
