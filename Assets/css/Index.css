@@ -200,13 +200,13 @@
 }
 
 /* error alert */
-.alert-error {
+/* .alert-error {
     position: absolute;
     min-width: 0px;
     background-color: #fff ;
     color: red;
     font-size:14px;
-}
+} */
 .alert-error2 {
     position: absolute;
     min-width: 0px;
