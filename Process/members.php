@@ -86,6 +86,7 @@ if (isset($_POST['btn_export'])) {
                     $rowScoreExcel = mysqli_fetch_array($sql, MYSQLI_ASSOC);
                     $scoreElement = $rowScoreExcel['scores'];
                 }
+                $out .= $eventElement . ' (' . $scoreElement . ')' . ' | ';
             }
             $out .= '</td>    
                     <td>' . $rowScore['score'] . '</td>
