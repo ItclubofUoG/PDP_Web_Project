@@ -24,8 +24,8 @@
     display: flex;
     justify-content: center;
 }
-.table-user{
-    border: 1px solid #ccc;
+.table-user-mn{
+    border: 0.5px solid #6495ed;
     width: 100%;
     border-collapse: collapse;
 }
@@ -36,11 +36,7 @@
 .search-box {
     height: 100%;
 }
-@media screen and (max-width: 900px) { 
-    .total-score {
-        font-size: 9px;
-    }
-}
+
 
 
 /* Monthly Event CSS */
