@@ -59,6 +59,7 @@ include_once("./connectDB.php");
                     if(isset($_SESSION['sql_filter'])&&!empty($_SESSION['sql_filter'])){
                         $sql=$_SESSION['sql_filter'];
                         $res = mysqli_query($conn,$sql."&&student_id ='$id'");
+                        unset($_SESSION['sql_filter']);
                     }
                     else{
                         $res = mysqli_query($conn,"SELECT * FROM user_log WHERE Month(checkin_date) >='1' && student_id ='$id'");
