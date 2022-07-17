@@ -21,7 +21,7 @@
         --hoverAdd: rgb(16, 112, 16);
       --hoverDelete: #b80000;
   }
-  
+
   
   html {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -60,6 +60,7 @@
     background-color: #4f90c9;
     cursor: pointer;
     color: var(--white);
+    transition: 0.5s;
   }
   .btn-add-modal {
   
@@ -76,6 +77,7 @@
       background-color: var(--btnAdd);
       color: var(--white);
       cursor: pointer;
+    transition: 0.5s;
   }
   
   /* Manage Major */
@@ -239,6 +241,7 @@
     background-color: #4f90c9;
     color: #000;
     cursor: pointer;
+    transition: 0.5s;
   }
   .btn-delete-log {
     height: 100%;
@@ -252,6 +255,7 @@
     color: #fff;
       background-color: var(--hoverDelete);
       cursor: pointer;
+    transition: 0.5s;
   }
   .select-event {
       padding-left: 16px;
@@ -325,7 +329,7 @@
     background-color: var(--hoverAdd);
     color: var(--white);
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.5s;
   }
   .btn-add-right {
     height: 85%;
@@ -349,7 +353,7 @@
   }
   .table-admin {
     border: 0.5px solid #6495ed;
-    width: 1500px;
+    width: 1700px;
     border-collapse: collapse;
   }
   .table-head {
@@ -441,6 +445,16 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+  @keyframes modalFadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-140px);
     }
   }
   
@@ -617,7 +631,7 @@
   .btn-update-des-ad:hover {
     background-color: var(--orange);
     color: var(--white);
-    transition: 0.3s;
+    transition: 0.5s;
   }
   
   .update-desc-hidden-input {
@@ -643,7 +657,7 @@
   .btn-update-desc:hover {
     background-color: var(--orange);
     color: var(--white);
-    transition: 0.3s;
+    transition: 0.5s;
   }
   
   @media screen and (max-width: 1100px) {
@@ -778,7 +792,7 @@
     .btn-update-desc:hover{
         background-color: var(--orange);
         color: var(--white);
-        transition: 0.3s;
+        transition: 0.5s;
     }
   }
   

@@ -2,13 +2,15 @@
     <form class="login-form" action="./Process/login.php?function=login" method="POST">
         <div class="login-title">LOGIN</div>
         <div class="login-item">
-            <input style="font-size:15px;" type="email" id="email-login" name="email-login" class="login-input email" placeholder="✉️ Email">
-            <span class="alert-error"></span>
+            <input style="font-size:15px;" type="email" id="email-login" name="email-login"
+                class="login-input email-login" placeholder="✉️ Email">
+            <span class="alert-error-log-in"></span>
             <span class="alert"></span>
         </div>
         <div class="login-item">
-            <input style="font-size:15px;" type="password" id="password" name="password" class="login-input" placeholder="🔑 Password">
-            <span class="alert-error"></span>
+            <input style="font-size:15px;" type="password" id="password" name="password" class="login-input"
+                placeholder="🔑 Password">
+            <span class="alert-error-log-in"></span>
         </div>
         <div>
             <input type="submit" value="login" class="login-btn" id="btn_login" name="btn_login">
@@ -17,14 +19,13 @@
 </div>
 
 
-<script src="./Assets/js/ValidationLogin.js"></script>
+<script src="./Assets/js/ValicationLogin.js"></script>
 <script src="./Assets/js/Validation.js"></script>
-
 <script>
     Validator({
         form: '.login-form',
         formGroupSelector: '.login-item',
-        errorSelector: '.alert-error',
+        errorSelector: '.alert-error-log-in',
         rules: [
             Validator.isRequired('#password', 'This field can not empty'),
             Validator.isRequired('#email-login', 'This field can not empty'),
