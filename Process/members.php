@@ -89,7 +89,6 @@ if (isset($_POST['btn_export'])) {
             }
             $out .= '</td>    
                     <td>' . $rowScore['score'] . '</td>
-
     ';
 
             $out .= '
