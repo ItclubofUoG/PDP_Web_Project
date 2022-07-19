@@ -33,10 +33,11 @@
 MFRC522 mfrc522(SS_PIN, RST_PIN); // Create MFRC522 instance.
 //************************************************************************
 /* Set these to your desired credentials. */
-const char *ssid = "Greenwich Vietnam - 1-3A";
+// const char *ssid = "Greenwich Vietnam - 1-3A";
+const char *ssid = "Greenwich Vietnam - F5";
 const char *password = "";
-const char* device_token  = "b8e1e3fb7bab8b35"; // Greenwich
-//const char* device_token  = "1e6cb94e4dc1adbe"; // clb
+// const char* device_token  = "d6fc046a48353ca2"; // Greenwich
+const char* device_token  = "1e6cb94e4dc1adbe"; // clb
 //************************************************************************
 int timezone = 7 * 3600;   //Replace "x" your timezone.
 int time_dst = 0;
@@ -44,8 +45,8 @@ String getData, Link;
 String OldCardID = "";
 unsigned long previousMillis1 = 0;
 unsigned long previousMillis2 = 0;
-//String URL = "https://itclubofgwu.site/getdata.php"; //computer IP or the server domain
-String URL = "https://https://pdpgwu.site/.site/getdata.php"; //computer IP or the server domain
+String URL = "https://itclubofgwu.site/getdata.php"; //computer IP or the server domain
+// String URL = "https://pdpgwu.site/getdata.php"; //computer IP or the server domain
 //*************************Biometric Icons*********************************
 #define Wifi_start_width 54
 #define Wifi_start_height 49
@@ -244,12 +245,12 @@ void SendCardID( String Card_uid ) {
     Serial.println(httpCode);   //Print HTTP return code
     Serial.println(Card_uid);     //Print Card ID
     Serial.println(payload);     //Print request response payload
-    Serial.println(payload.substring(0, 5));
+    Serial.println(payload.substring(0, 11));
     if (httpCode == 200) {
-      if (payload.substring(0, 5) == "login") {
+      if (payload.substring(0, 11) == "login") {
         coi(2, 1);
         Serial.println("here");
-        String user_name = payload.substring(5);
+        String user_name = payload.substring(11);
         Serial.println(user_name);
         //buzz
       }
