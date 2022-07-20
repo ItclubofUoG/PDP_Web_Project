@@ -242,7 +242,7 @@
 @media screen and (max-width: 900px) {
     /* The header reponsive css */
     html {
-        margin-right: -80px;
+        /* margin-right: -80px; */
     }
     .header{
         height: 170px;
