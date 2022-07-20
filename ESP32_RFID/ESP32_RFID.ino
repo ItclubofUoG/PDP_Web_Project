@@ -33,8 +33,8 @@
 MFRC522 mfrc522(SS_PIN, RST_PIN); // Create MFRC522 instance.
 //************************************************************************
 /* Set these to your desired credentials. */
-// const char *ssid = "Greenwich Vietnam - 1-3A";
-const char *ssid = "Greenwich Vietnam - F5";
+const char *ssid = "Greenwich Vietnam - 1-3A";
+// const char *ssid = "Greenwich Vietnam - F5";
 const char *password = "";
 // const char* device_token  = "d6fc046a48353ca2"; // Greenwich
 const char* device_token  = "1e6cb94e4dc1adbe"; // clb
