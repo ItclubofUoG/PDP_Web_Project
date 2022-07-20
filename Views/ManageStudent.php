@@ -13,7 +13,8 @@
         </div>
         <!-- End search box -->
         <?php
-        $res = mysqli_query($conn, "SELECT * FROM event FROM event_id=0");
+        include("./connectDB.php");
+        $res = mysqli_query($conn, "SELECT * FROM event WHERE event_id=0") or die(mysqli_error($conn));
         $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
         if ($row['location'] == 'new') {
             $card_uid = $row['description'];
@@ -45,7 +46,7 @@
                     <th class="head-row">Score</th>
                 </tr>
                 <?php
-                include("./connectDB.php");
+
                 include_once('./Libs/index.php');
                 //find the total records
                 if (isset($_POST['btn-search'])) {
