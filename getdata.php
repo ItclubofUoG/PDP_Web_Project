@@ -145,7 +145,7 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                             mysqli_stmt_execute($result);
                             $resultl = mysqli_stmt_get_result($result);
                             session_start();
-                            $_SESSION["card_exits"] = $card_uid;
+                            mysqli_query($conn, "UPDATE `event` SET `location`='update',`description`=$card_uid WHERE `event_id`=0");
                             if ($row = mysqli_fetch_assoc($resultl)) {
                                 $sql = "UPDATE user SET card_select=0";
                                 $result = mysqli_stmt_init($conn);
@@ -163,7 +163,6 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                                     } else {
                                         mysqli_stmt_bind_param($result, "s", $card_uid);
                                         mysqli_stmt_execute($result);
-
                                         echo "available";
                                         exit();
                                     }
@@ -190,9 +189,8 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                         $result = mysqli_stmt_init($conn);
                         $res = mysqli_query($conn, "SELECT * FROM user WHERE card_uid='$card_uid'");
                         if (mysqli_num_rows($res) <= 0) {
-                            session_start();
-                            $_SESSION["card_uid"] = $card_uid;
-                            echo  $_SESSION["card_uid"];
+                            mysqli_query($conn, "UPDATE `event` SET `location`='new',`description`=$card_uid WHERE `event_id`=0");
+                            echo  $card_uid;
                             echo ' add successful';
                         }
                         // if (!mysqli_stmt_prepare($result, $sql)) {
@@ -220,5 +218,5 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
         }
     }
 }
-//http://10.26.5.19:4343//PDPAttendance//Model//getdata.php?card_uid="57859686"&device_token="34234234234fsd"
+//http://10.26.6.159:4343//PDPAttendance//Model//getdata.php?card_uid="57859686"&device_token="d6fc046a48353ca2"
 //http://172.168.39.189:4343//PDPAttendance/getdata.php?card_uid=57859686&device_token= b8e1e3fb7bab8b35
