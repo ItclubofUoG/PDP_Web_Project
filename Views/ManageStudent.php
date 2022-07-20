@@ -13,17 +13,18 @@
         </div>
         <!-- End search box -->
         <?php
-        if (isset($_SESSION["card_uid"]) && !empty($_SESSION["card_uid"])) {
-            $card_uid = $_SESSION["card_uid"];
-            echo $card_uid;
+        $res = mysqli_query($conn, "SELECT * FROM event FROM event_id=0");
+        $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+        if ($row['location'] == 'new') {
+            $card_uid = $row['description'];
+            mysqli_query($conn, "UPDATE `event` SET `location`='none',`description`='none' WHERE `event_id`=0");
             echo '<script language="javascript">alert("CardID: ' . $card_uid . '"); </script>';
-            unset($_SESSION["card_uid"]);
             echo "<script> location.href='./admin.php?page=student'</script>";
             exit;
-        } elseif (isset($_SESSION["card_exits"]) && !empty($_SESSION["card_exits"])) {
-            $card_uid = $_SESSION["card_exits"];
+        } elseif ($row['location'] == 'update') {
+            $card_uid = $row['description'];
+            mysqli_query($conn, "UPDATE `event` SET `location`='none',`description`='none' WHERE `event_id`=0");
             echo '<script language="javascript">alert("CardID: ' . $card_uid . ' exits"); </script>';
-            unset($_SESSION["card_exits"]);
             echo "<script> location.href='./admin.php?page=student'</script>";
             exit;
         }
