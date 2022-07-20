@@ -12,11 +12,8 @@ if (isset($_GET['btn_update'])) {
     $major = $_POST['major'];
     $course = $_POST['course'];
     $dob = $_POST['dob'];
+    $card_uid = $_POST['card_uid'];
     $gender = $_POST['gender'];
-    if (isset($_POST['score'])) {
-        $score = $_POST['score'];
-        mysqli_query($conn, "INSERT INTO `user_log`(`student_id`, `event_id`, `scores`, `card_out`) VALUES ('$id',0,'$score',0)");
-    }
     // $cart_uid = $_POST['cart_uid'];
 
     $checkstid = mysqli_query($conn, "SELECT * FROM user WHERE student_id != '$idUpdate' and student_id = '$id'") or die(mysqli_error($conn));
@@ -28,7 +25,7 @@ if (isset($_GET['btn_update'])) {
         if (mysqli_num_rows($checkemail) == 0) {
             if (mysqli_num_rows($checkphone) == 0) {
                 if ($major != 0 && $course != 0) {
-                    mysqli_query($conn, "UPDATE `user` SET `student_id`='$id',`fullname`='$name',`phone`='$phone',`gender`='$gender',`email`='$email',`dob`='$dob',`major_id`='$major',`course_id`='$course' WHERE student_id='$idUpdate'");
+                    mysqli_query($conn, "UPDATE `user` SET `student_id`='$id',`fullname`='$name',`phone`='$phone',`gender`='$gender',`email`='$email',`dob`='$dob',`major_id`='$major',`course_id`='$course', `card_uid`='$card_uid' WHERE student_id='$idUpdate'");
                     echo "<script> location.href='../admin.php?page=student'</script>";
                 } else {
                     echo "<script type='text/javascript'>alert('Major name or Course name is invalid');</script>";

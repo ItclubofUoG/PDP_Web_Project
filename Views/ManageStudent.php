@@ -172,19 +172,12 @@
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
-                        <input type="text" id="card_uid" name="card_uid" value="<?php echo $row_update['card_uid'] ?>" class="modal-input-box" placeholder="Card Number" readonly>
+                        <input type="text" id="card_uid" name="card_uid" value="<?php echo $row_update['card_uid'] ?>" class="modal-input-box" placeholder="Card Number">
                         <span class="alert-error-modal"></span>
                     </div>
                     <div class="modal-input">
-                        <?php
-                        $res = mysqli_query($conn, "SELECT * FROM user_log WHERE student_id='$student_id' and event_id=0");
-                        if (mysqli_num_rows($res) > 0) { ?>
-                            <input name="score" id="score" readonly type="text" value="<?php echo $rowscores['scores'] ?>" class="modal-input-box" placeholder="Score">
-                            <span class="alert-error-modal"></span>
-                        <?php } else { ?>
-                            <input name="score" id="score" type="text" value="<?php echo $rowscores['scores'] ?>" class="modal-input-box" placeholder="Score">
-                            <span class="alert-error-modal"></span>
-                        <?php } ?>
+                        <input name="score" id="score" readonly type="text" value="<?php echo $rowscores['scores'] ?>" class="modal-input-box" placeholder="Score">
+                        <span class="alert-error-modal"></span>
                     </div>
 
                     <div class="modal-input">
