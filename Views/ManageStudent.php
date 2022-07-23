@@ -190,7 +190,7 @@
                         <div class="btn-footer">
                             <input type="submit" value="Update" name="btn_update" id="btn_update" class="btn-update">
                             <a href="./Process/student.php?stid=<?php echo $row_update['student_id'] ?>" style="width:30%;" id="btn_detele" onclick="return confirm('Are you sure to delete?')">
-                                <input type="submit" value="Delete" class="btn-delete-user">
+                                <input type="button" value="Delete" class="btn-delete-user">
                             </a>
                         </div>
                     </div>
