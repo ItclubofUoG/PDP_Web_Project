@@ -47,7 +47,7 @@ function Get_Current_Event_UserLog()
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         return $row['event_id'];
     } else {
-        return 0;
+        return -1;
     }
 }
 //get list year to search
