@@ -22,7 +22,7 @@ function Get_Current_Event()
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         return $row['event_id'];
     } else {
-        return 0;
+        return -1;
     }
 }
 function Get_Current_Event_UserLog()
