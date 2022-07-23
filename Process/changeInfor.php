@@ -28,6 +28,6 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateInfo') {
     $major = $_POST['stuMajor'];
     mysqli_query($conn, "UPDATE `user` SET `gender`='$gender', `dob`='$dob',phone='$phone',major_id='$major' WHERE student_id='$id'") or die(mysqli_error($conn)) ;
     echo "<script type='text/javascript'>alert('Update successful');</script>";
-    echo "<script> location.href='../index.php?page=home'</script>";
+    echo "<script> location.href='../index.php?page=changeinfo'</script>";
    exit;
 }
