@@ -99,7 +99,7 @@
                         <div class="btn-footer">
                             <input type="submit" class="btn-update" value="Update">
                             <a style="width:30%;" href="./Process/manageAdmin.php?function=deleteAdmin&&id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure to delete')">
-                                <input type="submit" value="Delete" class="btn-delete-user">
+                                <input type="button" value="Delete" class="btn-delete-user">
                             </a>
                         </div>
 

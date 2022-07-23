@@ -103,7 +103,7 @@ include_once('./connectDB.php');
                         <div class="btn-footer">
                             <input type="submit" class="btn-update" value="Update">
                             <a href="./Process/course.php?function=deleteCourse&&id=<?php echo $row['course_id'] ?>" style="width:30%;" onclick="return confirm('Students info related to this course will also be deleted. Are you sure?')">
-                                <input type="submit" value="Delete" class="btn-delete-user">
+                                <input type="button" value="Delete" class="btn-delete-user">
                             </a>
                         </div>
                     </div>
