@@ -189,16 +189,29 @@
         <div class="pag-block">
             <!-- display prev when not stay in page 1 -->
             <?php if ($current_page > 1 && $total_page > 1) {
-                echo '   <a href="admin.php?page=home&&pages=' . ($current_page - 1) . '" class="pag-number"><i class="fa-solid fa-angles-left"></i></a>';
+                echo '   <a href="admin.php?page=student&&pages=' . ($current_page - 1) . '" class="pag-number"><i class="fa-solid fa-angles-left"></i></a>';
             } ?>
             <div class="pag-item">
                 <?php
                 //loop the between 
-                for ($i = 1; $i <= $total_page; $i++) {
-                    if ($i == $current_page) {
-                        echo '<span class="pag-number" style="background-color:orange; color: white;">' . $i . '</span>';
-                    } else {
-                        echo '<a class="pag-hplink" href="admin.php?page=home&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a>';
+                $pageplus = $current_page + 1;
+                if ($total_page > $pageplus) {
+                    for ($i = 1; $i <= $pageplus; $i++) {
+                        if ($i == $current_page) {
+                            echo '<span class="pag-number" style="background-color:orange; color: white;">' . $i . '</span>';
+                        } else {
+                            echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a>';
+                        }
+                    }
+                    echo '<a class="pag-hplink" "><div class="pag-number"> ... </div></a>';
+                    echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $total_page . '"><div class="pag-number">' . $total_page . '</div></a>';
+                } else {
+                    for ($i = 1; $i <= $pageplus; $i++) {
+                        if ($i == $current_page) {
+                            echo '<span class="pag-number" style="background-color:orange; color: white;">' . $i . '</span>';
+                        } else {
+                            echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a>';
+                        }
                     }
                 }
                 ?>
@@ -206,7 +219,7 @@
             <?php
             //display btn next when it not be the end page
             if ($current_page < $total_page && $total_page > 1) {
-                echo '<a href="admin.php?page=home&&pages=' . ($current_page + 1) . '" class="pag-number"><i class="fa-solid fa-angles-right"></i></a>';
+                echo '<a href="admin.php?page=student&&pages=' . ($current_page + 1) . '" class="pag-number"><i class="fa-solid fa-angles-right"></i></a>';
             } ?>
         </div>
     </div>
