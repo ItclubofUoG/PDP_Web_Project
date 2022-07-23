@@ -26,7 +26,9 @@ if (isset($_POST['btn_export'])) {
     $res = mysqli_query($conn, $sqlExport);
 
     if ((mysqli_num_rows($res)) > 0) {
-        $out .= ' <table class="table" border="1">
+        $out .= ' 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <table class="table" border="1">
             <thead>
                 <tr>
                     <th>ID</th>
