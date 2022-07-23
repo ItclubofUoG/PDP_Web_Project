@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 12, 2022 at 11:14 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: localhost:3306
+-- Generation Time: Jul 23, 2022 at 12:50 PM
+-- Server version: 10.5.16-MariaDB-cll-lve
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pdp_itclub`
+-- Database: `itclubof_PDP`
 --
 
 -- --------------------------------------------------------
@@ -39,8 +40,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `admin_name`, `admin_email`, `admin_pwd`) VALUES
-(1, 'Admin', 'admin@gmail.com', '25f9e794323b453885f5181f1b624d0b'),
-(4, 'Phan Háº£i Äáº±ng', 'dangph5@fe.edu.vn', '25d55ad283aa400af464c76d713c07ad');
+(1, 'Admin', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500'),
+(2, 'Phan Háº£i Äáº±ng', 'dangph5@fe.edu.vn', '25d55ad283aa400af464c76d713c07ad');
 
 -- --------------------------------------------------------
 
@@ -59,10 +60,10 @@ CREATE TABLE `course` (
 
 INSERT INTO `course` (`course_id`, `course_name`) VALUES
 (0, 'None'),
-(6, 'K8'),
-(9, 'K9'),
-(10, 'K10'),
-(13, 'CTSV-2022');
+(1, 'K8'),
+(2, 'K9'),
+(3, 'K10'),
+(4, 'K11');
 
 -- --------------------------------------------------------
 
@@ -100,22 +101,18 @@ CREATE TABLE `event` (
   `date` date NOT NULL,
   `location` varchar(200) NOT NULL,
   `score` int(11) NOT NULL,
-  `scorePlus` int(11) NOT NULL,
   `time_start` time NOT NULL,
   `time_end` time NOT NULL,
-  `image` varchar(500) NOT NULL
+  `image` varchar(500) NOT NULL,
+  `scorePlus` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`event_id`, `event_title`, `description`, `date`, `location`, `score`, `scorePlus`, `time_start`, `time_end`, `image`) VALUES
-(0, 'First_Score', 'None', '0000-00-00', 'None', 0, 0, '00:00:00', '00:00:00', 'None'),
-(19, 'Test-29/06/2022', '<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tef/2/16/1f525.png\" alt=\"ðŸ”¥\" width=\"16\" height=\"16\" /></span> CH&Iacute;NH THá»¨C C&Ocirc;NG Bá» FES-WEBINAR 17: &ldquo;NFT - TR&Agrave;O LÆ¯U Äáº¦U TÆ¯ HAY XU HÆ¯á»šNG C&Ocirc;NG NGHá»†?&rdquo;</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">C&ugrave;ng vá»›i sá»± xuáº¥t hiá»‡n v&agrave; ph&aacute;t triá»ƒn nhanh ch&oacute;ng cá»§a Blockchain, NFT (Non-Fungible Token hay NFT Token) Ä‘&atilde; v&agrave; Ä‘ang táº¡o n&ecirc;n má»™t cÆ¡n sá»‘t máº¡nh máº½. Kh&ocirc;ng chá»‰ dá»«ng láº¡i á»Ÿ kháº£ nÄƒng á»©ng dá»¥ng v&agrave;o c&aacute;c ng&agrave;nh c&ocirc;ng nghiá»‡p tr&ograve; chÆ¡i Ä‘iá»‡n tá»­, NFT c&ograve;n xuáº¥t hiá»‡n á»Ÿ kháº¯p nÆ¡i: tá»« lÄ©nh vá»±c nghá»‡ thuáº­t, t&agrave;i ch&iacute;nh, c&aacute;c ná»n táº£ng máº¡ng x&atilde; há»™i cho Ä‘áº¿n ná»n c&ocirc;ng nghiá»‡p &acirc;m nháº¡c tr&ecirc;n to&agrave;n tháº¿ giá»›i&hellip;</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tcd/2/16/2753.png\" alt=\"â“\" width=\"16\" height=\"16\" /></span>Váº­y NFT hoáº¡t Ä‘á»™ng dá»±a tr&ecirc;n nguy&ecirc;n l&yacute; ná»n táº£ng n&agrave;o? Ä&acirc;u l&agrave; nguy&ecirc;n táº¯c báº£o máº­t cá»§a NFT?</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tcd/2/16/2753.png\" alt=\"â“\" width=\"16\" height=\"16\" /></span> Xu hÆ°á»›ng NFT c&oacute; li&ecirc;n quan nhÆ° tháº¿ n&agrave;o vá»›i ná»n táº£ng Blockchain?</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tcd/2/16/2753.png\" alt=\"â“\" width=\"16\" height=\"16\" /></span> L&agrave;m sao Ä‘á»ƒ Ä‘&aacute;nh gi&aacute; Ä‘&acirc;u l&agrave; má»™t thá»‹ trÆ°á»ng NFT tá»‘t Ä‘&aacute;ng Ä‘á»ƒ kh&aacute;ch h&agrave;ng Ä‘áº§u tÆ° v&agrave;o?</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Má»i báº¡n tham dá»± FES-Webinar 17: &ldquo;NFT - Tr&agrave;o lÆ°u Ä‘áº§u tÆ° hay xu hÆ°á»›ng c&ocirc;ng nghá»‡?&rdquo; vá»›i sá»± g&oacute;p máº·t cá»§a c&aacute;c kh&aacute;ch má»i l&agrave; c&aacute;c chuy&ecirc;n gia c&oacute; kinh nghiá»‡m d&agrave;y Ä‘áº·c trong lÄ©nh vá»±c:</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tca/2/16/1f399.png\" alt=\"ðŸŽ™\" width=\"16\" height=\"16\" /></span> Guest Speaker: Mr. Nguyá»…n Tháº¿ Vinh - CEO <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/Coin98Finance/?__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">Coin98 Finance</a></span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tca/2/16/1f399.png\" alt=\"ðŸŽ™\" width=\"16\" height=\"16\" /></span> Guest Speaker: Mr. Long Nguyá»…n - CTO <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/AuraNetworkHQ/?__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">Aura Network</a></span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tca/2/16/1f399.png\" alt=\"ðŸŽ™\" width=\"16\" height=\"16\" /></span> Vá»›i sá»± dáº«n dáº¯t cá»§a Moderator: Mr. TrÆ°Æ¡ng Th&agrave;nh Äáº¡t - Ph&oacute; Tá»•ng gi&aacute;m Ä‘á»‘c táº¡i <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/BicIncubator/?__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">BIC- VÆ°á»n Æ°Æ¡m khá»Ÿi nghiá»‡p Blockchain</a> - Ä‘&atilde; gá»i vá»‘n th&agrave;nh c&ocirc;ng tr&ecirc;n Shark Tank Viá»‡t Nam vá»›i Startup <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/Vmeta.biz/?__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">VMeta</a></span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tca/2/16/1f399.png\" alt=\"ðŸŽ™\" width=\"16\" height=\"16\" /></span>Host: Mr. L&ecirc; Duy LÆ°Æ¡ng - Content Creator táº¡i <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/daihocfptcantho/?__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">Äáº¡i Há»c FPT Cáº§n ThÆ¡</a></span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t9b/2/16/1f7e2.png\" alt=\"ðŸŸ¢\" width=\"16\" height=\"16\" /></span> ÄÄ‚NG K&Yacute; THAM GIA NGAY FES-WEBINAR 17: &ldquo;NFT - TR&Agrave;O LÆ¯U Äáº¦U TÆ¯ HAY XU HÆ¯á»šNG C&Ocirc;NG NGHá»†?&rdquo; Ä‘á»ƒ kh&ocirc;ng bá» lá»¡ buá»•i chia sáº» v&ocirc; c&ugrave;ng Ä‘áº·c biá»‡t n&agrave;y.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t1d/2/16/1f4c5.png\" alt=\"ðŸ“…\" width=\"16\" height=\"16\" /></span> Thá»i gian: 18:30 - 20:30, thá»© 5, ng&agrave;y 30/06/2022.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t2b/2/16/1f4bb.png\" alt=\"ðŸ’»\" width=\"16\" height=\"16\" /></span> Äá»‹a Ä‘iá»ƒm: Offline táº¡i FPT Edu Campus Cáº§n ThÆ¡ hoáº·c Livestream táº¡i Fanpage <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/FEExpSpace/?__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">FPT Edu Experience Space</a>, <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/FPTEduHackathon/?__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">FPT Edu Hackathon</a>.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t6b/2/16/1f4dd.png\" alt=\"ðŸ“\" width=\"16\" height=\"16\" /></span> CaÌch thÆ°Ìc Ä‘Äƒng kyÌ:</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">BÆ°á»›c 1: Äi&ecirc;Ì€n vaÌ€o form Ä‘Äƒng kyÌ: <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 py34i1dx\" tabindex=\"0\" role=\"link\" href=\"https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2FumKrDp6dUeQNaNRr7%3Ffbclid%3DIwAR3FJOE9rm3DK2qbMyKtlbXsvdP1Akg8JOn0Bj_XlWE3SqeLmwxf8Ii6lQg&amp;h=AT2oVUbCEmn_1D33gV1kPuwS6EsX6zIG71vGGIxbKS7xgBXA2RN1MAVg5o1iYJAys90OtXFl-YT9HYioEXW21Gb4RKllHPNmbvCpIBpOLEI8vlq5IntqFYacnQ14xxbRVLbU9OQMoA&amp;__tn__=-UK-R&amp;c[0]=AT1bLtZtUuPVqYrz8l505NrpmkFofOwxRh5bK5PPMj3xmkahZxhJ1O7Bd5sK0t5C7QNodxrG1Qeyt-P9l2W6DGMrLSxnVUOCoqa04gpWhmZHAa6cnpJWkXMqinH6Dp7m8g30ljy2W0d4OJuLJgb-yppTgKxOZm1rVL13vkPhGHzlIRiKCTrqHP2cBDyr9m60pdvQ4eTpiIFzdTFHosU\" target=\"_blank\" rel=\"nofollow noopener\">https://forms.gle/umKrDp6dUeQNaNRr7</a></span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">BÆ°á»›c 2: ÄÆ¡Ì£i email x&aacute;c nháº­n tham dá»± FES-Webinar.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t5d/2/16/26a0.png\" alt=\"âš ï¸\" width=\"16\" height=\"16\" /></span> LÆ°u &yacute;:</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">&bull; Email x&aacute;c nháº­n tham dá»± sáº½ Ä‘Æ°á»£c gá»­i Ä‘áº¿n báº¡n trÆ°á»›c 18h00 ng&agrave;y 29/06.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">&bull; Sá»‘ lÆ°á»£ng kh&aacute;n giáº£ c&oacute; giá»›i háº¡n, c&aacute;c báº¡n h&atilde;y Ä‘iá»n form tháº­t sá»›m Ä‘á»ƒ Ä‘Æ°á»£c Ä‘áº£m báº£o suáº¥t tham dá»± nh&eacute;.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">_______________________</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t20/2/16/1f5a5.png\" alt=\"ðŸ–¥\" width=\"16\" height=\"16\" /></span> FPT Edu Hackathon l&agrave; cuá»™c thi láº­p tr&igrave;nh d&agrave;nh cho há»c sinh, sinh vi&ecirc;n, há»c vi&ecirc;n to&agrave;n Tá»• chá»©c Gi&aacute;o dá»¥c FPT (FPT Edu) tr&ecirc;n to&agrave;n quá»‘c, Ä‘Æ°á»£c tá»• chá»©c theo m&ocirc; h&igrave;nh Hackathon ná»•i tiáº¿ng cá»§a tháº¿ giá»›i.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t20/2/16/1f5a5.png\" alt=\"ðŸ–¥\" width=\"16\" height=\"16\" /></span> FPT Edu Hackathon 2022 chá»n chá»§ Ä‘á» &ldquo;Ph&aacute;t triá»ƒn á»©ng dá»¥ng ph&acirc;n t&aacute;n tr&ecirc;n ná»n táº£ng Blockchain&rdquo; d&agrave;nh cho khá»‘i sinh vi&ecirc;n v&agrave; há»c sinh THPT; chá»§ Ä‘á» &ldquo;TÆ°Æ¡ng lai tháº¿ giá»›i&rdquo; d&agrave;nh cho khá»‘i há»c sinh Tiá»ƒu há»c v&agrave; THCS.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t1a/2/16/1f7e1.png\" alt=\"ðŸŸ¡\" width=\"16\" height=\"16\" /></span> ÄÆ¡n vá»‹ t&agrave;i trá»£ v&agrave;ng: Icetea Labs / Oxalus / LaunchZone / Drivez / Himo World / Coin98 Finance / Metard.io / Aura Network / STEAM for Vietnam / Kyber Network / DFINITY</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/te/2/16/26aa.png\" alt=\"âšª\" width=\"16\" height=\"16\" /></span> ÄÆ¡n vá»‹ t&agrave;i trá»£ báº¡c: SotaTek</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Th&ocirc;ng tin chi tiáº¿t xin vui l&ograve;ng li&ecirc;n há»‡:</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">&bull; Email: hackathon@fe.edu.vn</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">&bull; Äiá»‡n thoáº¡i: 024 6680 5915</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">&bull; Website: <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 py34i1dx\" tabindex=\"0\" role=\"link\" href=\"http://www.feexp.space/hackathon/?fbclid=IwAR1tPhzByCk6kAr6vvhRSsPeJzrrY1Mkm9PB9sKRQaz21jNGDJF9x9MhpaA\" target=\"_blank\" rel=\"nofollow noopener\">www.feexp.space/hackathon/</a></span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/hashtag/fptedu?__eep__=6&amp;__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">#FPTEdu</a> <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/hashtag/fpteducation?__eep__=6&amp;__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">#FPTEducation</a> <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/hashtag/fpteduexperiencespace?__eep__=6&amp;__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">#FPTEduExperienceSpace</a> <a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/hashtag/fpteduhackathon2022?__eep__=6&amp;__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">#FPTEduHackathon2022</a><a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/hashtag/fpteduhackathon?__eep__=6&amp;__cft__[0]=AZX4sHdKrSGKNXmnjqDJ9b8oktKAFSrYVLKQ_0st_QhKXVCURtKohdgyWtrAIwJvRwSEcxxXvtNowqEk4GFRI09D4VXke35d1gjzVR9m3MQOIomu5-Dl169V2rRD_vwDgKU_wRtUdf7CK2D6bFN6aJ_niLieppahO1RmIjFJ7pQ635L3A0hkO1T9tn_t2iQs8Ac&amp;__tn__=-UK-R\">#FPTEduHackathon</a></span></div>', '2022-06-29', '3A Floor', 1, 0, '13:11:00', '13:14:00', '23.png'),
-(24, 'Releasing Web', '<p>Sâ›”ï¸S - 1/7/2022, the Event Portal will be releaed by IT club, this is a desirable system&nbsp;</p>\r\n<p>Join with us to learn more....ðŸ˜˜</p>', '2022-07-01', '3A Hall', 10, 5, '10:30:00', '10:40:00', 'ReleaseWeb.jpg'),
-(25, 'Test-1/07/2022', '<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/te2/1/16/270d.png\" alt=\"âœ\" width=\"16\" height=\"16\" /></span>S&aacute;ch hay má»—i tuáº§n-129</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t49/1/16/1f4da.png\" alt=\"ðŸ“š\" width=\"16\" height=\"16\" /></span><strong> 7 th&oacute;i quen hiá»‡u quáº£</strong></span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">T&aacute;c giáº£: Stephen R. Covey</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Quyá»ƒn s&aacute;ch Ä‘á» cáº­p Ä‘áº¿n nhá»¯ng th&oacute;i quen táº¡o n&ecirc;n sá»± kh&aacute;c biá»‡t, ná»n táº£ng cá»‘t l&otilde;i v&agrave; l&agrave; b&iacute; quyáº¿t trá»ng yáº¿u Ä‘á»ƒ x&acirc;y dá»±ng n&ecirc;n má»™t ngÆ°á»i th&agrave;nh Ä‘áº¡t. T&aacute;c giáº£ Ä‘Æ°a ra nhá»¯ng kiáº¿n thá»©c cÆ¡ báº£n vá» c&aacute;ch h&agrave;nh xá»­ Ä‘&uacute;ng Ä‘áº¯n, c&aacute;ch l&agrave;m viá»‡c hiá»‡u quáº£. Tá»« Ä‘&oacute; gi&uacute;p báº¡n t&igrave;m ra con Ä‘Æ°á»ng Ä‘á»ƒ tiáº¿n tá»›i th&agrave;nh c&ocirc;ng.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tcc/1/16/1f4dd.png\" alt=\"ðŸ“\" width=\"16\" height=\"16\" /></span>T&aacute;c giáº£ Ä‘&atilde; liá»‡t k&ecirc; 7 th&oacute;i quen hiá»‡u quáº£ nhÆ°:</span></div>\r\n<ul class=\"bi6gxh9e aov4n071 fjf4s8hc mf5omzu7\">\r\n<li>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Th&oacute;i quen thá»© nháº¥t l&agrave; l&agrave;m chá»§ ch&iacute;nh m&igrave;nh.</span></div>\r\n</li>\r\n<li>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Thá»© hai Ä‘&oacute; l&agrave; th&oacute;i quen báº¯t Ä‘áº§u báº±ng Ä‘&iacute;ch Ä‘áº¿n.</span></div>\r\n</li>\r\n<li>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Thá»© ba l&agrave; Æ°u ti&ecirc;n Ä‘iá»u quan trá»ng.</span></div>\r\n</li>\r\n<li>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Thá»© tÆ° l&agrave; tÆ° duy c&ugrave;ng tháº¯ng.</span></div>\r\n</li>\r\n<li>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Thá»© nÄƒm l&agrave; tháº¥u hiá»ƒu rá»“i Ä‘Æ°á»£c hiá»ƒu.</span></div>\r\n</li>\r\n<li>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Thá»© s&aacute;u l&agrave; c&ugrave;ng táº¡o c&aacute;ch má»›i.</span></div>\r\n</li>\r\n<li>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Th&oacute;i quen cuá»‘i c&ugrave;ng l&agrave; r&egrave;n má»›i báº£n th&acirc;n.</span></div>\r\n</li>\r\n</ul>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\">Quyá»ƒn s&aacute;ch sáº½ d&agrave;nh cho táº¥t cáº£ má»i ngÆ°á»i v&agrave; Ä‘áº·c biá»‡t d&agrave;nh cho nhá»¯ng báº¡n muá»‘n tá»± ho&agrave;n thiá»‡n báº£n th&acirc;n Ä‘á»ƒ trá»Ÿ n&ecirc;n th&agrave;nh c&ocirc;ng hÆ¡n. Sá»‘ng theo \"7 th&oacute;i quen\" m&agrave; t&aacute;c giáº£ Ä‘Æ°a ra l&agrave; má»™t cuá»™c Ä‘áº¥u tranh kh&ocirc;ng ngá»«ng, bá»Ÿi v&igrave; khi báº¡n c&agrave;ng ho&agrave;n thiá»‡n báº£n th&acirc;n th&igrave; báº£n cháº¥t cá»§a c&aacute;c th&aacute;ch thá»©c báº¡n Ä‘á»‘i máº·t cÅ©ng sáº½ thay Ä‘á»•i. V&agrave; chá»‰ cáº§n lu&ocirc;n tá»± Ä‘á»™ng vi&ecirc;n ch&iacute;nh m&igrave;nh, cho ph&eacute;p m&igrave;nh ho&agrave;n thiá»‡n hÆ¡n sáº½ kh&ocirc;ng c&oacute; g&igrave; ngÄƒn cáº£n Ä‘Æ°á»£c báº¡n Ä‘áº¿n vá»›i th&agrave;nh c&ocirc;ng.</span></div>\r\n<div class=\"bi6gxh9e\"><span class=\"d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 jq4qci2q a3bd9o3v b1v8xokw oo9gr5id\"><a class=\"oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p\" tabindex=\"0\" role=\"link\" href=\"https://www.facebook.com/hashtag/sachhaymoituan?__eep__=6&amp;__cft__[0]=AZXjzksQOX_C-dKm3oWblMH6hMkSQh377VvmIOnEBHtit4PyUODw4vFilNCelFytGoKTVCXFPLCYQwa8C3XPhsQPQ-aXKAoCP-XFjTInlLWalzGdOCgea4gVtLAl3GxrRZ4WnAcPsGESi36KCTU0EkNLPEKHvh03Zy-yrG5AKX5TAtvcxRYzwYL6fgqXQAUs9L8&amp;__tn__=-UK-R\">#Sachhaymoituan</a></span></div>', '2022-07-01', '3A hall', 10, 0, '13:00:00', '14:00:00', '23y.png'),
-(26, 'adsfad', NULL, '2022-07-07', 'adsfads', 10, 5, '03:43:00', '03:43:00', '62839b100817cb499206.jpg');
+INSERT INTO `event` (`event_id`, `event_title`, `description`, `date`, `location`, `score`, `time_start`, `time_end`, `image`, `scorePlus`) VALUES
+(0, 'First_Score', 'none', '0000-00-00', 'none', 0, '00:00:00', '00:00:00', 'None', NULL);
 
 -- --------------------------------------------------------
 
@@ -134,12 +131,12 @@ CREATE TABLE `major` (
 
 INSERT INTO `major` (`major_id`, `major_name`) VALUES
 (0, 'None'),
-(3, 'BA - Maketing'),
-(13, 'SE - Information Technology'),
-(18, 'BA - Event'),
-(19, 'BA - Business'),
-(20, 'GD - Graphics Design'),
-(21, 'CTSV- Student Service');
+(1, 'BA - Maketing'),
+(2, 'SE - Information Technology'),
+(3, 'BA - Event'),
+(4, 'BA - Business'),
+(5, 'GD - Graphics Design'),
+(6, 'CTSV- Student Service');
 
 -- --------------------------------------------------------
 
@@ -153,8 +150,8 @@ CREATE TABLE `user` (
   `phone` varchar(100) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `dob` date NOT NULL,
-  `card_uid` varchar(200) NOT NULL,
+  `dob` date DEFAULT NULL,
+  `card_uid` varchar(200) DEFAULT NULL,
   `password` varchar(200) NOT NULL,
   `major_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
@@ -167,31 +164,159 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`student_id`, `fullname`, `phone`, `gender`, `email`, `dob`, `card_uid`, `password`, `major_id`, `course_id`, `card_select`, `add_card`) VALUES
-('00136334_Test', 'Tráº§n Thá»‹ Diá»…m PhÃºc', '0123456987', 'female', 'phucttd2@fpt.edu.vn', '2022-06-27', '83472271548001', '25d55ad283aa400af464c76d713c07ad', 21, 13, 0, 1),
-('00136344_Test', 'Nguyá»…n Thá»‹ Huá»³nh PhÆ°Æ¡ng', '0987651234', 'female', 'phuongnth36@fpt.edu.vn', '1995-10-29', '83421741538001', '25d55ad283aa400af464c76d713c07ad', 21, 13, 0, 1),
-('00138233_Test', 'LÃª Thá»‹ Há»“ng Nháº¡n', '0969366264', 'female', 'nhanlth3@fpt.edu.vn', '1955-07-01', '831252151548001', '25d55ad283aa400af464c76d713c07ad', 21, 13, 0, 1),
-('00138518_Test', 'LÃ½ ThuÃ½ Háº±ng', '0982012369', 'female', 'hanglt31@fe.edu.vn', '1980-08-11', '83252231548001', '91d1bae4e9e737e0a65b0d47606c0bed', 21, 13, 0, 1),
-('00147336', 'Nguyá»…n HoÃ ng PhÆ°Æ¡ng TrÃ¢m', '0962605997', 'female', 'tramnhp@fe.edu.vn', '1996-12-25', '831571611538001', '25d55ad283aa400af464c76d713c07ad', 21, 13, 0, 1),
-('00187081_Test', 'Äá»— ThuÃ½ Vy', '0939995250', 'male', 'vydt5@fpt.edu.vn', '1995-06-05', '83291871538001', '25d55ad283aa400af464c76d713c07ad', 21, 13, 0, 1),
-('00193553', 'Huá»³nh PhÆ°á»›c ThÃ nh', '0945550311', 'male', 'thanhhp5@fe.edu.vn', '1997-07-11', '831421641538001', '25d55ad283aa400af464c76d713c07ad', 21, 13, 0, 1),
-('GCC19009', 'Tháº¡ch Ngá»c Trung', '0865894853', 'male', 'trungtngcc19009@fpt.edu.vn', '2022-06-27', '17922114226', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19022', 'LÆ°u HoÃ i Phong', '0398371050', 'male', 'phonglhgcc19022@fpt.edu.vn', '2001-03-01', '1916317024', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19023', 'LÃª ChÃ­ LuÃ¢n', '0386363677', 'male', 'luanlcgcc19023@fpt.edu.vn', '2001-06-06', '195015026', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19037', 'Huá»³nh Quá»‘c DÆ°Æ¡ng', '0916447242', 'male', 'duonghqgcc19037@fpt.edu.vn', '2001-11-04', '14710218724', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19138', 'LÃª Trung KiÃªn', '0799608775', 'male', 'kienltgcc19138@fpt.edu.vn', '2001-02-03', '8319713126', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19167', 'DÆ°Æ¡ng KhÃ¡nh Ngá»c', '0779814377', 'female', 'ngocdkgcc19167@fpt.edu.vn', '2001-03-04', '325015126', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19186', 'Nguyá»…n SiÃªu', '0907853006', 'female', 'sieungcc19186@fpt.edu.vn', '2022-07-01', '323512426', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19209', 'Nguyá»…n Ngá»c Nháº«n', '0857882137', 'female', 'nhannngcc19209@fpt.edu.vn', '2001-04-21', '192213326', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19213', 'Nguyá»…n ThÃ nh Äáº¡t', '0965533442', 'male', 'datntgcc19213@fpt.edu.vn', '2001-11-25', '21116414926', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19257', 'DÆ°Æ¡ng VÅ© TÆ°á»ng', '0384391908', 'male', 'tuongdvgcc19257@fpt.edu.vn', '2001-12-18', '321111926', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19259', 'Tráº§n PhÆ°á»›c Háº£o', '0346370328', 'male', 'haotpgcc19259@fpt.edu.vn', '2001-11-09', '19515213926', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC19275', 'Nguyá»…n Trung NguyÃªn', '0973102040', 'male', 'nguyenntgcc19275@fpt.edu.vn', '2001-03-30', '4105107242113107128', '25d55ad283aa400af464c76d713c07ad', 13, 6, 0, 1),
-('GCC200003', ' Nguyá»…n Quá»‘c ThÃ´ng', '0704774190', 'male', 'thongnqgcc200003@fpt.edu.vn', '2002-07-11', '83551811538001', '25d55ad283aa400af464c76d713c07ad', 13, 9, 0, 1),
-('GCC200030', 'Nguyá»…n Duy Quang', '0916843367', 'male', 'quangndgcc200030@fpt.edu.vn', '2002-08-05', '316613026', '25d55ad283aa400af464c76d713c07ad', 13, 9, 0, 1),
-('GCC200101', 'Há»“ Kiáº¿n Vinh', '0766874949', 'male', 'vinhhkgcc200101@fpt.edu.vn', '2002-08-19', '16311313426', '25d55ad283aa400af464c76d713c07ad', 13, 9, 1, 1),
-('GCC200110', 'Tráº§n Ngá»c TÄƒng', '0901084598', 'male', 'tangtngcc200110@fpt.edu.vn', '2002-10-19', '35313526', '25d55ad283aa400af464c76d713c07ad', 13, 9, 0, 1),
-('GCC210153', 'Huá»³nh VÄƒn QuÃ­', '0843052859', 'male', 'quihvgcc210153@fpt.edu.vn', '2003-06-27', '13118414426', '25d55ad283aa400af464c76d713c07ad', 13, 10, 0, 1),
-('GCC210155', 'Nguyá»…n PhÆ°á»›c Lá»™c ', '0369838916', 'male', 'locnpgcc210155@fpt.edu.vn', '2003-11-03', '6722315226', '25d55ad283aa400af464c76d713c07ad', 13, 10, 0, 1);
+('GBC19007', 'Nguyễn Thị Huyền Trân', 'none', 'male', 'trannthgbc19007@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19012', 'Lê Thanh Mịnh', 'none', 'male', 'minhltgbc19012@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19016', 'Phạm Hoàng Đăng Thư', 'none', 'male', 'thuphdgbc19016@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19017', 'Nguyễn Ngọc Bảo Trân', 'none', 'male', 'trannnbgbc19017@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19018', 'Võ Bùi Hoàng Thơ', 'none', 'male', 'thovbhgbc19018@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19021', 'Nguyễn Ngọc Hồng Nguyên', 'none', 'male', 'nguyennnhgbc19021@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19025', 'Ngô Anh Thư', 'none', 'male', 'thunaGBC19025@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19028', 'Lê Nhật Lam', 'none', 'male', 'lamlnGBC19028@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19030', 'Đặng Thúy Vy', 'none', 'male', 'vydtGBC19030@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19032', 'Nguyễn Thành Lộc', 'none', 'male', 'locntGBC19032@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19036', 'Lê Ngọc Trân', 'none', 'male', 'tranlnGBC19036@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19042', 'Triệu Khả Nhi', 'none', 'male', 'nhitkGBC19042@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19043', 'Trần Lê Phương Thảo', 'none', 'male', 'thaotlpGBC19043@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19044', 'Nguyễn Phạm Thanh Tuấn', 'none', 'male', 'tuannptGBC19044@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19048', 'Trần Trọng Nghĩa', 'none', 'male', 'NghiaTTGBC19048@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19049', 'Trần Lê Thanh Bền', 'none', 'male', 'bentltGBC19049@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19064', 'Lê Thị Anh Thư', 'none', 'male', 'thultaGBC19064@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19065', 'Đỗ Kim Ngân', 'none', 'male', 'ngandkGBC19065@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19066', 'Nguyễn Tường Lan Thi', 'none', 'male', 'thintlGBC19066@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19068', 'Nguyễn Trí Tâm', 'none', 'male', 'tamntGBC19068@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19069', 'Trần Thành Đạt', 'none', 'male', 'datttGBC19069@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19071', 'Trần Huỳnh Phú Vinh', 'none', 'male', 'vinhthpGBC19071@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19077', 'Lê Khánh Dân', 'none', 'male', 'danlkGBC19077@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19085', 'Lê Thảo Vy', 'none', 'male', 'vyltGBC19085@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19086', 'Đoàn Như Ý', 'none', 'male', 'ydnGBC19086@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19088', 'Bùi Nhựt Tân', 'none', 'male', 'tanbnGBC19088@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19090', 'Lê Hỷ Húa', 'none', 'male', 'hualhGBC19090@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19091', 'Dương Quỳnh Anh', 'none', 'male', 'anhdqGBC19091@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19094', 'Nguyễn Hưng', 'none', 'male', 'hungnGBC19094@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19097', 'Nguyễn Chí Tâm', 'none', 'male', 'tamncGBC19097@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19103', 'Trương Thúy Duy', 'none', 'male', 'duyttGBC19103@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19111', 'Lê Thị Thiên Thanh', 'none', 'male', 'thanhlttGBC19111@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19114', 'Lê Đỗ Gia Hân', 'none', 'male', 'hanldgGBC19114@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19119', 'Lê Thị Tuyết Trinh', 'none', 'male', 'trinhlttGBC19119@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19120', 'Đỗ Thúy Duy', 'none', 'male', 'duydtGBC19120@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19122', 'Lê Ngọc Tú', 'none', 'male', 'tulnGBC19122@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19123', 'Quách Trang Đài', 'none', 'male', 'daiqtGBC19123@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19126', 'Nguyễn Thị Linh Như', 'none', 'male', 'nhuntlGBC19126@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19128', 'Trần Đăng Khoa', 'none', 'male', 'khoatdGBC19128@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19129', 'Nguyễn Ngọc Anh Thư', 'none', 'male', 'thunnaGBC19129@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19131', 'Trần Thị Hồng Trăm', 'none', 'male', 'tramtthGBC19131@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19134', 'Lê Ngọc Diễm Quỳnh', 'none', 'male', 'quynhlndGBC19134@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19136', 'Mai Yến Nhi', 'none', 'male', 'nhimyGBC19136@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19137', 'La Mộc Thuỳ Dương', 'none', 'male', 'duonglmtGBC19137@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19144', 'Trần Thị Bích Ngọc', 'none', 'male', 'ngocttbGBC19144@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19159', 'Nguyễn Phước Sang', 'none', 'male', 'sangnpGBC19159@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19161', 'Trần Anh Hậu', 'none', 'male', 'hautaGBC19161@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19163', 'Tiêu Nhật Khải', 'none', 'male', 'khaitnGBC19163@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19166', 'Phạm Thị Kim Ngân', 'none', 'male', 'nganptkGBC19166@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19176', 'Lê Thị Kim Hân', 'none', 'male', 'hanltkGBC19176@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19178', 'Nguyễn Hồng Ngọc', 'none', 'male', 'ngocnhGBC19178@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19184', 'Nguyễn Thị Thu Trang', 'none', 'male', 'trangnttGBC19184@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19185', 'Huỳnh Trọng Nhân', 'none', 'male', 'nhanhtGBC19185@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19193', 'Nguyễn Hồng Mơ', 'none', 'male', 'monhGBC19193@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19194', 'Trần Thiện Đông', 'none', 'male', 'dongttGBC19194@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19196', 'Phan Anh Vũ', 'none', 'male', 'vupaGBC19196@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19199', 'Hồ Thanh Vi', 'none', 'male', 'vihtGBC19199@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19201', 'Nguyễn Ngọc Tuyền', 'none', 'male', 'tuyennnGBC19201@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19205', 'Nguyễn Thị Hồng Ngân', 'none', 'male', 'ngannthGBC19205@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19215', 'Nguyễn Ngọc Thúy Vy', 'none', 'male', 'vynntGBC19215@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19221', 'Quách Phan Gia Yến', 'none', 'male', 'yenqpgGBC19221@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19225', 'Nguyễn Thị Yến Linh', 'none', 'male', 'linhntyGBC19225@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19226', 'Tôn Tấn Tài', 'none', 'male', 'taittGBC19226@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19227', 'Bùi Thị Minh Thư', 'none', 'male', 'thubtmGBC19227@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19229', 'Châu Thanh Trúc', 'none', 'male', 'trucctGBC19229@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19230', 'Lê Phương Thư', 'none', 'male', 'thulpGBC19230@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19234', 'Lê Ngọc Bảo Trân', 'none', 'male', 'tranlnbGBC19234@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19242', 'Võ Bách Triệu', 'none', 'male', 'trieuvbGBC19242@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19245', 'Lê Thanh Trà', 'none', 'male', 'traltGBC19245@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19248', 'Nguyễn Thanh Tuyền', 'none', 'male', 'tuyenntGBC19248@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19250', 'Đặng Khả Tú', 'none', 'male', 'tudkGBC19250@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19253', 'Phạm Tường Vi', 'none', 'male', 'viptGBC19253@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19258', 'Nguyễn Thị Như Ý', 'none', 'male', 'yntnGBC19258@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19261', 'Châu Văn Nghĩa', 'none', 'male', 'nghiacvGBC19261@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19263', 'Lê Ngân', 'none', 'male', 'nganlGBC19263@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19267', 'Nguyễn Thoại Miêu', 'none', 'male', 'mieuntGBC19267@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19272', 'Trần Trung Nghĩa', 'none', 'male', 'nghiattGBC19272@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19273', 'Võ Văn Toàn', 'none', 'male', 'toanvvGBC19273@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19277', 'Lê Thanh Quang', 'none', 'male', 'quangltGBC19277@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19278', 'Nguyễn Thị Thanh Mai', 'none', 'male', 'mainttGBC19278@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19279', 'Võ Thị Nhựt Anh', 'none', 'male', 'anhvtnGBC19279@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19290', 'Nguyễn Hữu Đua', 'none', 'male', 'duanhGBC19290@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19292', 'Lê Thị Cẩm Tuyền', 'none', 'male', 'tuyenltcGBC19292@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GBC19293', 'Nguyễn Minh Nghi', 'none', 'male', 'nghinmGBC19293@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19001', 'Nguyễn Thị Hồng Tú', 'none', 'male', 'tunthGCC19001@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19003', 'Nguyễn Phú Vĩnh', 'none', 'male', 'vinhnpGCC19003@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19004', 'Danh Chan Ta Ra', '0383658449', 'male', 'radctGCC19004@fpt.edu.vn', '2001-09-01', '83159621548001', '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19009', 'Thạch Ngọc Trung', '0865894853', 'male', 'trungtnGCC19009@fpt.edu.vn', '2001-02-02', '17922114226', '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19022', 'Lưu Hoài Phong', 'none', 'male', 'phonglhGCC19022@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19023', 'Lê Chí Luân', '0386363677', 'male', 'luanlcGCC19023@fpt.edu.vn', '2001-06-06', NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19026', 'Nguyễn Ngọc Trường Duy', 'none', 'male', 'duynntGCC19026@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19037', 'Huỳnh Quốc Dương', 'none', 'male', 'duonghqGCC19037@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19038', 'Nguyễn Quốc Tính', 'none', 'male', 'tinhnqGCC19038@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19047', 'Trần Ngọc Giàu', 'none', 'male', 'giautnGCC19047@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19055', 'Hà Tỷ Phú', 'none', 'male', 'phuhtGCC19055@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19056', 'Lê A Huy', 'none', 'male', 'huylaGCC19056@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19060', 'Nguyễn Thị Kiều Ngân', 'none', 'male', 'nganntkGCC19060@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19067', 'Vương Huỳnh Khan', 'none', 'male', 'khanvhGCC19067@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19072', 'Nguyễn Đông Anh', 'none', 'male', 'anhndGCC19072@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19095', 'Lê Chí Khải', 'none', 'male', 'khailcGCC19095@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19096', 'Bùi Trọng Phúc', 'none', 'male', 'phucbtGCC19096@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19098', 'Cao Hoàng Trường', 'none', 'male', 'truongchGCC19098@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19102', 'Đặng Mai Quốc Tuấn', 'none', 'male', 'tuandmqGCC19102@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19106', 'Phan Thị Anh Thư', 'none', 'male', 'thuptaGCC19106@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19107', 'Nguyễn Tiến Đức', 'none', 'male', 'ducntGCC19107@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19117', 'Nguyễn Nhật Hảo', 'none', 'male', 'haonnGCC19117@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19118', 'Nguyễn Vĩ Khang', 'none', 'male', 'khangnvGCC19118@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19127', 'Võ Chí Nguyện', 'none', 'male', 'nguyenvcGCC19127@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19132', 'Lê Thành Nhân', 'none', 'male', 'nhanltGCC19132@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19135', 'Lê Khả Văn', 'none', 'male', 'vanlkGCC19135@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19138', 'Lê Trung Kiên', 'none', 'male', 'kienltGCC19138@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19153', 'Nguyễn Thanh Duy', 'none', 'male', 'duyntGCC19153@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19155', 'Nguyễn Quang Tỷ', 'none', 'male', 'tynqGCC19155@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19157', 'Đinh Văn Nam', 'none', 'male', 'namdvGCC19157@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19160', 'Nguyễn Khánh An', 'none', 'male', 'annkGCC19160@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19167', 'Dương Khánh Ngọc', 'none', 'male', 'ngocdkGCC19167@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19169', 'Lý Trọng Thắng', 'none', 'male', 'thangltGCC19169@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19171', 'Huỳnh Bùi Ngọc Như', 'none', 'male', 'nhuhbnGCC19171@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19173', 'Lê Đỗ Quang Sang', 'none', 'male', 'sangldqGCC19173@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19180', 'Phạm Nguyễn Nhật Anh', 'none', 'male', 'anhpnnGCC19180@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19181', 'Trần Tấn Phát', 'none', 'male', 'phatttGCC19181@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19186', 'Nguyễn Siêu', 'none', 'male', 'sieunGCC19186@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19187', 'Nguyễn Huỳnh Hồng Quân', 'none', 'male', 'quannhhGCC19187@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19188', 'Tô Nhật Duy', 'none', 'male', 'duytnGCC19188@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19189', 'Lâm Ngọc Thắng', 'none', 'male', 'thanglnGCC19189@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19190', 'Trần Quan Vĩnh', 'none', 'male', 'vinhtqGCC19190@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19198', 'Nguyễn Minh Thanh', 'none', 'male', 'thanhnmGCC19198@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19207', 'Trương Văn Phát', 'none', 'male', 'phattvGCC19207@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19208', 'Trần Nhật Khanh', 'none', 'male', 'khanhtnGCC19208@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19209', 'Nguyễn Ngọc Nhẫn', 'none', 'male', 'nhannnGCC19209@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19213', 'Nguyễn Thành Đạt', 'none', 'male', 'datntGCC19213@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19218', 'Phan Chí Tình', 'none', 'male', 'tinhpcGCC19218@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19224', 'Nguyễn Trọng Nghĩa', 'none', 'male', 'nghiantGCC19224@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19232', 'Hồ Huỳnh Tấn Phát', 'none', 'male', 'phathhtGCC19232@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19237', 'Đặng Thanh Huy', 'none', 'male', 'huydtGCC19237@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19238', 'Nguyễn Phước Quý Toàn', 'none', 'male', 'toannpqGCC19238@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19240', 'Phan Chí Bảo', 'none', 'male', 'baopcGCC19240@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19244', 'Trần Thế Khang', 'none', 'male', 'khangttGCC19244@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19246', 'Phạm Hữu Nghĩa', 'none', 'male', 'nghiaphGCC19246@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19247', 'Hồ Minh Mẫn', 'none', 'male', 'manhmGCC19247@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19257', 'Dương Vũ Tường', 'none', 'male', 'tuongdvGCC19257@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19259', 'Trần Phước Hảo', '0346370328', 'male', 'haotpGCC19259@fpt.edu.vn', '2001-11-09', '19515213926', '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19268', 'ABDOHA Liêm', 'none', 'male', 'liemaGCC19268@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19269', 'Nguyễn Túc Trí', 'none', 'male', 'trintGCC19269@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19274', 'Trần Thanh Nhân', 'none', 'male', 'nhanttGCC19274@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19275', 'Nguyễn Trung Nguyên', '0973102040', 'male', 'nguyenntGCC19275@fpt.edu.vn', '2001-03-30', '1798114826', '25d55ad283aa400af464c76d713c07ad', 2, 1, 1, 0),
+('GCC19280', 'Huỳnh Chí Tâm', 'none', 'male', 'tamhcGCC19280@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GCC19281', 'Lê Vĩnh Bảo', 'none', 'male', 'baolvGCC19281@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GDC19006', 'Lê Phương Đình', 'none', 'male', 'dinhlpGDC19006@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GDC19034', 'Nguyễn Vĩnh Thịnh', 'none', 'male', 'thinhnvGDC19034@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GDC19074', 'Nguyễn Anh Tín', 'none', 'male', 'tinnaGDC19074@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GDC19104', 'Nguyễn Y Khoa', 'none', 'male', 'khoanyGDC19104@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0),
+('GDC19254', 'Võ Hữu Đăng', 'none', 'male', 'dangvhGDC19254@fpt.edu.vn', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', 2, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -215,47 +340,159 @@ CREATE TABLE `user_log` (
 --
 
 INSERT INTO `user_log` (`id`, `student_id`, `checkin_date`, `time_in`, `time_out`, `event_id`, `scores`, `card_out`) VALUES
-(128, 'GCC200003', '2022-06-27', '14:11:31', '14:11:31', 0, 0, 0),
-(155, '00187081_Test', '2022-06-27', '16:43:35', '16:58:57', 0, 2, 1),
-(188, '00136344_Test', '2022-06-27', '17:13:10', '17:13:10', 0, 2, 0),
-(190, '00138233_Test', '2022-06-27', '17:22:47', '17:22:47', 0, 2, 0),
-(205, 'GCC19023', '2022-06-29', '13:00:52', '13:14:25', 0, 1, 1),
-(206, 'GCC19259', '2022-06-29', '13:00:58', '13:00:58', 0, 5, 0),
-(207, 'GCC210155', '2022-06-29', '13:01:06', '13:01:06', 0, 0, 0),
-(208, 'GCC210153', '2022-06-29', '13:01:11', '13:01:11', 0, 0, 0),
-(216, 'GCC19023', '2022-06-29', '13:11:26', '13:14:25', 19, 1, 1),
-(217, 'GCC19022', '2022-06-29', '13:11:29', '13:14:28', 19, 1, 1),
-(218, 'GCC200003', '2022-06-29', '13:11:32', '13:14:31', 19, 1, 1),
-(219, 'GCC19167', '2022-06-29', '13:12:11', '13:14:53', 19, 1, 1),
-(220, 'GCC19209', '2022-06-29', '13:12:28', '13:14:45', 19, 1, 1),
-(221, 'GCC19138', '2022-06-29', '13:12:45', '13:14:48', 19, 1, 1),
-(222, 'Gcc19009', '2022-06-29', '13:11:00', '13:14:00', 19, 1, 0),
-(223, 'Gcc19259', '2022-06-29', '13:11:00', '13:14:00', 19, 1, 0),
-(224, 'GCC19009', '2022-06-30', '22:46:52', '22:46:52', 0, 5, 0),
-(225, 'GCC19022', '2022-06-30', '22:48:23', '22:48:23', 0, 5, 0),
-(231, '00138518_Test', '2022-07-01', '10:22:45', '10:42:37', 0, 10, 1),
-(232, '00147336', '2022-07-01', '10:23:08', '10:42:25', 0, 10, 1),
-(233, '00193553', '2022-07-01', '10:23:24', '10:42:17', 0, 10, 1),
-(234, 'GCC19009', '2022-07-01', '10:27:14', '10:43:53', 24, 15, 1),
-(235, 'GCC19023', '2022-07-01', '10:27:33', '10:42:54', 24, 15, 1),
-(236, '00138518_Test', '2022-07-01', '10:27:46', '10:42:37', 24, 15, 1),
-(237, '00136344_Test', '2022-07-01', '10:27:54', '10:42:32', 24, 10, 1),
-(238, '00147336', '2022-07-01', '10:28:00', '10:42:25', 24, 10, 1),
-(239, '00193553', '2022-07-01', '10:28:10', '10:42:17', 24, 10, 1),
-(240, 'GCC200030', '2022-07-01', '10:28:56', '10:42:55', 24, 15, 1),
-(241, 'GCC200110', '2022-07-01', '10:29:01', '10:42:59', 24, 10, 1),
-(242, 'GCC19213', '2022-07-01', '10:29:12', '10:43:13', 24, 10, 1),
-(243, 'GCC19259', '2022-07-01', '10:29:15', '10:43:05', 24, 10, 1),
-(244, 'GCC19022', '2022-07-01', '10:29:27', '10:43:07', 24, 15, 1),
-(245, 'GCC19209', '2022-07-01', '10:29:29', '10:45:39', 24, 10, 1),
-(246, 'GCC200003', '2022-07-01', '10:29:30', '10:43:05', 24, 10, 1),
-(247, 'GCC19138', '2022-07-01', '10:29:36', '10:43:20', 24, 10, 1),
-(248, 'GCC19167', '2022-07-01', '10:29:39', '10:43:16', 24, 10, 1),
-(249, 'GCC19037', '2022-07-01', '10:29:44', '10:43:18', 24, 10, 1),
-(255, 'GCC200101', '2022-07-01', '10:30:00', '10:40:00', 24, 10, 0),
-(256, 'GCC19257', '2022-07-01', '10:30:00', '10:40:00', 24, 10, 0),
-(257, 'GCC19275', '2022-07-01', '10:30:00', '10:40:00', 24, 10, 0),
-(258, 'GCC19023', '2022-07-12', '03:43:00', '03:43:00', 26, 10, 0);
+(1, 'GDC19006', '2022-06-30', '17:41:33', '18:42:33', 0, 10, 1),
+(2, 'GBC19012', '2022-06-30', '17:41:33', '18:42:33', 0, 4, 1),
+(3, 'GBC19032', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(4, 'GBC19049', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(5, 'GBC19090', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(6, 'GBC19103', '2022-06-30', '17:41:33', '18:42:33', 0, 26, 1),
+(7, 'GBC19123', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(8, 'GBC19137', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(9, 'GBC19178', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(10, 'GCC19037', '2022-06-30', '17:41:33', '18:42:33', 0, 24, 1),
+(11, 'GCC19038', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(12, 'GCC19047', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(13, 'GCC19060', '2022-06-30', '17:41:33', '18:42:33', 0, 29, 1),
+(14, 'GCC19117', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(15, 'GCC19160', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(16, 'GCC19213', '2022-06-30', '17:41:33', '18:42:33', 0, 31, 1),
+(17, 'GBC19042', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(18, 'GBC19043', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(19, 'GBC19065', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(20, 'GBC19066', '2022-06-30', '17:41:33', '18:42:33', 0, 12, 1),
+(21, 'GBC19068', '2022-06-30', '17:41:33', '18:42:33', 0, 5, 1),
+(22, 'GBC19085', '2022-06-30', '17:41:33', '18:42:33', 0, 3, 1),
+(23, 'GBC19088', '2022-06-30', '17:41:33', '18:42:33', 0, 72, 1),
+(24, 'GBC19094', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(25, 'GBC19111', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(26, 'GBC19136', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(27, 'GBC19159', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(28, 'GCC19004', '2022-06-30', '17:41:33', '18:42:33', 0, 20, 1),
+(29, 'GCC19022', '2022-06-30', '17:41:33', '18:42:33', 0, 41, 1),
+(30, 'GCC19096', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(31, 'GDC19104', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(32, 'GCC19055', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(33, 'GCC19244', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(34, 'GDC19254', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(35, 'GBC19273', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(36, 'GBC19242', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(37, 'GBC19036', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(38, 'GCC19269', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(39, 'GCC19102', '2022-06-30', '17:41:33', '18:42:33', 0, 10, 1),
+(40, 'GCC19132', '2022-06-30', '17:41:33', '18:42:33', 0, 46, 1),
+(41, 'GCC19180', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(42, 'GCC19232', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(43, 'GDC19034', '2022-06-30', '17:41:33', '18:42:33', 0, 17, 1),
+(44, 'GBC19007', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(45, 'GBC19025', '2022-06-30', '17:41:33', '18:42:33', 0, 47, 1),
+(46, 'GBC19030', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(47, 'GBC19064', '2022-06-30', '17:41:33', '18:42:33', 0, 29, 1),
+(48, 'GBC19077', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(49, 'GBC19086', '2022-06-30', '17:41:33', '18:42:33', 0, 39, 1),
+(50, 'GBC19129', '2022-06-30', '17:41:33', '18:42:33', 0, 18, 1),
+(51, 'GBC19131', '2022-06-30', '17:41:33', '18:42:33', 0, 4, 1),
+(52, 'GBC19144', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(53, 'GBC19161', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(54, 'GBC19184', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(55, 'GBC19199', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(56, 'GCC19003', '2022-06-30', '17:41:33', '18:42:33', 0, 10, 1),
+(57, 'GCC19009', '2022-06-30', '17:41:33', '18:42:33', 0, 62, 1),
+(58, 'GCC19106', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(59, 'GCC19135', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(60, 'GCC19157', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(61, 'GCC19188', '2022-06-30', '17:41:33', '18:42:33', 0, 8, 1),
+(62, 'GCC19189', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(63, 'GCC19224', '2022-06-30', '17:41:33', '18:42:33', 0, 10, 1),
+(64, 'GBC19016', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(65, 'GBC19028', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(66, 'GBC19114', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(67, 'GBC19122', '2022-06-30', '17:41:33', '18:42:33', 0, 5, 1),
+(68, 'GBC19134', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(69, 'GBC19225', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(70, 'GCC19095', '2022-06-30', '17:41:33', '18:42:33', 0, 50, 1),
+(71, 'GBC19017', '2022-06-30', '17:41:33', '18:42:33', 0, 11, 1),
+(72, 'GBC19044', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(73, 'GBC19091', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(74, 'GBC19097', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(75, 'GBC19126', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(76, 'GBC19193', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(77, 'GBC19229', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(78, 'GCC19001', '2022-06-30', '17:41:33', '18:42:33', 0, 22, 1),
+(79, 'GCC19026', '2022-06-30', '17:41:33', '18:42:33', 0, 12, 1),
+(80, 'GCC19056', '2022-06-30', '17:41:33', '18:42:33', 0, 20, 1),
+(81, 'GCC19072', '2022-06-30', '17:41:33', '18:42:33', 0, 10, 1),
+(82, 'GCC19118', '2022-06-30', '17:41:33', '18:42:33', 0, 12, 1),
+(83, 'GCC19127', '2022-06-30', '17:41:33', '18:42:33', 0, 22, 1),
+(84, 'GCC19169', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(85, 'GCC19173', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(86, 'GDC19074', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(87, 'GBC19021', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(88, 'GBC19018', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(89, 'GBC19069', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(90, 'GBC19071', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(91, 'GBC19119', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(92, 'GBC19120', '2022-06-30', '17:41:33', '18:42:33', 0, 10, 1),
+(93, 'GBC19185', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(94, 'GCC19098', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(95, 'GCC19107', '2022-06-30', '17:41:33', '18:42:33', 0, 13, 1),
+(96, 'GCC19171', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(97, 'GCC19181', '2022-06-30', '17:41:33', '18:42:33', 0, 1, 1),
+(98, 'GCC19187', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(99, 'GCC19190', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(100, 'GCC19198', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(101, 'GCC19207', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(102, 'GBC19163', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(103, 'GBC19166', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(104, 'GBC19176', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(105, 'GBC19196', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(106, 'GBC19201', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(107, 'GBC19205', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(108, 'GBC19221', '2022-06-30', '17:41:33', '18:42:33', 0, 29, 1),
+(109, 'GBC19234', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(110, 'GCC19067', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(111, 'GCC19138', '2022-06-30', '17:41:33', '18:42:33', 0, 30, 1),
+(112, 'GCC19167', '2022-06-30', '17:41:33', '18:42:33', 0, 52, 1),
+(113, 'GCC19186', '2022-06-30', '17:41:33', '18:42:33', 0, 112, 1),
+(114, 'GCC19208', '2022-06-30', '17:41:33', '18:42:33', 0, 23, 1),
+(115, 'GCC19209', '2022-06-30', '17:41:33', '18:42:33', 0, 62, 1),
+(116, 'GBC19194', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(117, 'GBC19215', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(118, 'GBC19226', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(119, 'GBC19230', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(120, 'GCC19023', '2022-06-30', '17:41:33', '18:42:33', 0, 58, 1),
+(121, 'GCC19153', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(122, 'GCC19218', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(123, 'GBC19227', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(124, 'GCC19237', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(125, 'GBC19245', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(126, 'GCC19246', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(127, 'GCC19247', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(128, 'GBC19248', '2022-06-30', '17:41:33', '18:42:33', 0, 37, 1),
+(129, 'GBC19250', '2022-06-30', '17:41:33', '18:42:33', 0, 2, 1),
+(130, 'GBC19253', '2022-06-30', '17:41:33', '18:42:33', 0, 10, 1),
+(131, 'GCC19257', '2022-06-30', '17:41:33', '18:42:33', 0, 3, 1),
+(132, 'GBC19258', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(133, 'GCC19259', '2022-06-30', '17:41:33', '18:42:33', 0, 46, 1),
+(134, 'GBC19267', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(135, 'GBC19272', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(136, 'GCC19274', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(137, 'GCC19275', '2022-06-30', '17:41:33', '18:42:33', 0, 44, 1),
+(138, 'GBC19277', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(139, 'GBC19278', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(140, 'GCC19280', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(141, 'GCC19238', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(142, 'GCC19240', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(143, 'GBC19261', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(144, 'GCC19268', '2022-06-30', '17:41:33', '18:42:33', 0, 1, 1),
+(145, 'GBC19279', '2022-06-30', '17:41:33', '18:42:33', 0, 10, 1),
+(146, 'GCC19281', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(147, 'GBC19290', '2022-06-30', '17:41:33', '18:42:33', 0, 6, 1),
+(148, 'GBC19292', '2022-06-30', '17:41:33', '18:42:33', 0, 9, 1),
+(149, 'GBC19293', '2022-06-30', '17:41:33', '18:42:33', 0, 19, 1),
+(150, 'GBC19048', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(151, 'GCC19155', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(152, 'GBC19263', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1),
+(153, 'GBC19128', '2022-06-30', '17:41:33', '18:42:33', 0, 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -333,7 +570,7 @@ ALTER TABLE `device`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `major`
@@ -345,7 +582,7 @@ ALTER TABLE `major`
 -- AUTO_INCREMENT for table `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
 -- Constraints for dumped tables
