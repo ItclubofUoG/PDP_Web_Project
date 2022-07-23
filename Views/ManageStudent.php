@@ -93,7 +93,13 @@
                             <td class="body-row"><?php echo $row['fullname'] ?></td>
                             <td class="body-row"><?php echo $row['email'] ?></td>
                             <td class="body-row"><?php echo $row['gender'] ?></td>
-                            <td class="body-row"><?php echo $row['dob'] ?></td>
+                            <td class="body-row"><?php
+                                                    if ($row['dob'] != null) {
+                                                        echo date('d-m-Y', strtotime($row['dob']));
+                                                    } else {
+                                                        echo "";
+                                                    }
+                                                    ?></td>
                             <td class="body-row"><?php echo $row['phone'] ?></td>
                             <td class="body-row"><?php echo $row['major_name'] ?></td>
                             <td class="body-row"><?php echo $row['course_name'] ?></td>

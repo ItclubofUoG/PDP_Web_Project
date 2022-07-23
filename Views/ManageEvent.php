@@ -81,7 +81,7 @@ include_once('./connectDB.php');
                 ?>
                         <tr class="table-body">
                             <td class="body-row"><a style="color: blue; font-weight: bold; text-decoration: none" href="?page=event&&eventId=<?php echo $row["event_id"]; ?>" class="choose-user js-update-event"><?php echo $row["event_title"]; ?></a></td>
-                            <td class="body-row"><?php echo $row["date"]; ?></td>
+                            <td class="body-row"><?php echo date('d-m-Y', strtotime($row["date"]))?></td>
                             <td class="body-row"><?php echo $row["time_start"]; ?></td>
                             <td class="body-row"><?php echo $row["time_end"]; ?></td>
                             <td class="body-row"><?php echo $row["location"]; ?></td>

@@ -4,7 +4,7 @@ include_once("./connectDB.php");
 
 <body>
     <div class="attendence-container">
-        <h1 class="mn-title">Attendence</h1>
+        <h1 class="mn-title">Attendance</h1>
         <hr class="orange-line">
         <!-- search box-->
 
@@ -76,7 +76,7 @@ include_once("./connectDB.php");
                     <tr class="table-body-mn">
                         <?php $rowStudent = mysqli_fetch_array($res_name, MYSQLI_ASSOC) ?>
                         <td class="body-row-mn"><?php echo $rowStudent['fullname'] ?></td>
-                        <td class="body-row-mn"><?php echo $row['checkin_date'] ?></td>
+                        <td class="body-row-mn"><?php echo date('d-m-Y', strtotime($row['checkin_date'])) ?></td>
                         <?php $rowEvent = mysqli_fetch_array($res_eventname, MYSQLI_ASSOC) ?>
                         <td class="body-row-mn"><?php echo $rowEvent['event_title'] ?></td>
                         <td class="body-row-mn"><?php echo $row['time_in'] ?></td>
