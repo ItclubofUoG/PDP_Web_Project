@@ -14,7 +14,8 @@ if (isset($_GET['btn_update'])) {
     $dob = $_POST['dob'];
     $card_uid = $_POST['card_uid'];
     $gender = $_POST['gender'];
-    // $cart_uid = $_POST['cart_uid'];
+    $card_uid = $_POST['card_uid'];
+
 
     $checkstid = mysqli_query($conn, "SELECT * FROM user WHERE student_id != '$idUpdate' and student_id = '$id'") or die(mysqli_error($conn));
     $checkemail = mysqli_query($conn, "SELECT * FROM user WHERE student_id != '$idUpdate' and email = '$email'") or die(mysqli_error($conn));
@@ -25,6 +26,9 @@ if (isset($_GET['btn_update'])) {
         if (mysqli_num_rows($checkemail) == 0) {
             if (mysqli_num_rows($checkphone) == 0) {
                 if ($major != 0 && $course != 0) {
+                    if (isset($card_uid) && !empty($card_uid)) {
+                        mysqli_query($conn, "UPDATE `user` SET `add_card`=1 WHERE student_id='$id'");
+                    }
                     mysqli_query($conn, "UPDATE `user` SET `student_id`='$id',`fullname`='$name',`phone`='$phone',`gender`='$gender',`email`='$email',`dob`='$dob',`major_id`='$major',`course_id`='$course', `card_uid`='$card_uid' WHERE student_id='$idUpdate'");
                     echo "<script> location.href='../admin.php?page=student'</script>";
                 } else {
