@@ -26,14 +26,14 @@ include_once('./connectDB.php');
 
                 <?php
 
-                $sql = "SELECT * FROM major order by major_id desc";
+                $sql = "SELECT * FROM major order by major_id asc";
                 $result = mysqli_query($conn, $sql);
                 $no = 1;
                 while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
                     if ($row['major_id'] != 0) {
                 ?>
                         <tr class="table-body-mn">
-                            <td class="body-row-mn"><?php echo $no ?></td>
+                            <td class="body-row-mn"><?php echo $row["major_id"]; ?></td>
                             <td class="body-row-mn"><a style="color: blue; font-weight: bold; text-decoration: none" class="choose-user js-update-major" href="?page=major&&id=<?php echo $row["major_id"]; ?>"><?php echo $row["major_name"]; ?></a></td>
                         </tr>
                 <?php

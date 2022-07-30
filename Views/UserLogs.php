@@ -34,9 +34,10 @@ include_once('./connectDB.php');
                 <div class="main-table-mn">
                     <table class="table-admin-mn">
                         <tr class="table-head-mn">
+                            <th class="head-row-mn">No</th>
                             <th class="head-row-mn">Student ID</th>
-                            <th class="head-row-mn">Student Name</th>
                             <th class="head-row-mn">Event Name</th>
+                            <th class="head-row-mn">Student Name</th>
                             <th class="head-row-mn">Date</th>
                             <th class="head-row-mn">Time In</th>
                             <th class="head-row-mn">Time Out</th>
@@ -78,9 +79,12 @@ include_once('./connectDB.php');
                         if ($currentEventId != -1 || isset($_GET['func']) == true) {
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
+                                $no = 0;
                                 while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
+                                    $no = $no + 1;
                         ?>
                                     <tr class="table-body-mn">
+                                        <td class="body-row-mn"><?php echo $no ?></td>
                                         <td class="body-row-mn"><?php echo $row["student_id"]; ?></td>
                                         <td class="body-row-mn"><?php echo $row["event_title"]; ?></td>
                                         <td class="body-row-mn"><?php echo $row["fullname"]; ?></td>

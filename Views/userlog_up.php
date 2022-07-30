@@ -6,6 +6,7 @@ include('../connectDB.php');
 <div class="main-table-mn">
     <table class="table-admin-mn">
         <tr class="table-head-mn">
+            <th class="head-row-mn">No</th>
             <th class="head-row-mn">Student ID</th>
             <th class="head-row-mn">Student Name</th>
             <th class="head-row-mn">Event Name</th>
@@ -13,7 +14,6 @@ include('../connectDB.php');
             <th class="head-row-mn">Time In</th>
             <th class="head-row-mn">Time Out</th>
             <th class="head-row-mn">Score</th>
-            <th class="head-row-mn">Plus</th>
             <th class="head-row-mn">Delete</th>
         </tr>
 
@@ -49,25 +49,24 @@ include('../connectDB.php');
         }
         if ($currentEventId != -1 || isset($_GET['func']) == true) {
             $result = mysqli_query($conn, $sql);
-            while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
+            $no = 0;
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
+                    $no = $no + 1;
         ?>
-                <tr class="table-body-mn">
-                    <td class="body-row-mn"><?php echo $row["student_id"]; ?></td>
-                    <td class="body-row-mn"><?php echo $row["fullname"]; ?></td>
-                    <td class="body-row-mn"><?php echo $row["event_title"]; ?></td>
-                    <td class="body-row-mn"><?php echo $row["checkin_date"]; ?></td>
-                    <td class="body-row-mn"><?php echo $row["time_in"]; ?></td>
-                    <td class="body-row-mn"><?php echo $row["time_out"]; ?></td>
-                    <td class="body-row-mn"><?php echo $row["scores"]; ?></td>
-                    <td class="body-row-mn">
-                        <form method="POST" action="./Process/userLog.php?function=plusScore">
-                            <input type="hidden" name="stdID" id="stdID" value="<?php echo $row["student_id"]; ?>">
-                            <input type="submit" value="➕" onclick="return confirm('Are you sure you want to add points for <?php echo $row['fullname']; ?> ?')">
-                        </form>
-                    </td>
-                    <td class="body-row-mn"><a href="./Process/userLog.php?function=deleteUser&&id=<?php echo $row['id'] ?>" style="text-decoration:none;" onclick="return confirm('Are you sure to delete')">⛔️</a></td>
-                </tr>
+                    <tr class="table-body-mn">
+                        <td class="body-row-mn"><?php echo $no ?></td>
+                        <td class="body-row-mn"><?php echo $row["student_id"]; ?></td>
+                        <td class="body-row-mn"><?php echo $row["fullname"]; ?></td>
+                        <td class="body-row-mn"><?php echo $row["event_title"]; ?></td>
+                        <td class="body-row-mn"><?php echo $row["checkin_date"]; ?></td>
+                        <td class="body-row-mn"><?php echo $row["time_in"]; ?></td>
+                        <td class="body-row-mn"><?php echo $row["time_out"]; ?></td>
+                        <td class="body-row-mn"><?php echo $row["scores"]; ?></td>
+                        <td class="body-row-mn"><a href="./Process/userLog.php?function=deleteUser&&id=<?php echo $row['id'] ?>" style="text-decoration:none;" onclick="return confirm('Are you sure to delete')">⛔️</a></td>
+                    </tr>
         <?php
+                }
             }
         }
         ?>
