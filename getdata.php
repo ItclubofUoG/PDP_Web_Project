@@ -190,8 +190,7 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                         $res = mysqli_query($conn, "SELECT * FROM user WHERE card_uid='$card_uid'");
                         if (mysqli_num_rows($res) <= 0) {
                             mysqli_query($conn, "UPDATE `event` SET `location`='new',`description`=$card_uid WHERE `event_id`=0");
-                            echo  $card_uid;
-                            echo ' add successful';
+                            echo 'add successful';
                         }
                         // if (!mysqli_stmt_prepare($result, $sql)) {
                         //     echo "SQL_Error_insert";

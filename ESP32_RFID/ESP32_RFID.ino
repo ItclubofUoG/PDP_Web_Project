@@ -33,10 +33,10 @@
 MFRC522 mfrc522(SS_PIN, RST_PIN); // Create MFRC522 instance.
 //************************************************************************
 /* Set these to your desired credentials. */
+
 const char *ssid = "Greenwich Vietnam - 1-3A";
-// const char *ssid = "Greenwich Vietnam - F5";
 const char *password = "";
-// const char* device_token  = "d6fc046a48353ca2"; // Greenwich
+//const char* device_token  = "d6fc046a48353ca2"; // Greenwich
 const char* device_token  = "1e6cb94e4dc1adbe"; // clb
 //************************************************************************
 int timezone = 7 * 3600;   //Replace "x" your timezone.
@@ -45,8 +45,8 @@ String getData, Link;
 String OldCardID = "";
 unsigned long previousMillis1 = 0;
 unsigned long previousMillis2 = 0;
-String URL = "https://itclubofgwu.site/getdata.php"; //computer IP or the server domain
-// String URL = "https://pdpgwu.site/getdata.php"; //computer IP or the server domain
+// String URL = "https://itclubofgwu.site/getdata.php"; //computer IP or the server domain
+String URL = "https://pdpgwu.site/getdata.php"; //computer IP or the server domain
 //*************************Biometric Icons*********************************
 #define Wifi_start_width 54
 #define Wifi_start_height 49
@@ -245,11 +245,10 @@ void SendCardID( String Card_uid ) {
     Serial.println(httpCode);   //Print HTTP return code
     Serial.println(Card_uid);     //Print Card ID
     Serial.println(payload);     //Print request response payload
-    Serial.println(payload.substring(0, 11));
+    //Serial.println(payload.substring(0, 5));
     if (httpCode == 200) {
-      if (payload.substring(0, 11) == "login") {
+      if (payload.substring(0, 5) == "login") {
         coi(2, 1);
-        Serial.println("here");
         String user_name = payload.substring(11);
         Serial.println(user_name);
         //buzz
@@ -259,6 +258,12 @@ void SendCardID( String Card_uid ) {
         coi(1, 0);
         String user_name = payload.substring(6);
         //  Serial.println(user_name);
+
+      }
+        else if (payload.substring(0, 3) == "add") {
+
+        coi(2, 1);
+        // Serial.println(user_name);
 
       }
       else if (payload == "succesful") {
