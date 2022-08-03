@@ -22,6 +22,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'exportExcel') {
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         $output .= '
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                     <table class="table" border="1" style="font-size: 25px">  
                         <TR>
                             <TH style="background-color: #74E4E5">Student ID</TH>
@@ -34,7 +35,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'exportExcel') {
         while ($row = $result->fetch_assoc()) {
             $output .= '
                             <TR> 
-                                <TD> ' . $row['student_id'] . '</TD>
+                                <TD> ' . strtoupper($row['student_id']) . '</TD>
                                 <TD> ' . $row['fullname'] . '</TD>                                
                                 <TD style="text-align: center;"> ' . $row['checkin_date'] . '</TD>
                                 <TD style="text-align: center;"> ' . $row['time_in'] . '</TD>

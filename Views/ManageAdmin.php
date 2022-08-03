@@ -9,6 +9,7 @@
         <!-- End Search box -->
         <!-- Begin Table -->
         <div class="main-table-mn">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <table class="table-admin-mn">
                 <tr class="table-head-mn">
                     <th class="head-row-mn">No. </th>
