@@ -51,9 +51,13 @@
                 //find the total records
                 if (isset($_POST['btn-search'])) {
                     $search = $_POST['search'];
-                    $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id  ";
-                    $result = mysqli_query($conn, $sql);
-                    $total_records = mysqli_num_rows($result);
+                    if ($search == "") {
+                        echo "<script>window.location='admin.php?page=student'</script>";
+                    } else {
+                        $sql = "SELECT * FROM user a, major b, course c WHERE a.student_id LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id OR a.fullname LIKE '%$search%' and a.major_id=b.major_id and a.course_id=c.course_id  ";
+                        $result = mysqli_query($conn, $sql);
+                        $total_records = mysqli_num_rows($result);
+                    }
                 } else {
                     $result = mysqli_query($conn, 'select count(student_id) as total from user');
                     $row = mysqli_fetch_assoc($result);
@@ -216,40 +220,42 @@
     <!-- pagination page started here -->
     <div class="pag-outline">
         <div class="pag-block">
-            <!-- display prev when not stay in page 1 -->
-            <?php if ($current_page > 1 && $total_page > 1) {
-                echo '   <a href="admin.php?page=student&&pages=' . ($current_page - 1) . '" class="pag-number"><i class="fa-solid fa-angles-left"></i></a>';
-            } ?>
-            <div class="pag-item">
+            <?php if ($total_records >= 25) { ?>
+                <!-- display prev when not stay in page 1 -->
+                <?php if ($current_page > 1 && $total_page > 1) {
+                    echo '   <a href="admin.php?page=student&&pages=' . ($current_page - 1) . '" class="pag-number"><i class="fa-solid fa-angles-left"></i></a>';
+                } ?>
+                <div class="pag-item">
+                    <?php
+                    //loop the between 
+                    $pageplus = $current_page + 1;
+                    if ($total_page > $pageplus) {
+                        for ($i = 1; $i <= $pageplus; $i++) {
+                            if ($i == $current_page) {
+                                echo '<span class="pag-number" style="background-color:orange; color: white;">' . $i . '</span>';
+                            } else {
+                                echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a>';
+                            }
+                        }
+                        echo '<a class="pag-hplink" "><div class="pag-number"> ... </div></a>';
+                        echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $total_page . '"><div class="pag-number">' . $total_page . '</div></a>';
+                    } else {
+                        for ($i = 1; $i <= $pageplus; $i++) {
+                            if ($i == $current_page) {
+                                echo '<span class="pag-number" style="background-color:orange; color: white;">' . $i . '</span>';
+                            } else {
+                                echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a>';
+                            }
+                        }
+                    }
+                    ?>
+                </div>
                 <?php
-                //loop the between 
-                $pageplus = $current_page + 1;
-                if ($total_page > $pageplus) {
-                    for ($i = 1; $i <= $pageplus; $i++) {
-                        if ($i == $current_page) {
-                            echo '<span class="pag-number" style="background-color:orange; color: white;">' . $i . '</span>';
-                        } else {
-                            echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a>';
-                        }
-                    }
-                    echo '<a class="pag-hplink" "><div class="pag-number"> ... </div></a>';
-                    echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $total_page . '"><div class="pag-number">' . $total_page . '</div></a>';
-                } else {
-                    for ($i = 1; $i <= $pageplus; $i++) {
-                        if ($i == $current_page) {
-                            echo '<span class="pag-number" style="background-color:orange; color: white;">' . $i . '</span>';
-                        } else {
-                            echo '<a class="pag-hplink" href="admin.php?page=student&&pages=' . $i . '"><div class="pag-number">' . $i . '</div></a>';
-                        }
-                    }
-                }
-                ?>
-            </div>
-            <?php
-            //display btn next when it not be the end page
-            if ($current_page < $total_page && $total_page > 1) {
-                echo '<a href="admin.php?page=student&&pages=' . ($current_page + 1) . '" class="pag-number"><i class="fa-solid fa-angles-right"></i></a>';
-            } ?>
+                //display btn next when it not be the end page
+                if ($current_page < $total_page && $total_page > 1) {
+                    echo '<a href="admin.php?page=student&&pages=' . ($current_page + 1) . '" class="pag-number"><i class="fa-solid fa-angles-right"></i></a>';
+                } ?>
+            <?php } ?>
         </div>
     </div>
 
