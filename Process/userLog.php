@@ -166,9 +166,16 @@ if (isset($_GET['function']) && $_GET['function'] == 'plusScore') {
     $plus = $currentScore + $eventScorePlus;
 
     if ($currentScore <= $rowScore['score']) {
-        $sql = mysqli_query($conn, "UPDATE user_log set scores = '$plus' where student_id = '$stdID' and event_id = '$eventID'");
-        echo "<script>location.href='../admin.php?page=eventlog'</script>";
+        mysqli_query($conn, "UPDATE user_log set scores = '$plus' where student_id = '$stdID' and event_id = '$eventID'");
+        $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE c.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
+        $url = "../admin.php?page=eventlog&&func=filter&&sql=$sqlFilter&&event=$eventID";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("location: $url");
     } else {
         echo "<script>alert('Students have already added score!');window.location='../admin.php?page=eventlog'</script>";
+        $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE c.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
+        $url = "../admin.php?page=eventlog&&func=filter&&sql=$sqlFilter&&event=$eventID";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("location: $url");
     }
 }
