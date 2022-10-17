@@ -1,8 +1,9 @@
 <a href="../Views/formTestAddUserLogFunction.php">Add new</a><br><br>
-<?php 
-include_once('../Libs/index.php'); 
+<?php
+include_once('../Libs/index.php');
 include_once('../connectDB.php');
 ?>
+
 <form action="../Process/userLog.php" method="POST">
     <label for="">Export Excel file</label>
     <?php bind_Event_List($conn); ?><br><br>
@@ -31,8 +32,8 @@ include_once('../connectDB.php');
             include_once("../connectDB.php");
             $No = 1;
             $sql = "SELECT * FROM user_log a, user b where a.student_id = b.student_id";
-            if(isset($_GET['func']) && $_GET['func'] == 'filter'){
-                $sql=$_GET['sql'];                
+            if (isset($_GET['func']) && $_GET['func'] == 'filter') {
+                $sql = $_GET['sql'];
             }
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)) {
@@ -45,7 +46,7 @@ include_once('../connectDB.php');
                     <td align="center"><?php echo $row["time_in"]; ?></td>
                     <td align="center"><?php echo $row["time_out"]; ?></td>
                     <td align="center"><?php echo $row["event_id"]; ?></td>
-                    <td align="center"><?php echo $row["scores"]; ?></td>                    
+                    <td align="center"><?php echo $row["scores"]; ?></td>
                 </tr>
             <?php
                 $No++;

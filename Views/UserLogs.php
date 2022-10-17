@@ -11,6 +11,18 @@ include_once('./connectDB.php');
             <h1 class="mn-title">User Daily Logs</h1>
             <hr class="orange-line">
             <!-- button log -->
+
+            <!-- search box -->
+            <div class="table-function">
+                <form action="" class="search" method="POST">
+                    <div class="search-cover">
+                        <input type="text" id="search" name="search" class="search-box" placeholder="Search">
+                    </div>
+                    <input class="btn-search" id="btn-search" name="btn-search" type="submit" value="Search">
+                </form>
+            </div>
+            <!-- End search box -->
+
             <div class="table-function">
                 <input class="btn-log js-log-filter" type="submit" value="Log Filter" name="btnFilterUserLog" id="btnFilterUserLog">
                 <input class="btn-log js-log-export" type="submit" value="Export to Excel" name="btnExportExcel" id="btnExportExcel">
