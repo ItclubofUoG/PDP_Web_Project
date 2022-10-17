@@ -25,6 +25,9 @@ include_once('./connectDB.php');
                 setInterval(function() {
                     $(document).ready(function() {
                         $("#load_userlog").load("./Views/userlog_up.php");
+                        if ($('#firstname').val($(this).val()) != "") {
+
+                        }
                     });
                 }, 1000)
             </script>
