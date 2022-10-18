@@ -27,17 +27,23 @@ include_once('./connectDB.php');
                 </form>
             </div>
             <?php
-            if (isset($_POST['btn-search'])) {
+            if (isset($_POST['btn-search']) && $_POST['search'] != null) {
                 $key = $_POST['search'];
                 if (trim($key) != "") {
                     $_SESSION["search"] = $key;
-                    echo "<script>console.log('key')</script>";
+            ?>
+                    <script>
+                        $(document).ready(function() {
+                            $("#load_userlog").load("./Views/userlog_up.php");
+                        });
+                    </script>
+                <?php
                 } else {
                     unset($_SESSION["search"]);
                 }
             } else {
                 unset($_SESSION["search"]);
-            ?>
+                ?>
                 <script>
                     $(document).ready(function() {
                         $("#load_userlog").load("./Views/userlog_up.php");
@@ -48,7 +54,6 @@ include_once('./connectDB.php');
                             // if ($('#search').val($(this).val()) != "") {
                             //     console.log($('#search').val($(this).val()))
                             // }
-
 
                         });
                     }, 1000)
