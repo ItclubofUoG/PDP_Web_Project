@@ -17,20 +17,48 @@ include_once('./connectDB.php');
                 <input class="btn-log js-log-add" type="submit" value="Add User Log">
                 <input class="btn-delete-log js-log-delete" type="submit" value="Delete Log" name="btnDeleteUserLog" id="btnDeleteUserLog">
             </div>
-            <!-- End button log -->
-            <script>
-                $(document).ready(function() {
-                    $("#load_userlog").load("./Views/userlog_up.php");
-                });
-                setInterval(function() {
+
+            <div class="table-function">
+                <form action="" class="search" method="POST">
+                    <div class="search-cover">
+                        <input type="text" id="search" name="search" class="search-box" placeholder="Search">
+                    </div>
+                    <input class="btn-search" id="btn-search" name="btn-search" type="submit" value="Search">
+                </form>
+            </div>
+            <?php
+            if (isset($_POST['btn-search'])) {
+                $key = $_POST['search'];
+                if (trim($key) != "") {
+                    $_SESSION["search"] = $key;
+                    echo "<script>console.log('key')</script>";
+                } else {
+                    unset($_SESSION["search"]);
+                }
+            } else {
+                unset($_SESSION["search"]);
+            ?>
+                <script>
                     $(document).ready(function() {
                         $("#load_userlog").load("./Views/userlog_up.php");
-                        if ($('#firstname').val($(this).val()) != "") {
-
-                        }
                     });
-                }, 1000)
-            </script>
+                    setInterval(function() {
+                        $(document).ready(function() {
+                            $("#load_userlog").load("./Views/userlog_up.php");
+                            // if ($('#search').val($(this).val()) != "") {
+                            //     console.log($('#search').val($(this).val()))
+                            // }
+
+
+                        });
+                    }, 1000)
+                </script>
+            <?php
+            }
+            ?>
+
+
+
             <!--Start Table User log -->
             <?php
             if (isset($_GET['func']) && $_GET['func'] == 'filter') { ?>
