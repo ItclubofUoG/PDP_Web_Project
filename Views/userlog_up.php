@@ -48,14 +48,14 @@ include('../connectDB.php');
             $key = $_SESSION["search"];
             // echo "<script>console_log('a string');</script>";
             if ($key != "") {
-                $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' and a.student_id like '%$key%' or a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' and b.fullname like '%$key%' order by a.time_in desc LIMIT $start, $limit";
+                $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' and a.student_id like '%$key%' or a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' and b.fullname like '%$key%' order by a.time_in desc ";
             }
         } else {
             echo "<script>console.log('key1')</script>";
-            $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' order by a.time_in desc LIMIT $start, $limit";
+            $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' order by a.time_in desc ";
         }
         if (isset($_GET['func']) && $_GET['func'] == 'filter') {
-            $sql = $_GET['sql'] . " LIMIT $start, $limit";
+            $sql = $_GET['sql'] . " ";
         }
         if ($currentEventId != -1 || isset($_GET['func']) == true) {
             $result = mysqli_query($conn, $sql);
