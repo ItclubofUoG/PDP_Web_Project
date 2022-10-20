@@ -97,7 +97,7 @@ include_once('./connectDB.php');
                         }
                         //find limit and current page
                         $current_page = isset($_GET['pages']) ? $_GET['pages'] : 1;
-                        $limit = 20;  // set the limit of line in page
+                        $limit = 1;  // set the limit of line in page
                         //calculate total page and start page
                         $total_page = ceil($total_records / $limit);
                         //limit the page from 1 to end
@@ -132,6 +132,7 @@ include_once('./connectDB.php');
                                             <form method="POST" action="./Process/userLog.php?function=plusScore">
                                                 <input type="hidden" name="stdID" id="stdID" value="<?php echo $row["student_id"]; ?>">
                                                 <input type="hidden" name="eventID" id="eventID" value="<?php echo $currentEventId ?>">
+                                                <input type="text" name="currentPage" id="currentPage" value="<?php echo $current_page?>">
                                                 <input type="submit" style="cursor:pointer;" value="➕" onclick="return confirm('Are you sure you want to add scores for <?php echo $row['fullname']; ?> ?')">
                                             </form>
                                         </td>

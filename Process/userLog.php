@@ -160,6 +160,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'deleteUser') {
 if (isset($_GET['function']) && $_GET['function'] == 'plusScore') {
     $stdID = $_POST['stdID'];
     $eventID = $_POST['eventID'];
+    $currentPage = $_POST['currentPage'];
 
     $sqlCurrentScore = mysqli_query($conn, "SELECT * From user_log where student_id = '$stdID' and event_id = '$eventID'");
     $rowCurrentScore = mysqli_fetch_array($sqlCurrentScore, MYSQLI_ASSOC);
@@ -172,13 +173,12 @@ if (isset($_GET['function']) && $_GET['function'] == 'plusScore') {
     $plus = $currentScore + $eventScorePlus;
 
     if ($currentScore <= $rowScore['score']) {
-        mysqli_query($conn, "UPDATE user_log set scores = '$plus' where student_id = '$stdID' and event_id = '$eventID'");
-        $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE c.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
-    } else {
-        echo "<script>alert('Students have already added score!');window.location='../admin.php?page=eventlog'</script>";
-        $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE c.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
-    }
-    $url = "../admin.php?page=eventlog&&func=filter&&sql=$sqlFilter&&event=$eventID";
+        mysqli_query($conn, "UPDATE user_log set scores = '$plus' where student_id = '$stdID' and event_id = '$eventID'");       
+    } 
+    
+    $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE c.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
+
+    $url = "../admin.php?page=eventlog&&func=filter&&sql=$sqlFilter&&event=$eventID&&pages=$currentPage";
     $url = str_replace(PHP_EOL, '', $url);
     header("location: $url");
 }
