@@ -134,6 +134,24 @@ function bind_Event_List($conn)
     }
     echo "</select>";
 }
+function bind_Event_List_Userlog($conn)
+{
+    include("./connectDB.php");
+    if (Get_Current_Event() != -1) {
+        $event_id = Get_Current_Event();
+        echo "<script type='text/javascript'>console.log(2);</script>";
+        $sqlString = "SELECT event_id, event_title from event WHERE event_id='$event_id'";
+    } else {
+        $sqlString = "SELECT event_id, event_title from event WHERE event_id>0";
+    }
+    $result = mysqli_query($conn, $sqlString);
+    echo "<SELECT name='EventList' class='select-event' required>
+        <option value='0'>Choose event</option>";
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        echo "<option value='" . $row['event_id'] . "'>" . $row['event_title'] . "</option>";
+    }
+    echo "</select>";
+}
 
 //Show current major's student list
 function bind_Major_List($conn, $major)

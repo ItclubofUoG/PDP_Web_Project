@@ -135,7 +135,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'addUserLog') {
             if (mysqli_num_rows($resUserLog) == 0) {
                 mysqli_query($conn, "INSERT INTO user_log (student_id,checkin_date,time_in,time_out,event_id,scores) 
                                         VALUES ('$id','$checkinDate','$timeIn','$timeOut','$eventName',$score)");
-                echo "<script>alert('Add successfully'); location.href='../admin.php?page=eventlog' </script>";
+                echo "<script>location.href='../admin.php?page=eventlog' </script>";
             } else {
                 echo "<script>alert('Student have already check-in'); location.href='../admin.php?page=eventlog' </script>";
             }
@@ -173,9 +173,9 @@ if (isset($_GET['function']) && $_GET['function'] == 'plusScore') {
     $plus = $currentScore + $eventScorePlus;
 
     if ($currentScore <= $rowScore['score']) {
-        mysqli_query($conn, "UPDATE user_log set scores = '$plus' where student_id = '$stdID' and event_id = '$eventID'");       
-    } 
-    
+        mysqli_query($conn, "UPDATE user_log set scores = '$plus' where student_id = '$stdID' and event_id = '$eventID'");
+    }
+
     $sqlFilter = "SELECT * FROM user_log a, user b, event c WHERE c.event_id = $eventID and a.student_id = b.student_id and a.event_id = c.event_id";
 
     $url = "../admin.php?page=eventlog&&func=filter&&sql=$sqlFilter&&event=$eventID&&pages=$currentPage";
