@@ -11,6 +11,10 @@ if (isset($_GET['function']) && $_GET['function'] == 'addEvent') {
     $scorePlus = $_POST['eventscoreplus'];
     $pic = $_FILES['eventimage'];
 
+    $title = str_replace("'", "\'", $title);
+
+    // echo $title;
+
     if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
         $image = $pic['name'];
 
@@ -40,6 +44,8 @@ if (isset($_GET['function']) && $_GET['function'] == 'updateEvent') {
     $pic = $_FILES['updateimage'];
     $image = $pic['name'];
     $scorePlus = $_POST['updatescoreplus'];
+
+    $title = str_replace("'", "\'", $title);
 
     if ($pic['name'] != "") {
         if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
