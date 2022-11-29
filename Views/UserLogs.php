@@ -108,9 +108,16 @@ include_once('./connectDB.php');
                         }
                         //find start page
                         $start = ($current_page - 1) * $limit;
+
                         $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' LIMIT $start, $limit";
                         if (isset($_GET['func']) && $_GET['func'] == 'filter') {
                             $sql = $_GET['sql'] . " LIMIT $start, $limit";
+                            if ($_POST['search'] != null) {
+                                $key = $_POST['search'];
+                                if (trim($key) != "") {
+                                    $sql = "SELECT * FROM user_log a, user b, event c where a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' and a.student_id like '%$key%' or a.student_id = b.student_id and a.event_id = c.event_id and c.event_id ='$currentEventId' and b.fullname like '%$key%' order by a.time_in desc ";
+                                }
+                            }
                         }
                         if ($currentEventId != -1 || isset($_GET['func']) == true) {
                             $result = mysqli_query($conn, $sql);
