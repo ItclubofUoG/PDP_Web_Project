@@ -33,3 +33,4 @@ if (isset($_GET['function']) && $_GET['function'] == 'login') {
         }
     }
 }
+?>
