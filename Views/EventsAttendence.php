@@ -13,23 +13,39 @@ include_once("./connectDB.php");
                 <p class="choose-month-title">Choose Month</p>
                 <div class="choose-month-cover">
                     <select class="search-box" name="month">
-                        <option value="1"> 1 </option>
-                        <option value="2"> 2 </option>
-                        <option value="3"> 3 </option>
-                        <option value="4"> 4 </option>
-                        <option value="5"> 5 </option>
-                        <option value="6"> 6 </option>
-                        <option value="7"> 7 </option>
-                        <option value="8"> 8 </option>
-                        <option value="9"> 9 </option>
-                        <option value="10"> 10 </option>
-                        <option value="11"> 11 </option>
-                        <option value="12"> 12 </option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
                     </select>
                     <?php
+                    if (isset($_GET['month'])) {
+                        $month = $_GET['month'];
+                    } else {
+                        $month = date("m");
+                    }
+                    // value of option selected default is current month
+                    echo "<script>document.querySelector('option[value=\"$month\"]').selected = true;</script>";
+                    ?>
+                    <?php
                     include('./Libs/index.php');
-                    $year = date("Y");
-                    $listYear = Get_List_Year($year);
+                    if(isset($_GET['year'])){
+                        $yearChoose = $_GET['year'];
+                        $year = date("Y");
+                        $listYear = Get_List_Year_Selected($year,$yearChoose);
+                    }else{
+                        $year = date("Y");
+                        $listYear = Get_List_Year($year);
+                    }
+                
                     ?>
                     <select class="search-box" name="year">
                         <?php
@@ -54,16 +70,15 @@ include_once("./connectDB.php");
                     <th class="head-row-mn">Time Out</th>
                     <th class="head-row-mn">Score</th>
                 </tr>
-            <?php   
-                    $id = $_SESSION["id"];
-                    if(isset($_SESSION['sql_filter'])&&!empty($_SESSION['sql_filter'])){
-                        $sql=$_SESSION['sql_filter'];
-                        $res = mysqli_query($conn,$sql."&&student_id ='$id'");
-                        unset($_SESSION['sql_filter']);
-                    }
-                    else{
-                        $res = mysqli_query($conn,"SELECT * FROM user_log WHERE Month(checkin_date) >='1' && student_id ='$id'");
-                    }
+                <?php
+                $id = $_SESSION["id"];
+                if (isset($_SESSION['sql_filter']) && !empty($_SESSION['sql_filter'])) {
+                    $sql = $_SESSION['sql_filter'];
+                    $res = mysqli_query($conn, $sql . "&&student_id ='$id'");
+                    unset($_SESSION['sql_filter']);
+                } else {
+                    $res = mysqli_query($conn, "SELECT * FROM user_log WHERE Month(checkin_date) ='$month' && student_id ='$id'");
+                }
                 $sum = 0;
                 while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
                     $event_id = $row['event_id'];

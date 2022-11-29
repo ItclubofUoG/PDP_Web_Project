@@ -51,9 +51,24 @@ function Get_Current_Event_UserLog()
     }
 }
 //get list year to search
+function Get_List_Year_Selected($year, $yearChoose)
+{
+    $arr = array();
+    // add yearChoose to array
+    array_push($arr, $yearChoose);
+    for ($i = 0; $i < 4; $i++) {
+        if($year - $i != $yearChoose)
+        {
+            array_push($arr, $year - $i);
+        }
+    }
+    return $arr;
+}
 function Get_List_Year($year)
 {
     $arr = array();
+    // add yearChoose to array
+    array_push($arr);
     for ($i = 0; $i < 4; $i++) {
         array_push($arr, $year - $i);
     }
