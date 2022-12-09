@@ -24,7 +24,7 @@
             </div>
         </div>
         <div>
-            <input type="submit" value="login" class="login-btn" id="btn_login" name="btn_login">
+            <input type="submit" value="Login" class="login-btn" id="btn_login" name="btn_login">
         </div>
     </form>
 </div>

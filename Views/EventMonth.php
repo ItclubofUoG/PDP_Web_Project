@@ -84,7 +84,7 @@ include_once('./connectDB.php');
                 <?php } else { ?>
 
                     <!-- The event piece has picture right -->
-                    <div class="et-piece">
+                    <div class="et-piece2">
                         <img src="./Assets/Image/<?php echo $row['image'] ?>" alt="450x300" class="et-figure p3">
                         <div class="et-piece-info p4">
                             <div class="et-detail">Title: <b><?php echo $row['event_title'] ?></b></div>
