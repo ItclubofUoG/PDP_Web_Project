@@ -104,7 +104,7 @@ if (isset($_GET['page'])) {
 if (isset($_SESSION["us"]) && isset($_GET['page'])) {
     $page = $_GET['page'];
     if ($page == 'home') {
-        include_once("./Views/EventMonth.php");
+        include_once("./Views/EventMosnth.php");
     } else if ($page == 'changepass') {
         include_once("./Views/ChangePass.html");
     } else if ($page == 'changeinfo') {
